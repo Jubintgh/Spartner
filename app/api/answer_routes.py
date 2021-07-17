@@ -1,5 +1,5 @@
 from flask.blueprints import Blueprint
-from flaskblueprints, 
+from flaskblueprints
 from app.models import Answer
 
 user_routes = Blueprint('answers', __name__)
@@ -10,10 +10,10 @@ user_routes = Blueprint('answers', __name__)
 def get_answers():
     pass
 
-@user_routes.route('/:userid')
+@user_routes.route('/:userid', method=['POST'])
 def post_answers():
     pass
 
-@user_routes.route('/:userid')
+@user_routes.route('/:userid', method=['PUT'])
 def update_answer():
     pass
