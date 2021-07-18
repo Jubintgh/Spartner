@@ -7,9 +7,20 @@ class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
+    first_name = db.Column(db.VARCHAR(30), nullable=False)
+    last_name = db.Column(db.VARCHAR(30), nullable=False)
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+    age = db.Column(db.Integer, nullable=False)
+    about = db.Column(db.textarea) #Subject to change (move to answers table)
+    location = db.Column(db.VARCHAR, nullable=False) #Fix VARCHAR length based on format
+    gender = db.Column(db.Integer, nullable=False) #1=Female 2=Male 3=Other
+    coach = db.Column(db.Boolean, default=False)
+    fighter = db.Column(db.Boolean, default=True)
+    img_url = db.Column(db.VARCHAR)
+    # create at default?
+    # updated at default?
 
     @property
     def password(self):
