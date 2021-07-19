@@ -13,11 +13,9 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
     age = db.Column(db.Integer, nullable=False)
-    about = db.Column(db.textarea) #Subject to change (move to answers table)
     location = db.Column(db.VARCHAR, nullable=False) #Fix VARCHAR length based on format
     gender = db.Column(db.Integer, nullable=False) #1=Female 2=Male 3=Other
     coach = db.Column(db.Boolean, default=False)
-    fighter = db.Column(db.Boolean, default=True)
     img_url = db.Column(db.VARCHAR)
     created_on = db.Column(db.DateTime, server_default=db.func.now())
     updated_on = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
