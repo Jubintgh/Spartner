@@ -12,12 +12,16 @@ def get_disciplines(id):
     
 
 @discipline_routes.route('/<int:id>', methods=['POST'])
-def post_disciplines(disciplines ,id):
-    new_discipline = Discipline(
-        discipline_name = form.data['discipline']
-    )
+def post_disciplines(disciplines_id ,id):
+    for discipline_id in disciplines_id:
+        new_discipline = User_Discipline(
+            user_id = id,
+            discipline_id = discipline_id
+        )
+        db.session.add(new_discipline)
+        db.session.commit()
 
 
 @discipline_routes.route('/<int:id>', methods=['DELETE'])
-def delete_disciplines():
-    pass
+def delete_disciplines(discipline_id):
+    User_Discipline.query.filter(User_Discipline.discipline_id == discipline_id).delete()
