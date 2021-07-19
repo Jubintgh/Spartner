@@ -30,7 +30,7 @@ class SignUpForm(FlaskForm):
     first_name = StringField('first name', validators=[DataRequired()])
     last_name = StringField('last name', validators=[DataRequired()])
     age = IntegerField('age', validators=[DataRequired()])
-    discipline = SelectMultipleField('disciplines', validators=[DataRequired()])
+    discipline = SelectMultipleField('disciplines', choices=[('Southpaw'), ('Kickboxing'), ('Orthodox'), ('Judo'),  ('Muay Thai'), ('Grappling'), ('Counter Striker'), ('Karate'), ('Switch'), ('Brazilian Jiu-Jitsu')], validators=[DataRequired()])
     location = StringField('location', validators=[DataRequired()])
     gender = StringField('gender', validators=[DataRequired()])
     coach = BooleanField('trainer')
