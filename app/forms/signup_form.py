@@ -1,6 +1,7 @@
+from Spartner.app.models import discipline
 from os import abort
 from flask_wtf import FlaskForm
-from wtforms import StringField, IntegerField, BooleanField
+from wtforms import StringField, IntegerField, BooleanField, SelectMultipleField
 from wtforms.validators import DataRequired, Email, ValidationError
 from app.models import User
 
@@ -29,6 +30,7 @@ class SignUpForm(FlaskForm):
     first_name = StringField('first name', validators=[DataRequired()])
     last_name = StringField('last name', validators=[DataRequired()])
     age = IntegerField('age', validators=[DataRequired()])
+    discipline = SelectMultipleField('disciplines', validators=[DataRequired()])
     location = StringField('location', validators=[DataRequired()])
     gender = StringField('gender', validators=[DataRequired()])
     coach = BooleanField('trainer')

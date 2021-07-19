@@ -16,9 +16,9 @@ def get_praised(id):
     return {'praised': [praise.praised_id for praise in praised]}
 
 @like_routes.route('/', methods=['POST'])
-def new_like(praiser_id, praised_id):
-    like = Like(praiser_id= praiser_id, praised_id=praised_id)
-    db.session.add(like)
+def post_like(praiser_id, praised_id):
+    new_like = Like(praiser_id= praiser_id, praised_id=praised_id)
+    db.session.add(new_like)
     db.session.commit()
 
 @like_routes.route('/<int:id>', methods=['DELETE'])
