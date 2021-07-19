@@ -19,8 +19,8 @@ class User(db.Model, UserMixin):
     coach = db.Column(db.Boolean, default=False)
     fighter = db.Column(db.Boolean, default=True)
     img_url = db.Column(db.VARCHAR)
-    # create at default?
-    # updated at default?
+    created_on = db.Column(db.DateTime, server_default=db.func.now())
+    updated_on = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
 
     @property
     def password(self):
