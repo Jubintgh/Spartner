@@ -20,6 +20,11 @@ class User(db.Model, UserMixin):
     created_on = db.Column(db.DateTime, server_default=db.func.now())
     updated_on = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
 
+    answer = db.relationship(
+        "Answer",  uselist=False,
+        back_populates="user"
+    )
+
     @property
     def password(self):
         return self.hashed_password
