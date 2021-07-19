@@ -9,6 +9,13 @@ const SignUpForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
+  const [first_name, setFirstName] = useState('');
+  const [last_name, setLastName] = useState('');
+  const [age, setAge] = useState('');
+  const [location, setLocation] = useState('');
+  const [gender, setGender] = useState('');
+  const [coach, setCoach] = useState('');
+  const [image_url, setImageUrl] = useState('');
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
