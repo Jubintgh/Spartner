@@ -6,8 +6,9 @@ discipline_routes = Blueprint('discipline', __name__)
 #error handling
 
 @discipline_routes.route('/:userid')
-def get_disciplines():
-    pass
+def get_disciplines(id):
+    
+    
 
 @discipline_routes.route('/:userid', methods=['POST'])
 def post_disciplines():
