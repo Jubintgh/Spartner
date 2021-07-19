@@ -5,18 +5,22 @@ user_routes = Blueprint('likes', __name__)
 
 #error handling
 
-@user_routes.route('/likes-you/:userid')
-def get_admirers():
-    pass
+@user_routes.route('/<int:id>/praisers')
+def get_praisers(id):
+    praisers = Like.query.filter_by(praised_id=id)
+    return {'praisers': [praiser.praiser_id for praiser in praisers]}
 
-@user_routes.route('/you-like/:userid')
-def get_likes():
-    pass
+@user_routes.route('/<int:id>/praised')
+def get_praised(id):
+    praised = Like.query.filter_by(praised_id=id)
+    return {'praised': [praise.praised_id for praise in praised]}
 
 @user_routes.route('/', method=['POST'])
-def make_like():
-    pass
+def new_like(praiser_id, praised_id):
+    like = Like(praiser_id= praiser_id, praised_id=praised_id)
+    db.session.add(like)
+    db.session.commit()
 
-@user_routes.route('/:userid', method=['DELETE'])
-def delete_like():
-    pass
+@user_routes.route('/<int:id>', method=['DELETE'])
+def delete_like(id):
+    Like.query.filter(Like.id == id).delete()
