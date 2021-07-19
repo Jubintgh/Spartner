@@ -9,10 +9,10 @@ answer_routes = Blueprint('answers', __name__)
 def get_answers():
     pass
 
-@answer_routes.route('/', method=['POST'])
+@answer_routes.route('/', methods=['POST'])
 def post_answers():
     pass
 
-@answer_routes.route('/', method=['PUT'])
+@answer_routes.route('/', methods=['PUT'])
 def update_answer():
     pass

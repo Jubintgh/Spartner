@@ -1,6 +1,6 @@
 from .db import db
 
-class Answers(db.Model):
+class Answer(db.Model):
     __tablename__ = 'answers'
 
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True, nullable=False)

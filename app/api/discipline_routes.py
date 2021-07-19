@@ -9,11 +9,11 @@ discipline_routes = Blueprint('discipline', __name__)
 def get_disciplines():
     pass
 
-@discipline_routes.route('/:userid', method=['POST'])
+@discipline_routes.route('/:userid', methods=['POST'])
 def post_disciplines():
     pass
 
 
-@discipline_routes.route('/:userid', method=['DELETE'])
+@discipline_routes.route('/:userid', methods=['DELETE'])
 def delete_disciplines():
     pass

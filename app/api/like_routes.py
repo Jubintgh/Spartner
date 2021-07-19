@@ -13,10 +13,10 @@ def get_admirers():
 def get_likes():
     pass
 
-@like_routes.route('/', method=['POST'])
+@like_routes.route('/', methods=['POST'])
 def make_like():
     pass
 
-@like_routes.route('/:userid', method=['DELETE'])
+@like_routes.route('/:userid', methods=['DELETE'])
 def delete_like():
     pass
