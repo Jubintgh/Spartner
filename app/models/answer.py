@@ -4,7 +4,7 @@ class Answers(db.Model):
     __tablename__ = 'answers'
 
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True, nullable=False)
-    about = db.Column(db.textarea)
+    about = db.Column(db.Text)
     weight_class = db.Column(db.VARCHAR(20), nullable=False)
     reach = db.Column(db.Integer, nullable=False)
     professional_level = db.Column(db.VARCHAR(15), nullable=False)
