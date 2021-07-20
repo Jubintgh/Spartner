@@ -30,7 +30,7 @@ class User(db.Model, UserMixin):
     db.Column("liked_id", db.Integer, db.ForeignKey("users.id"))
     )
 
-    people_liked = db.relationship(
+    liked_users = db.relationship(
         "User",
         secondary=likes,
         primaryjoin=(likes.c.liker_id == id),
@@ -56,3 +56,5 @@ class User(db.Model, UserMixin):
             'username': self.username,
             'email': self.email
         }
+
+
