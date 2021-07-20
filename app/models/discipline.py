@@ -8,4 +8,4 @@ class Discipline(db.Model):
     created_on = db.Column(db.DateTime, server_default=db.func.now())
     updated_on = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
 
-    users_discipline = db.relationship('User_Discipline', back_populates='discipline_id')
+    users_discipline = db.relationship('User_Discipline', back_populates='disciplines')
