@@ -24,6 +24,7 @@ const AnswersForm = () => {
   const user = useSelector(state => state.session.user);
   const history = useHistory();
   const dispatch = useDispatch();
+  const isCoach = user.coach
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -114,6 +115,35 @@ const AnswersForm = () => {
   if (user) {
     return <Redirect to='/' />;
   }
+
+
+  let coachContent = null;
+
+  if (isCoach) {
+    coachContent = (
+      <div>
+        <div>
+          <label>Availability</label>
+          <input
+            type='text'
+            name='availability'
+            onChange={updateAvailability}
+            value={availability}
+          ></input>
+        </div>
+        <div>
+          <label>Rate</label>
+          <input
+            type='integer'
+            name='rate'
+            onChange={updateRate}
+            value={rate}
+          ></input>
+        </div>
+      </div>
+    )
+  }
+
 
   return (
     <form onSubmit={onSubmit}>
@@ -251,24 +281,7 @@ const AnswersForm = () => {
           value={religion}
         ></input>
       </div>
-      <div>
-        <label>Availability</label>
-        <input
-          type='text'
-          name='availability'
-          onChange={updateAvailability}
-          value={availability}
-        ></input>
-      </div>
-      <div>
-        <label>Rate</label>
-        <input
-          type='integer'
-          name='rate'
-          onChange={updateRate}
-          value={rate}
-        ></input>
-      </div>
+      { coachContent }
       <button type='submit'>Submit Answers</button>
     </form>
   );
