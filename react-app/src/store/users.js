@@ -3,6 +3,10 @@ const GET_USER = 'users/GET_USER';
 const GET_LIKES = 'users/GET_LIKES';
 const GET_SINGLE = 'users/GET_SINGLE'
 const REMOVE_SINGLE = 'users/REMOVE_SINGLE'
+const GET_ANSWERS = 'users/GET_ANSWERS';
+const GET_ANS_SINGLE = 'users/GET_ANS_SINGLE'
+const REMOVE_ANS_SINGLE = 'users/REMOVE_ANS_SINGLE'
+
 
 const setUsers = (users) => ({
     type:SET_USERS,
@@ -27,6 +31,21 @@ const setOneLike = (like) => ({
 const deleteOneLike = (like) => ({
     type: REMOVE_SINGLE,
     like,
+})
+
+const setAnswers = (answers) => ({
+    type: GET_ANSWERS,
+    answers
+})
+
+const setOneAnswer= (answer) => ({
+    type: GET_ANS_SINGLE,
+    answer,
+});
+
+const deleteOneAnswer = (answer) => ({
+    type: REMOVE_ANS_SINGLE,
+    answer,
 })
 
 export const getUsers = () => async(dispatch) => {
@@ -81,6 +100,42 @@ export const removeLike = (id, otherId) => async (dispatch) => {
     }
 }
 
+export const getUserAnswers = (id) => async (dispatch) => {
+    const res = await fetch(`/api/users/${id}/answers`);
+
+    if (res.ok) {
+      const answers = await res.json();
+      dispatch(setAnswers(answers));
+      return answers
+    }
+};
+
+export const createAnswer = (id) => async (dispatch) => {
+    const res = await fetch(`/api/users/${id}/answers`, {
+        method: 'POST'
+    });
+
+    if (res.ok) {
+        const answer = await res.json()
+        dispatch(setOneAnswer(answer))
+        return answer
+    }
+}
+
+export const removeAnswer = (id) => async (dispatch) => {
+    const res = await fetch(`/api/users/${id}/answers`, {
+        method: 'DELETE'
+    });
+
+    if (res.ok) {
+        const answer = await res.json()
+        dispatch(deleteOneAnswer(answer))
+        return answer;
+    }
+}
+
+
+
 const initialState = {}
 
 const usersReducer = (state = initialState, action) => {
@@ -113,6 +168,20 @@ const usersReducer = (state = initialState, action) => {
         case REMOVE_SINGLE:
             const newState = { ...state };
             delete newState[action.like];
+            return newState;
+        case GET_ANSWERS:
+            return {
+                ...state,
+                answers: action.answers
+            }
+        case GET_ANS_SINGLE:
+            return {
+                ...state,
+                answer: action.answer
+            }
+        case REMOVE_ANS_SINGLE:
+            const newState = { ...state };
+            delete newState[action.answer];
             return newState;
         default:
             return state
