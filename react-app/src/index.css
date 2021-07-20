@@ -6,26 +6,35 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
+    list-style: none;
+    box-sizing: border-box;
 }
 
 /* Navbar */
 
-.navbar{
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    justify-content: flex-end;
-    padding: 30px 10%;
+nav {
+    height: 80px;
+    width: 100%;
     font-size: 16px;
     margin-top: 0;
     background-color: #020202;
-    list-style-type: none;
 }
 
-li #navbar__logo{
+.navbar{
+    list-style-type: none;
+    float: right;
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+
+#navbar__logo{
     width: 75px;
-    margin-right: auto;
-    background-image: url("https://user-images.githubusercontent.com/35717793/126367109-4954f04b-0cb7-4ca9-a25a-d18e6b7cb74a.png");
+    /* padding: 0 100px; */
+    line-height: 80px;
 }
 
 .navbar__link a:visited {    
@@ -33,7 +42,6 @@ li #navbar__logo{
 }
 
 .navbar__link a { 
-    display: inline-block;
     position: relative;
     transition: 900ms;
     animation: ease-in-out;   
@@ -42,9 +50,11 @@ li #navbar__logo{
     background-color: #3A3B40;
     border-radius: 3px;
     margin: 0 5px;
+    cursor: pointer;
+    line-height: 80px;
 }
 
-.navbar__link a:hover { 
+.navbar__link a:hover,a:active { 
     color: #fff;
     background-color: #868998;
 }
