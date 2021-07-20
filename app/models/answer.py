@@ -1,5 +1,5 @@
 from .db import db
-from .user import User 
+from .user import User
 
 class Answer(db.Model):
     __tablename__ = 'answers'
@@ -20,7 +20,6 @@ class Answer(db.Model):
     pets = db.Column(db.VARCHAR)
     availability = db.Column(db.VARCHAR)
     rate = db.Column(db.Integer)
-    created_on = db.Column(db.DateTime, server_default=db.func.now())
-    updated_on = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
+
 
     user = db.relationship("User", back_populates="answer")

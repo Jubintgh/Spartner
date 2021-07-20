@@ -17,17 +17,27 @@ class User(db.Model, UserMixin):
     gender = db.Column(db.Integer, nullable=False) #1=Female 2=Male 3=Other
     coach = db.Column(db.Boolean, default=False)
     img_url = db.Column(db.VARCHAR)
-    created_on = db.Column(db.DateTime, server_default=db.func.now())
-    updated_on = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
+    discipline = db.Column(db.VARCHAR(50), nullable=False)
 
     answer = db.relationship(
         "Answer",  uselist=False,
         back_populates="user"
     )
 
-    praiser_likes = db.relationship('Like', back_populates='praiser_user')
-    praised_likes = db.relationship('Like', back_populates='praised_user')
-    disciplines = db.relationship('user_discipline', back_populates='users_id')
+    likes = db.Table(
+    "likes",
+    db.Column("liker_id", db.Integer, db.ForeignKey("users.id")),
+    db.Column("liked_id", db.Integer, db.ForeignKey("users.id"))
+    )
+
+    people_liked = db.relationship(
+        "User",
+        secondary=likes,
+        primaryjoin=(likes.c.liker_id == id),
+        secondaryjoin=(likes.c.liked_id == id),
+        backref=db.backref("likes", lazy="dynamic"),
+        lazy="dynamic"
+    )
 
     @property
     def password(self):
