@@ -206,7 +206,15 @@ const SignUpPreferencesForm = () => {
           value={inPerson}
         ></input>
       </div>
-
+      <div>
+        <label>Pets</label>
+        <input
+          type='text'
+          name='pets'
+          onChange={updatePets}
+          value={pets}
+        ></input>
+      </div>
       <div>
         <label>Nickname</label>
         <input
