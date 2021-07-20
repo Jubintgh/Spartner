@@ -29,13 +29,11 @@ def seed_users():
             discipline='Judo'
         )
 
-    user1.user_likes.append(user2)
-    user2.user_likes.append(user1)
-
     user3 = User(
             first_name='Tai', last_name='Tuivasa', username='shoeie',
             email='qrczak@live.com', password='Password1!', age=28,
-            location="Sydney, NSW,  AU", gender=1, coach=False
+            location="Sydney, NSW,  AU", gender=1, coach=False,
+            discipline='Judo'
         )
 
     user4 = User(
@@ -227,35 +225,35 @@ def seed_users():
             discipline='Switch'
         )
 
-    # user2.liked_users.append(user1)
-    # user3.liked_users.append(user1)
-    # user4.liked_users.append(user1)
-    # user5.liked_users.append(user1)
-    # user6.liked_users.append(user1)
-    # user7.liked_users.append(user1)
-    # user8.liked_users.append(user1)
-    # user9.liked_users.append(user1)
-    # user10.liked_users.append(user1)
-    # user11.liked_users.append(user1)
-    # user12.liked_users.append(user1)
-    # user13.liked_users.append(user1)
-    # user14.liked_users.append(user1)
-    # user15.liked_users.append(user1)
-    # user16.liked_users.append(user1)
-    # user17.liked_users.append(user1)
-    # user18.liked_users.append(user1)
-    # user19.liked_users.append(user1)
-    # user20.liked_users.append(user1)
-    # user21.liked_users.append(user1)
-    # user22.liked_users.append(user1)
-    # user23.liked_users.append(user1)
-    # user24.liked_users.append(user1)
-    # user25.liked_users.append(user1)
-    # user26.liked_users.append(user1)
-    # user27.liked_users.append(user1)
-    # user28.liked_users.append(user1)
-    # user29.liked_users.append(user1)
-    # user30.liked_users.append(user1)
+    user2.user_likes.append(user1)
+    user3.user_likes.append(user22)
+    user4.user_likes.append(user21)
+    user5.user_likes.append(user15)
+    user6.user_likes.append(user12)
+    user7.user_likes.append(user1)
+    user8.user_likes.append(user3)
+    user9.user_likes.append(user1)
+    user10.user_likes.append(user14)
+    user11.user_likes.append(user1)
+    user12.user_likes.append(user14)
+    user13.user_likes.append(user1)
+    user14.user_likes.append(user14)
+    user15.user_likes.append(user1)
+    user16.user_likes.append(user1)
+    user17.user_likes.append(user4)
+    user18.user_likes.append(user1)
+    user19.user_likes.append(user11)
+    user20.user_likes.append(user1)
+    user21.user_likes.append(user1)
+    user22.user_likes.append(user12)
+    user23.user_likes.append(user1)
+    user24.user_likes.append(user19)
+    user25.user_likes.append(user13)
+    user26.user_likes.append(user1)
+    user27.user_likes.append(user1)
+    user28.user_likes.append(user18)
+    user29.user_likes.append(user1)
+    user30.user_likes.append(user11)
 
     db.session.add_all([
             user1,

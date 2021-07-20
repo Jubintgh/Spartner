@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 45afd013a313
+Revision ID: 9429b56a8cd8
 Revises: 
-Create Date: 2021-07-20 13:57:59.941600
+Create Date: 2021-07-20 14:51:57.068162
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '45afd013a313'
+revision = '9429b56a8cd8'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -23,6 +23,7 @@ def upgrade():
     sa.Column('first_name', sa.VARCHAR(length=30), nullable=False),
     sa.Column('last_name', sa.VARCHAR(length=30), nullable=False),
     sa.Column('username', sa.String(length=40), nullable=False),
+    sa.Column('discipline', sa.String(length=20), nullable=True),
     sa.Column('email', sa.String(length=255), nullable=False),
     sa.Column('hashed_password', sa.String(length=255), nullable=False),
     sa.Column('age', sa.Integer(), nullable=False),
@@ -39,17 +40,18 @@ def upgrade():
     op.create_table('answers',
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('about', sa.Text(), nullable=True),
-    sa.Column('weight_class', sa.VARCHAR(length=20), nullable=False),
+    sa.Column('weight_class', sa.VARCHAR(length=100), nullable=False),
     sa.Column('reach', sa.Integer(), nullable=False),
-    sa.Column('professional_level', sa.VARCHAR(length=15), nullable=False),
+    sa.Column('professional_level', sa.VARCHAR(length=100), nullable=False),
     sa.Column('current_record', sa.VARCHAR(), nullable=True),
     sa.Column('previous_titles', sa.VARCHAR(), nullable=True),
     sa.Column('fav_rocky_fighter', sa.VARCHAR(), nullable=True),
     sa.Column('walkout_song', sa.VARCHAR(), nullable=True),
     sa.Column('vaccinated', sa.Boolean(), nullable=True),
+    sa.Column('has_kids', sa.Boolean(), nullable=True),
+    sa.Column('in_person', sa.Boolean(), nullable=True),
     sa.Column('nickname', sa.VARCHAR(), nullable=True),
     sa.Column('religion', sa.VARCHAR(), nullable=True),
-    sa.Column('offspring', sa.VARCHAR(), nullable=True),
     sa.Column('pets', sa.VARCHAR(), nullable=True),
     sa.Column('availability', sa.VARCHAR(), nullable=True),
     sa.Column('rate', sa.Integer(), nullable=True),
