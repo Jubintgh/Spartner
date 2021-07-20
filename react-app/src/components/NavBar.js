@@ -6,7 +6,7 @@ import LogoutButton from './auth/LogoutButton';
 const NavBar = () => {
   return (
     <nav>
-      <ul>
+      <ul className="navbar">
         <li>
           <NavLink to='/' exact={true} activeClassName='active'>
             Home
