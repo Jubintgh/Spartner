@@ -59,7 +59,7 @@ nav {
     animation: ease-in-out;   
     color: #fff;
     text-decoration: none;
-    background-color: #3A3B40;
+    /* background-color: #3A3B40; */
     border-radius: 3px;
     margin: 0 5px;
     cursor: pointer;
@@ -68,7 +68,7 @@ nav {
 
 .navbar__link a:hover,a:active { 
     color: #fff;
-    background-color: #868998;
+    background-color: rgba(134, 137, 152, 0.39)
 }
 
 .navbar__link a::before {
