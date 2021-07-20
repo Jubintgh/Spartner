@@ -3,19 +3,33 @@
 body {
     background-color: #2F3137;
     color: #fff;
+    margin: 0;
 }
 
 /* Navbar */
 
-ul.navbar{
-    background-color: #2F3137;
+.navbar{
+    display: flex;
+    align-items: flex-end;
+    flex-direction: row;
+    justify-content: space-between;
+    overflow:visible;
+    margin: 0;
+    background-color: #000000;
+    list-style-type: none;
+}
+
+#navbar__logo{
+    width: 75px;
 }
 
 li a:visited {    
     color: #fff;
 }
 
-li a {    
+li a {
+    transition: 500ms;
+    animation: ease-in-out;    
     color: #fff;
     text-decoration: none;
     background-color: #3A3B40;

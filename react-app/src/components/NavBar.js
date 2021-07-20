@@ -9,7 +9,7 @@ const NavBar = () => {
       <ul className="navbar">
         <li>
           <NavLink to='/' exact={true} activeClassName='active'>
-            Home
+            <img src='https://user-images.githubusercontent.com/35717793/126367109-4954f04b-0cb7-4ca9-a25a-d18e6b7cb74a.png' alt='logo' id='navbar__logo' />
           </NavLink>
         </li>
         <li>
