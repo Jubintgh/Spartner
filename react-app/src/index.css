@@ -22,9 +22,10 @@ body {
     list-style-type: none;
 }
 
-#navbar__logo{
+li #navbar__logo{
     width: 75px;
     margin-right: auto;
+    background-image: url("https://user-images.githubusercontent.com/35717793/126367109-4954f04b-0cb7-4ca9-a25a-d18e6b7cb74a.png");
 }
 
 .navbar__link a:visited {    
@@ -32,6 +33,7 @@ body {
 }
 
 .navbar__link a { 
+    display: inline-block;
     position: relative;
     transition: 900ms;
     animation: ease-in-out;   
@@ -39,6 +41,7 @@ body {
     text-decoration: none;
     background-color: #3A3B40;
     border-radius: 3px;
+    margin: 0 5px;
 }
 
 .navbar__link a:hover { 
