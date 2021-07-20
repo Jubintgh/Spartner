@@ -36,6 +36,7 @@ nav {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    margin-top: 15px;
 }
 
 #navbar__logo{
