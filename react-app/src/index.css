@@ -40,10 +40,13 @@ nav {
 
 #navbar__logo{
     display: flex;
-    width: 75px;
+    width: 175px;
     /* padding: 0 100px; */
     line-height: 80px;
 }
+
+.nav-logo a:active{
+    background:none !important;}
 
 .navbar__link a:visited {    
     color: #fff;
