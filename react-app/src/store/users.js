@@ -7,7 +7,6 @@ const GET_ANSWERS = 'users/GET_ANSWERS';
 const GET_ANS_SINGLE = 'users/GET_ANS_SINGLE'
 const REMOVE_ANS_SINGLE = 'users/REMOVE_ANS_SINGLE'
 
-
 const setUsers = (users) => ({
     type:SET_USERS,
     users
@@ -133,8 +132,6 @@ export const removeAnswer = (id) => async (dispatch) => {
         return answer;
     }
 }
-
-
 
 const initialState = {}
 
