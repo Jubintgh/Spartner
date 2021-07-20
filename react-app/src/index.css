@@ -28,17 +28,33 @@ li a:visited {
     color: #fff;
 }
 
-li a {
-    transition: 500ms;
-    animation: ease-in-out;    
+li a { 
+    position: relative;
+    transition: 900ms;
+    animation: ease-in-out;   
     color: #fff;
     text-decoration: none;
     background-color: #3A3B40;
     border-radius: 3px;
 }
 
-li a:hover {    
+li a:hover { 
     color: #fff;
-    background-color: #868998;
-    text-decoration: underline #ED254E;
 }
+
+li a::before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #ED254E;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+li a:hover::before {
+    transform: scaleX(1);
+  }
