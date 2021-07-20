@@ -2,6 +2,21 @@ from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
+user_likes = db.Table(
+    "user_likes",
+    db.Column(
+        "like_id", 
+        db.Integer, 
+        db.ForeignKey("users.id"), 
+    ),
+
+    db.Column(
+        "liked_id", 
+        db.Integer, 
+        db.ForeignKey("users.id"), 
+    )
+)
+
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
@@ -10,6 +25,7 @@ class User(db.Model, UserMixin):
     first_name = db.Column(db.VARCHAR(30), nullable=False)
     last_name = db.Column(db.VARCHAR(30), nullable=False)
     username = db.Column(db.String(40), nullable=False, unique=True)
+    discipline = db.Column(db.String(20))
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
     age = db.Column(db.Integer, nullable=False)
@@ -24,10 +40,14 @@ class User(db.Model, UserMixin):
         "Answer",  uselist=False,
         back_populates="user"
     )
-
-    praiser_likes = db.relationship('Like', back_populates='praiser_user')
-    praised_likes = db.relationship('Like', back_populates='praised_user')
-    disciplines = db.relationship('user_discipline', back_populates='users_id')
+    post_likes =db.relationship(
+        "User",
+        secondary=user_likes,
+        primaryjoin=(user_likes.c.like_id == id),
+        secondaryjoin=(user_likes.c.liked_id == id),
+        backref=db.backref('user_likes', lazy='dynamic'),
+        lazy='dynamic' 
+    )
 
     @property
     def password(self):
