@@ -8,3 +8,9 @@ class User_Discipline(db.Model):
 
     disciplines = db.relationship('Discipline', back_populates='users_discipline')
     users_id = db.relationship('User', back_populates='users_id')
+
+    def to_dict(self):
+        return {
+            'user_id': self.user_id,
+            'discipline_id': self.discipline_id
+        }
