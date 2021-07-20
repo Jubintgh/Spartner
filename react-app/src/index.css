@@ -87,3 +87,34 @@ nav {
 .navbar__link a:hover::before {
     transform: scaleX(1);
   }
+
+  .navbar__button button {
+    outline: none;
+    display: block;
+    border: solid 1px #ED254E;
+    color: #ED254E;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1;
+    border-radius: 30px;
+    background: #020202;
+    cursor: pointer;
+    transition: all 0.3s linear;
+    margin: 5px;
+  }
+  
+  .navbar__button button:focus {
+    background-color: #ED254E;
+    color: #020202;
+  }
+  
+  .navbar__button button:active {
+    background: #020202;
+    color: #ED254E;
+    border: solid 1px #ED254E;
+  }
+  
+  .navbar__button button:hover {
+    background-color: #ED254E;
+    color: #020202;
+  }
