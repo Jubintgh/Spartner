@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
-import { signUp } from '../../store/session';
+import { setAnswers } from '../../store/users';
 
-const SignUpPreferencesForm = () => {
-
+const AnswersForm = () => {
 
   const [errors, setErrors] = useState([]);
   const [about, setAbout] = useState('');
@@ -24,8 +23,34 @@ const SignUpPreferencesForm = () => {
   const [availability, setAvailability] = useState('');
   const [rate, setRate] = useState('');
   const user = useSelector(state => state.session.user);
-  const user_id = user.id;
+
   const dispatch = useDispatch();
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    if (password === repeatPassword) {
+      const data = await dispatch(setAnswers(user_id=user.id,
+        about,
+        weightClass,
+        reach,
+        professionalLevel,
+        currentRecord,
+        previousTitles,
+        favRockyFighter,
+        walkoutSong,
+        vaccinated,
+        hasKids,
+        inPerson,
+        nickname,
+        religion,
+        pets,
+        availability,
+        rate));
+      if (data) {
+        setErrors(data)
+      }
+    }
+  };
 
   const updateAbout = (e) => {
     setAbout(e.target.value);
@@ -88,17 +113,12 @@ const SignUpPreferencesForm = () => {
     setRate(e.target.value);
   };
 
-
-
-
-
-
   if (user) {
     return <Redirect to='/' />;
   }
 
   return (
-    <form onSubmit={onSignUp}>
+    <form onSubmit={onSubmit}>
       <div>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
@@ -251,10 +271,9 @@ const SignUpPreferencesForm = () => {
           value={rate}
         ></input>
       </div>
-
-      <button type='submit'>Sign Up</button>
+      <button type='submit'>Submit Answers</button>
     </form>
   );
 };
 
-export default SignUpPreferencesForm;
+export default AnswersForm;
