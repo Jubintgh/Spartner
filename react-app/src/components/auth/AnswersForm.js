@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { Redirect } from 'react-router-dom';
-import { setAnswers } from '../../store/users';
+import { Redirect, useHistory } from 'react-router-dom';
+import { setAnswers } from '../../store/users'; //pending swap over to potential minimization of user.js usersReducer --> FIX PATH!!
 
 const AnswersForm = () => {
-
   const [errors, setErrors] = useState([]);
   const [about, setAbout] = useState('');
   const [weightClass, setWeightClass] = useState('');
@@ -23,33 +22,32 @@ const AnswersForm = () => {
   const [availability, setAvailability] = useState('');
   const [rate, setRate] = useState('');
   const user = useSelector(state => state.session.user);
-
+  const history = useHistory();
   const dispatch = useDispatch();
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    if (password === repeatPassword) {
-      const data = await dispatch(setAnswers(user_id=user.id,
-        about,
-        weightClass,
-        reach,
-        professionalLevel,
-        currentRecord,
-        previousTitles,
-        favRockyFighter,
-        walkoutSong,
-        vaccinated,
-        hasKids,
-        inPerson,
-        nickname,
-        religion,
-        pets,
-        availability,
-        rate));
-      if (data) {
-        setErrors(data)
-      }
+    const data = await dispatch(setAnswers(user_id=user.id,
+      about,
+      weightClass,
+      reach,
+      professionalLevel,
+      currentRecord,
+      previousTitles,
+      favRockyFighter,
+      walkoutSong,
+      vaccinated,
+      hasKids,
+      inPerson,
+      nickname,
+      religion,
+      pets,
+      availability,
+      rate));
+    if (data) {
+      setErrors(data)
     }
+    history.push('/discover')
   };
 
   const updateAbout = (e) => {

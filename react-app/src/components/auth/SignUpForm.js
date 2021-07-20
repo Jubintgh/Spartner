@@ -20,7 +20,7 @@ const SignUpForm = () => {
   const user = useSelector(state => state.session.user);
   const user_id = user.id
   const dispatch = useDispatch();
-  const history = useHistory()
+  const history = useHistory();
 
   const onSignUp = async (e) => {
     e.preventDefault();
