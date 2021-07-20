@@ -29,6 +29,34 @@ const SignUpForm = () => {
     }
   };
 
+  const updateFirstName = (e) => {
+    setFirstName(e.target.value);
+  };
+
+  const updateLastName = (e) => {
+    setLastName(e.target.value);
+  };
+
+  const updateAge = (e) => {
+    setAge(e.target.value);
+  };
+
+  const updateLocation = (e) => {
+    setLocation(e.target.value);
+  };
+
+  const updateGender = (e) => {
+    setGender(e.target.value);
+  };
+
+  const updateCoach = (e) => {
+    setCoach(e.target.value);
+  };
+
+  const updateImageUrl = (e) => {
+    setImageUrl(e.target.value);
+  };
+
   const updateUsername = (e) => {
     setUsername(e.target.value);
   };
@@ -66,12 +94,84 @@ const SignUpForm = () => {
         ></input>
       </div>
       <div>
+        <label>First Name</label>
+        <input
+          type='text'
+          name='firstName'
+          onChange={updateFirstName}
+          value={first_name}
+        ></input>
+      </div>
+      <div>
+        <label>Last Name</label>
+        <input
+          type='text'
+          name='lastName'
+          onChange={updateLastName}
+          value={last_name}
+        ></input>
+      </div>
+      <div>
+        <label>Age</label>
+        <input
+          type='integer'
+          name='age'
+          onChange={updateAge}
+          value={age}
+        ></input>
+      </div>
+        <div>
+        <label>Location</label>
+        <input
+          type='string'
+          name='location'
+          onChange={updateLocation}
+          value={location}
+        ></input>
+      </div>
+      <div>
+        <label>Gender</label>
+        <input
+          type='integer'
+          name='gender'
+          onChange={updateGender}
+          value={gender}
+        ></input>
+      </div>
+      <div>
+        <label>Coach</label>
+        <input
+          type='boolean'
+          name='coach'
+          onChange={updateCoach}
+          value={coach}
+        ></input>
+      </div>
+      <div>
+        <label>Image URL</label>
+        <input
+          type='string'
+          name='imageurl'
+          onChange={updateImageUrl}
+          value={image_url}
+        ></input>
+      </div>
+      <div>
         <label>Email</label>
         <input
           type='text'
           name='email'
           onChange={updateEmail}
           value={email}
+        ></input>
+      </div>
+      <div>
+        <label>Location</label>
+        <input
+          type='integer'
+          name='location'
+          onChange={updateLocation}
+          value={location}
         ></input>
       </div>
       <div>
