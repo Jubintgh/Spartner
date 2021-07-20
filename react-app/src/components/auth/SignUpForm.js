@@ -16,6 +16,7 @@ const SignUpForm = () => {
   const [gender, setGender] = useState('');
   const [coach, setCoach] = useState('');
   const [image_url, setImageUrl] = useState('');
+  const [discipline, setDiscipline] = useState('');
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
@@ -63,6 +64,10 @@ const SignUpForm = () => {
 
   const updateEmail = (e) => {
     setEmail(e.target.value);
+  };
+
+  const updateDiscipline = (e) => {
+    setDiscipline(e.target.value);
   };
 
   const updatePassword = (e) => {
@@ -172,6 +177,15 @@ const SignUpForm = () => {
           name='location'
           onChange={updateLocation}
           value={location}
+        ></input>
+      </div>
+      <div>
+        <label>Discipline</label>
+        <input
+          type='text'
+          name='discipline'
+          onChange={updateDiscipline}
+          value={discipline}
         ></input>
       </div>
       <div>
