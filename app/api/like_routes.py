@@ -9,6 +9,7 @@ like_routes = Blueprint('likes', __name__)
 def get_praisers(id):
     praisers = Like.query.filter_by(praised_id=id)
     return {'praisers': [praiser.praiser_id for praiser in praisers]}
+    paraisers = User.Like
 
 @like_routes.route('/<int:id>/praised')
 def get_praised(id):

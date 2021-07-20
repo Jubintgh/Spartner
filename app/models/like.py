@@ -7,20 +7,23 @@ class Like(db.Model):
     id = db.Column(db.Integer, primary_key=True, nullable=False)
     praiser_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     praised_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=True)
+    match = db.Column(db.Boolean, default=False)
     display = db.Column(db.Boolean, default=True)
 
     praiser_user = db.relationship('User', back_populates="praiser_likes")
-    praised_user = db.relationship('User', back_populates="praised_likes")
+    # praised_user = db.relationship('User', back_populates="praised_likes")
 
     def to_dict(self):
         return {
             'id': self.id,
             'praiser_id': self.praiser_id,
-            'praised_id': self.praised_id
+            'praised_id': self.praised_id,
+            'match': self.match,
+            'display': self.display
         }
 
-    follows = db.Table(
-        "follows", 
-        db.Column("follower_id", db.Integer, db.ForeignKey("users.id")),
-        db.Column("followed_id", db.Integer, db.ForeignKey("users.id"))
-    )
+    # follows = db.Table(
+    #     "follows", 
+    #     db.Column("follower_id", db.Integer, db.ForeignKey("users.id")),
+    #     db.Column("followed_id", db.Integer, db.ForeignKey("users.id"))
+    # )
