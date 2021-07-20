@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Redirect, useHistory } from 'react-router-dom';
 import { setAnswers } from '../../store/users'; //pending swap over to potential minimization of user.js usersReducer --> FIX PATH!!
 
-const AnswersForm = () => {
+const EditAnswersForm = () => {
   const [errors, setErrors] = useState([]);
   const [about, setAbout] = useState('');
   const [weightClass, setWeightClass] = useState('');
@@ -288,4 +288,4 @@ const AnswersForm = () => {
   );
 };
 
-export default AnswersForm;
+export default EditAnswersForm;
