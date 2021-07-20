@@ -4,6 +4,7 @@ body {
     background-color: #2F3137;
     color: #fff;
     margin: 0;
+    padding: 0;
     font-family: 'Poppins', sans-serif;
 }
 
@@ -11,17 +12,23 @@ body {
 
 .navbar{
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     flex-direction: row;
     justify-content: space-between;
-    overflow:visible;
-    margin: 0;
+    padding: 30px 10%;
+    font-size: 16px;
+    margin-top: 0;
     background-color: #020202;
     list-style-type: none;
 }
 
 #navbar__logo{
     width: 75px;
+    position: absolute;
+}
+
+#navbar__logo img{
+    background-color: #020202;
 }
 
 li a:visited {    
