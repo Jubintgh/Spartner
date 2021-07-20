@@ -13,6 +13,8 @@ body {
 /* Navbar */
 
 nav {
+    display: flex;
+    justify-content: space-between;
     height: 80px;
     width: 100%;
     font-size: 16px;
@@ -30,8 +32,14 @@ nav {
     margin-bottom: 0;
 }
 
+.nav-logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
 
 #navbar__logo{
+    display: flex;
     width: 75px;
     /* padding: 0 100px; */
     line-height: 80px;
