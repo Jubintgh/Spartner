@@ -16,7 +16,7 @@ body {
     justify-content: space-between;
     overflow:visible;
     margin: 0;
-    background-color: #000000;
+    background-color: #020202;
     list-style-type: none;
 }
 
@@ -40,6 +40,7 @@ li a {
 
 li a:hover { 
     color: #fff;
+    background-color: #868998;
 }
 
 li a::before {
