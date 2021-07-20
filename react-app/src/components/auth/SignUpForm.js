@@ -166,6 +166,15 @@ const SignUpForm = () => {
         ></input>
       </div>
       <div>
+        <label>Location</label>
+        <input
+          type='integer'
+          name='location'
+          onChange={updateLocation}
+          value={location}
+        ></input>
+      </div>
+      <div>
         <label>Password</label>
         <input
           type='password'

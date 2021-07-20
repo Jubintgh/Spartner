@@ -1,5 +1,5 @@
 from .db import db
-from .user import User 
+from .user import User
 
 class Answer(db.Model):
     __tablename__ = 'answers'
@@ -20,7 +20,25 @@ class Answer(db.Model):
     pets = db.Column(db.VARCHAR)
     availability = db.Column(db.VARCHAR)
     rate = db.Column(db.Integer)
-    created_on = db.Column(db.DateTime, server_default=db.func.now())
-    updated_on = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
 
     user = db.relationship("User", back_populates="answer")
+
+    def to_dict(self):
+        return {
+            'user_id': self.user_id,
+            'about': self.about,
+            'weight_class': self.weight_class,
+            'reach': self.reach,
+            'professional_level': self.professional_level,
+            'current_record': self.current_record,
+            'previous_titles': self.previous_titles,
+            'fav_rocky_fighter': self.fav_rocky_fighter,
+            'walkout_song': self.walkout_song,
+            'vaccinated': self.vaccinated,
+            'nickname': self.nickname,
+            'religion': self.religion,
+            'offspring': self.offspring,
+            'pets': self.pets,
+            'availability': self.availability,
+            'rate': self.rate
+        }
