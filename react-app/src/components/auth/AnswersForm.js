@@ -121,15 +121,6 @@ const AnswersForm = () => {
     coachContent = (
       <div>
         <div>
-          <label>Availability</label>
-          <input
-            type='text'
-            name='availability'
-            onChange={updateAvailability}
-            value={availability}
-          ></input>
-        </div>
-        <div>
           <label>Rate</label>
           <input
             type='integer'
@@ -338,6 +329,19 @@ const AnswersForm = () => {
           value={religion}
         ></input>
       </div>
+      <div>
+          <label>Availability</label>
+          <select
+            type='text'
+            name='availability'
+            onChange={updateAvailability}
+            value={availability}
+          >
+            <option value="0">Weekends</option>
+            <option value="1">Weekdays</option>
+            <option value="2">All week</option>
+          </select>
+        </div>
       { coachContent }
       <button type='submit'>Submit Answers</button>
     </form>
