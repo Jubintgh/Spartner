@@ -11,6 +11,7 @@ import { authenticate } from './store/session';
 import AnswersForm from './components/auth/AnswersForm';
 import Footer from './components/Footer';
 
+
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -55,6 +56,7 @@ function App() {
         </div>
         <Footer />
     </div>
+
   );
 }
 
