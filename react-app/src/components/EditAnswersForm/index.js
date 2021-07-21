@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect, useHistory } from 'react-router-dom';
-import { editAnswer } from '../../store/users'; //pending swap over to potential minimization of user.js usersReducer --> FIX PATH!!
+import { editAnswer } from '../../store/answers'; 
 
 const EditAnswersForm = () => {
   const [errors, setErrors] = useState([]);
