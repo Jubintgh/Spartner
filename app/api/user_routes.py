@@ -79,3 +79,23 @@ def delete_like(id):
     return {
             'liked_user': 'success'
            }
+
+
+"""
+
+
+----------------------------------- Discover routes APIs -----------------------------------
+
+
+"""
+
+@user_routes.route('<int:id>/discover')
+def get_user_list(id):
+    user = User.query.get(id)
+    likes_users = user.likes
+    likes_ids = [like.id for like in likes_users]
+
+    new_users = User.query.filter(User.id.any(User.id.notin_(likes_ids))).limit(10)
+
+
+    return {'new_users': [user for user in new_users]}
