@@ -2,6 +2,7 @@ from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
+
 user_likes = db.Table(
     "user_likes",
     db.Column(
@@ -16,7 +17,6 @@ user_likes = db.Table(
         db.ForeignKey("users.id"), 
     )
 )
-
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
