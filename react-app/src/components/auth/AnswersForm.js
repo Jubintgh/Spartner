@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect, useHistory } from 'react-router-dom';
-import { createAnswer } from '../../store/users'; //pending swap over to potential minimization of user.js usersReducer --> FIX PATH!!
+import { createAnswer } from '../../store/answers'; 
 
 const AnswersForm = () => {
   const [errors, setErrors] = useState([]);
