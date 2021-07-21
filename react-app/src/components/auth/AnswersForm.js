@@ -6,9 +6,9 @@ import { createAnswer } from '../../store/answers';
 const AnswersForm = () => {
   const [errors, setErrors] = useState([]);
   const [about, setAbout] = useState('');
-  const [weightClass, setWeightClass] = useState('');
-  const [reach, setReach] = useState('');
-  const [professionalLevel, setProfessionalLevel] = useState('');
+  const [weightClass, setWeightClass] = useState(0);
+  const [reach, setReach] = useState(50);
+  const [professionalLevel, setProfessionalLevel] = useState(0);
   const [currentRecord, setCurrentRecord] = useState('0-0-0');
   const [previousTitles, setPreviousTitles] = useState('');
   const [favRockyFighter, setFavRockyFighter] = useState('');
@@ -19,7 +19,7 @@ const AnswersForm = () => {
   const [nickname, setNickname] = useState('');
   const [religion, setReligion] = useState('');
   const [pets, setPets] = useState('');
-  const [availability, setAvailability] = useState('');
+  const [availability, setAvailability] = useState(0);
   const [rate, setRate] = useState('');
   const user = useSelector(state => state.session.user);
   const history = useHistory();
@@ -123,7 +123,7 @@ const AnswersForm = () => {
         <div>
           <label>Rate</label>
           <input
-            type='integer'
+            type='number'
             name='rate'
             onChange={updateRate}
             value={rate}
@@ -131,12 +131,15 @@ const AnswersForm = () => {
         </div>
         <div>
         <label>In Person Coaching</label>
-        <input
+        <select
           type='boolean'
           name='inPerson'
           onChange={updateInPerson}
           value={inPerson}
-        ></input>
+        >
+          <option value="False">Online</option>
+          <option value="True">In Person</option>
+        </select>
       </div>
       </div>
     )
@@ -286,12 +289,15 @@ const AnswersForm = () => {
       </div>
       <div>
         <label>Vaccinated</label>
-        <input
+        <select
           type='text'
           name='vaccinated'
           onChange={updateVaccinated}
           value={vaccinated}
-        ></input>
+        >
+          <option value="False">Not vaccinated</option>
+          <option value="True">Vaccinated</option>
+        </select>
       </div>
       <div>
         <label>Has Kids</label>
