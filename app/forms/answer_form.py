@@ -17,5 +17,5 @@ class AnswerForm(FlaskForm):
     religion = StringField('religion', validators=[DataRequired()])
     offspring = StringField('offspring', validators=[DataRequired()])
     pets = StringField('pets', validators=[DataRequired()])
-    availability = StringField('availability', validators=[DataRequired()])
+    availability = IntegerField('availability', validators=[DataRequired()])
     rate = IntegerField('rate', validators=[DataRequired()])

@@ -20,7 +20,7 @@ class Answer(db.Model):
     nickname = db.Column(db.VARCHAR)
     religion = db.Column(db.VARCHAR)
     pets = db.Column(db.VARCHAR)
-    availability = db.Column(db.VARCHAR)
+    availability = db.Column(db.Integer)
     rate = db.Column(db.Integer)
 
     user = db.relationship("User", back_populates="answer")
