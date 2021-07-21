@@ -1,4 +1,6 @@
 import React from 'react';
+import {IconContext} from 'react-icons';
+import {FaLinkedin, FaGithub} from 'react-icons/fa';
 import "./Footer.css";
 
 const Footer = () => {
@@ -9,7 +11,7 @@ const Footer = () => {
                 <div className="footer-content-row-1">
                     {/* column1 */}
                     <div className="footer-col-row1">
-                        <img className="footer-profilePic" src="/images/PlaceholderProfile.png"/>
+                        <img className="footer-profilePic" src="/images/Austin.jpg"/>
                         <h3>Austin Keumper</h3>
                     </div>
                     {/* column2 */}
@@ -29,28 +31,30 @@ const Footer = () => {
                     </div>
                 </div>
                 <hr className="footer-seperator"/>
+                <IconContext.Provider value={{ className: 'react-icons'}}>
                 <div className="footer-content-row-2">
                     {/* row1 */}
                     <div className="footer-row-row2">
-                        <a>yo<img/></a>
-                        <a>yo<img/></a>
+                        <a><FaGithub/></a>
+                        <a><FaLinkedin/></a>
                     </div>
                     {/* row2 */}
                     <div className="footer-row-row2">
-                        <a>yo<img/></a>
-                        <a><img/></a>
+                        <a><FaGithub/></a>
+                        <a><FaLinkedin/></a>
                     </div>
                     {/* row3 */}
                     <div className="footer-row-row2">
-                        <a><img/></a>
-                        <a><img/></a>
+                        <a><FaGithub/></a>
+                        <a><FaLinkedin/></a>
                     </div>
                     {/* row4 */}
                     <div className="footer-row-row2">
-                        <a><img/></a>
-                        <a><img/></a>
+                        <a><FaGithub/></a>
+                        <a><FaLinkedin/></a>
                     </div>
                 </div>
+                    </IconContext.Provider>
             </div>
         </div>
         )

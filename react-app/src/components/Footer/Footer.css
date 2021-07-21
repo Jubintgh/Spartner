@@ -23,6 +23,11 @@
     justify-content: space-around;
 }
 
+.footer-content-row-1 h3{
+    font-size: .95em;
+    text-decoration: underline rgba(237, 37, 78, 0.541);
+}
+
 .footer-col-row1 {
     display: flex;
     flex-direction: column;
@@ -44,5 +49,16 @@
 }
 
 .footer-profilePic:hover {
+    filter: grayscale(0%);
+}
+
+.react-icons {
+    color: #ed254e;
+    filter: grayscale(100%);
+}
+
+.react-icons:hover {
+    transition: 500ms;
+    animation: ease-in-out;
     filter: grayscale(0%);
 }
