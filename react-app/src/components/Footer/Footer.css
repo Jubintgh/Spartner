@@ -5,3 +5,14 @@
     bottom: 0;
     width: 100%;
 }
+
+.footer-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-content-row-1, .footer-content-row-2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}

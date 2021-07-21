@@ -9,7 +9,7 @@ const Footer = () => {
                     {/* column1 */}
                     <div className="footer-col-row1">
                         <img/>
-                        <h3>Name here</h3>
+                        <h3>Austin Keumper</h3>
                     </div>
                     {/* column2 */}
                     <div className="footer-col-row1">
@@ -31,12 +31,12 @@ const Footer = () => {
                 <div className="footer-content-row-2">
                     {/* row1 */}
                     <div className="footer-row-row2">
-                        <a><img/></a>
-                        <a><img/></a>
+                        <a>yo<img/></a>
+                        <a>yo<img/></a>
                     </div>
                     {/* row2 */}
                     <div className="footer-row-row2">
-                        <a><img/></a>
+                        <a>yo<img/></a>
                         <a><img/></a>
                     </div>
                     {/* row3 */}
