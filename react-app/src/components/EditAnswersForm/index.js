@@ -29,7 +29,7 @@ const EditAnswersForm = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     const data = await dispatch(editAnswer(
-      user_id=user.id,
+      user.id,
       about,
       weightClass,
       reach,
@@ -168,13 +168,23 @@ const EditAnswersForm = () => {
       </div>
       <div>
         <label>Weight Class</label>
-        <input
-          type='text'
+        <select
           name='weightClass'
+          type='integer'
           onChange={updateWeightClass}
           value={weightClass}
-          required={true}
-        ></input>
+        >
+          <option value="0">Southpaw</option>
+          <option value="1">Kickboxing</option>
+          <option value="2">Orthodox</option>
+          <option value="3">Judo</option>
+          <option value="4">Muay Thai</option>
+          <option value="5">Grappling</option>
+          <option value="6">Counter Striker</option>
+          <option value="7">Karate</option>
+          <option value="8">Switch</option>
+          <option value="9">Brazilian Jiu-Jitsu</option>
+        </select>
       </div>
       <div>
         <label>Reach</label>

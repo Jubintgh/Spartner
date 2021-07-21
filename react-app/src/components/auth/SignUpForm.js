@@ -83,7 +83,7 @@ const SignUpForm = () => {
   };
 
   const updateDiscipline = (e) => {
-    setDiscipline(Number(e.target.value));
+    setDiscipline(e.target.value);
   };
 
   const updatePassword = (e) => {

@@ -10,6 +10,7 @@ import User from './components/User';
 import { authenticate } from './store/session';
 import AnswersForm from './components/auth/AnswersForm';
 import Footer from './components/Footer';
+import EditAnswersForm from './components/EditAnswersForm/index'
 
 
 function App() {

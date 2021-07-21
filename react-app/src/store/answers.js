@@ -1,4 +1,5 @@
 const GET_ANSWER = 'users/GET_ANSWER';
+const FIX_ANSWER = 'users/FIX_ANSWER';
 const GET_ANSWERS = 'users/GET_ANSWERS';
 const REMOVE_ANSWER = 'users/REMOVE_ANSWER';
 
@@ -10,6 +11,11 @@ const setAnswers = (answers) => ({
 
 const setOneAnswer= (answer) => ({
     type: GET_ANSWER,
+    answer,
+});
+
+const editOneAnswer= (answer) => ({
+    type: FIX_ANSWER,
     answer,
 });
 
@@ -31,6 +37,18 @@ export const getUserAnswers = (id) => async (dispatch) => {
 export const createAnswer = (id) => async (dispatch) => {
     const res = await fetch(`/api/users/${id}/answers`, {
         method: 'POST'
+    });
+
+    if (res.ok) {
+        const answer = await res.json()
+        dispatch(setOneAnswer(answer))
+        return answer
+    }
+}
+
+export const editAnswer = (id) => async (dispatch) => {
+    const res = await fetch(`/api/users/${id}/answers`, {
+        method: 'PUT'
     });
 
     if (res.ok) {
@@ -63,6 +81,7 @@ const answerReducer = (state = initialState, action) => {
                 answers: action.answers
             }
         case GET_ANSWER:
+        case FIX_ANSWER:
             return {
                 ...state,
                 answer: action.answer

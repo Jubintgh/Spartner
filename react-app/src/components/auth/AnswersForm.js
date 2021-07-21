@@ -170,7 +170,7 @@ const AnswersForm = () => {
       <div>
         <label>Weight Class</label>
         <input
-          type='text'
+          type='number'
           name='weightClass'
           onChange={updateWeightClass}
           value={weightClass}
@@ -180,7 +180,7 @@ const AnswersForm = () => {
       <div>
         <label>Reach</label>
         <input
-          type='integer'
+          type='number'
           name='reach'
           onChange={updateReach}
           value={reach}
