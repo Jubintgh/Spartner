@@ -25,16 +25,14 @@ class User(db.Model, UserMixin):
     first_name = db.Column(db.VARCHAR(30), nullable=False)
     last_name = db.Column(db.VARCHAR(30), nullable=False)
     username = db.Column(db.String(40), nullable=False, unique=True)
-    discipline = db.Column(db.String(20))
+    discipline = db.Column(db.Integer, nullable=False)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
     age = db.Column(db.Integer, nullable=False)
     location = db.Column(db.VARCHAR, nullable=False) #Fix VARCHAR length based on format
     gender = db.Column(db.Integer, nullable=False) #1=Female 2=Male 3=Other
     coach = db.Column(db.Boolean, default=False)
-    img_url = db.Column(db.VARCHAR)
-    created_on = db.Column(db.DateTime, server_default=db.func.now())
-    updated_on = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
+    img_url = db.Column(db.VARCHAR, nullable=False)
 
     answer = db.relationship(
         "Answer",  uselist=False,

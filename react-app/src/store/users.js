@@ -5,6 +5,7 @@ const GET_SINGLE = 'users/GET_SINGLE'
 const REMOVE_SINGLE = 'users/REMOVE_SINGLE'
 const GET_ANSWERS = 'users/GET_ANSWERS';
 const GET_ANS_SINGLE = 'users/GET_ANS_SINGLE'
+const FIX_ANS_SINGLE = 'users/FIX_ANS_SINGLE'
 const REMOVE_ANS_SINGLE = 'users/REMOVE_ANS_SINGLE'
 
 const setUsers = (users) => ({
@@ -39,6 +40,11 @@ const setAnswers = (answers) => ({
 
 const setOneAnswer= (answer) => ({
     type: GET_ANS_SINGLE,
+    answer,
+});
+
+const editOneAnswer= (answer) => ({
+    type: FIX_ANS_SINGLE,
     answer,
 });
 
@@ -121,6 +127,18 @@ export const createAnswer = (id) => async (dispatch) => {
     }
 }
 
+export const editAnswer = (id) => async (dispatch) => {
+    const res = await fetch(`/api/users/${id}/answers`, {
+        method: 'PUT'
+    });
+
+    if (res.ok) {
+        const answer = await res.json()
+        dispatch(editOneAnswer(answer))
+        return answer
+    }
+}
+
 export const removeAnswer = (id) => async (dispatch) => {
     const res = await fetch(`/api/users/${id}/answers`, {
         method: 'DELETE'
@@ -173,6 +191,7 @@ const usersReducer = (state = initialState, action) => {
                 answers: action.answers
             }
         case GET_ANS_SINGLE:
+        case FIX_ANS_SINGLE:
             return {
                 ...state,
                 answer: action.answer

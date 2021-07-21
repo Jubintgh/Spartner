@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-// import { setAnswers } from '../../store/users'; //pending swap over to potential minimization of user.js usersReducer --> FIX PATH!!
-
+import { Redirect, useHistory } from 'react-router-dom';
+import { createAnswer } from '../../store/users'; //pending swap over to potential minimization of user.js usersReducer --> FIX PATH!!
 
 const AnswersForm = () => {
   const [errors, setErrors] = useState([]);
@@ -28,8 +28,8 @@ const AnswersForm = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    const data = await dispatch(setAnswers(
-      user_id=user.id,
+    const data = await dispatch(createAnswer(
+      user.id,
       about,
       weightClass,
       reach,
