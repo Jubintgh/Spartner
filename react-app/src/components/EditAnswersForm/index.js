@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect, useHistory } from 'react-router-dom';
-// import { setAnswers } from '../../store/users'; //pending swap over to potential minimization of user.js usersReducer --> FIX PATH!!
+import { setAnswers } from '../../store/users'; //pending swap over to potential minimization of user.js usersReducer --> FIX PATH!!
 
-const AnswersForm = () => {
+const EditAnswersForm = () => {
   const [errors, setErrors] = useState([]);
   const [about, setAbout] = useState('');
   const [weightClass, setWeightClass] = useState('');
@@ -26,31 +26,31 @@ const AnswersForm = () => {
   const dispatch = useDispatch();
   const isCoach = user.coach
 
-  // const onSubmit = async (e) => {
-  //   e.preventDefault();
-  //   const data = await dispatch(setAnswers(
-  //     user_id=user.id,
-  //     about,
-  //     weightClass,
-  //     reach,
-  //     professionalLevel,
-  //     currentRecord,
-  //     previousTitles,
-  //     favRockyFighter,
-  //     walkoutSong,
-  //     vaccinated,
-  //     hasKids,
-  //     inPerson,
-  //     nickname,
-  //     religion,
-  //     pets,
-  //     availability,
-  //     rate));
-  //   if (data) {
-  //     setErrors(data)
-  //   }
-  //   history.push('/discover')
-  // };
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    const data = await dispatch(setAnswers(
+      user_id=user.id,
+      about,
+      weightClass,
+      reach,
+      professionalLevel,
+      currentRecord,
+      previousTitles,
+      favRockyFighter,
+      walkoutSong,
+      vaccinated,
+      hasKids,
+      inPerson,
+      nickname,
+      religion,
+      pets,
+      availability,
+      rate));
+    if (data) {
+      setErrors(data)
+    }
+    history.push('/discover')
+  };
 
   const updateAbout = (e) => {
     setAbout(e.target.value);
@@ -147,8 +147,7 @@ const AnswersForm = () => {
 
 
   return (
-    //  <form onSubmit={onSubmit}></form>
-    <form> 
+    <form onSubmit={onSubmit}>
       <div>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
@@ -289,4 +288,4 @@ const AnswersForm = () => {
   );
 };
 
-export default AnswersForm;
+export default EditAnswersForm;
