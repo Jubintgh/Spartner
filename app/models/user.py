@@ -5,15 +5,15 @@ from flask_login import UserMixin
 user_likes = db.Table(
     "user_likes",
     db.Column(
-        "like_id", 
-        db.Integer, 
-        db.ForeignKey("users.id"), 
+        "like_id",
+        db.Integer,
+        db.ForeignKey("users.id"),
     ),
 
     db.Column(
-        "liked_id", 
-        db.Integer, 
-        db.ForeignKey("users.id"), 
+        "liked_id",
+        db.Integer,
+        db.ForeignKey("users.id"),
     )
 )
 
@@ -46,7 +46,7 @@ class User(db.Model, UserMixin):
         primaryjoin=(user_likes.c.like_id == id),
         secondaryjoin=(user_likes.c.liked_id == id),
         backref=db.backref('user_likes', lazy='dynamic'),
-        lazy='dynamic' 
+        lazy='dynamic'
     )
 
     @property
@@ -71,5 +71,6 @@ class User(db.Model, UserMixin):
             'location': self.location,
             'gender': self.gender,
             'coach': self.coach,
-            'img_url': self.img_url
+            'img_url': self.img_url,
+            'discipline' : self.discipline
         }

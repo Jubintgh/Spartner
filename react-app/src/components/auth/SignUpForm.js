@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { signUp } from '../../store/session';
 
 const SignUpForm = () => {
@@ -16,8 +16,11 @@ const SignUpForm = () => {
   const [gender, setGender] = useState('');
   const [coach, setCoach] = useState('');
   const [image_url, setImageUrl] = useState('');
+  const [discipline, setDiscipline] = useState('');
   const user = useSelector(state => state.session.user);
+  const user_id = user.id
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const onSignUp = async (e) => {
     e.preventDefault();
@@ -27,6 +30,7 @@ const SignUpForm = () => {
         setErrors(data)
       }
     }
+    history.push(`/users/${user_id}/answers`)
   };
 
   const updateFirstName = (e) => {
@@ -63,6 +67,10 @@ const SignUpForm = () => {
 
   const updateEmail = (e) => {
     setEmail(e.target.value);
+  };
+
+  const updateDiscipline = (e) => {
+    setDiscipline(e.target.value);
   };
 
   const updatePassword = (e) => {
@@ -172,6 +180,15 @@ const SignUpForm = () => {
           name='location'
           onChange={updateLocation}
           value={location}
+        ></input>
+      </div>
+      <div>
+        <label>Discipline</label>
+        <input
+          type='text'
+          name='discipline'
+          onChange={updateDiscipline}
+          value={discipline}
         ></input>
       </div>
       <div>

@@ -1,6 +1,7 @@
 from .db import db
 from .user import User
 
+
 class Answer(db.Model):
     __tablename__ = 'answers'
 

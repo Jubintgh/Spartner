@@ -136,6 +136,7 @@ export const removeAnswer = (id) => async (dispatch) => {
 const initialState = {}
 
 const usersReducer = (state = initialState, action) => {
+    let newState;
     switch (action.type) {
         case SET_USERS:
             const allUsers = {};
@@ -163,7 +164,7 @@ const usersReducer = (state = initialState, action) => {
                 like: action.like
             }
         case REMOVE_SINGLE:
-            const newState = { ...state };
+            newState = { ...state };
             delete newState[action.like];
             return newState;
         case GET_ANSWERS:
@@ -177,7 +178,7 @@ const usersReducer = (state = initialState, action) => {
                 answer: action.answer
             }
         case REMOVE_ANS_SINGLE:
-            const newState = { ...state };
+            newState = { ...state };
             delete newState[action.answer];
             return newState;
         default:
