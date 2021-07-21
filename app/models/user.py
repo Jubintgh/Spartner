@@ -25,7 +25,7 @@ class User(db.Model, UserMixin):
     first_name = db.Column(db.VARCHAR(30), nullable=False)
     last_name = db.Column(db.VARCHAR(30), nullable=False)
     username = db.Column(db.String(40), nullable=False, unique=True)
-    discipline = db.Column(db.String(20))
+    discipline = db.Column(db.Integer, nullable=False)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
     age = db.Column(db.Integer, nullable=False)
