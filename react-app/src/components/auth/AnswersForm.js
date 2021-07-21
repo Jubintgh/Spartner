@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect, useHistory } from 'react-router-dom';
-import { createAnswer } from '../../store/answers'; 
+import { createAnswer } from '../../store/answers';
 
 const AnswersForm = () => {
   const [errors, setErrors] = useState([]);
@@ -112,10 +112,6 @@ const AnswersForm = () => {
   const updateRate = (e) => {
     setRate(e.target.value);
   };
-
-  if (user) {
-    return <Redirect to='/' />;
-  }
 
 
   let coachContent = null;
