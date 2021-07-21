@@ -20,25 +20,25 @@ const Footer = () => {
                         <h3>Austin Keumper</h3>
                         <div className="footer-row-row2">
                         <a href="https://github.com/AKuemper" target="_blank"><FaGithub/></a>
-                        <a href="" target="_blank"><FaAngellist/></a>
+                        <a href="https://angel.co/u/austin-kuemper" target="_blank"><FaAngellist/></a>
                         <a href="https://github.com/AKuemper" target="_blank"><MdWeb/></a>
                         <a href="https://www.linkedin.com/in/austin-kuemper-0b471b84/" target="_blank"><FaLinkedin/></a>
                         </div>
                     </div>
                     {/* Jubin */}
                     <div className="footer-col-row1">
-                        <img className="footer-profilePic" src="/images/PlaceholderProfile.png"/>
+                        <img className="footer-profilePic" src="/images/Jubin.png"/>
                         <h3>Jubin Taghdir</h3>
                         <div className="footer-row-row2">
                         <a href="https://github.com/Jubintgh" target="_blank"><FaGithub/></a>
-                        <a href="" target="_blank"><FaAngellist/></a>
+                        <a href="https://angel.co/u/jubin-taghdir" target="_blank"><FaAngellist/></a>
                         <a href="https://github.com/Jubintghr" target="_blank"><MdWeb/></a>
                         <a href="https://www.linkedin.com/in/jubintaghdir/" target="_blank"><FaLinkedin/></a>
                     </div>
                     </div>
                     {/* Matt */}
                     <div className="footer-col-row1">
-                        <img className="footer-profilePic" src="/images/PlaceholderProfile.png"/>
+                        <img className="footer-profilePic" src="/images/Matt.jpg"/>
                         <h3>Matthew Melendez</h3>
                         <div className="footer-row-row2">
                         <a href="https://github.com/melendezmatt" target="_blank"><FaGithub/></a>
