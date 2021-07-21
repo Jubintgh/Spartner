@@ -144,7 +144,7 @@ const AnswersForm = () => {
 
   let weightContent = null;
 
-  if (gender === 0) {
+  if (gender === 1) {
     weightContent = (
       <div>
         <label>Weight Class</label>
@@ -163,7 +163,7 @@ const AnswersForm = () => {
     )
   }
 
-  else if (gender === 1) {
+  else if (gender === 0) {
     weightContent = (
       <div>
         <label>Weight Class</label>
