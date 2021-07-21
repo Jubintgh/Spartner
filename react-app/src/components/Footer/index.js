@@ -17,7 +17,7 @@ const Footer = () => {
                     <div className="footer-col-row1">
                         <img className="footer-profilePic" src="/images/Austin.jpg"/>
                         <h3>Austin Keumper</h3>
-                        <div className="test">
+                        <div className="footer-row-row2">
                         <a href="https://github.com/AKuemper" target="_blank"><FaGithub/></a>
                         <a href="https://www.linkedin.com/in/austin-kuemper-0b471b84/" target="_blank"><FaLinkedin/></a>
                         </div>
