@@ -33,8 +33,6 @@ class User(db.Model, UserMixin):
     gender = db.Column(db.Integer, nullable=False) #1=Female 2=Male 3=Other
     coach = db.Column(db.Boolean, default=False)
     img_url = db.Column(db.VARCHAR)
-    created_on = db.Column(db.DateTime, server_default=db.func.now())
-    updated_on = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
 
     answer = db.relationship(
         "Answer",  uselist=False,

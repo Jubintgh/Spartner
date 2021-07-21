@@ -77,6 +77,7 @@ export const signUp = (username, email, password, first_name,
   location,
   gender,
   coach,
+  discipline,
   image_url) => async (dispatch) => {
   const response = await fetch('/api/auth/signup', {
     method: 'POST',
@@ -94,6 +95,7 @@ export const signUp = (username, email, password, first_name,
       gender,
       coach,
       image_url,
+      discipline,
     }),
   });
   

@@ -29,7 +29,7 @@ const AnswersForm = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     const data = await dispatch(createAnswer(
-      user_id=user.id,
+      user.id,
       about,
       weightClass,
       reach,

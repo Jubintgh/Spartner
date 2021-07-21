@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux'
+import { useEffect, useSelector, useDispatch } from 'react-redux'
 import { Redirect, useHistory } from 'react-router-dom';
 import { signUp } from '../../store/session';
 
@@ -18,19 +18,25 @@ const SignUpForm = () => {
   const [image_url, setImageUrl] = useState('');
   const [discipline, setDiscipline] = useState('');
   const user = useSelector(state => state.session.user);
-  const user_id = user.id
   const dispatch = useDispatch();
   const history = useHistory();
 
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
+      const data = await dispatch(signUp(username, email, password, first_name,
+        last_name,
+        age,
+        location,
+        gender,
+        coach,
+        discipline,
+        image_url));
       if (data) {
         setErrors(data)
       }
     }
-    history.push(`/users/${user_id}/answers`)
+    // history.push(`/users/${user.id}/answers`)
   };
 
   const updateFirstName = (e) => {
@@ -174,18 +180,9 @@ const SignUpForm = () => {
         ></input>
       </div>
       <div>
-        <label>Location</label>
-        <input
-          type='integer'
-          name='location'
-          onChange={updateLocation}
-          value={location}
-        ></input>
-      </div>
-      <div>
         <label>Discipline</label>
         <input
-          type='text'
+          type='string'
           name='discipline'
           onChange={updateDiscipline}
           value={discipline}
