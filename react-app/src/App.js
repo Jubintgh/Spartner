@@ -49,8 +49,11 @@ function App() {
                 <h1>My Home Page</h1>
                 <h2> what austin and jay are currently on</h2>
               </ProtectedRoute>
-              <Route path='/users/:userId/answers' exact={true}>
+              <Route path='/users/:userId/init-answers' exact={true}>
                 <AnswersForm />
+              </Route>
+              <Route path='/users/:userId/edit-answers' exact={true}>
+                <EditAnswersForm />
               </Route>
             </Switch>
         </BrowserRouter>
