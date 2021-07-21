@@ -96,6 +96,6 @@ def get_user_list(id):
     likes_ids = [like.id for like in likes_users]
 
     new_users = User.query.filter(User.id.any(User.id.notin_(likes_ids))).limit(10)
-
+    
 
     return {'new_users': [user for user in new_users]}
