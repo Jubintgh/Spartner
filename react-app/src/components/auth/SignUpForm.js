@@ -145,21 +145,28 @@ const SignUpForm = () => {
       </div>
       <div>
         <label>Gender</label>
-        <input
+        <select
           type='integer'
           name='gender'
           onChange={updateGender}
           value={gender}
-        ></input>
+        >
+          <option value="0">Female</option>
+          <option value="1">Male</option>
+          <option value="2">Other</option>
+        </select>
       </div>
       <div>
         <label>Coach</label>
-        <input
+        <select
           type='boolean'
           name='coach'
           onChange={updateCoach}
           value={coach}
-        ></input>
+        >
+          <option value="False">No, I am not a coach</option>
+          <option value="True">Yes, I am a coach</option>
+        </select>
       </div>
       <div>
         <label>Image URL</label>
