@@ -32,7 +32,7 @@ class User(db.Model, UserMixin):
     location = db.Column(db.VARCHAR, nullable=False) #Fix VARCHAR length based on format
     gender = db.Column(db.Integer, nullable=False) #1=Female 2=Male 3=Other
     coach = db.Column(db.Boolean, default=False)
-    img_url = db.Column(db.VARCHAR)
+    img_url = db.Column(db.VARCHAR, nullable=False)
 
     answer = db.relationship(
         "Answer",  uselist=False,
