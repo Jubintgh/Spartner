@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify
+from flask import request
 from flask_login import login_required
-from app.models import User
+from app.models import User, db
 
 user_routes = Blueprint('users', __name__)
 
@@ -19,26 +20,62 @@ def user(id):
     return user.to_dict()
 
 
+"""
+
+
+----------------------------------- USER LIKES APIs -----------------------------------
+
+
+"""
+
+
+#getAllUserLikes
 @user_routes.route('/<int:id>/likes')
 def get_likes(id):
 
-    # likes = User.query.all()
-    likes = User.query.get(id)
+    user = User.query.get(id)
+    likes = user.likes
 
-    print('asdjnasfidjndsafnsdfkjnsdjkfsdkjnfkjSSSSSSSSSSSSAAASSS', likes.likeds.like_id)
-    return {'likes':[ like.to_dict() for like in likes]}
+    return {'user_likes': [like.to_dict() for like in likes]}
 
-@user_routes.route('/<int:id>/praised')
-def get_praised(id):
-    praised = Like.query.filter_by(praised_id=id)
-    return {'praised': [praise.praised_id for praise in praised]}
+#getAllLikedBy
+@user_routes.route('/<int:id>/liked')
+def get_liked_by(id):
 
-@user_routes.route('/', methods=['POST'])
-def post_like(praiser_id, praised_id):
-    new_like = Like(praiser_id= praiser_id, praised_id=praised_id)
-    db.session.add(new_like)
+    user = User.query.get(id)
+    likes = user.liked_by
+
+    return {'likes_user': [like.to_dict() for like in likes]}
+
+#createLike
+@user_routes.route('/<int:id>/like', methods=['POST'])
+def new_like(id):
+    liked_instance = request.json
+    liked_user_id = liked_instance['liked_id']
+
+    liker = User.query.get(id)
+    liked = User.query.get(liked_user_id)
+
+    liked.liked_by.append(liker)
     db.session.commit()
 
-@user_routes.route('/<int:id>', methods=['DELETE'])
+    return {
+            'liked_user': 'success'
+           }
+
+
+#removeLike
+@user_routes.route('/<int:id>/like', methods=['DELETE'])
 def delete_like(id):
-    Like.query.filter(Like.id == id).delete()
+    liked_instance = request.json
+    liked_user_id = liked_instance['liked_id']
+
+    liker = User.query.get(id)
+    liked = User.query.get(liked_user_id)
+
+    liked.liked_by.remove(liker)
+    db.session.commit()
+
+    return {
+            'liked_user': 'success'
+           }

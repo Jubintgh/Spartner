@@ -40,12 +40,16 @@ class User(db.Model, UserMixin):
         "Answer",  uselist=False,
         back_populates="user"
     )
-    post_likes =db.relationship(
+    likes =db.relationship(
         "User",
+
         secondary=user_likes,
+        
         primaryjoin=(user_likes.c.like_id == id),
+
         secondaryjoin=(user_likes.c.liked_id == id),
-        backref=db.backref('user_likes', lazy='dynamic'),
+        backref=db.backref('liked_by', lazy='dynamic'),
+
         lazy='dynamic' 
     )
 
