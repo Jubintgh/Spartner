@@ -35,23 +35,23 @@ const Footer = () => {
                 <div className="footer-content-row-2">
                     {/* row1 */}
                     <div className="footer-row-row2">
-                        <a><FaGithub/></a>
-                        <a><FaLinkedin/></a>
+                        <a href="https://github.com/AKuemper" target="_blank"><FaGithub/></a>
+                        <a href="https://www.linkedin.com/in/austin-kuemper-0b471b84/" target="_blank"><FaLinkedin/></a>
                     </div>
                     {/* row2 */}
                     <div className="footer-row-row2">
-                        <a><FaGithub/></a>
-                        <a><FaLinkedin/></a>
+                        <a href="https://github.com/Jubintgh" target="_blank"><FaGithub/></a>
+                        <a href="https://www.linkedin.com/in/jubintaghdir/" target="_blank"><FaLinkedin/></a>
                     </div>
                     {/* row3 */}
                     <div className="footer-row-row2">
-                        <a><FaGithub/></a>
-                        <a><FaLinkedin/></a>
+                        <a href="https://github.com/melendezmatt" target="_blank"><FaGithub/></a>
+                        <a href="https://www.linkedin.com/in/matthew-melendez/" target="_blank"><FaLinkedin/></a>
                     </div>
                     {/* row4 */}
                     <div className="footer-row-row2">
-                        <a><FaGithub/></a>
-                        <a><FaLinkedin/></a>
+                        <a href="https://github.com/AnthonyCost" target="_blank"><FaGithub/></a>
+                        <a href="https://www.linkedin.com/in/anthony-costanza-64952820a/" target="_blank"><FaLinkedin/></a>
                     </div>
                 </div>
                     </IconContext.Provider>
