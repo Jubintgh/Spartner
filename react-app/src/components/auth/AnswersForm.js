@@ -187,15 +187,19 @@ const AnswersForm = () => {
           required={true}
         ></input>
       </div>
-        <div>
+      <div>
         <label>Professional Level</label>
-        <input
-          type='string'
+        <select
+          type='integer'
           name='professionalLevel'
           onChange={updateProfessionalLevel}
           value={professionalLevel}
           required={true}
-        ></input>
+        >
+          <option value="0">Beginner</option>
+          <option value="1">Amateur</option>
+          <option value="2">Professional</option>
+        </select>
       </div>
       <div>
         <label>Current Record</label>
