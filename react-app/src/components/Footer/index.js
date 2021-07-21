@@ -42,7 +42,7 @@ const Footer = () => {
                         <h3>Matthew Melendez</h3>
                         <div className="footer-row-row2">
                         <a href="https://github.com/melendezmatt" target="_blank"><FaGithub/></a>
-                        <a href="" target="_blank"><FaAngellist/></a>
+                        <a href="https://angel.co/u/matthew-melendez-1" target="_blank"><FaAngellist/></a>
                         <a href="https://github.com/melendezmatt" target="_blank"><MdWeb/></a>
                         <a href="https://www.linkedin.com/in/matthew-melendez/" target="_blank"><FaLinkedin/></a>
                     </div>
