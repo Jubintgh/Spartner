@@ -4,13 +4,13 @@
     position: relative;
     bottom: 0;
     width: 100%;
+    color: #f5f5f559;
 }
 
 .footer-title-container{
     display: flex;
     flex-direction: row;
     justify-content: center;
-    text-decoration: underline;
 }
 
 .footer-container {
@@ -26,7 +26,7 @@
 
 .footer-content-row-1 h3{
     font-size: .95em;
-    text-decoration: underline rgba(237, 37, 78, 0.541);
+    text-decoration: underline rgba(237, 37, 77, 0.199);
 }
 
 .footer-col-row1 {
