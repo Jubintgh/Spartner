@@ -6,6 +6,12 @@
     width: 100%;
 }
 
+.footer-title {
+    display: flex;
+    justify-content: space-around;
+    text-decoration: underline;
+}
+
 .footer-container {
     display: flex;
     flex-direction: column;
@@ -15,4 +21,28 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+}
+
+.footer-col-row1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-row-row2 {
+    display: flex;
+    flex-direction: row;
+    align-items: space-around;
+}
+
+.footer-profilePic {
+    transition: 500ms;
+    animation: ease-in-out;   
+    border-radius: 50%;
+    height: 4em;
+    filter: grayscale(100%);
+}
+
+.footer-profilePic:hover {
+    filter: grayscale(0%);
 }
