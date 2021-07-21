@@ -8,6 +8,9 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
+import AnswersForm from './components/auth/AnswersForm';
+import Footer from './components/Footer';
+
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -25,26 +28,35 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
-      <NavBar />
-      <Switch>
-        <Route path='/login' exact={true}>
-          <LoginForm />
-        </Route>
-        <Route path='/sign-up' exact={true}>
-          <SignUpForm />
-        </Route>
-        <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
-        </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
-          <User />
-        </ProtectedRoute>
-        <ProtectedRoute path='/' exact={true} >
-          <h1>My Home Page</h1>
-        </ProtectedRoute>
-      </Switch>
-    </BrowserRouter>
+    <div className="page-container">
+      <div className="content-wrap">
+        <BrowserRouter>
+          <NavBar />
+            <Switch>
+              <Route path='/login' exact={true}>
+                <LoginForm />
+              </Route>
+              <Route path='/sign-up' exact={true}>
+                <SignUpForm />
+              </Route>
+              <ProtectedRoute path='/users' exact={true} >
+                <UsersList/>
+              </ProtectedRoute>
+              <ProtectedRoute path='/users/:userId' exact={true} >
+                <User />
+              </ProtectedRoute>
+              <ProtectedRoute path='/' exact={true} >
+                <h1>My Home Page</h1>
+              </ProtectedRoute>
+              <Route path='/users/:userId/answers' exact={true}>
+                <AnswersForm />
+              </Route>
+            </Switch>
+        </BrowserRouter>
+        </div>
+        <Footer />
+    </div>
+
   );
 }
 

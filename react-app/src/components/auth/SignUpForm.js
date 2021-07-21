@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux'
-import { Redirect } from 'react-router-dom';
+import { useEffect, useSelector, useDispatch } from 'react-redux'
+import { Redirect, useHistory } from 'react-router-dom';
 import { signUp } from '../../store/session';
 
 const SignUpForm = () => {
@@ -13,20 +13,37 @@ const SignUpForm = () => {
   const [last_name, setLastName] = useState('');
   const [age, setAge] = useState('');
   const [location, setLocation] = useState('');
-  const [gender, setGender] = useState('');
-  const [coach, setCoach] = useState('');
-  const [image_url, setImageUrl] = useState('');
+  const [gender, setGender] = useState(0);
+  const [coach, setCoach] = useState(0);
+  const [img_url, setImageUrl] = useState('');
+  const [discipline, setDiscipline] = useState(0);
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
+  // const history = useHistory();
 
   const onSignUp = async (e) => {
     e.preventDefault();
+    console.log(coach)
+    console.log(first_name)
+    console.log(gender)
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
+      const data = await dispatch(signUp(
+        username,
+        email,
+        password,
+        first_name,
+        last_name,
+        age,
+        location,
+        gender,
+        coach,
+        discipline,
+        img_url));
       if (data) {
         setErrors(data)
       }
     }
+    // history.push(`/users/${user.id}/answers`)
   };
 
   const updateFirstName = (e) => {
@@ -63,6 +80,10 @@ const SignUpForm = () => {
 
   const updateEmail = (e) => {
     setEmail(e.target.value);
+  };
+
+  const updateDiscipline = (e) => {
+    setDiscipline(Number(e.target.value));
   };
 
   const updatePassword = (e) => {
@@ -114,7 +135,7 @@ const SignUpForm = () => {
       <div>
         <label>Age</label>
         <input
-          type='integer'
+          type='number'
           name='age'
           onChange={updateAge}
           value={age}
@@ -123,7 +144,7 @@ const SignUpForm = () => {
         <div>
         <label>Location</label>
         <input
-          type='string'
+          type='text'
           name='location'
           onChange={updateLocation}
           value={location}
@@ -131,29 +152,36 @@ const SignUpForm = () => {
       </div>
       <div>
         <label>Gender</label>
-        <input
+        <select
           type='integer'
           name='gender'
           onChange={updateGender}
           value={gender}
-        ></input>
+        >
+          <option value="0">Female</option>
+          <option value="1">Male</option>
+          <option value="2">Other</option>
+        </select>
       </div>
       <div>
         <label>Coach</label>
-        <input
-          type='boolean'
+        <select
+          type='integer'
           name='coach'
           onChange={updateCoach}
           value={coach}
-        ></input>
+        >
+          <option value="False">No, I am not a coach</option>
+          <option value="True">Yes, I am a coach</option>
+        </select>
       </div>
       <div>
         <label>Image URL</label>
         <input
-          type='string'
+          type='text'
           name='imageurl'
           onChange={updateImageUrl}
-          value={image_url}
+          value={img_url}
         ></input>
       </div>
       <div>
@@ -166,13 +194,24 @@ const SignUpForm = () => {
         ></input>
       </div>
       <div>
-        <label>Location</label>
-        <input
+        <label>Discipline</label>
+        <select
+          name='discipline'
           type='integer'
-          name='location'
-          onChange={updateLocation}
-          value={location}
-        ></input>
+          onChange={updateDiscipline}
+          value={discipline}
+        >
+          <option value="0">Southpaw</option>
+          <option value="1">Kickboxing</option>
+          <option value="2">Orthodox</option>
+          <option value="3">Judo</option>
+          <option value="4">Muay Thai</option>
+          <option value="5">Grappling</option>
+          <option value="6">Counter Striker</option>
+          <option value="7">Karate</option>
+          <option value="8">Switch</option>
+          <option value="9">Brazilian Jiu-Jitsu</option>
+        </select>
       </div>
       <div>
         <label>Password</label>

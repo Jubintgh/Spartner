@@ -71,7 +71,9 @@ def sign_up():
             age=form.data['age'],
             location=form.data['location'],
             gender=form.data['gender'],
-            coach=form.data['first_name']
+            coach=form.data['coach'],
+            discipline=form.data['discipline'],
+            img_url=form.data['img_url']
         )
         db.session.add(user)
         db.session.commit()

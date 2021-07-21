@@ -25,7 +25,7 @@ export const authenticate = () => async (dispatch) => {
     if (data.errors) {
       return;
     }
-  
+
     dispatch(setUser(data));
   }
 }
@@ -41,8 +41,8 @@ export const login = (email, password) => async (dispatch) => {
       password
     })
   });
-  
-  
+
+
   if (response.ok) {
     const data = await response.json();
     dispatch(setUser(data))
@@ -77,7 +77,8 @@ export const signUp = (username, email, password, first_name,
   location,
   gender,
   coach,
-  image_url) => async (dispatch) => {
+  discipline,
+  img_url) => async (dispatch) => {
   const response = await fetch('/api/auth/signup', {
     method: 'POST',
     headers: {
@@ -93,10 +94,11 @@ export const signUp = (username, email, password, first_name,
       location,
       gender,
       coach,
-      image_url,
+      img_url,
+      discipline,
     }),
   });
-  
+
   if (response.ok) {
     const data = await response.json();
     dispatch(setUser(data))
