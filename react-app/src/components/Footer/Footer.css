@@ -52,7 +52,7 @@
 }
 
 .react-icons {
-    margin: 2em;
+    padding: 1em;
     color: #ed254e;
     filter: grayscale(100%);
 }
@@ -64,5 +64,5 @@
 }
 
 .footer-row-row2 a:active, .react-icons:active{
-    background-color: none;
+    background:none !important;
 }
