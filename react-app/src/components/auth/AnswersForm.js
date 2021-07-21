@@ -24,7 +24,8 @@ const AnswersForm = () => {
   const user = useSelector(state => state.session.user);
   const history = useHistory();
   const dispatch = useDispatch();
-  const isCoach = user.coach
+  const isCoach = user.coach;
+  const gender = user.gender;
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -137,6 +138,79 @@ const AnswersForm = () => {
             value={rate}
           ></input>
         </div>
+        <div>
+        <label>In Person Coaching</label>
+        <input
+          type='boolean'
+          name='inPerson'
+          onChange={updateInPerson}
+          value={inPerson}
+        ></input>
+      </div>
+      </div>
+    )
+  }
+
+  let weightContent = null;
+
+  if (gender === 0) {
+    weightContent = (
+      <div>
+        <label>Weight Class</label>
+        <select
+          type='number'
+          name='weightClass'
+          onChange={updateWeightClass}
+          value={weightClass}
+          required={true}
+        >
+          <option value="0">Lightweight</option>
+          <option value="1">Middleweight</option>
+          <option value="2">Heavyweight</option>
+        </select>
+      </div>
+    )
+  }
+
+  else if (gender === 1) {
+    weightContent = (
+      <div>
+        <label>Weight Class</label>
+        <select
+          type='number'
+          name='weightClass'
+          onChange={updateWeightClass}
+          value={weightClass}
+          required={true}
+        >
+          <option value="3">Women's Flyweight</option>
+          <option value="4">Women's Straweight</option>
+          <option value="5">Women's Featherweight</option>
+          <option value="6">Women's Bantamweight</option>
+        </select>
+      </div>
+    )
+  }
+
+  else {
+    weightContent = (
+      <div>
+        <label>Weight Class</label>
+        <select
+          type='number'
+          name='weightClass'
+          onChange={updateWeightClass}
+          value={weightClass}
+          required={true}
+        >
+          <option value="0">Lightweight</option>
+          <option value="1">Middleweight</option>
+          <option value="2">Heavyweight</option>
+          <option value="3">Women's Flyweight</option>
+          <option value="4">Women's Straweight</option>
+          <option value="5">Women's Featherweight</option>
+          <option value="6">Women's Bantamweight</option>
+        </select>
       </div>
     )
   }
@@ -167,16 +241,7 @@ const AnswersForm = () => {
           value={walkoutSong}
         ></input>
       </div>
-      <div>
-        <label>Weight Class</label>
-        <input
-          type='number'
-          name='weightClass'
-          onChange={updateWeightClass}
-          value={weightClass}
-          required={true}
-        ></input>
-      </div>
+      {weightContent}
       <div>
         <label>Reach</label>
         <input
@@ -244,15 +309,6 @@ const AnswersForm = () => {
           name='hasKids'
           onChange={updateHasKids}
           value={hasKids}
-        ></input>
-      </div>
-      <div>
-        <label>In Person Coaching</label>
-        <input
-          type='boolean'
-          name='inPerson'
-          onChange={updateInPerson}
-          value={inPerson}
         ></input>
       </div>
       <div>
