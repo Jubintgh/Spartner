@@ -5,9 +5,9 @@ from wtforms.validators import DataRequired
 
 class AnswerForm(FlaskForm):
     about = StringField('about', validators=[DataRequired()])
-    weight_class = StringField('weight class', validators=[DataRequired()])
+    weight_class = IntegerField('weight class', validators=[DataRequired()])
     reach = IntegerField('reach', validators=[DataRequired()])
-    professional_levl = StringField('professional level', validators=[DataRequired()])
+    professional_level = IntegerField('professional level', validators=[DataRequired()])
     current_record = StringField('current record', validators=[DataRequired()])
     previous_titles = StringField('previous titles', validators=[DataRequired()])
     fav_rocky_fighter = StringField('fav rocky fighter', validators=[DataRequired()])
