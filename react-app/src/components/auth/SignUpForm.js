@@ -15,23 +15,30 @@ const SignUpForm = () => {
   const [location, setLocation] = useState('');
   const [gender, setGender] = useState(0);
   const [coach, setCoach] = useState(0);
-  const [image_url, setImageUrl] = useState('');
+  const [img_url, setImageUrl] = useState('');
   const [discipline, setDiscipline] = useState(0);
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
-  const history = useHistory();
+  // const history = useHistory();
 
   const onSignUp = async (e) => {
     e.preventDefault();
+    console.log(coach)
+    console.log(first_name)
+    console.log(gender)
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password, first_name,
+      const data = await dispatch(signUp(
+        username,
+        email,
+        password,
+        first_name,
         last_name,
         age,
         location,
         gender,
         coach,
         discipline,
-        image_url));
+        img_url));
       if (data) {
         setErrors(data)
       }
@@ -76,7 +83,7 @@ const SignUpForm = () => {
   };
 
   const updateDiscipline = (e) => {
-    setDiscipline(e.target.value);
+    setDiscipline(Number(e.target.value));
   };
 
   const updatePassword = (e) => {
@@ -159,7 +166,7 @@ const SignUpForm = () => {
       <div>
         <label>Coach</label>
         <select
-          type='boolean'
+          type='integer'
           name='coach'
           onChange={updateCoach}
           value={coach}
@@ -174,7 +181,7 @@ const SignUpForm = () => {
           type='text'
           name='imageurl'
           onChange={updateImageUrl}
-          value={image_url}
+          value={img_url}
         ></input>
       </div>
       <div>
@@ -190,19 +197,20 @@ const SignUpForm = () => {
         <label>Discipline</label>
         <select
           name='discipline'
+          type='integer'
           onChange={updateDiscipline}
           value={discipline}
         >
-          <option value='0'>Southpaw</option>
-          <option value='1'>Kickboxing</option>
-          <option value='2'>Orthodox</option>
-          <option value='3'>Judo</option>
-          <option value='4'>Muay Thai</option>
-          <option value='5'>Grappling</option>
-          <option value='6'>Counter Striker</option>
-          <option value='7'>Karate</option>
-          <option value='8'>Switch</option>
-          <option value='9'>Brazilian Jiu-Jitsu</option>
+          <option value="0">Southpaw</option>
+          <option value="1">Kickboxing</option>
+          <option value="2">Orthodox</option>
+          <option value="3">Judo</option>
+          <option value="4">Muay Thai</option>
+          <option value="5">Grappling</option>
+          <option value="6">Counter Striker</option>
+          <option value="7">Karate</option>
+          <option value="8">Switch</option>
+          <option value="9">Brazilian Jiu-Jitsu</option>
         </select>
       </div>
       <div>

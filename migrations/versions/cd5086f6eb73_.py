@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 9429b56a8cd8
+Revision ID: cd5086f6eb73
 Revises: 
-Create Date: 2021-07-20 14:51:57.068162
+Create Date: 2021-07-21 10:23:54.223038
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '9429b56a8cd8'
+revision = 'cd5086f6eb73'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -23,16 +23,14 @@ def upgrade():
     sa.Column('first_name', sa.VARCHAR(length=30), nullable=False),
     sa.Column('last_name', sa.VARCHAR(length=30), nullable=False),
     sa.Column('username', sa.String(length=40), nullable=False),
-    sa.Column('discipline', sa.String(length=20), nullable=True),
+    sa.Column('discipline', sa.Integer(), nullable=False),
     sa.Column('email', sa.String(length=255), nullable=False),
     sa.Column('hashed_password', sa.String(length=255), nullable=False),
     sa.Column('age', sa.Integer(), nullable=False),
     sa.Column('location', sa.VARCHAR(), nullable=False),
     sa.Column('gender', sa.Integer(), nullable=False),
     sa.Column('coach', sa.Boolean(), nullable=True),
-    sa.Column('img_url', sa.VARCHAR(), nullable=True),
-    sa.Column('created_on', sa.DateTime(), server_default=sa.text('now()'), nullable=True),
-    sa.Column('updated_on', sa.DateTime(), server_default=sa.text('now()'), nullable=True),
+    sa.Column('img_url', sa.VARCHAR(), nullable=False),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
