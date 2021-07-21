@@ -7,7 +7,10 @@ const Footer = () => {
     return (
         <div className="main-footer">
             <div className="footer-container">
-                <h3 className="footer-title">Spartner was a collaboration by:</h3>
+                <div className="footer-title-container">
+                <img src="https://user-images.githubusercontent.com/35717793/126367109-4954f04b-0cb7-4ca9-a25a-d18e6b7cb74a.png" className="spartnerFooterLogo"/>
+                <h3 className="footer-title"> was a collaboration by:</h3>
+                </div>
                 <div className="footer-content-row-1">
                     {/* column1 */}
                     <div className="footer-col-row1">

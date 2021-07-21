@@ -6,9 +6,10 @@
     width: 100%;
 }
 
-.footer-title {
+.footer-title-container{
     display: flex;
-    justify-content: space-around;
+    flex-direction: row;
+    justify-content: center;
     text-decoration: underline;
 }
 
@@ -65,4 +66,10 @@
 
 .footer-row-row2 a:active, .react-icons:active{
     background:none !important;
+}
+
+.spartnerFooterLogo{
+    size: 2%;
+    height: auto;
+    width: 150px;
 }
