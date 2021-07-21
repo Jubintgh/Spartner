@@ -128,7 +128,7 @@ const SignUpForm = () => {
       <div>
         <label>Age</label>
         <input
-          type='integer'
+          type='number'
           name='age'
           onChange={updateAge}
           value={age}
@@ -137,7 +137,7 @@ const SignUpForm = () => {
         <div>
         <label>Location</label>
         <input
-          type='string'
+          type='text'
           name='location'
           onChange={updateLocation}
           value={location}
@@ -171,7 +171,7 @@ const SignUpForm = () => {
       <div>
         <label>Image URL</label>
         <input
-          type='string'
+          type='text'
           name='imageurl'
           onChange={updateImageUrl}
           value={image_url}
