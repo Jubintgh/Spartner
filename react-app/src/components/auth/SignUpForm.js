@@ -104,17 +104,24 @@ const SignUpForm = () => {
       <div className="form-container">
         <div className="form-half">
 
-      <div classname="form-element">
+      <div classname="form-question">
+        <div className="form-question-label">
         <label>User Name</label>
+        </div>
+        <div className="form-input">
         <input
           type='text'
           name='username'
           onChange={updateUsername}
           value={username}
           ></input>
+        </div>
       </div>
-      <div>
+      <div classname="form-question">
+      <div className="form-question-label">
         <label>First Name</label>
+      </div>
+      <div className="form-input">
         <input
           type='text'
           name='firstName'
@@ -122,8 +129,12 @@ const SignUpForm = () => {
           value={first_name}
           ></input>
       </div>
-      <div>
+      </div>
+      <div classname="form-question">
+      <div className="form-question-label">
         <label>Last Name</label>
+      </div>
+      <div className="form-input">
         <input
           type='text'
           name='lastName'
@@ -131,8 +142,12 @@ const SignUpForm = () => {
           value={last_name}
           ></input>
       </div>
-      <div>
+      </div>
+      <div classname="form-question">
+      <div className="form-question-label">
         <label>Age</label>
+      </div>
+      <div className="form-input">
         <input
           type='number'
           name='age'
@@ -140,17 +155,25 @@ const SignUpForm = () => {
           value={age}
           ></input>
       </div>
-        <div>
+      </div>
+        <div classname="form-question">
+        <div className="form-question-label">
         <label>Location</label>
+        </div>
+        <div className="form-input">
         <input
           type='text'
           name='location'
           onChange={updateLocation}
           value={location}
           ></input>
+        </div>
       </div>
-      <div>
+      <div classname="form-question">
+      <div className="form-question-label">
         <label>Gender</label>
+      </div>
+      <div className="form-input">
         <select
           type='integer'
           name='gender'
@@ -163,9 +186,13 @@ const SignUpForm = () => {
         </select>
       </div>
       </div>
+      </div>
       <div className="form-half">
-      <div>
+      <div classname="form-question">
+      <div className="form-question-label">
         <label>Coach</label>
+      </div>
+      <div className="form-input">
         <select
           type='integer'
           name='coach'
@@ -176,7 +203,8 @@ const SignUpForm = () => {
           <option value="True">Yes, I am a coach</option>
         </select>
       </div>
-      <div>
+      </div>
+      <div classname="form-question">
         <label>Image URL</label>
         <input
           type='text'
@@ -185,7 +213,7 @@ const SignUpForm = () => {
           value={img_url}
           ></input>
       </div>
-      <div>
+      <div classname="form-question">
         <label>Email</label>
         <input
           type='text'
@@ -194,7 +222,7 @@ const SignUpForm = () => {
           value={email}
           ></input>
       </div>
-      <div>
+      <div classname="form-question"> 
         <label>Discipline</label>
         <select
           name='discipline'
@@ -214,7 +242,7 @@ const SignUpForm = () => {
           <option value="9">Brazilian Jiu-Jitsu</option>
         </select>
       </div>
-      <div>
+      <div classname="form-question">
         <label>Password</label>
         <input
           type='password'
@@ -223,7 +251,7 @@ const SignUpForm = () => {
           value={password}
           ></input>
       </div>
-      <div>
+      <div classname="form-question">
         <label>Repeat Password</label>
         <input
           type='password'
@@ -234,8 +262,8 @@ const SignUpForm = () => {
           ></input>
       </div>
         </div>
-      <button type='submit'>Sign Up</button>
       </div>
+      <button type='submit'>Sign Up</button>
     </form>
   );
 };
