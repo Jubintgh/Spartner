@@ -15,7 +15,8 @@ class AnswerForm(FlaskForm):
     vaccinated = BooleanField('vaccinated', validators=[DataRequired()])
     nickname = StringField('nick name', validators=[DataRequired()])
     religion = StringField('religion', validators=[DataRequired()])
-    offspring = StringField('offspring', validators=[DataRequired()])
+    has_kids = BooleanField('has_kids', validators=[DataRequired()])
     pets = StringField('pets', validators=[DataRequired()])
     availability = IntegerField('availability', validators=[DataRequired()])
-    rate = IntegerField('rate', validators=[DataRequired()])
+    rate = IntegerField('rate', validators=[DataRequired()]),
+    in_person = BooleanField('in person', validators=[DataRequired()])

@@ -39,7 +39,7 @@ class Answer(db.Model):
             'vaccinated': self.vaccinated,
             'nickname': self.nickname,
             'religion': self.religion,
-            'offspring': self.offspring,
+            'has_kids': self.has_kids,
             'pets': self.pets,
             'availability': self.availability,
             'rate': self.rate

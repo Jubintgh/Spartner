@@ -52,7 +52,7 @@ export const createAnswer = (
     pets,
     availability,
     rate ) => async (dispatch) => {
-    const res = await fetch(`/api/users/${Number(user_id)}}/answers`, {
+    const res = await fetch(`/api/users/${user_id}}/answers`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
