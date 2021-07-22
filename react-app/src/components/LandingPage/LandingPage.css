@@ -4,8 +4,8 @@
     justify-content: space-around;
     align-items: center;
     /* padding-top: 4.5em; */
-    -webkit-animation:fade-in 5s 15s;
-    animation: fade-in 5s 1s;
+    -webkit-animation:fade-in 2s 5s;
+    animation: fade-in 2s 1s;
 }
 
 .splash-banner {
@@ -42,8 +42,8 @@
     cursor: pointer;
     transition: all 0.3s linear;
     margin: 5px;
-    -webkit-animation:fade-in 5s 15s;
-    animation: fade-in 5s 1s;
+    -webkit-animation:fade-in 2s 5s;
+    animation: fade-in 2s 1s;
 }
 
 .splash-buttons button:focus {
@@ -72,12 +72,12 @@
     padding: 2em;
     width: 500px;
     height: 100%;
-    -webkit-animation:fade-in 2s 15s;
+    -webkit-animation:fade-in 2s 5s;
     animation: fade-in 2s 1s;
 }
 
 .splash-subheader {
-    background-color: #02020248;
+    background-color: #79182b4b;
     border-radius: 10px;
 }
 
