@@ -12,8 +12,12 @@ const LandingPage = () => {
       <h3 className="splash-subheader">Have the match of a lifetime</h3>
         </div>
       <div className="splash-buttons">
+          <Link to='/login'>
       <button>Log In</button>
-      <button>Sign Up</button>
+          </Link>
+          <Link to='/signup'>
+      <button to='/sign-up'>Sign Up</button>
+          </Link>
       </div>
     </div>
       </div>

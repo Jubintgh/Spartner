@@ -21,6 +21,11 @@
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+    text-decoration: none;
+}
+
+.splash-buttons a {
+    text-decoration: none;
 }
 
 .splash-buttons button {
