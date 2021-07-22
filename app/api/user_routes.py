@@ -1,7 +1,8 @@
 from flask import Blueprint, jsonify
 from flask import request
 from flask_login import login_required
-from app.models import Answer, User, db
+from app.forms import AnswerForm
+from app.models import User, db, Answer
 
 user_routes = Blueprint('users', __name__)
 
@@ -140,3 +141,50 @@ def get_matches_list(id):
                 matches.append(like)
 
     return { 'matches': [match.to_dict() for match in matches]}
+"""
+
+
+----------------------------------- USER ANSWERS APIs -----------------------------------
+
+
+"""
+
+@user_routes.route('/<int:id>/answers')
+def get_answers(id):
+    answer = Answer.query.filter_by(Answer.user_id == id)
+    return {'answers': answer}
+
+@user_routes.route('/<int:id>/answers', methods=['POST'])
+def post_answers(id):
+    """
+    Creates a new anwer and adds them in database
+    """
+    form = AnswerForm(meta={'csrf': False})
+    if form.validate_on_submit():
+        new_answer = Answer(
+            user_id = id,
+            about = form.data['about'],
+            weight_class = form.data['weightClass'],
+            reach = form.data['reach'],
+            professional_level = form.data['professionalLevel'],
+            current_record = form.data['currentRecord'],
+            previous_titles = form.data['previousTitles'],
+            fav_rocky_fighter = form.data['favRockyFighter'],
+            walkout_song = form.data['walkoutSong'],
+            vaccinated = form.data['vaccinated'],
+            nickname = form.data['nickname'],
+            religion = form.data['religion'],
+            has_kids = form.data['hasKids'],
+            pets = form.data['pets'],
+            availability = form.data['availability'],
+            in_person = form.data['inPerson'],
+            rate = form.data['rate']
+        )
+
+        db.session.add(new_answer)
+        db.session.commit()
+    return {"errors": form.errors}
+
+@user_routes.route('/<int:id>/answers', methods=['PUT'])
+def update_answer():
+    pass

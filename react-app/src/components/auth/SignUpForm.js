@@ -23,9 +23,6 @@ const SignUpForm = () => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
-    console.log(coach)
-    console.log(first_name)
-    console.log(gender)
     if (password === repeatPassword) {
       const data = await dispatch(signUp(
         username,
@@ -43,7 +40,6 @@ const SignUpForm = () => {
         setErrors(data)
       }
     }
-    // history.push(`/users/${user.id}/answers`)
   };
 
   const updateFirstName = (e) => {
@@ -83,7 +79,7 @@ const SignUpForm = () => {
   };
 
   const updateDiscipline = (e) => {
-    setDiscipline(Number(e.target.value));
+    setDiscipline(e.target.value);
   };
 
   const updatePassword = (e) => {
@@ -95,7 +91,7 @@ const SignUpForm = () => {
   };
 
   if (user) {
-    return <Redirect to='/' />;
+    return <Redirect to={`/users/${user.id}/init-answers`} />;
   }
 
   return (
