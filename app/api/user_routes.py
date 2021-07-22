@@ -95,7 +95,7 @@ def get_answers(id):
     return {'answers': answer}
 
 @user_routes.route('/<int:id>/answers', methods=['POST'])
-def post_answers():
+def post_answers(id):
     """
     Creates a new anwer and adds them in database
     """
