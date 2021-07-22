@@ -23,7 +23,7 @@ const Footer = () => {
                         <a href="https://angel.co/u/austin-kuemper" target="_blank"><FaAngellist/></a>
                         <a href="https://github.com/AKuemper" target="_blank"><MdWeb/></a>
                         <a href="https://www.linkedin.com/in/austin-kuemper-0b471b84/" target="_blank"><FaLinkedin/></a>
-                        </div>
+                    </div>
                     </div>
                     {/* Jubin */}
                     <div className="footer-col-row1">

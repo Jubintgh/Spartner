@@ -1,6 +1,6 @@
 const SET_USERS = 'users/SET_USERS';
 const GET_USER = 'users/GET_USER';
-const GET_USERS_LIST = 'users/GET_USERS_LIST'
+
 
 const setUsers = (users) => ({
     type:SET_USERS,
@@ -30,16 +30,9 @@ export const getOneUser = (id) => async (dispatch) => {
     }
 };
 
-export const getUsersList = (id) => async(dispatch) => {
-    const res = await fetch(`/api/users/${id}`);
-
-    // if (res)
-}
-
 
 const initialState = {}
 const usersReducer = (state = initialState, action) => {
-    let newState;
     switch (action.type) {
         case SET_USERS:
             const allUsers = {};
