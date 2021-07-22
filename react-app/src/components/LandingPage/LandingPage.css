@@ -3,6 +3,7 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    animation: transitionIn 2s;
     /* padding-top: 4.5em; */
 }
 
@@ -11,7 +12,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: #ED254E;
+    color: #020202;
+    text-shadow: -1px -1px 0 #ED254E, 1px -1px 0 #ED254E, -1px 1px 0 #ED254E, 1px 1px 0 #ED254E;
 }
 
 .splash-buttons {
@@ -59,11 +61,18 @@
   }
 
   .splash-header {
-      width: 350px;
+      padding: 2em;
+      width: 500px;
       height: 100%;
   }
 
   .splash-subheader {
     background-color: #02020248;
     border-radius: 10px;
+}
+
+
+@keyframes transitionIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
 }
