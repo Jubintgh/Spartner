@@ -96,19 +96,22 @@ const SignUpForm = () => {
 
   return (
     <form onSubmit={onSignUp}>
-      <div>
+      <div className="form-errors">
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
       </div>
-      <div>
+      <div className="form-container">
+        <div className="form-half">
+
+      <div classname="form-element">
         <label>User Name</label>
         <input
           type='text'
           name='username'
           onChange={updateUsername}
           value={username}
-        ></input>
+          ></input>
       </div>
       <div>
         <label>First Name</label>
@@ -117,7 +120,7 @@ const SignUpForm = () => {
           name='firstName'
           onChange={updateFirstName}
           value={first_name}
-        ></input>
+          ></input>
       </div>
       <div>
         <label>Last Name</label>
@@ -126,7 +129,7 @@ const SignUpForm = () => {
           name='lastName'
           onChange={updateLastName}
           value={last_name}
-        ></input>
+          ></input>
       </div>
       <div>
         <label>Age</label>
@@ -135,7 +138,7 @@ const SignUpForm = () => {
           name='age'
           onChange={updateAge}
           value={age}
-        ></input>
+          ></input>
       </div>
         <div>
         <label>Location</label>
@@ -144,7 +147,7 @@ const SignUpForm = () => {
           name='location'
           onChange={updateLocation}
           value={location}
-        ></input>
+          ></input>
       </div>
       <div>
         <label>Gender</label>
@@ -153,12 +156,14 @@ const SignUpForm = () => {
           name='gender'
           onChange={updateGender}
           value={gender}
-        >
+          >
           <option value="0">Female</option>
           <option value="1">Male</option>
           <option value="2">Other</option>
         </select>
       </div>
+      </div>
+      <div className="form-half">
       <div>
         <label>Coach</label>
         <select
@@ -166,7 +171,7 @@ const SignUpForm = () => {
           name='coach'
           onChange={updateCoach}
           value={coach}
-        >
+          >
           <option value="False">No, I am not a coach</option>
           <option value="True">Yes, I am a coach</option>
         </select>
@@ -178,7 +183,7 @@ const SignUpForm = () => {
           name='imageurl'
           onChange={updateImageUrl}
           value={img_url}
-        ></input>
+          ></input>
       </div>
       <div>
         <label>Email</label>
@@ -187,7 +192,7 @@ const SignUpForm = () => {
           name='email'
           onChange={updateEmail}
           value={email}
-        ></input>
+          ></input>
       </div>
       <div>
         <label>Discipline</label>
@@ -196,7 +201,7 @@ const SignUpForm = () => {
           type='integer'
           onChange={updateDiscipline}
           value={discipline}
-        >
+          >
           <option value="0">Southpaw</option>
           <option value="1">Kickboxing</option>
           <option value="2">Orthodox</option>
@@ -216,7 +221,7 @@ const SignUpForm = () => {
           name='password'
           onChange={updatePassword}
           value={password}
-        ></input>
+          ></input>
       </div>
       <div>
         <label>Repeat Password</label>
@@ -226,9 +231,11 @@ const SignUpForm = () => {
           onChange={updateRepeatPassword}
           value={repeatPassword}
           required={true}
-        ></input>
+          ></input>
       </div>
+        </div>
       <button type='submit'>Sign Up</button>
+      </div>
     </form>
   );
 };
