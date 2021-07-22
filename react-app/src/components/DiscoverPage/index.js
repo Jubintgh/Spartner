@@ -39,6 +39,7 @@ const DiscoverPage = () => {
     dispatch(getNewUsers(id));
   }, [dispatch, id]);
 
+  // Render whether or not that are users in the allUsersNotLiked array
   let usersLeftOrNoUsers;
   if (allUsersNotLiked.length === 0) {
     usersLeftOrNoUsers = (
