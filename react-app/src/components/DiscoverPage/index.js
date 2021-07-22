@@ -11,8 +11,6 @@ import { MdKeyboardArrowRight } from 'react-icons/md';
 import { GiWeight, GiCage } from 'react-icons/gi';
 import { BiRuler, BiMedal } from 'react-icons/bi';
 import { VscGraph } from 'react-icons/vsc';
-import dislikeClicked from '../../../public';
-import likeClicked from '../../../public';
 
 const DiscoverPage = () => {
   const dispatch = useDispatch();
@@ -68,10 +66,18 @@ const DiscoverPage = () => {
             </div>
             <div className='discover-btns'>
               <div onClick={(e) => handleClickDislike(e)} className='pass-btn'>
-                <ImCancelCircle />
+                <img
+                  className='discover-button'
+                  src='/dislike-button-unclicked.png'
+                  alt=''
+                />
               </div>
               <div onClick={handleClickLike} className='like-btn'>
-                <AiFillHeart />
+                <img
+                  className='discover-button'
+                  src='/like-button-unclicked.png'
+                  alt=''
+                />
               </div>
             </div>
           </div>

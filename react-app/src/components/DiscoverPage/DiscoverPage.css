@@ -99,3 +99,8 @@
 .first-name {
   margin-right: 0.5rem;
 }
+
+.discover-button {
+  height: 80px;
+  width: 80px;
+}
