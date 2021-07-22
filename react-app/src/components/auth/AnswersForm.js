@@ -123,17 +123,24 @@ const AnswersForm = () => {
         <div className="questionnaire-section-label">
           <h3>Since you're a coach, these fields are also required</h3>
       </div>
-        <div>
+        <div className="form-question">
+          <div className="form-question-label">
           <label>Rate</label>
+          </div>
+          <div className="form-input">
           <input
             type='number'
             name='rate'
             onChange={updateRate}
             value={rate}
           ></input>
+          </div>
         </div>
-        <div>
+        <div className="form-question">
+          <div className="form-question-label">
         <label>In Person Coaching</label>
+          </div>
+          <div className="form-input">
         <select
           type='boolean'
           name='inPerson'
@@ -143,6 +150,7 @@ const AnswersForm = () => {
           <option value="False">Online</option>
           <option value="True">In Person</option>
         </select>
+          </div>
       </div>
       </div>
     )
