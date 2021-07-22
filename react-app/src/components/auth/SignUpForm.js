@@ -205,7 +205,10 @@ const SignUpForm = () => {
       </div>
       </div>
       <div classname="form-question">
+      <div className="form-question-label">
         <label>Image URL</label>
+      </div>
+      <div className="form-input">
         <input
           type='text'
           name='imageurl'
@@ -213,8 +216,12 @@ const SignUpForm = () => {
           value={img_url}
           ></input>
       </div>
+      </div>
       <div classname="form-question">
+      <div className="form-question-label">
         <label>Email</label>
+      </div>
+      <div className="form-input">
         <input
           type='text'
           name='email'
@@ -222,8 +229,12 @@ const SignUpForm = () => {
           value={email}
           ></input>
       </div>
-      <div classname="form-question"> 
+      </div>
+      <div classname="form-question">
+      <div className="form-question-label">
         <label>Discipline</label>
+      </div>
+      <div className="form-input">
         <select
           name='discipline'
           type='integer'
@@ -241,9 +252,13 @@ const SignUpForm = () => {
           <option value="8">Switch</option>
           <option value="9">Brazilian Jiu-Jitsu</option>
         </select>
+      </div> 
       </div>
       <div classname="form-question">
+      <div className="form-question-label">
         <label>Password</label>
+      </div>
+      <div className="form-input">
         <input
           type='password'
           name='password'
@@ -251,8 +266,12 @@ const SignUpForm = () => {
           value={password}
           ></input>
       </div>
+      </div>
       <div classname="form-question">
+      <div className="form-question-label">
         <label>Repeat Password</label>
+      </div>
+      <div className="form-input">
         <input
           type='password'
           name='repeat_password'
@@ -260,6 +279,7 @@ const SignUpForm = () => {
           value={repeatPassword}
           required={true}
           ></input>
+      </div>
       </div>
         </div>
       </div>
