@@ -255,6 +255,8 @@ def seed_users():
     user29.liked_by.append(user1)
     user30.liked_by.append(user11)
 
+    user1.disliked_by.append(user30)
+
     db.session.add_all([
             user1,
             user2,

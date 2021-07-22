@@ -23,7 +23,10 @@ class Answer(db.Model):
     availability = db.Column(db.VARCHAR)
     rate = db.Column(db.Integer)
 
-    user = db.relationship("User", back_populates="answer")
+    user = db.relationship(
+        "User", 
+        back_populates="answer"
+    )
 
     def to_dict(self):
         return {
@@ -39,7 +42,7 @@ class Answer(db.Model):
             'vaccinated': self.vaccinated,
             'nickname': self.nickname,
             'religion': self.religion,
-            'offspring': self.offspring,
+            'has_kids': self.has_kids,
             'pets': self.pets,
             'availability': self.availability,
             'rate': self.rate
