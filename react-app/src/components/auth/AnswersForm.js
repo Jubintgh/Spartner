@@ -161,7 +161,10 @@ const AnswersForm = () => {
   if (gender === 1) {
     weightContent = (
       <div>
+        <div className="form-question-label">
         <label>Weight Class</label>
+          </div>
+          <div className="form-input">    
         <select
           type='number'
           name='weightClass'
@@ -173,6 +176,7 @@ const AnswersForm = () => {
           <option value="1">Middleweight</option>
           <option value="2">Heavyweight</option>
         </select>
+          </div>
       </div>
     )
   }
@@ -180,7 +184,10 @@ const AnswersForm = () => {
   else if (gender === 0) {
     weightContent = (
       <div>
+        <div className="form-question-label">
         <label>Weight Class</label>
+        </div>
+        <div className="form-input">
         <select
           type='number'
           name='weightClass'
@@ -193,6 +200,7 @@ const AnswersForm = () => {
           <option value="5">Women's Featherweight</option>
           <option value="6">Women's Bantamweight</option>
         </select>
+        </div>
       </div>
     )
   }
@@ -200,7 +208,10 @@ const AnswersForm = () => {
   else {
     weightContent = (
       <div>
+        <div className="form-question-label">
         <label>Weight Class</label>
+        </div>
+        <div className="form-input">
         <select
           type='number'
           name='weightClass'
@@ -216,6 +227,7 @@ const AnswersForm = () => {
           <option value="5">Women's Featherweight</option>
           <option value="6">Women's Bantamweight</option>
         </select>
+        </div>
       </div>
     )
   }
