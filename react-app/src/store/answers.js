@@ -34,16 +34,62 @@ export const getUserAnswers = (id) => async (dispatch) => {
     }
 };
 
-export const createAnswer = (id) => async (dispatch) => {
-    const res = await fetch(`/api/users/${id}/answers`, {
-        method: 'POST'
+export const createAnswer = (
+    user_id,
+    about,
+    weightClass,
+    reach,
+    professionalLevel,
+    currentRecord,
+    previousTitles,
+    favRockyFighter,
+    walkoutSong,
+    vaccinated,
+    hasKids,
+    inPerson,
+    nickname,
+    religion,
+    pets,
+    availability,
+    rate ) => async (dispatch) => {
+    const res = await fetch(`/api/users/${user_id}}/answers`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            user_id,
+            about,
+            weightClass,
+            reach,
+            professionalLevel,
+            currentRecord,
+            previousTitles,
+            favRockyFighter,
+            walkoutSong,
+            vaccinated,
+            hasKids,
+            inPerson,
+            nickname,
+            religion,
+            pets,
+            availability,
+            rate
+        })
     });
 
     if (res.ok) {
         const answer = await res.json()
         dispatch(setOneAnswer(answer))
         return answer
-    }
+      } else if (res.status < 500) {
+        const data = await response.json();
+        if (data.errors) {
+          return data.errors;
+        }
+      } else {
+        return ['An error occurred. Please try again.']
+      }
 }
 
 export const editAnswer = (id) => async (dispatch) => {
@@ -53,7 +99,7 @@ export const editAnswer = (id) => async (dispatch) => {
 
     if (res.ok) {
         const answer = await res.json()
-        dispatch(setOneAnswer(answer))
+        dispatch(editOneAnswer(answer))
         return answer
     }
 }

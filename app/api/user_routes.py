@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify
 from flask import request
 from flask_login import login_required
-from app.models import User, db
+from app.models import User, db, Answer
 
 user_routes = Blueprint('users', __name__)
 
@@ -79,3 +79,39 @@ def delete_like(id):
     return {
             'liked_user': 'success'
            }
+
+"""
+
+
+----------------------------------- USER ANSWERS APIs -----------------------------------
+
+
+"""
+@user_routes.route('/<int:id>/answers', methods=['POST'])
+def post_answers():
+    """
+    Creates a new anwer and adds them in database
+    """
+    form = AnswerForm()
+    if form.validate_on_submit():
+        new_answer = Answer(
+            user_id = form.data['user_id'],
+            about = form.data['about'],
+            weight_class = form.data['weight_class'],
+            reach = form.data['reach'],
+            professional_level = form.data['professional_level'],
+            current_record = form.data['current_record'],
+            previous_titles = form.data['previous_titles'],
+            fav_rocky_fighter = form.data['fav_rocky_fighter'],
+            walkout_song = form.data['walkout_song'],
+            vaccinated = form.data['vaccinated'],
+            nickname = form.data['nickname'],
+            religion = form.data['religion'],
+            offspring = form.data['offspring'],
+            pets = form.data['pets'],
+            availability = form.data['availability'],
+            in_person = form.data['in_person'],
+            rate = form.data['rate']
+        )
+        db.session.add(new_answer)
+        db.session.commit()

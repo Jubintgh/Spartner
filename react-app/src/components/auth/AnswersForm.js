@@ -30,7 +30,7 @@ const AnswersForm = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     const data = await dispatch(createAnswer(
-      user.id,
+      user_id=user.id,
       about,
       weightClass,
       reach,
@@ -46,11 +46,10 @@ const AnswersForm = () => {
       religion,
       pets,
       availability,
-      rate));
+      rate ));
     if (data) {
       setErrors(data)
     }
-    history.push('/discover')
   };
 
   const updateAbout = (e) => {
@@ -113,6 +112,11 @@ const AnswersForm = () => {
   const updateRate = (e) => {
     setRate(e.target.value);
   };
+
+  if (user) {
+    return <Redirect to={`/discover`} />;
+  }
+
 
 
   let coachContent = null;

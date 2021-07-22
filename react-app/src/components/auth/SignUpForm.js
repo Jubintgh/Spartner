@@ -23,9 +23,6 @@ const SignUpForm = () => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
-    console.log(coach)
-    console.log(first_name)
-    console.log(gender)
     if (password === repeatPassword) {
       const data = await dispatch(signUp(
         username,
@@ -43,7 +40,6 @@ const SignUpForm = () => {
         setErrors(data)
       }
     }
-    // history.push(`/users/${user.id}/answers`)
   };
 
   const updateFirstName = (e) => {

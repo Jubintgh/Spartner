@@ -1,5 +1,5 @@
 from flask.blueprints import Blueprint
-from app.models import Answer
+from app.models import Answer, db
 from app.forms import AnswerForm
 
 answer_routes = Blueprint('answers', __name__)
