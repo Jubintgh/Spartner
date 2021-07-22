@@ -227,6 +227,6 @@ label {
       margin: 0;
       justify-content: center;
       font-size: 0.75rem;
-    font-weight: 100;
-    text-indent: 50px;
+      font-style: italic;
+      font-weight: 100;
   }
