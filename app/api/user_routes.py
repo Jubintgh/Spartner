@@ -119,12 +119,14 @@ def get_user_list(id):
     
     unseen_users = db.session.query(User, Answer).join(Answer).all()
 
+    my_dict = {}
     list_items = []
     for unseen_user in unseen_users:
         for item in unseen_user:
             s = item.to_dict()
-            # my_dict = {user}
-            list_items.append(s)
+            my_dict.update(s)
+
+        list_items.append(my_dict)
 
 
     return {
