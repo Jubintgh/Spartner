@@ -139,7 +139,15 @@ label {
     justify-content: space-evenly;
     align-items: center;
     background-color: rgba(88, 91, 107, 0.151);
-    border-radius: 6px;
+    border-radius: 10px;
+}
+
+.form-text-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: rgba(237, 37, 77, 0.151);
 }
 
 .form-container {
