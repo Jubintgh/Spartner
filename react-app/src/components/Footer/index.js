@@ -16,7 +16,7 @@ const Footer = () => {
                 <div className="footer-content-row-1">
                     {/* Austin */}
                     <div className="footer-col-row1">
-                        <img className="footer-profilePic" src="/images/Austin.jpg"/>
+                        <img className="footer-profilePic" src="/Austin.jpg"/>
                         <h3>Austin Keumper</h3>
                         <div className="footer-row-row2">
                         <a href="https://github.com/AKuemper" target="_blank"><FaGithub/></a>
@@ -27,7 +27,7 @@ const Footer = () => {
                     </div>
                     {/* Jubin */}
                     <div className="footer-col-row1">
-                        <img className="footer-profilePic" src="/images/Jubin.png"/>
+                        <img className="footer-profilePic" src="/Jubin.png"/>
                         <h3>Jubin Taghdir</h3>
                         <div className="footer-row-row2">
                         <a href="https://github.com/Jubintgh" target="_blank"><FaGithub/></a>
@@ -38,7 +38,7 @@ const Footer = () => {
                     </div>
                     {/* Matt */}
                     <div className="footer-col-row1">
-                        <img className="footer-profilePic" src="/images/Matt.jpg"/>
+                        <img className="footer-profilePic" src="/Matt.jpg"/>
                         <h3>Matthew Melendez</h3>
                         <div className="footer-row-row2">
                         <a href="https://github.com/melendezmatt" target="_blank"><FaGithub/></a>
@@ -49,7 +49,7 @@ const Footer = () => {
                     </div>
                     {/* Tony */}
                     <div className="footer-col-row1">
-                        <img className="footer-profilePic" src="/images/Tony.jpg"/>
+                        <img className="footer-profilePic" src="/Tony.jpg"/>
                         <h3>Tony Costanza</h3>
                         <div className="footer-row-row2">
                         <a href="https://github.com/AnthonyCost" target="_blank"><FaGithub/></a>
