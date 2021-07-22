@@ -211,3 +211,22 @@ label {
       align-items: center;
       background-color: #b3002471;
   }
+
+  .questionnaire-title {
+      text-transform: Uppercase;
+      text-decoration: underline #ffffff18;
+  }
+
+  .questionnaire-subheader {
+    font-size: 0.75rem;
+    font-weight: 50;
+  }
+
+  .questionnaire-section-label {
+      display: flex;
+      margin: 0;
+      justify-content: center;
+      font-size: 0.75rem;
+    font-weight: 100;
+    text-indent: 50px;
+  }
