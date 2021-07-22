@@ -12,7 +12,7 @@ const NavBar = () => {
   if(user) {
     profImage = user.img_url
   }
-  
+
   let navContent = null;
 
   if (!user) {
@@ -67,7 +67,7 @@ const NavBar = () => {
           </NavLink>
         </li>
         <li className="navbar__link">
-            <img src={`${profImage}`} style={{height:'65px', width:'65px', 'border-radius':'50%', margin: '5px', marginTop : '10px', objectFit: 'cover'}}/>
+            <img src={`${profImage}`} style={{height:'65px', width:'65px', 'borderRadius':'50%', margin: '5px', marginTop : '10px', objectFit: 'cover'}}/>
         </li>
         <li className="navbar__button">
           <LogoutButton />

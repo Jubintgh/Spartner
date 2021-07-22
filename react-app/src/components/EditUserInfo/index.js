@@ -3,7 +3,7 @@ import { useEffect, useSelector, useDispatch } from 'react-redux'
 import { Redirect, useHistory } from 'react-router-dom';
 import { editOneUser } from '../../store/users';
 
-const EditInfoForm = () => {
+const EditUserForm = () => {
     const user = useSelector(state => state.session.user);
     const [errors, setErrors] = useState([]);
     const [username, setUsername] = useState(user.username);
@@ -19,11 +19,11 @@ const EditInfoForm = () => {
     const [img_url, setImageUrl] = useState(user.img_url);
     const [discipline, setDiscipline] = useState(user.discipline);
     const dispatch = useDispatch();
-    // const history = useHistory();
+    const history = useHistory();
     const userId = user.id
-    const onSignUp = async (e) => {
-    e.preventDefault();
-    if (password === repeatPassword) {
+
+    const onSubmit = async (e) => {
+        e.preventDefault()
         const data = await dispatch(editOneUser(
         userId,
         username,
@@ -37,11 +37,17 @@ const EditInfoForm = () => {
         coach,
         discipline,
         img_url));
+
         if (data) {
-        setErrors(data)
+            setErrors(data)
+            history.push(`/users/${userId}`)
         }
-    }
     };
+
+    const handleCancelClick = (e) => {
+        e.preventDefault();
+        history.push(`/users/${userId}`)
+    }
 
     const updateFirstName = (e) => {
     setFirstName(e.target.value);
@@ -91,14 +97,11 @@ const EditInfoForm = () => {
     setRepeatPassword(e.target.value);
     };
 
-    if (user) {
-    return <Redirect to={`/users/${user.id}/init-answers`} />;
-    }
 
     return (
-    <form onSubmit={onSignUp}>
+    <form onSubmit={onSubmit}>
         <div>
-        {errors.map((error, ind) => (
+        {errors?.map((error, ind) => (
             <div key={ind}>{error}</div>
         ))}
         </div>
@@ -229,9 +232,10 @@ const EditInfoForm = () => {
             required={true}
         ></input>
         </div>
-        <button type='submit'>Sign Up</button>
+        <button style={{width: '150px'}} type="submit">Update Your Spartner Profile</button>
+        <button style={{width: '150px'}} type="button" onClick={handleCancelClick}>Cancel</button>
     </form>
     );
-    };
+};
 
-export default EditInfoForm;
+export default EditUserForm;

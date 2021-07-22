@@ -11,6 +11,7 @@ import { authenticate } from './store/session';
 import AnswersForm from './components/auth/AnswersForm';
 import Footer from './components/Footer';
 import EditAnswersForm from './components/EditAnswersForm/index'
+import EditUserForm from './components/EditUserInfo/index'
 
 
 function App() {
@@ -55,6 +56,9 @@ function App() {
               </Route>
               <Route path='/users/:userId/edit-answers' exact={true}>
                 <EditAnswersForm />
+              </Route>
+              <Route path='/users/:userId/edit-info' exact={true}>
+                <EditUserForm />
               </Route>
             </Switch>
         </BrowserRouter>
