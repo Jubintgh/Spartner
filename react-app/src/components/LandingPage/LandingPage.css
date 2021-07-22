@@ -59,6 +59,11 @@
   }
 
   .splash-header {
-      width: 700px;
+      width: 350px;
       height: 100%;
   }
+
+  .splash-subheader {
+    background-color: #02020248;
+    border-radius: 10px;
+}

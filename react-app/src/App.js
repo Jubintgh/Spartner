@@ -32,11 +32,11 @@ function App() {
     <div className='page-container'>
       <div className='content-wrap'>
         <BrowserRouter>
-          <NavBar />
           <Switch>
           <Route path='/' exact={true}>
               <LandingPage />
             </Route>
+            <NavBar />
             <Route path='/login' exact={true}>
               <LoginForm />
             </Route>
