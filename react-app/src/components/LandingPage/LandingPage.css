@@ -3,8 +3,9 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    animation: transitionIn 2s;
     /* padding-top: 4.5em; */
+    -webkit-animation:fade-in 5s 15s;
+    animation: fade-in 5s 1s;
 }
 
 .splash-banner {
@@ -41,43 +42,52 @@
     cursor: pointer;
     transition: all 0.3s linear;
     margin: 5px;
-  }
-  
-  .splash-buttons button:focus {
+    -webkit-animation:fade-in 5s 15s;
+    animation: fade-in 5s 1s;
+}
+
+.splash-buttons button:focus {
     background-color: #020202;
     color: #ED254E;
-  }
-  
-  .splash-buttons button:active {
+}
+
+.splash-buttons button:active {
     background-color: #020202;
     color: #ED254E;
     border: solid 1px #ED254E;
-  }
-  
-  .splash-buttons button:hover {
+}
+
+.splash-buttons button:hover {
     background-color: #020202;
     color: #ED254E;
-  }
+}
 
-  .splash-background {
-      background-image: url("https://user-images.githubusercontent.com/35717793/126691081-d55ff18a-4036-44ed-add5-07eb660bfa0d.png");
-      background-size: cover;
-      height: 100vh;
-  }
+.splash-background {
+    background-image: url("https://user-images.githubusercontent.com/35717793/126691081-d55ff18a-4036-44ed-add5-07eb660bfa0d.png");
+    background-size: cover;
+    height: 100vh;
+}
 
-  .splash-header {
-      padding: 2em;
-      width: 500px;
-      height: 100%;
-  }
+.splash-header {
+    padding: 2em;
+    width: 500px;
+    height: 100%;
+    -webkit-animation:fade-in 2s 15s;
+    animation: fade-in 2s 1s;
+}
 
-  .splash-subheader {
+.splash-subheader {
     background-color: #02020248;
     border-radius: 10px;
 }
 
 
-@keyframes transitionIn {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+@keyframes fade-in{
+	from { opacity:0;}
+	to {opacity:1;}
+}
+
+@-webkit-keyframes fade-in{
+	from {opacity:0;}
+	to {opacity:1;}
 }
