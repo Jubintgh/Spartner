@@ -1,7 +1,7 @@
 import './DiscoverPage.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { getNewUsers, removeUser } from '../../store/discover';
 import { createLike } from '../../store/likes';
 import { createDislike } from '../../store/dislikes';
@@ -23,6 +23,11 @@ const DiscoverPage = () => {
     ? allUsersNotLiked[0]
     : 'No more users to display!';
 
+  const [likeButton, setLikeButton] = useState('/like-button-unclicked.png');
+  const [dislikeButton, setDislikeButton] = useState(
+    '/dislike-button-unclicked.png'
+  );
+
   const handleClickDislike = (e) => {
     e.preventDefault();
     dispatch(removeUser(allUsersNotLiked.shift()));
@@ -33,6 +38,22 @@ const DiscoverPage = () => {
     e.preventDefault();
     dispatch(removeUser(allUsersNotLiked.shift()));
     dispatch(createLike(id, firstUser?.id));
+  };
+
+  const changeImageSourceLiked = (e) => {
+    if (likeButton === '/like-button-clicked.png') {
+      setLikeButton('/like-button-unclicked.png');
+    } else {
+      setLikeButton('/like-button-clicked.png');
+    }
+  };
+
+  const changeImageSourceDisliked = (e) => {
+    if (dislikeButton === '/dislike-button-clicked.png') {
+      setDislikeButton('/dislike-button-unclicked.png');
+    } else {
+      setDislikeButton('/dislike-button-clicked.png');
+    }
   };
 
   useEffect(() => {
@@ -65,17 +86,21 @@ const DiscoverPage = () => {
               </Link>
             </div>
             <div className='discover-btns'>
-              <div onClick={(e) => handleClickDislike(e)} className='pass-btn'>
+              <div onClick={handleClickDislike} className='pass-btn'>
                 <img
-                  className='discover-button'
-                  src='/dislike-button-unclicked.png'
+                  className={`discover-button`}
+                  src={dislikeButton}
+                  onMouseDown={changeImageSourceDisliked}
+                  onMouseUp={changeImageSourceDisliked}
                   alt=''
                 />
               </div>
               <div onClick={handleClickLike} className='like-btn'>
                 <img
                   className='discover-button'
-                  src='/like-button-unclicked.png'
+                  src={likeButton}
+                  onMouseDown={changeImageSourceLiked}
+                  onMouseUp={changeImageSourceLiked}
                   alt=''
                 />
               </div>
