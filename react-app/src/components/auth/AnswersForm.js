@@ -123,6 +123,7 @@ const AnswersForm = () => {
         <div className="questionnaire-section-label">
           <h3>Since you're a coach, these fields are also required</h3>
       </div>
+      <div className="form-actualForm-section">
         <div className="form-question">
           <div className="form-question-label">
           <label>Rate</label>
@@ -151,6 +152,7 @@ const AnswersForm = () => {
           <option value="True">In Person</option>
         </select>
           </div>
+      </div>
       </div>
       </div>
     )
@@ -247,7 +249,8 @@ const AnswersForm = () => {
         <div className="questionnaire-section-label">
           <h3>The following fields are required</h3>
         </div>
-      <div>
+        <div className="form-actualForm-section">
+      <div className="form-question">
         <div className="form-question-label">
         <label>About</label>
         </div>
@@ -293,10 +296,13 @@ const AnswersForm = () => {
         </select>
 </div>
       </div>
+        </div>
       { coachContent }
       <div className="questionnaire-section-label">
           <h3>The following fields are not required but will better suggest people you may be more compatible with</h3>
       </div>
+      <div className="form-actualForm-section">
+
       <div className="form-question">
       <div className="form-question-label">
         <label>Walkout Song</label>
@@ -433,6 +439,7 @@ const AnswersForm = () => {
             <option value="2">All week</option>
           </select>
 </div>
+      </div>
         </div>
       <button type='submit'>Submit Answers</button>
       </div>
