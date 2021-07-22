@@ -7,6 +7,12 @@ import DemoUserButton from './auth/DemoUserButton';
 
 const NavBar = () => {
   const user = useSelector(state => state.session.user);
+  let profImage = null
+
+  if(user) {
+    profImage = user.img_url
+    console.log(profImage)
+  }
   let navContent = null;
 
   if (!user) {
@@ -59,6 +65,9 @@ const NavBar = () => {
           <NavLink to={`/users/${user.id}`} exact={true} activeClassName='active'>
             Profile
           </NavLink>
+        </li>
+        <li className="navbar__link">
+            <img src={`${profImage}`} style={{height:'50px', width:'50px', 'border-radius':'50%', margin: '5px', marginTop : '10px'}}/>
         </li>
         <li className="navbar__button">
           <LogoutButton />
