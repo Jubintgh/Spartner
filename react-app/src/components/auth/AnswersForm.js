@@ -15,7 +15,7 @@ const AnswersForm = () => {
   const [walkoutSong, setWalkoutSong] = useState('');
   const [vaccinated, setVaccinated] = useState('');
   const [hasKids, setHasKids] = useState('');
-  const [inPerson, setInPerson] = useState(True);
+  const [inPerson, setInPerson] = useState(true);
   const [nickname, setNickname] = useState('');
   const [religion, setReligion] = useState('');
   const [pets, setPets] = useState('');
@@ -50,9 +50,7 @@ const AnswersForm = () => {
       rate ));
     if (data) {
       setErrors(data)
-      if (!setErrors(data)) {
-        history.push(`/discover`)
-      }
+      history.push(`/discover`)
     }
   };
 

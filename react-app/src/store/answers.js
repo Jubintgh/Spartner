@@ -52,6 +52,7 @@ export const createAnswer = (
     pets,
     availability,
     rate ) => async (dispatch) => {
+    console.log(typeof(user_id))
     const res = await fetch(`/api/users/${user_id}}/answers`, {
         method: 'POST',
         headers: {

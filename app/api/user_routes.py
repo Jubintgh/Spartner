@@ -122,6 +122,7 @@ def post_answers():
         )
         db.session.add(new_answer)
         db.session.commit()
+    return {"errors": form.errors}
 
 @user_routes.route('/<int:id>/answers', methods=['PUT'])
 def update_answer():
