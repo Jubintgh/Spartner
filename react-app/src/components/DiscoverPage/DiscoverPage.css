@@ -21,7 +21,8 @@
 .user-info,
 .bio-container,
 .discover-btns,
-.view-profile-container {
+.view-profile-container,
+.full-name {
   display: flex;
 }
 
@@ -93,4 +94,8 @@
 .bio-right {
   padding-left: 1em;
   padding-right: 1em;
+}
+
+.first-name {
+  margin-right: 0.5rem;
 }

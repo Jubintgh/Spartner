@@ -116,7 +116,7 @@ def get_user_list(id):
 
     no_show = no_show + dislikes_ids #combine above 2 lists
     no_show.append(id) # add self
-    
+
     unseen_user = User.query.filter(User.id.not_in(no_show))
 
     users_answers = []
