@@ -120,6 +120,9 @@ const AnswersForm = () => {
   if (isCoach) {
     coachContent = (
       <div>
+        <div className="questionnaire-section-label">
+          <h3>Since you're a coach, these fields are also required</h3>
+      </div>
         <div>
           <label>Rate</label>
           <input
@@ -212,28 +215,30 @@ const AnswersForm = () => {
 
   return (
     <form onSubmit={onSubmit}>
+      <div className="form-container">
+        <div className="form-text-block">
+          <div>
+          <h1 className="questionnaire-title">Personality Questionnaire</h1>  
+          </div>
+          <div>
+          <h2 className="questionnaire-subheader">Tell us a bit more about yourself</h2>  
+          </div>
+        </div>
+        <div className="questionnaire-section-label">
+          <h3>The following fields are required</h3>
+        </div>
       <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
-      </div>
-      <div>
+        <div className="form-question-label">
         <label>About</label>
+        </div>
+        <div className="form-input">
         <input
           type='text'
           name='about'
           onChange={updateAbout}
           value={about}
-        ></input>
-      </div>
-      <div>
-        <label>Walkout Song</label>
-        <input
-          type='text'
-          name='walkoutSong'
-          onChange={updateWalkoutSong}
-          value={walkoutSong}
-        ></input>
+          ></input>
+        </div>
       </div>
       {weightContent}
       <div>
@@ -244,7 +249,7 @@ const AnswersForm = () => {
           onChange={updateReach}
           value={reach}
           required={true}
-        ></input>
+          ></input>
       </div>
       <div>
         <label>Professional Level</label>
@@ -254,11 +259,24 @@ const AnswersForm = () => {
           onChange={updateProfessionalLevel}
           value={professionalLevel}
           required={true}
-        >
+          >
           <option value="0">Beginner</option>
           <option value="1">Amateur</option>
           <option value="2">Professional</option>
         </select>
+      </div>
+      { coachContent }
+      <div className="questionnaire-section-label">
+          <h3>The following fields are not required but will better suggest people you may be more compatible with</h3>
+      </div>
+      <div>
+        <label>Walkout Song</label>
+        <input
+          type='text'
+          name='walkoutSong'
+          onChange={updateWalkoutSong}
+          value={walkoutSong}
+          ></input>
       </div>
       <div>
         <label>Current Record</label>
@@ -267,7 +285,7 @@ const AnswersForm = () => {
           name='currentRecord'
           onChange={updateCurrentRecord}
           value={currentRecord}
-        ></input>
+          ></input>
       </div>
       <div>
         <label>Previous Titles Held</label>
@@ -276,7 +294,7 @@ const AnswersForm = () => {
           name='previousTitles'
           onChange={updatePreviousTitles}
           value={previousTitles}
-        ></input>
+          ></input>
       </div>
       <div>
         <label>Favorite Rocky Fighter</label>
@@ -285,7 +303,7 @@ const AnswersForm = () => {
           name='favRockyFighter'
           onChange={updateFavRockyFighter}
           value={favRockyFighter}
-        ></input>
+          ></input>
       </div>
       <div>
         <label>Vaccinated</label>
@@ -294,7 +312,7 @@ const AnswersForm = () => {
           name='vaccinated'
           onChange={updateVaccinated}
           value={vaccinated}
-        >
+          >
           <option value="False">Not vaccinated</option>
           <option value="True">Vaccinated</option>
         </select>
@@ -306,7 +324,7 @@ const AnswersForm = () => {
           name='hasKids'
           onChange={updateHasKids}
           value={hasKids}
-        ></input>
+          ></input>
       </div>
       <div>
         <label>Pets</label>
@@ -315,7 +333,7 @@ const AnswersForm = () => {
           name='pets'
           onChange={updatePets}
           value={pets}
-        ></input>
+          ></input>
       </div>
       <div>
         <label>Nickname</label>
@@ -324,7 +342,7 @@ const AnswersForm = () => {
           name='nickname'
           onChange={updateNickname}
           value={nickname}
-        ></input>
+          ></input>
       </div>
       <div>
         <label>Religion</label>
@@ -333,7 +351,7 @@ const AnswersForm = () => {
           name='religion'
           onChange={updateReligion}
           value={religion}
-        ></input>
+          ></input>
       </div>
       <div>
           <label>Availability</label>
@@ -342,14 +360,19 @@ const AnswersForm = () => {
             name='availability'
             onChange={updateAvailability}
             value={availability}
-          >
+            >
             <option value="0">Weekends</option>
             <option value="1">Weekdays</option>
             <option value="2">All week</option>
           </select>
         </div>
-      { coachContent }
       <button type='submit'>Submit Answers</button>
+      </div>
+      <div className="form-errors">
+            {errors.map((error, ind) => (
+              <div key={ind}>{error}</div>
+            ))}
+          </div>
     </form>
   );
 };
