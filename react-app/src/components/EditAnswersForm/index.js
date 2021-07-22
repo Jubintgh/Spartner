@@ -4,32 +4,34 @@ import { Redirect, useHistory } from 'react-router-dom';
 import { editAnswer } from '../../store/answers';
 
 const EditAnswersForm = () => {
-  const [errors, setErrors] = useState([]);
-  const [about, setAbout] = useState('');
-  const [weightClass, setWeightClass] = useState('');
-  const [reach, setReach] = useState('');
-  const [professionalLevel, setProfessionalLevel] = useState('');
-  const [currentRecord, setCurrentRecord] = useState('0-0-0');
-  const [previousTitles, setPreviousTitles] = useState('');
-  const [favRockyFighter, setFavRockyFighter] = useState('');
-  const [walkoutSong, setWalkoutSong] = useState('');
-  const [vaccinated, setVaccinated] = useState('');
-  const [hasKids, setHasKids] = useState('');
-  const [inPerson, setInPerson] = useState('');
-  const [nickname, setNickname] = useState('');
-  const [religion, setReligion] = useState('');
-  const [pets, setPets] = useState('');
-  const [availability, setAvailability] = useState('');
-  const [rate, setRate] = useState('');
   const user = useSelector(state => state.session.user);
+  const [errors, setErrors] = useState([]);
+  const [about, setAbout] = useState(user.about);
+  const [weightClass, setWeightClass] = useState(user.weightClass);
+  const [reach, setReach] = useState(user.reach);
+  const [professionalLevel, setProfessionalLevel] = useState(user.professionalLevel);
+  const [currentRecord, setCurrentRecord] = useState(user.currentRecord);
+  const [previousTitles, setPreviousTitles] = useState(user.previousTitles);
+  const [favRockyFighter, setFavRockyFighter] = useState(user.favRockyFighter);
+  const [walkoutSong, setWalkoutSong] = useState(user.walkoutSong);
+  const [vaccinated, setVaccinated] = useState(user.vaccinated);
+  const [hasKids, setHasKids] = useState(user.hasKids);
+  const [inPerson, setInPerson] = useState(user.inPerson);
+  const [nickname, setNickname] = useState(user.nickname);
+  const [religion, setReligion] = useState(user.religion);
+  const [pets, setPets] = useState(user.pets);
+  const [availability, setAvailability] = useState(user.availability);
+  const [rate, setRate] = useState(user.rate);
   const history = useHistory();
   const dispatch = useDispatch();
-  const isCoach = user.coach
+  const isCoach = user.coach;
+  const gender = user.gender;
+  const user_id = user.id
 
   const onSubmit = async (e) => {
     e.preventDefault();
     const data = await dispatch(editAnswer(
-      user.id,
+      user_id,
       about,
       weightClass,
       reach,
@@ -45,11 +47,11 @@ const EditAnswersForm = () => {
       religion,
       pets,
       availability,
-      rate));
+      rate ));
     if (data) {
       setErrors(data)
+      history.push(`/discover`)
     }
-    history.push('/discover')
   };
 
   const updateAbout = (e) => {
@@ -119,23 +121,90 @@ const EditAnswersForm = () => {
     coachContent = (
       <div>
         <div>
-          <label>Availability</label>
-          <input
-            type='text'
-            name='availability'
-            onChange={updateAvailability}
-            value={availability}
-          ></input>
-        </div>
-        <div>
           <label>Rate</label>
           <input
-            type='integer'
+            type='number'
             name='rate'
             onChange={updateRate}
             value={rate}
           ></input>
         </div>
+        <div>
+        <label>In Person Coaching</label>
+        <select
+          type='boolean'
+          name='inPerson'
+          onChange={updateInPerson}
+          value={inPerson}
+        >
+          <option value="False">Online</option>
+          <option value="True">In Person</option>
+        </select>
+      </div>
+      </div>
+    )
+  }
+
+  let weightContent = null;
+
+  if (gender === 1) {
+    weightContent = (
+      <div>
+        <label>Weight Class</label>
+        <select
+          type='number'
+          name='weightClass'
+          onChange={updateWeightClass}
+          value={weightClass}
+          required={true}
+        >
+          <option value="0">Lightweight</option>
+          <option value="1">Middleweight</option>
+          <option value="2">Heavyweight</option>
+        </select>
+      </div>
+    )
+  }
+
+  else if (gender === 0) {
+    weightContent = (
+      <div>
+        <label>Weight Class</label>
+        <select
+          type='number'
+          name='weightClass'
+          onChange={updateWeightClass}
+          value={weightClass}
+          required={true}
+        >
+          <option value="3">Women's Flyweight</option>
+          <option value="4">Women's Straweight</option>
+          <option value="5">Women's Featherweight</option>
+          <option value="6">Women's Bantamweight</option>
+        </select>
+      </div>
+    )
+  }
+
+  else {
+    weightContent = (
+      <div>
+        <label>Weight Class</label>
+        <select
+          type='number'
+          name='weightClass'
+          onChange={updateWeightClass}
+          value={weightClass}
+          required={true}
+        >
+          <option value="0">Lightweight</option>
+          <option value="1">Middleweight</option>
+          <option value="2">Heavyweight</option>
+          <option value="3">Women's Flyweight</option>
+          <option value="4">Women's Straweight</option>
+          <option value="5">Women's Featherweight</option>
+          <option value="6">Women's Bantamweight</option>
+        </select>
       </div>
     )
   }
@@ -144,7 +213,7 @@ const EditAnswersForm = () => {
   return (
     <form onSubmit={onSubmit}>
       <div>
-        {errors.map((error, ind) => (
+        {errors?.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
       </div>
@@ -166,45 +235,30 @@ const EditAnswersForm = () => {
           value={walkoutSong}
         ></input>
       </div>
-      <div>
-        <label>Weight Class</label>
-        <select
-          name='weightClass'
-          type='integer'
-          onChange={updateWeightClass}
-          value={weightClass}
-        >
-          <option value="0">Southpaw</option>
-          <option value="1">Kickboxing</option>
-          <option value="2">Orthodox</option>
-          <option value="3">Judo</option>
-          <option value="4">Muay Thai</option>
-          <option value="5">Grappling</option>
-          <option value="6">Counter Striker</option>
-          <option value="7">Karate</option>
-          <option value="8">Switch</option>
-          <option value="9">Brazilian Jiu-Jitsu</option>
-        </select>
-      </div>
+      {weightContent}
       <div>
         <label>Reach</label>
         <input
-          type='integer'
+          type='number'
           name='reach'
           onChange={updateReach}
           value={reach}
           required={true}
         ></input>
       </div>
-        <div>
+      <div>
         <label>Professional Level</label>
-        <input
-          type='string'
+        <select
+          type='integer'
           name='professionalLevel'
           onChange={updateProfessionalLevel}
           value={professionalLevel}
           required={true}
-        ></input>
+        >
+          <option value="0">Beginner</option>
+          <option value="1">Amateur</option>
+          <option value="2">Professional</option>
+        </select>
       </div>
       <div>
         <label>Current Record</label>
@@ -235,12 +289,15 @@ const EditAnswersForm = () => {
       </div>
       <div>
         <label>Vaccinated</label>
-        <input
+        <select
           type='text'
           name='vaccinated'
           onChange={updateVaccinated}
           value={vaccinated}
-        ></input>
+        >
+          <option value="False">Not vaccinated</option>
+          <option value="True">Vaccinated</option>
+        </select>
       </div>
       <div>
         <label>Has Kids</label>
@@ -249,15 +306,6 @@ const EditAnswersForm = () => {
           name='hasKids'
           onChange={updateHasKids}
           value={hasKids}
-        ></input>
-      </div>
-      <div>
-        <label>In Person Coaching</label>
-        <input
-          type='boolean'
-          name='inPerson'
-          onChange={updateInPerson}
-          value={inPerson}
         ></input>
       </div>
       <div>
@@ -287,6 +335,19 @@ const EditAnswersForm = () => {
           value={religion}
         ></input>
       </div>
+      <div>
+          <label>Availability</label>
+          <select
+            type='text'
+            name='availability'
+            onChange={updateAvailability}
+            value={availability}
+          >
+            <option value="0">Weekends</option>
+            <option value="1">Weekdays</option>
+            <option value="2">All week</option>
+          </select>
+        </div>
       { coachContent }
       <button type='submit'>Submit Answers</button>
     </form>
@@ -294,3 +355,25 @@ const EditAnswersForm = () => {
 };
 
 export default EditAnswersForm;
+
+
+
+
+// const user = useSelector(state => state.session.user);
+//   const [errors, setErrors] = useState([]);
+//   const [about, setAbout] = useState(user.answers.about);
+//   const [weightClass, setWeightClass] = useState(user.answers.weightClass);
+//   const [reach, setReach] = useState(user.answers.reach);
+//   const [professionalLevel, setProfessionalLevel] = useState(user.answers.professionalLevel);
+//   const [currentRecord, setCurrentRecord] = useState(user.answers.currentRecord);
+//   const [previousTitles, setPreviousTitles] = useState(user.answers.previousTitles);
+//   const [favRockyFighter, setFavRockyFighter] = useState(user.answers.favRockyFighter);
+//   const [walkoutSong, setWalkoutSong] = useState(user.answers.walkoutSong);
+//   const [vaccinated, setVaccinated] = useState(user.answers.vaccinated);
+//   const [hasKids, setHasKids] = useState(user.answers.hasKids);
+//   const [inPerson, setInPerson] = useState(user.answers.inPerson);
+//   const [nickname, setNickname] = useState(user.answers.nickname);
+//   const [religion, setReligion] = useState(user.answers.religion);
+//   const [pets, setPets] = useState(user.answers.pets);
+//   const [availability, setAvailability] = useState(user.answers.availability);
+//   const [rate, setRate] = useState(user.answers.rate);
