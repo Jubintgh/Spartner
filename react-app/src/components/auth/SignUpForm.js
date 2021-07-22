@@ -13,10 +13,10 @@ const SignUpForm = () => {
   const [last_name, setLastName] = useState('');
   const [age, setAge] = useState('');
   const [location, setLocation] = useState('');
-  const [gender, setGender] = useState(0);
+  const [gender, setGender] = useState('');
   const [coach, setCoach] = useState(0);
   const [img_url, setImageUrl] = useState('');
-  const [discipline, setDiscipline] = useState(0);
+  const [discipline, setDiscipline] = useState('');
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
   // const history = useHistory();
@@ -176,6 +176,7 @@ const SignUpForm = () => {
           onChange={updateGender}
           value={gender}
           >
+          <option value="">Select</option>
           <option value="0">Female</option>
           <option value="1">Male</option>
           <option value="2">Other</option>
@@ -237,6 +238,7 @@ const SignUpForm = () => {
           onChange={updateDiscipline}
           value={discipline}
           >
+          <option value="">Select</option>
           <option value="0">Southpaw</option>
           <option value="1">Kickboxing</option>
           <option value="2">Orthodox</option>
