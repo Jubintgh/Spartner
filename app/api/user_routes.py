@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify
 from flask import request
 from flask_login import login_required
-from app.forms import AnswerForm, SignUpForm
+from app.forms import AnswerForm, SignUpForm, UpdateForm
 from app.models import User, db, Answer
 
 user_routes = Blueprint('users', __name__)
@@ -30,12 +30,11 @@ def user(id):
     return user.to_dict()
 
 @user_routes.route('/<int:id>', methods=['PUT'])
-@login_required
 def edit_info(id):
     """
     Updates Info
     """
-    form = SignUpForm()
+    form = UpdateForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         editted_user = User.query.get(id)
