@@ -96,11 +96,6 @@ const SignUpForm = () => {
 
   return (
     <form onSubmit={onSignUp}>
-      <div className="form-errors">
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
-      </div>
       <div className="form-container">
         <div className="form-actualForm">
         <div className="form-half">
@@ -284,6 +279,11 @@ const SignUpForm = () => {
       </div>
         </div>
         </div>
+      <div className="form-errors">
+        {errors.map((error, ind) => (
+          <div key={ind}>{error}</div>
+        ))}
+      </div>
       <button type='submit'>Sign Up</button>
       </div>
     </form>

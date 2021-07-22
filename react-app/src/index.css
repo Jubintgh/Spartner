@@ -185,3 +185,11 @@ label {
     background-color: #25ed50;
     color: #1b1b1b;
   }
+
+  .form-errors {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #b3002471;
+      border-radius: 20px;
+  }
