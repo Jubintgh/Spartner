@@ -89,14 +89,6 @@ const EditUserForm = () => {
     setDiscipline(e.target.value);
     };
 
-    const updatePassword = (e) => {
-    setPassword(e.target.value);
-    };
-
-    const updateRepeatPassword = (e) => {
-    setRepeatPassword(e.target.value);
-    };
-
 
     return (
     <form onSubmit={onSubmit}>
@@ -212,25 +204,6 @@ const EditUserForm = () => {
             <option value="8">Switch</option>
             <option value="9">Brazilian Jiu-Jitsu</option>
         </select>
-        </div>
-        <div>
-        <label>Password</label>
-        <input
-            type='password'
-            name='password'
-            onChange={updatePassword}
-            value={password}
-        ></input>
-        </div>
-        <div>
-        <label>Repeat Password</label>
-        <input
-            type='password'
-            name='repeat_password'
-            onChange={updateRepeatPassword}
-            value={repeatPassword}
-            required={true}
-        ></input>
         </div>
         <button type="submit">Update Your Spartner Profile</button>
         <button type="button" onClick={handleCancelClick}>Cancel</button>

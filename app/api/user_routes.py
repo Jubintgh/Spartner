@@ -17,17 +17,18 @@ def validation_errors_to_error_messages(validation_errors):
     return errorMessages
 
 @user_routes.route('/')
-@login_required
+# @login_required
 def users():
     users = User.query.all()
     return {'users': [user.to_dict() for user in users]}
 
 
 @user_routes.route('/<int:id>')
-@login_required
+# @login_required
 def user(id):
     user = User.query.get(id)
     return user.to_dict()
+
 
 @user_routes.route('/<int:id>', methods=['PUT'])
 def edit_info(id):
@@ -38,21 +39,20 @@ def edit_info(id):
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         editted_user = User.query.get(id)
-        form.populate_obj(editted_user)
-        # editted_user = User(
-        #     username=form.data['username'],
-        #     email=form.data['email'],
-        #     password=form.data['password'],
-        #     first_name=form.data['first_name'],
-        #     last_name=form.data['last_name'],
-        #     age=form.data['age'],
-        #     location=form.data['location'],
-        #     gender=form.data['gender'],
-        #     coach=form.data['coach'],
-        #     discipline=form.data['discipline'],
-        #     img_url=form.data['img_url']
-        # )
-        # db.session.add(editted_user)
+        # form.populate_obj(editted_user)
+        editted_user = User(
+            username=form.data['username'],
+            email=form.data['email'],
+            first_name=form.data['first_name'],
+            last_name=form.data['last_name'],
+            age=form.data['age'],
+            location=form.data['location'],
+            gender=form.data['gender'],
+            coach=form.data['coach'],
+            discipline=form.data['discipline'],
+            img_url=form.data['img_url']
+        )
+        db.session.add(editted_user)
         db.session.commit()
         return user.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
