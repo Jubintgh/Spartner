@@ -3,6 +3,7 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    /* padding-top: 4.5em; */
 }
 
 .splash-banner {
@@ -10,6 +11,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    color: #ED254E;
 }
 
 .splash-buttons {
@@ -48,4 +50,15 @@
   .splash-buttons button:hover {
     background-color: #020202;
     color: #ED254E;
+  }
+
+  .splash-background {
+      background-image: url("https://user-images.githubusercontent.com/35717793/126691081-d55ff18a-4036-44ed-add5-07eb660bfa0d.png");
+      background-size: cover;
+      height: 100vh;
+  }
+
+  .splash-header {
+      width: 700px;
+      height: 100%;
   }
