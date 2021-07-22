@@ -232,8 +232,8 @@ const EditUserForm = () => {
             required={true}
         ></input>
         </div>
-        <button style={{width: '150px'}} type="submit">Update Your Spartner Profile</button>
-        <button style={{width: '150px'}} type="button" onClick={handleCancelClick}>Cancel</button>
+        <button type="submit">Update Your Spartner Profile</button>
+        <button type="button" onClick={handleCancelClick}>Cancel</button>
     </form>
     );
 };

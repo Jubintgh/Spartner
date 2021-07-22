@@ -31,27 +31,29 @@ def user(id):
 
 @user_routes.route('/<int:id>', methods=['PUT'])
 @login_required
-def edit_info():
+def edit_info(id):
     """
-    Creates a new user and logs them in
+    Updates Info
     """
     form = SignUpForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        editted_user = User(
-            username=form.data['username'],
-            email=form.data['email'],
-            password=form.data['password'],
-            first_name=form.data['first_name'],
-            last_name=form.data['last_name'],
-            age=form.data['age'],
-            location=form.data['location'],
-            gender=form.data['gender'],
-            coach=form.data['coach'],
-            discipline=form.data['discipline'],
-            img_url=form.data['img_url']
-        )
-        db.session.add(editted_user)
+        editted_user = User.query.get(id)
+        form.populate_obj(editted_user)
+        # editted_user = User(
+        #     username=form.data['username'],
+        #     email=form.data['email'],
+        #     password=form.data['password'],
+        #     first_name=form.data['first_name'],
+        #     last_name=form.data['last_name'],
+        #     age=form.data['age'],
+        #     location=form.data['location'],
+        #     gender=form.data['gender'],
+        #     coach=form.data['coach'],
+        #     discipline=form.data['discipline'],
+        #     img_url=form.data['img_url']
+        # )
+        # db.session.add(editted_user)
         db.session.commit()
         return user.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
