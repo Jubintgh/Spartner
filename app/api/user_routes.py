@@ -117,11 +117,16 @@ def get_user_list(id):
     no_show = no_show + dislikes_ids
     no_show.append(id)
     
+    unseen_users = db.session.query(User, Answer).join(Answer).all()
 
-    unseen_users = User.query.filter(User.id.not_in(no_show)).join(Answer)
+    list_items = []
+    for unseen_user in unseen_users:
+        for item in unseen_user:
+            s = item.to_dict()
+            # my_dict = {user}
+            list_items.append(s)
 
-    print(unseen_users, "asdasdiujasdijasodijnasoidmasodmkls")
 
     return {
-            'unseen_users': [user.to_dict() for user in unseen_users], 
+            'unseen_users': list_items
         }
