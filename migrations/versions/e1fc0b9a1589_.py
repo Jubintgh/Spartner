@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 9d6fe5c43b31
+Revision ID: e1fc0b9a1589
 Revises: 
-Create Date: 2021-07-21 17:50:13.377051
+Create Date: 2021-07-22 15:26:40.508056
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '9d6fe5c43b31'
+revision = 'e1fc0b9a1589'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -38,21 +38,21 @@ def upgrade():
     op.create_table('answers',
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('about', sa.Text(), nullable=True),
-    sa.Column('weight_class', sa.VARCHAR(length=100), nullable=False),
     sa.Column('reach', sa.Integer(), nullable=False),
-    sa.Column('professional_level', sa.VARCHAR(length=100), nullable=False),
+    sa.Column('professional_level', sa.Integer(), nullable=False),
     sa.Column('current_record', sa.VARCHAR(), nullable=True),
     sa.Column('previous_titles', sa.VARCHAR(), nullable=True),
     sa.Column('fav_rocky_fighter', sa.VARCHAR(), nullable=True),
     sa.Column('walkout_song', sa.VARCHAR(), nullable=True),
     sa.Column('vaccinated', sa.Boolean(), nullable=True),
-    sa.Column('has_kids', sa.Boolean(), nullable=True),
-    sa.Column('in_person', sa.Boolean(), nullable=True),
     sa.Column('nickname', sa.VARCHAR(), nullable=True),
     sa.Column('religion', sa.VARCHAR(), nullable=True),
+    sa.Column('has_kids', sa.Boolean(), nullable=True),
     sa.Column('pets', sa.VARCHAR(), nullable=True),
-    sa.Column('availability', sa.VARCHAR(), nullable=True),
+    sa.Column('availability', sa.Integer(), nullable=True),
     sa.Column('rate', sa.Integer(), nullable=True),
+    sa.Column('in_person', sa.Boolean(), nullable=True),
+    sa.Column('weight_class', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('user_id')
     )

@@ -94,8 +94,8 @@ export const signUp = (username, email, password, first_name,
       location,
       gender,
       coach,
-      img_url,
       discipline,
+      img_url,
     }),
   });
 

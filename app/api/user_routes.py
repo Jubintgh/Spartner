@@ -141,6 +141,7 @@ def get_matches_list(id):
                 matches.append(like)
 
     return { 'matches': [match.to_dict() for match in matches]}
+
 """
 
 
@@ -159,32 +160,47 @@ def post_answers(id):
     """
     Creates a new anwer and adds them in database
     """
-    form = AnswerForm(meta={'csrf': False})
+
+    form = AnswerForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         new_answer = Answer(
             user_id = id,
-            about = form.data['about'],
-            weight_class = form.data['weightClass'],
-            reach = form.data['reach'],
-            professional_level = form.data['professionalLevel'],
-            current_record = form.data['currentRecord'],
-            previous_titles = form.data['previousTitles'],
-            fav_rocky_fighter = form.data['favRockyFighter'],
-            walkout_song = form.data['walkoutSong'],
-            vaccinated = form.data['vaccinated'],
-            nickname = form.data['nickname'],
-            religion = form.data['religion'],
-            has_kids = form.data['hasKids'],
-            pets = form.data['pets'],
-            availability = form.data['availability'],
-            in_person = form.data['inPerson'],
-            rate = form.data['rate']
+            about = form.data["about"],
+            reach = form.data["reach"],
+            professional_level = form.data["professional_level"],
+            current_record = form.data["current_record"],
+            previous_titles = form.data["previous_titles"],
+            fav_rocky_fighter = form.data["fav_rocky_fighter"],
+            walkout_song = form.data["walkout_song"],
+            vaccinated = form.data["vaccinated"],
+            nickname = form.data["nickname"],
+            religion = form.data["religion"],
+            has_kids = form.data["has_kids"],
+            pets = form.data["pets"],
+            availability = form.data["availability"],
+            rate = request.json["rate"],
+            in_person = form.data["in_person"],
+            weight_class = form.data["weight_class"]
         )
 
         db.session.add(new_answer)
         db.session.commit()
+        return new_answer.to_dict()
+
     return {"errors": form.errors}
 
 @user_routes.route('/<int:id>/answers', methods=['PUT'])
 def update_answer():
     pass
+
+"""
+
+
+----------------------------------- Filters APIs -----------------------------------
+
+
+"""
+
+# @user_routes.route('/filter/<s>')
+# def get_filtered_user(id)
