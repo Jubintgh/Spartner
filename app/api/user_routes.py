@@ -124,7 +124,6 @@ def get_user_list(id):
         user_answer = user.to_dict()
         user_answer.update(user.answer.to_dict())
         users_answers.append(user_answer)
-
     return {'users_answers': [ans for ans in users_answers]}
 
 #Matches render
