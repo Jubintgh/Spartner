@@ -10,14 +10,14 @@ import User from './components/User';
 import { authenticate } from './store/session';
 import AnswersForm from './components/auth/AnswersForm';
 import Footer from './components/Footer';
-
+import DiscoverPage from './components/DiscoverPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    (async() => {
+    (async () => {
       await dispatch(authenticate());
       setLoaded(true);
     })();
@@ -28,35 +28,37 @@ function App() {
   }
 
   return (
-    <div className="page-container">
-      <div className="content-wrap">
+    <div className='page-container'>
+      <div className='content-wrap'>
         <BrowserRouter>
           <NavBar />
-            <Switch>
-              <Route path='/login' exact={true}>
-                <LoginForm />
-              </Route>
-              <Route path='/sign-up' exact={true}>
-                <SignUpForm />
-              </Route>
-              <ProtectedRoute path='/users' exact={true} >
-                <UsersList/>
-              </ProtectedRoute>
-              <ProtectedRoute path='/users/:userId' exact={true} >
-                <User />
-              </ProtectedRoute>
-              <ProtectedRoute path='/' exact={true} >
-                <h1>My Home Page</h1>
-              </ProtectedRoute>
-              <Route path='/users/:userId/answers' exact={true}>
-                <AnswersForm />
-              </Route>
-            </Switch>
+          <Switch>
+            <Route path='/login' exact={true}>
+              <LoginForm />
+            </Route>
+            <Route path='/sign-up' exact={true}>
+              <SignUpForm />
+            </Route>
+            <ProtectedRoute path='/users' exact={true}>
+              <UsersList />
+            </ProtectedRoute>
+            <ProtectedRoute path='/users/:userId' exact={true}>
+              <User />
+            </ProtectedRoute>
+            <ProtectedRoute path='/discover' exact={true}>
+              <DiscoverPage />
+            </ProtectedRoute>
+            <ProtectedRoute path='/' exact={true}>
+              <h1>My Home Page</h1>
+            </ProtectedRoute>
+            <Route path='/users/:userId/answers' exact={true}>
+              <AnswersForm />
+            </Route>
+          </Switch>
         </BrowserRouter>
-        </div>
-        <Footer />
+      </div>
+      <Footer />
     </div>
-
   );
 }
 
