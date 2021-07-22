@@ -1,5 +1,6 @@
 const SET_USERS = 'users/SET_USERS';
 const GET_USER = 'users/GET_USER';
+const GET_USERS_LIST = 'users/GET_USERS_LIST'
 
 const setUsers = (users) => ({
     type:SET_USERS,
@@ -28,6 +29,12 @@ export const getOneUser = (id) => async (dispatch) => {
       dispatch(setOneUser(user));
     }
 };
+
+export const getUsersList = (id) => async(dispatch) => {
+    const res = await fetch(`/api/users/${id}`);
+
+    // if (res)
+}
 
 
 const initialState = {}

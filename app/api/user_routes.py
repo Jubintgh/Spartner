@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify
 from flask import request
 from flask_login import login_required
-from app.models import User, db
+from app.models import Answer, User, db
 
 user_routes = Blueprint('users', __name__)
 
@@ -63,6 +63,22 @@ def new_like(id):
             'liked_user': 'success'
            }
 
+#createDisLike
+@user_routes.route('/<int:id>/dislike', methods=['POST'])
+def new_dislike(id):
+    disliked_instance = request.json
+    disliked_user_id = disliked_instance['disliked_id']
+
+    disliker = User.query.get(id)
+    disliked = User.query.get(disliked_user_id)
+
+    disliked.disliked_by.append(disliker)
+    db.session.commit()
+
+    return {
+            'disliked_user': 'success'
+           }
+
 
 #removeLike
 @user_routes.route('/<int:id>/like', methods=['DELETE'])
@@ -93,9 +109,19 @@ def delete_like(id):
 def get_user_list(id):
     user = User.query.get(id)
     likes_users = user.likes
-    likes_ids = [like.id for like in likes_users]
+    disliked_users = user.dislikes
 
-    new_users = User.query.filter(User.id.any(User.id.notin_(likes_ids))).limit(10)
+    no_show = [like.id for like in likes_users]
+    dislikes_ids = [dislike.id for dislike in disliked_users]
+
+    no_show = no_show + dislikes_ids
+    no_show.append(id)
     
 
-    return {'new_users': [user for user in new_users]}
+    unseen_users = User.query.filter(User.id.not_in(no_show)).join(Answer)
+
+    print(unseen_users, "asdasdiujasdijasodijnasoidmasodmkls")
+
+    return {
+            'unseen_users': [user.to_dict() for user in unseen_users], 
+        }
