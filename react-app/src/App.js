@@ -11,6 +11,7 @@ import { authenticate } from './store/session';
 import AnswersForm from './components/auth/AnswersForm';
 import Footer from './components/Footer';
 import DiscoverPage from './components/DiscoverPage';
+import LandingPage from './components/LandingPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -33,6 +34,9 @@ function App() {
         <BrowserRouter>
           <NavBar />
           <Switch>
+          <Route path='/' exact={true}>
+              <LandingPage />
+            </Route>
             <Route path='/login' exact={true}>
               <LoginForm />
             </Route>
@@ -48,9 +52,6 @@ function App() {
             <ProtectedRoute path='/discover' exact={true}>
               <DiscoverPage />
             </ProtectedRoute>
-            <ProtectedRoute path='/' exact={true}>
-              <h1>My Home Page</h1>
-            </ProtectedRoute>
             <Route path='/users/:userId/answers' exact={true}>
               <AnswersForm />
             </Route>
@@ -61,5 +62,8 @@ function App() {
     </div>
   );
 }
+{/* <ProtectedRoute path='/' exact={true}>
+  <LandingPage />
+</ProtectedRoute> */}
 
 export default App;
