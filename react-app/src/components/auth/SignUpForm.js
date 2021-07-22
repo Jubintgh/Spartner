@@ -102,6 +102,7 @@ const SignUpForm = () => {
         ))}
       </div>
       <div className="form-container">
+        <div className="form-actualForm">
         <div className="form-half">
 
       <div classname="form-question">
@@ -282,8 +283,9 @@ const SignUpForm = () => {
       </div>
       </div>
         </div>
-      </div>
+        </div>
       <button type='submit'>Sign Up</button>
+      </div>
     </form>
   );
 };
