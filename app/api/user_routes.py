@@ -123,11 +123,10 @@ def get_user_list(id):
     list_items = []
     for unseen_user in unseen_users:
         for item in unseen_user:
-            s = item.to_dict()
-            my_dict.update(s)
+            table_dict = item.to_dict()
+            my_dict.update(table_dict)
 
         list_items.append(my_dict)
-
 
     return {
             'unseen_users': list_items
