@@ -11,6 +11,8 @@ import { MdKeyboardArrowRight } from 'react-icons/md';
 import { GiWeight, GiCage } from 'react-icons/gi';
 import { BiRuler, BiMedal } from 'react-icons/bi';
 import { VscGraph } from 'react-icons/vsc';
+import dislikeClicked from '../../../public';
+import likeClicked from '../../../public';
 
 const DiscoverPage = () => {
   const dispatch = useDispatch();
@@ -107,12 +109,14 @@ const DiscoverPage = () => {
                 <p>{firstUser?.nickname}</p>
               </div>
             )}
-            <div>
-              <h3>Religion</h3>
-              <p>
-                {firstUser?.religion === null ? 'None' : firstUser?.religion}
-              </p>
-            </div>
+            {firstUser?.nickname === null ? null : (
+              <div>
+                <h3>Religion</h3>
+                <p>
+                  {firstUser?.religion === null ? 'None' : firstUser?.religion}
+                </p>
+              </div>
+            )}
             {firstUser?.pets === null ? null : (
               <div>
                 <h3>Pets</h3>
