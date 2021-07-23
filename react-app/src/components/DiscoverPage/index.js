@@ -7,9 +7,10 @@ import { createLike } from '../../store/likes';
 import { getCurrentUserAndAnswers } from '../../store/session';
 import { createDislike } from '../../store/dislikes';
 import { MdKeyboardArrowRight } from 'react-icons/md';
-import { GiWeight, GiCage } from 'react-icons/gi';
+import { GiWeight, GiCage, GiBoxingGlove } from 'react-icons/gi';
 import { BiRuler, BiMedal } from 'react-icons/bi';
 import { VscGraph } from 'react-icons/vsc';
+import { FiUser, FiMapPin } from 'react-icons/fi';
 
 const DiscoverPage = () => {
   const dispatch = useDispatch();
@@ -55,16 +56,88 @@ const DiscoverPage = () => {
     }
   };
 
+  useEffect(() => {
+    dispatch(getNewUsers(id));
+    dispatch(getCurrentUserAndAnswers(id));
+  }, [dispatch, id]);
+
+  let available;
+  if (Number(firstUser?.availability) === 0) {
+    available = 'All Week';
+  } else if (Number(firstUser?.availability) === 1) {
+    available = 'Week Days';
+  } else {
+    available = 'Weekends';
+  }
+
+  let weightClass;
+  if (Number(firstUser?.weight_class) === 0) {
+    weightClass = "Women's Strawweight";
+  } else if (Number(firstUser?.weight_class) === 1) {
+    weightClass = "Women's Bantamweight";
+  } else if (Number(firstUser?.weight_class) === 2) {
+    weightClass = "Women's Featherweight";
+  } else if (Number(firstUser?.weight_class) === 3) {
+    weightClass = "Women's Lightweight";
+  } else if (Number(firstUser?.weight_class) === 4) {
+    weightClass = 'Lightweight';
+  } else if (Number(firstUser?.weight_class) === 5) {
+    weightClass = 'Middleweight';
+  } else if (Number(firstUser?.weight_class) === 6) {
+    weightClass = 'Heavyweight';
+  } else {
+    return 'N/A';
+  }
+
+  let discipline;
+  if (Number(firstUser?.discipline) === 0) {
+    discipline = 'Southpaw';
+  } else if (Number(firstUser?.discipline) === 1) {
+    discipline = 'Kickboxing';
+  } else if (Number(firstUser?.discipline) === 2) {
+    discipline = 'Orthodox';
+  } else if (Number(firstUser?.discipline) === 3) {
+    discipline = 'Judo';
+  } else if (Number(firstUser?.discipline) === 4) {
+    discipline = 'Muay Thai';
+  } else if (Number(firstUser?.discipline) === 5) {
+    discipline = 'Grappling';
+  } else if (Number(firstUser?.discipline) === 6) {
+    discipline = 'Counter Striker';
+  } else if (Number(firstUser?.discipline) === 7) {
+    discipline = 'Karate';
+  } else if (Number(firstUser?.discipline) === 8) {
+    discipline = 'Switch';
+  } else if (Number(firstUser?.discipline) === 9) {
+    discipline = 'Brazilian Jiu-Jitsu';
+  } else {
+    return;
+  }
+
+  let professionalLevel;
+  console.log(firstUser?.professional_level);
+  if (Number(firstUser?.professional_level) === 0) {
+    professionalLevel = 'Beginner';
+  } else if (Number(firstUser?.professional_level) === 1) {
+    professionalLevel = 'Amateur';
+  } else {
+    professionalLevel = 'Professional';
+  }
+
+  let gender;
+  console.log(firstUser?.gender);
+  if (Number(firstUser?.gender) === 0) {
+    gender = 'Female';
+  } else if (Number(firstUser?.gender) === 1) {
+    gender = 'Male';
+  } else {
+    gender = 'Other';
+  }
   // const createMatchPercentage = () => {
   //   let total = 1;
 
   //   if (user)
   // };
-
-  useEffect(() => {
-    dispatch(getNewUsers(id));
-    dispatch(getCurrentUserAndAnswers(id));
-  }, [dispatch, id]);
 
   let usersLeftOrNoUsers;
   if (allUsersNotLiked.length === 0) {
@@ -113,7 +186,15 @@ const DiscoverPage = () => {
             </div>
           </div>
           <div className='user-picture'>
-            <img alt='' src={firstUser?.img_url} className='user-img'></img>
+            <img
+              alt=''
+              src={
+                firstUser?.img_url === 'inTheWorks.jpg'
+                  ? 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'
+                  : firstUser?.img_url
+              }
+              className='user-img'
+            ></img>
           </div>
         </div>
         <div className='bio-container'>
@@ -132,6 +213,12 @@ const DiscoverPage = () => {
               <div className='walkout-song'>
                 <h3>Walkout Song</h3>
                 <p>{firstUser?.walkout_song}</p>
+              </div>
+            )}
+            {firstUser?.availability === null ? null : (
+              <div className='availability'>
+                <h3>Availability</h3>
+                <p>{available}</p>
               </div>
             )}
             {firstUser?.has_kids === null ? null : (
@@ -160,9 +247,21 @@ const DiscoverPage = () => {
             )}
           </div>
           <div className='bio-right'>
+            <div className='gender'>
+              <FiUser className='bio-right-icon' />
+              <p>{gender}</p>
+            </div>
+            <div className='location'>
+              <FiMapPin className='bio-right-icon' />
+              <p>{firstUser?.location}</p>
+            </div>
             <div className='weightclass'>
               <GiWeight className='bio-right-icon' />
-              <p>{firstUser?.weight_class}</p>
+              <p>{weightClass}</p>
+            </div>
+            <div className='discipline'>
+              <GiBoxingGlove className='bio-right-icon' />
+              <p>{discipline}</p>
             </div>
             <div className='reach'>
               <BiRuler className='bio-right-icon' />
@@ -170,7 +269,7 @@ const DiscoverPage = () => {
             </div>
             <div className='profession-level'>
               <GiCage className='bio-right-icon' />
-              <p>{firstUser?.professional_level}</p>
+              <p>{professionalLevel}</p>
             </div>
             <div className='current-record'>
               <VscGraph className='bio-right-icon' />
