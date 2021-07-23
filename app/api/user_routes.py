@@ -29,7 +29,6 @@ def user(id):
     user = User.query.get(id)
     user_answer = user.to_dict()
     user_answer.update(user.answer.to_dict())
-    print(user_answer)
     return user_answer
 
 
@@ -166,6 +165,8 @@ def get_user_list(id):
         user_answer = user.to_dict()
         user_answer.update(user.answer.to_dict())
         users_answers.append(user_answer)
+
+    print(user_answer)
     return {'users_answers': [ans for ans in users_answers]}
 
 #Matches render
@@ -201,7 +202,7 @@ def post_answers(id):
     """
     Creates a new answer and adds them in database
     """
-
+    
     form = AnswerForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
