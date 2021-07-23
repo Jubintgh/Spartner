@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useEffect, useSelector, useDispatch } from 'react-redux'
 import { Redirect, useHistory } from 'react-router-dom';
 import { signUp } from '../../store/session';
+import DemoUserButton from './DemoUserButton';
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
@@ -229,6 +230,7 @@ const SignUpForm = () => {
         ></input>
       </div>
       <button type='submit'>Sign Up</button>
+      <DemoUserButton />
     </form>
   );
 };
