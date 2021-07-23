@@ -51,7 +51,8 @@ export const createAnswer = (
     religion,
     pets,
     availability,
-    rate ) => async (dispatch) => {
+    rate
+    ) => async (dispatch) => {
     const res = await fetch(`/api/users/${user_id}/answers`, {
         method: 'POST',
         headers: {
@@ -84,12 +85,12 @@ export const createAnswer = (
         return answer
     } else if (res.status < 500) {
     const data = await res.json();
-    if (data.errors) {
+    if (data?.errors) {
         return data.errors;
-    }
     } else {
-    return ['An error occurred. Please try again.']
+        return ['An error occurred. Please try again.']
     }
+}
 }
 
 export const editAnswer = (id) => async (dispatch) => {

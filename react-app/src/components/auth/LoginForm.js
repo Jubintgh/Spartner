@@ -70,7 +70,6 @@ const LoginForm = () => {
             ))}
           </div>
         <DemoUserButton />
-      </div>
     </form>
   );
 };

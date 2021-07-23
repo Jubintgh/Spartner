@@ -444,7 +444,7 @@ const AnswersForm = () => {
       <button type='submit'>Submit Answers</button>
       </div>
       <div className="form-errors">
-            {errors.map((error, ind) => (
+            {errors && errors?.map((error, ind) => (
               <div key={ind}>{error}</div>
             ))}
           </div>
