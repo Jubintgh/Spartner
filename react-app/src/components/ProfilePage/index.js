@@ -1,6 +1,6 @@
-import './DiscoverPage.css';
+import './ProfilePage.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link, useParams } from 'react-router-dom';
+import { useParams, useHistory, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getOneUser } from '../../store/users';
 import { ImCancelCircle } from 'react-icons/im';
@@ -18,6 +18,7 @@ import { FiUser, FiMapPin } from 'react-icons/fi';
 
 const DiscoverPage = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const { userId } = useParams();
   const firstUser = useSelector((state) => state.users[userId]);
   const { user } = useSelector((state) => state.session);
@@ -34,13 +35,15 @@ const DiscoverPage = () => {
     e.preventDefault();
     dispatch();
     // dispatch(removeUser(allUsersNotLiked.shift()));
-    // dispatch(createDislike(id, firstUser?.id));
+    dispatch(createDislike(id, firstUser?.id));
+    history.push('/discover');
   };
 
   const handleClickLike = (e) => {
     e.preventDefault();
     // dispatch(removeUser(allUsersNotLiked.shift()));
-    // dispatch(createLike(id, firstUser?.id));
+    dispatch(createLike(id, firstUser?.id));
+    history.push('/discover');
   };
 
   const changeImageSourceLiked = (e) => {
@@ -178,7 +181,21 @@ const DiscoverPage = () => {
         </div>
       </div>
     );
+  } else {
+    console.log('Hello');
+    currentUserPageOrDifferentUserPage = (
+      <div className='profile-edit-links'>
+        <div>
+          <Link to={`/users/${id}/edit-info`}>Edit Info</Link>
+        </div>
+        <div>|</div>
+        <div>
+          <Link to={`/users/${id}/edit-answers`}>Edit Answers</Link>
+        </div>
+      </div>
+    );
   }
+
   return (
     <div className='discover-page'>
       <div className='main-area-container'>

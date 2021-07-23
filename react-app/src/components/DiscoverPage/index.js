@@ -136,17 +136,6 @@ const DiscoverPage = () => {
     gender = 'Other';
   }
 
-  console.log(firstUser.location.split(',')[1]);
-
-  // Gender = 33
-  // Location(state) = 22
-  // Weightclass = 18
-  // Professional level = 10
-  // Availability = 6
-  // Reach = 1
-  // Vaccination = 6
-  // Discipline = 4
-
   const createMatchPercentage = () => {
     let total = 0;
 
@@ -233,48 +222,6 @@ const DiscoverPage = () => {
               <h3>About Me</h3>
               <p>{firstUser?.about}</p>
             </div>
-            {firstUser?.fav_rocky_fighter === null ? null : (
-              <div className='fav-rocky-fighter'>
-                <h3>Favorite Rocky Fighter</h3>
-                <p>{firstUser?.fav_rocky_fighter}</p>
-              </div>
-            )}
-            {firstUser?.walkout_song === null ? null : (
-              <div className='walkout-song'>
-                <h3>Walkout Song</h3>
-                <p>{firstUser?.walkout_song}</p>
-              </div>
-            )}
-            {firstUser?.availability === null ? null : (
-              <div className='availability'>
-                <h3>Availability</h3>
-                <p>{available}</p>
-              </div>
-            )}
-            {firstUser?.has_kids === false ? null : (
-              <div>
-                <h3>Has Kids</h3>
-                <p>{firstUser?.has_kids}</p>
-              </div>
-            )}
-            {firstUser?.nickname === null ? null : (
-              <div>
-                <h3>Nickname</h3>
-                <p>{firstUser?.nickname}</p>
-              </div>
-            )}
-            {firstUser?.religion === null ? null : (
-              <div>
-                <h3>Religion</h3>
-                <p>{firstUser?.religion}</p>
-              </div>
-            )}
-            {firstUser?.pets === null ? null : (
-              <div>
-                <h3>Pets</h3>
-                <p>{firstUser?.pets}</p>
-              </div>
-            )}
           </div>
           <div className='bio-right'>
             <div className='gender'>
@@ -288,30 +235,6 @@ const DiscoverPage = () => {
             <div className='weightclass'>
               <GiWeight className='bio-right-icon' />
               <p>{weightClass}</p>
-            </div>
-            <div className='discipline'>
-              <GiBoxingGlove className='bio-right-icon' />
-              <p>{discipline}</p>
-            </div>
-            <div className='reach'>
-              <BiRuler className='bio-right-icon' />
-              <p>{firstUser?.reach} in.</p>
-            </div>
-            <div className='profession-level'>
-              <GiCage className='bio-right-icon' />
-              <p>{professionalLevel}</p>
-            </div>
-            <div className='current-record'>
-              <VscGraph className='bio-right-icon' />
-              <p>{firstUser?.current_record}</p>
-            </div>
-            <div className='prev-titles'>
-              <BiMedal className='bio-right-icon' />
-              <p>
-                {firstUser?.previous_titles === null
-                  ? 'No Previous Titles'
-                  : firstUser?.previous_titles}
-              </p>
             </div>
           </div>
         </div>

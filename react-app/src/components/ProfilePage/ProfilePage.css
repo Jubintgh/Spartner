@@ -1,0 +1,15 @@
+.profile-edit-links {
+  display: flex;
+  width: 200px;
+  justify-content: space-around;
+}
+
+.profile-edit-links > div > * {
+  text-decoration: none;
+  color: #736ced;
+}
+
+.profile-edit-links > div {
+  text-decoration: none;
+  color: #736ced;
+}
