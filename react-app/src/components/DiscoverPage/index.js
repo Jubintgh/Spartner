@@ -1,7 +1,7 @@
 import './DiscoverPage.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { getUsers } from '../../store/users';
 import { ImCancelCircle } from 'react-icons/im';
 import { AiFillHeart } from 'react-icons/ai';
@@ -119,7 +119,6 @@ const DiscoverPage = () => {
   }
 
   let professionalLevel;
-  console.log(firstUser?.professional_level);
   if (Number(firstUser?.professional_level) === 0) {
     professionalLevel = 'Beginner';
   } else if (Number(firstUser?.professional_level) === 1) {
@@ -129,7 +128,6 @@ const DiscoverPage = () => {
   }
 
   let gender;
-  console.log(firstUser?.gender);
   if (Number(firstUser?.gender) === 0) {
     gender = 'Female';
   } else if (Number(firstUser?.gender) === 1) {
@@ -137,11 +135,39 @@ const DiscoverPage = () => {
   } else {
     gender = 'Other';
   }
-  // const createMatchPercentage = () => {
-  //   let total = 1;
 
-  //   if (user)
-  // };
+  console.log(firstUser.location.split(',')[1]);
+
+  // Gender = 33
+  // Location(state) = 22
+  // Weightclass = 18
+  // Professional level = 10
+  // Availability = 6
+  // Reach = 1
+  // Vaccination = 6
+  // Discipline = 4
+
+  const createMatchPercentage = () => {
+    let total = 0;
+
+    if (user.gender === firstUser.gender) {
+      total += 49;
+    } else if (Number(firstUser.gender) === 2) {
+      total += 33;
+    } else {
+      total += 0;
+    }
+    if (user.location.split(',')[1] === firstUser.location.split(',')[1])
+      total += 22;
+    if (user.weight_class === firstUser.weight_class) total += 11;
+    if (user.professional_level === firstUser.professional_level) total += 8;
+    if (user.availability === firstUser.availability) total += 4;
+    if (user.reach === firstUser.reach) total += 1;
+    if (user.vaccinated === firstUser.vaccinated) total += 3;
+    if (user.discipline === firstUser.discipline) total += 2;
+
+    return total;
+  };
 
   let usersLeftOrNoUsers;
   if (allUsersNotLiked.length === 0) {
@@ -162,7 +188,7 @@ const DiscoverPage = () => {
                 <p className='last-name'>{firstUser?.last_name}</p>
               </div>
               <p>|</p>
-              <p>Match %</p>
+              <p>{createMatchPercentage()}% Compatibility</p>
               <p>|</p>
               <Link to={`/users/${id}`} className='view-profile-link'>
                 View Profile <MdKeyboardArrowRight className='arrow-link' />
@@ -225,7 +251,7 @@ const DiscoverPage = () => {
                 <p>{available}</p>
               </div>
             )}
-            {firstUser?.has_kids === null ? null : (
+            {firstUser?.has_kids === false ? null : (
               <div>
                 <h3>Has Kids</h3>
                 <p>{firstUser?.has_kids}</p>
