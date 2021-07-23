@@ -6,8 +6,6 @@ import { getNewUsers, removeUser } from '../../store/discover';
 import { createLike } from '../../store/likes';
 import { getCurrentUserAndAnswers } from '../../store/session';
 import { createDislike } from '../../store/dislikes';
-import { ImCancelCircle } from 'react-icons/im';
-import { AiFillHeart } from 'react-icons/ai';
 import { MdKeyboardArrowRight } from 'react-icons/md';
 import { GiWeight, GiCage } from 'react-icons/gi';
 import { BiRuler, BiMedal } from 'react-icons/bi';
@@ -57,13 +55,11 @@ const DiscoverPage = () => {
     }
   };
 
-  console.log(user);
+  // const createMatchPercentage = () => {
+  //   let total = 1;
 
-  const createMatchPercentage = () => {
-    let total = 1;
-
-    // if (user)
-  };
+  //   if (user)
+  // };
 
   useEffect(() => {
     dispatch(getNewUsers(id));
