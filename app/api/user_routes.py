@@ -42,6 +42,7 @@ def user(id):
 """
 
 @user_routes.route('<int:id>/profile/update', methods=['PUT'])
+# @login_required
 def edit_info(id):
     """
     Updates Info
@@ -51,9 +52,8 @@ def edit_info(id):
     if form.validate_on_submit():
         ex_user_info = User.query.get(id)
         form.populate_obj(ex_user_info)
-        
-        ex_user_info.username = form.data["username"]
         ex_user_info.email = form.data["email"]
+        ex_user_info.username = form.data["username"]
         ex_user_info.password = form.data["password"]
         ex_user_info.first_name = form.data["first_name"]
         ex_user_info.last_name = form.data["last_name"]
@@ -79,6 +79,7 @@ def edit_info(id):
 
 #getAllUserLikes
 @user_routes.route('/<int:id>/likes')
+# @login_required
 def get_likes(id):
 
     user = User.query.get(id)
@@ -88,6 +89,7 @@ def get_likes(id):
 
 #getAllLikedBy
 @user_routes.route('/<int:id>/liked')
+# @login_required
 def get_liked_by(id):
 
     user = User.query.get(id)
@@ -97,6 +99,7 @@ def get_liked_by(id):
 
 #createLike
 @user_routes.route('/<int:id>/like', methods=['POST'])
+# @login_required
 def new_like(id):
     liked_instance = request.json
     liked_user_id = liked_instance['liked_id']
@@ -113,6 +116,7 @@ def new_like(id):
 
 #createDisLike
 @user_routes.route('/<int:id>/dislike', methods=['POST'])
+# @login_required
 def new_dislike(id):
     disliked_instance = request.json
     disliked_user_id = disliked_instance['disliked_id']
@@ -130,6 +134,7 @@ def new_dislike(id):
 
 #removeLike
 @user_routes.route('/<int:id>/like', methods=['DELETE'])
+# @login_required
 def delete_like(id):
     liked_instance = request.json
     liked_user_id = liked_instance['liked_id']
@@ -200,11 +205,13 @@ def get_matches_list(id):
 """
 
 @user_routes.route('/<int:id>/answers')
+# @login_required
 def get_answers(id):
     answer = Answer.query.filter_by(Answer.user_id == id)
     return {'answers': answer}
 
 @user_routes.route('/<int:id>/answers', methods=['POST'])
+# @login_required
 def post_answers(id):
     """
     Creates a new answer and adds them in database
@@ -240,6 +247,7 @@ def post_answers(id):
     return {"errors": form.errors}
 
 @user_routes.route('/<int:id>/answers', methods=['PUT'])
+# @login_required
 def update_answer():
     """
     Edits a existing answer and in our database based on the user's id

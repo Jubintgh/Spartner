@@ -3,6 +3,7 @@ from wtforms import StringField, IntegerField, BooleanField
 from wtforms.validators import DataRequired, Email
 from .signup_form import user_exists, username_exists
 
+
 class UpdateUserInfoForm(FlaskForm):
     username = StringField('username', validators=[DataRequired(), username_exists])
     email = StringField('email', validators=[DataRequired(), Email(), user_exists])
