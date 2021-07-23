@@ -202,5 +202,56 @@ def update_answer():
 
 """
 
-# @user_routes.route('/filter/<s>')
-# def get_filtered_user(id)
+@user_routes.route('/<int:id>/filter/<filter_t>')
+def filter_user(filter_t, id):
+
+    curr_user = User.query.get(id)
+    likes_users = curr_user.likes
+    disliked_users = curr_user.dislikes
+
+    no_show = [like.id for like in likes_users] #list of users that have been liked
+    dislikes_ids = [dislike.id for dislike in disliked_users] #list of users that have been disliked
+
+    no_show = no_show + dislikes_ids #combine above 2 lists
+    no_show.append(id) #list of users not to show
+
+    unseen_users = User.query.filter(User.id.not_in(no_show))
+
+    if filter_t == "vaccination":
+        user_vacc_stat = curr_user.answer.vaccinated
+        similar_users = []
+
+        for user in unseen_users:
+            if user.answer.vaccinated == user_vacc_stat:
+                similar_users.append(user)
+    
+        return { "vacc_stat": [ user.to_dict() for user in similar_users]}
+
+    if filter_t == "weight-class":
+        user_wc_stat = curr_user.answer.weight_class
+        similar_users = []
+
+        for user in unseen_users:
+            if user.answer.weight_class == user_wc_stat:
+                similar_users.append(user)
+    
+        return { "wc_stat": [ user.to_dict() for user in similar_users]}
+
+    if filter_t == "professional-level":
+        user_pro_stat = curr_user.answer.professional_level
+        similar_users = []
+
+        for user in unseen_users:
+            if user.answer.professional_level == user_pro_stat:
+                similar_users.append(user)
+    
+        return { "pro_stat": [ user.to_dict() for user in similar_users]}
+        
+    if filter_t == "coach":
+        similar_users = []
+
+        for user in unseen_users:
+            if user.coach == True:
+                similar_users.append(user)
+    
+        return { "coach_stat": [ user.to_dict() for user in similar_users]}
