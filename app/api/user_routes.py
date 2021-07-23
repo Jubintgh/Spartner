@@ -30,32 +30,34 @@ def user(id):
     return user.to_dict()
 
 
-@user_routes.route('/<int:id>', methods=['PUT'])
-def edit_info(id):
-    """
-    Updates Info
-    """
-    form = UpdateForm()
-    form['csrf_token'].data = request.cookies['csrf_token']
-    if form.validate_on_submit():
-        editted_user = User.query.get(id)
-        # form.populate_obj(editted_user)
-        editted_user = User(
-            username=form.data['username'],
-            email=form.data['email'],
-            first_name=form.data['first_name'],
-            last_name=form.data['last_name'],
-            age=form.data['age'],
-            location=form.data['location'],
-            gender=form.data['gender'],
-            coach=form.data['coach'],
-            discipline=form.data['discipline'],
-            img_url=form.data['img_url']
-        )
-        db.session.add(editted_user)
-        db.session.commit()
-        return user.to_dict()
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+#!!!!!!! still fixing this put route for user information!!!!!!!!!!!!!!!!!!!!!!!
+# @user_routes.route('/<int:id>', methods=['PUT'])
+# def edit_info(id):
+#     """
+#     Updates Info
+#     """
+#     form = UpdateForm()
+#     form['csrf_token'].data = request.cookies['csrf_token']
+#     if form.validate_on_submit():
+#         editted_user = User.query.get(id)
+#         # form.populate_obj(editted_user)
+#         editted_user = User(
+#             username=form.data['username'],
+#             email=form.data['email'],
+#             first_name=form.data['first_name'],
+#             last_name=form.data['last_name'],
+#             age=form.data['age'],
+#             location=form.data['location'],
+#             gender=form.data['gender'],
+#             coach=form.data['coach'],
+#             discipline=form.data['discipline'],
+#             img_url=form.data['img_url']
+#         )
+#         db.session.add(editted_user)
+#         db.session.commit()
+#         return user.to_dict()
+#     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 """
 
@@ -119,7 +121,6 @@ def delete_like(id):
 
 """
 
-
 ----------------------------------- USER ANSWERS APIs -----------------------------------
 
 
@@ -133,7 +134,7 @@ def get_answers(id):
 @user_routes.route('/<int:id>/answers', methods=['POST'])
 def post_answers(id):
     """
-    Creates a new anwer and adds them in database
+    Creates a new answer and adds them in database
     """
     form = AnswerForm()
     if form.validate_on_submit():
@@ -162,4 +163,13 @@ def post_answers(id):
 
 @user_routes.route('/<int:id>/answers', methods=['PUT'])
 def update_answer():
-    pass
+    """
+    Edits a existing answer and in our database based on the user's id
+    """
+
+    form = AnswerForm()
+    if form.validate_on_submit():
+        edit_answer=Answer.query.filter(Answer.user_id == id)
+        form.populate_obj(edit_answer)
+        db.session.commit()
+    return {"errors": form.errors}
