@@ -1,4 +1,4 @@
--area-container {
+.main-area-container {
   margin: auto;
   background-color: #1a1a19;
   width: 100%;
@@ -15,7 +15,6 @@
   display: flex;
   flex-direction: column;
   padding-bottom: 1em;
-  margin: auto;
 }
 
 .top-row,
@@ -47,8 +46,6 @@
   width: 900px;
   justify-content: space-between;
   margin-bottom: 40px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .bio-left > div > h3 {
