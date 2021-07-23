@@ -1,4 +1,4 @@
-.main-area-container {
+-area-container {
   margin: auto;
   background-color: #1a1a19;
   width: 100%;
@@ -14,14 +14,15 @@
   height: 440px;
   display: flex;
   flex-direction: column;
-  /* border-radius: 7px; */
+  padding-bottom: 1em;
 }
 
 .top-row,
 .user-info,
 .bio-container,
 .discover-btns,
-.view-profile-container {
+.view-profile-container,
+.full-name {
   display: flex;
 }
 
@@ -79,6 +80,8 @@
   justify-content: space-around;
   align-items: center;
   height: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .user-img {
@@ -94,3 +97,16 @@
   padding-left: 1em;
   padding-right: 1em;
 }
+
+.first-name {
+  margin-right: 0.5rem;
+}
+
+.discover-button {
+  height: 80px;
+  width: 80px;
+}
+
+.discover-button:active {
+}
+

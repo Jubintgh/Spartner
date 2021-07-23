@@ -25,7 +25,7 @@ class Answer(db.Model):
     weight_class = db.Column(db.Integer, nullable=False)
 
     user = db.relationship(
-        "User", 
+        "User",
         back_populates="answer"
     )
 
