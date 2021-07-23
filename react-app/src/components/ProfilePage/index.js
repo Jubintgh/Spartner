@@ -1,29 +1,26 @@
 import './ProfilePage.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams, useHistory, Link, Redirect } from 'react-router-dom';
+import { useParams, useHistory, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getOneUser } from '../../store/users';
 import { getNewUsers, removeUser } from '../../store/discover';
-import { createLike } from '../../store/likes';
+import { createLike, getAllUserLikes } from '../../store/likes';
 import { createDislike } from '../../store/dislikes';
 import { GiWeight, GiCage, GiBoxingGlove } from 'react-icons/gi';
 import { BiRuler, BiMedal } from 'react-icons/bi';
 import { VscGraph } from 'react-icons/vsc';
 import { FiUser, FiMapPin } from 'react-icons/fi';
 
-const DiscoverPage = () => {
+const ProfilePage = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { userId } = useParams();
   const firstUser = useSelector((state) => state.users[userId]);
   const { user } = useSelector((state) => state.session);
   const id = Number(user.id);
-  const allUsersNotLiked = useSelector((state) => state.discover);
   const allUsersNotLikedObj = useSelector((state) => state.discover);
-
-  console.log(allUsersNotLikedObj);
-
-  console.log(firstUser?.id);
+  const userLikesObj = useSelector((state) => state.likes.likes);
+  const userLikes = userLikesObj?.user_likes;
 
   const [likeButton, setLikeButton] = useState('/like-button-unclicked.png');
   const [dislikeButton, setDislikeButton] = useState(
@@ -63,6 +60,7 @@ const DiscoverPage = () => {
   useEffect(() => {
     dispatch(getNewUsers(id));
     // dispatch(getCurrentUserAndAnswers(id));
+    dispatch(getAllUserLikes(id));
     dispatch(getOneUser(userId));
   }, [dispatch, id, userId]);
 
@@ -326,4 +324,4 @@ const DiscoverPage = () => {
   );
 };
 
-export default DiscoverPage;
+export default ProfilePage;
