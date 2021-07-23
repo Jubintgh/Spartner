@@ -49,10 +49,6 @@ function App() {
               <ProtectedRoute path='/users/:userId' exact={true} >
                 <User />
               </ProtectedRoute>
-              <ProtectedRoute path='/discover' exact={true} >
-                <h1>My Home Page</h1>
-                <h2> what austin and jay are currently on</h2>
-              </ProtectedRoute>
               <Route path='/users/:userId/init-answers' exact={true}>
                 <AnswersForm />
               </Route>
