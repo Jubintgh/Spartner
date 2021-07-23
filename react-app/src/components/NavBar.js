@@ -88,7 +88,15 @@ const NavBar = () => {
     )
   }
   return (
+    // ask Tony about this tomorrow
+    <nav>
+      <div className="nav-logo">
+        <NavLink id="navbar__brand-home" to='/' exact={true} activeClassName='active'>
+            <img src='https://user-images.githubusercontent.com/35717793/126367109-4954f04b-0cb7-4ca9-a25a-d18e6b7cb74a.png' alt='logo' id='navbar__logo' />
+        </NavLink>
+      </div>
       {navContent}
+    </nav>
   );
 };
 
