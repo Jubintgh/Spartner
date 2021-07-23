@@ -19,13 +19,15 @@ const LikesContainer = () => {
 
     return (
         <div>
-        <h1> Liked Users </h1>
-            <div className='users-container'>
-                {userLikes?.map((user) => (
-                    <div className='user-square-container'>
-                        <UserSquare user={user} key={user.id}/>
-                    </div>
-                ))}
+            <div className='outer-container'>
+            <h1> Liked Users </h1>
+                <div className='users-container'>
+                    {userLikes?.map((user) => (
+                        <div className='user-square-container'>
+                            <UserSquare user={user} key={user.id}/>
+                        </div>
+                    ))}
+                </div>
             </div>
         </div>
     )

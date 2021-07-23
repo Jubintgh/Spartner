@@ -17,9 +17,9 @@ const MatchesContainer = () => {
 
     // const matchesArray = userLikes?.filter(user => userLikers?.includes(user.id))
     let matchesArray = []
-    for (let i = 0; i < userLikes.length; i++) {
-        for (let j = 0; j < userLikers.length; j++) {
-            if (userLikes[i].id === userLikers[j].id) {
+    for (let i = 0; i < userLikes?.length; i++) {
+        for (let j = 0; j < userLikers?.length; j++) {
+            if (userLikes[i]?.id === userLikers[j]?.id) {
                 matchesArray.push(userLikes[i])
             }
         }
@@ -32,13 +32,16 @@ const MatchesContainer = () => {
 
     return (
         <div>
-        <h1> Matches </h1>
-            <div className='users-container'>
-                {matchesArray?.map((user) => (
-                    <div className='user-square'>
-                        <UserSquare user={user} key={user.id}/>
-                    </div>
-                ))}
+            <h1> Matches </h1>
+            <div className='outer-container'>
+
+                <div className='users-container'>
+                    {matchesArray?.map((user) => (
+                        <div className='user-square'>
+                            <UserSquare user={user} key={user.id}/>
+                        </div>
+                    ))}
+                </div>
             </div>
         </div>
     )

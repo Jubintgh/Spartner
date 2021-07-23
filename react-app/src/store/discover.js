@@ -56,7 +56,6 @@ const discoverReducer = (state = initialState, action) => {
       delete newState[action.user.id];
       return newState;
     case GET_MATCHES:
-      console.log(action.users)
       const matchedUsers = {};
       action.users.forEach((user) => {
         matchedUsers[user.id] = user;
