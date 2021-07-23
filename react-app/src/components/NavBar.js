@@ -5,42 +5,19 @@ import LogoutButton from './auth/LogoutButton';
 import DemoUserButton from './auth/DemoUserButton';
 
 const NavBar = () => {
-<<<<<<< HEAD
   const user = useSelector(state => state.session.user);
   let profImage = null
+  let navContent = null
 
   if(user) {
     profImage = user.img_url
   }
 
-  let navContent = null;
-
-  if (!user) {
+  if(!user) {
     navContent = (
-    <ul className="navbar">
-        <li className="navbar__link">
-        <NavLink to='/' exact={true}  activeClassName='active'>
-=======
-  return (
-    <nav>
-      <div className='nav-logo'>
-        <NavLink
-          id='navbar__brand-home'
-          to='/'
-          exact={true}
-          activeClassName='active'
-        >
-          <img
-            src='https://user-images.githubusercontent.com/35717793/126367109-4954f04b-0cb7-4ca9-a25a-d18e6b7cb74a.png'
-            alt='logo'
-            id='navbar__logo'
-          />
-        </NavLink>
-      </div>
       <ul className='navbar'>
         <li className='navbar__link'>
           <NavLink to='/discover' exact={true} activeClassName='active'>
->>>>>>> seedsFix
             Home
           </NavLink>
         </li>
@@ -59,7 +36,6 @@ const NavBar = () => {
             Users
           </NavLink>
         </li>
-<<<<<<< HEAD
         <li className="navbar__button">
           <DemoUserButton />
         </li>
@@ -67,7 +43,7 @@ const NavBar = () => {
     )
   } else {
     navContent = (
-    <ul className="navbar">
+      <ul className="navbar">
         <li className="navbar__link">
         <NavLink to='/discover' exact={true}  activeClassName='active'>
             Home
@@ -92,9 +68,6 @@ const NavBar = () => {
             <img src={`${profImage}`} style={{height:'65px', width:'65px', 'borderRadius':'50%', margin: '5px', marginTop : '10px', objectFit: 'cover'}}/>
         </li>
         <li className="navbar__button">
-=======
-        <li className='navbar__button'>
->>>>>>> seedsFix
           <LogoutButton />
         </li>
       </ul>
