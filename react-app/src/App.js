@@ -12,7 +12,10 @@ import AnswersForm from './components/auth/AnswersForm';
 import Footer from './components/Footer';
 import DiscoverPage from './components/DiscoverPage';
 import EditAnswersForm from './components/EditAnswersForm/index'
+import EditUserForm from './components/EditUserInfo/index'
 
+import DiscoverPage from './components/DiscoverPage';
+import LandingPage from './components/LandingPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -35,6 +38,9 @@ function App() {
         <BrowserRouter>
           <NavBar />
             <Switch>
+              <Route path='/' exact={true}>
+                <LandingPage />
+              </Route>
               <Route path='/login' exact={true}>
                 <LoginForm />
               </Route>
@@ -50,16 +56,18 @@ function App() {
               <ProtectedRoute path='/users/:userId' exact={true} >
                 <User />
               </ProtectedRoute>
-              <ProtectedRoute path='/discover' exact={true} >
-                <h1>My Home Page</h1>
-                <h2> what austin and jay are currently on</h2>
-              </ProtectedRoute>
               <Route path='/users/:userId/init-answers' exact={true}>
                 <AnswersForm />
               </Route>
               <Route path='/users/:userId/edit-answers' exact={true}>
                 <EditAnswersForm />
               </Route>
+              <Route path='/users/:userId/edit-info' exact={true}>
+                <EditUserForm />
+              </Route>
+              <ProtectedRoute path='/discover' exact={true}>
+                <DiscoverPage />
+              </ProtectedRoute>
             </Switch>
         </BrowserRouter>
       </div>
@@ -67,5 +75,8 @@ function App() {
     </div>
   );
 }
+{/* <ProtectedRoute path='/' exact={true}>
+  <LandingPage />
+</ProtectedRoute> */}
 
 export default App;

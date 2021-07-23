@@ -24,9 +24,9 @@ const AnswersForm = () => {
   const user = useSelector(state => state.session.user);
   const history = useHistory();
   const dispatch = useDispatch();
-  const isCoach = user.coach;
-  const gender = user.gender;
-  const user_id = user.id
+  const isCoach = user?.coach;
+  const gender = user?.gender;
+  const user_id = user?.id;
 
   const onSubmit = async (e) => {
     e.preventDefault();

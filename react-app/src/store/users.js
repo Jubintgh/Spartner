@@ -12,6 +12,7 @@ const setOneUser = (user) => ({
     user,
 });
 
+
 export const getUsers = () => async(dispatch) => {
     const res = await fetch('/api/users');
 
@@ -27,6 +28,47 @@ export const getOneUser = (id) => async (dispatch) => {
     if (res.ok) {
       const user = await res.json();
       dispatch(setOneUser(user));
+    }
+};
+
+export const editOneUser = (
+    userId,
+    username,
+    email,
+    password,
+    first_name,
+    last_name,
+    age,
+    location,
+    gender,
+    coach,
+    discipline,
+    img_url) => async (dispatch) => {
+    const res = await fetch(`/api/users/${userId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            username,
+            email,
+            password,
+            first_name,
+            last_name,
+            age,
+            location,
+            gender,
+            coach,
+            discipline,
+            img_url
+        })
+        }
+    )
+        
+    if (res.ok) {
+      const user = await res.json();
+      dispatch(setOneUser(user));
+      return user
     }
 };
 
