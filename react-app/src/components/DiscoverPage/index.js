@@ -16,6 +16,8 @@ import { BiRuler, BiMedal } from 'react-icons/bi';
 import { VscGraph } from 'react-icons/vsc';
 import { FiUser, FiMapPin } from 'react-icons/fi';
 
+import PreferencesBar from '../../components/PreferencesBar';
+
 const DiscoverPage = () => {
   const dispatch = useDispatch();
   const allUsersNotLiked = useSelector((state) =>
@@ -178,7 +180,7 @@ const DiscoverPage = () => {
     usersLeftOrNoUsers = (
       <div className='main-area-container'>
         <div className='discover-title'>
-          <h1>Recommended Just For You</h1>
+          <PreferencesBar/>
         </div>
         <div className='user-info-container'>
           <div className='top-row'>
