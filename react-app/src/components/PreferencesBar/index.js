@@ -1,30 +1,47 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux'
 
 const PreferencesBar = () => {
 const user = useSelector(state => state.session.user);
 const isCoach = user?.coach;
 
-  
-/* 
-const changeImageSourceLiked = (e) => {
-    if (likeButton === '/like-button-clicked.png') {
-      setLikeButton('/like-button-unclicked.png');
-    } else {
-      setLikeButton('/like-button-clicked.png');
+// const searchingFor = useParams();
+// console.log(searchingFor);
+
+const [vaxIcon, setVaxIcon] = useState('/vax-static.png');
+const [vaxIconStatus, setVaxIconStaus] = useState('');
+// const [dislikeButton, setDislikeButton] = useState('/dislike-button-unclicked.png');
+
+
+const changeVaxIcon = (e) => {
+    if (vaxIcon === '/vax-hover.png') {
+        setVaxIcon('/vax-active.png');
+        setVaxIconStaus('/vax-active.png');
+
+    } else if ( vaxIconStatus === '/vax-active.png') {
+        setVaxIcon('/vax-static.png');
+        setVaxIconStaus('/vax-static.png');
     }
   };
 
-  const changeImageSourceDisliked = (e) => {
-    if (dislikeButton === '/dislike-button-clicked.png') {
-      setDislikeButton('/dislike-button-unclicked.png');
-    } else {
-      setDislikeButton('/dislike-button-clicked.png');
-    }
-  };
+    const changeVaxIconHover = (e) => {
+        setVaxIcon('/vax-hover.png');
 
-*/ 
+    };
+
+    const handleOnMouseLeaveVax = (e) => {
+        setVaxIcon(vaxIconStatus);
+    }
+
+//   const changeVaxStatic = (e) => {
+//     if (dislikeButton === '/dislike-button-clicked.png') {
+//       setDislikeButton('/dislike-button-unclicked.png');
+//     } else {
+//       setDislikeButton('/dislike-button-clicked.png');
+//     }
+//   };
+
 
 /* { user? <div className="nav-logo">
     <Link id="navbar__brand-home" to='/discover' exact={true} activeClassName='active'>
@@ -72,7 +89,12 @@ return (
             </div>
             <div className="element">
                 <div className="icon">
-                    <img/>
+                    <img
+                    src= {vaxIcon}
+                    onClick={changeVaxIcon}
+                    onMouseLeave={handleOnMouseLeaveVax}
+                    onMouseEnter={changeVaxIconHover}
+                    />
                 </div>
                 <div className="icon-label">
                     <h5>Vaccinated</h5>
