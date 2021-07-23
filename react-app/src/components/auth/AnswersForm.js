@@ -1,35 +1,37 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect, useHistory } from 'react-router-dom';
-import { createAnswer } from '../../store/answers'; 
+import { createAnswer } from '../../store/answers';
 
 const AnswersForm = () => {
   const [errors, setErrors] = useState([]);
   const [about, setAbout] = useState('');
-  const [weightClass, setWeightClass] = useState('');
-  const [reach, setReach] = useState('');
-  const [professionalLevel, setProfessionalLevel] = useState('');
+  const [weightClass, setWeightClass] = useState(0);
+  const [reach, setReach] = useState(50);
+  const [professionalLevel, setProfessionalLevel] = useState(0);
   const [currentRecord, setCurrentRecord] = useState('0-0-0');
   const [previousTitles, setPreviousTitles] = useState('');
   const [favRockyFighter, setFavRockyFighter] = useState('');
   const [walkoutSong, setWalkoutSong] = useState('');
   const [vaccinated, setVaccinated] = useState('');
   const [hasKids, setHasKids] = useState('');
-  const [inPerson, setInPerson] = useState('');
+  const [inPerson, setInPerson] = useState(true);
   const [nickname, setNickname] = useState('');
   const [religion, setReligion] = useState('');
   const [pets, setPets] = useState('');
-  const [availability, setAvailability] = useState('');
+  const [availability, setAvailability] = useState(0);
   const [rate, setRate] = useState('');
   const user = useSelector(state => state.session.user);
   const history = useHistory();
   const dispatch = useDispatch();
-  const isCoach = user.coach
+  const isCoach = user?.coach;
+  const gender = user?.gender;
+  const user_id = user?.id;
 
   const onSubmit = async (e) => {
     e.preventDefault();
     const data = await dispatch(createAnswer(
-      user.id,
+      user_id,
       about,
       weightClass,
       reach,
@@ -45,11 +47,11 @@ const AnswersForm = () => {
       religion,
       pets,
       availability,
-      rate));
+      rate ));
     if (data) {
       setErrors(data)
+      history.push(`/discover`)
     }
-    history.push('/discover')
   };
 
   const updateAbout = (e) => {
@@ -113,34 +115,96 @@ const AnswersForm = () => {
     setRate(e.target.value);
   };
 
-  if (user) {
-    return <Redirect to='/' />;
-  }
-
-
   let coachContent = null;
 
   if (isCoach) {
     coachContent = (
       <div>
         <div>
-          <label>Availability</label>
-          <input
-            type='text'
-            name='availability'
-            onChange={updateAvailability}
-            value={availability}
-          ></input>
-        </div>
-        <div>
           <label>Rate</label>
           <input
-            type='integer'
+            type='number'
             name='rate'
             onChange={updateRate}
             value={rate}
           ></input>
         </div>
+        <div>
+        <label>In Person Coaching</label>
+        <select
+          type='boolean'
+          name='inPerson'
+          onChange={updateInPerson}
+          value={inPerson}
+        >
+          <option value="False">Online</option>
+          <option value="True">In Person</option>
+        </select>
+      </div>
+      </div>
+    )
+  }
+
+  let weightContent = null;
+
+  if (gender === 1) {
+    weightContent = (
+      <div>
+        <label>Weight Class</label>
+        <select
+          type='number'
+          name='weightClass'
+          onChange={updateWeightClass}
+          value={weightClass}
+          required={true}
+        >
+          <option value="0">Lightweight</option>
+          <option value="1">Middleweight</option>
+          <option value="2">Heavyweight</option>
+        </select>
+      </div>
+    )
+  }
+
+  else if (gender === 0) {
+    weightContent = (
+      <div>
+        <label>Weight Class</label>
+        <select
+          type='number'
+          name='weightClass'
+          onChange={updateWeightClass}
+          value={weightClass}
+          required={true}
+        >
+          <option value="3">Women's Flyweight</option>
+          <option value="4">Women's Straweight</option>
+          <option value="5">Women's Featherweight</option>
+          <option value="6">Women's Bantamweight</option>
+        </select>
+      </div>
+    )
+  }
+
+  else {
+    weightContent = (
+      <div>
+        <label>Weight Class</label>
+        <select
+          type='number'
+          name='weightClass'
+          onChange={updateWeightClass}
+          value={weightClass}
+          required={true}
+        >
+          <option value="0">Lightweight</option>
+          <option value="1">Middleweight</option>
+          <option value="2">Heavyweight</option>
+          <option value="3">Women's Flyweight</option>
+          <option value="4">Women's Straweight</option>
+          <option value="5">Women's Featherweight</option>
+          <option value="6">Women's Bantamweight</option>
+        </select>
       </div>
     )
   }
@@ -149,7 +213,7 @@ const AnswersForm = () => {
   return (
     <form onSubmit={onSubmit}>
       <div>
-        {errors.map((error, ind) => (
+        {errors?.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
       </div>
@@ -171,35 +235,30 @@ const AnswersForm = () => {
           value={walkoutSong}
         ></input>
       </div>
-      <div>
-        <label>Weight Class</label>
-        <input
-          type='text'
-          name='weightClass'
-          onChange={updateWeightClass}
-          value={weightClass}
-          required={true}
-        ></input>
-      </div>
+      {weightContent}
       <div>
         <label>Reach</label>
         <input
-          type='integer'
+          type='number'
           name='reach'
           onChange={updateReach}
           value={reach}
           required={true}
         ></input>
       </div>
-        <div>
+      <div>
         <label>Professional Level</label>
-        <input
-          type='string'
+        <select
+          type='integer'
           name='professionalLevel'
           onChange={updateProfessionalLevel}
           value={professionalLevel}
           required={true}
-        ></input>
+        >
+          <option value="0">Beginner</option>
+          <option value="1">Amateur</option>
+          <option value="2">Professional</option>
+        </select>
       </div>
       <div>
         <label>Current Record</label>
@@ -230,12 +289,15 @@ const AnswersForm = () => {
       </div>
       <div>
         <label>Vaccinated</label>
-        <input
+        <select
           type='text'
           name='vaccinated'
           onChange={updateVaccinated}
           value={vaccinated}
-        ></input>
+        >
+          <option value="False">Not vaccinated</option>
+          <option value="True">Vaccinated</option>
+        </select>
       </div>
       <div>
         <label>Has Kids</label>
@@ -244,15 +306,6 @@ const AnswersForm = () => {
           name='hasKids'
           onChange={updateHasKids}
           value={hasKids}
-        ></input>
-      </div>
-      <div>
-        <label>In Person Coaching</label>
-        <input
-          type='boolean'
-          name='inPerson'
-          onChange={updateInPerson}
-          value={inPerson}
         ></input>
       </div>
       <div>
@@ -282,6 +335,19 @@ const AnswersForm = () => {
           value={religion}
         ></input>
       </div>
+      <div>
+          <label>Availability</label>
+          <select
+            type='text'
+            name='availability'
+            onChange={updateAvailability}
+            value={availability}
+          >
+            <option value="0">Weekends</option>
+            <option value="1">Weekdays</option>
+            <option value="2">All week</option>
+          </select>
+        </div>
       { coachContent }
       <button type='submit'>Submit Answers</button>
     </form>
