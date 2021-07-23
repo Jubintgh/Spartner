@@ -51,6 +51,11 @@
   margin-right: auto;
 }
 
+.bio-left > div > h3 {
+  color: #f06a6d;
+  text-decoration: underline;
+}
+
 .top-row {
   align-items: center;
   justify-content: space-between;

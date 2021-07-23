@@ -251,7 +251,7 @@ const DiscoverPage = () => {
                 <p>{available}</p>
               </div>
             )}
-            {firstUser?.has_kids === null ? null : (
+            {firstUser?.has_kids === false ? null : (
               <div>
                 <h3>Has Kids</h3>
                 <p>{firstUser?.has_kids}</p>
