@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getNewUsers, removeUser } from '../../store/discover';
 import { createLike } from '../../store/likes';
+import { getCurrentUserAndAnswers } from '../../store/session';
 import { createDislike } from '../../store/dislikes';
 import { ImCancelCircle } from 'react-icons/im';
 import { AiFillHeart } from 'react-icons/ai';
@@ -56,8 +57,17 @@ const DiscoverPage = () => {
     }
   };
 
+  console.log(user);
+
+  const createMatchPercentage = () => {
+    let total = 1;
+
+    // if (user)
+  };
+
   useEffect(() => {
     dispatch(getNewUsers(id));
+    dispatch(getCurrentUserAndAnswers(id));
   }, [dispatch, id]);
 
   let usersLeftOrNoUsers;
@@ -140,12 +150,10 @@ const DiscoverPage = () => {
                 <p>{firstUser?.nickname}</p>
               </div>
             )}
-            {firstUser?.nickname === null ? null : (
+            {firstUser?.religion === null ? null : (
               <div>
                 <h3>Religion</h3>
-                <p>
-                  {firstUser?.religion === null ? 'None' : firstUser?.religion}
-                </p>
+                <p>{firstUser?.religion}</p>
               </div>
             )}
             {firstUser?.pets === null ? null : (
