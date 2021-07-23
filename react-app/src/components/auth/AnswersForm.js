@@ -50,7 +50,7 @@ const AnswersForm = () => {
       rate ));
     if (data) {
       setErrors(data)
-      history.push(`/discover`)
+      // history.push(`/discover`)
     }
   };
 
