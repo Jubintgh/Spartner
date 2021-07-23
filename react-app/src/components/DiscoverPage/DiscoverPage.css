@@ -107,5 +107,6 @@
   width: 80px;
 }
 
-.discover-button:active {
+.discover-button:hover {
+  opacity: 0.8;
 }

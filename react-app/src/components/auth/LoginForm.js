@@ -8,7 +8,7 @@ const LoginForm = () => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const user = useSelector(state => state.session.user);
+  const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
 
   const onLogin = async (e) => {
@@ -33,44 +33,43 @@ const LoginForm = () => {
 
   return (
     <form onSubmit={onLogin}>
-      <div className="form-container">
-      <div className="form-question">
-        <div className="form-question-label">
-        <label htmlFor='email'>Email</label>
-        </div>
-        <div className="form-input">
-        <input
-          name='email'
-          type='text'
-          placeholder='Email'
-          value={email}
-          onChange={updateEmail}
-          />
-        </div>
-        </div>
-      <div className="form-question">
-      <div className="form-question-label">
-        <label htmlFor='password'>Password</label>
-      </div>
-        <div className="form-input">
-        <input
-          name='password'
-          type='password'
-          placeholder='Password'
-          value={password}
-          onChange={updatePassword}
-          />
-        </div>
-        <button type='submit'>Login</button>
-        </div>
-        </div>
-          <div className="form-errors">
-            {errors.map((error, ind) => (
-              <div key={ind}>{error}</div>
-            ))}
+      <div className='form-container'>
+        <div className='form-question'>
+          <div className='form-question-label'>
+            <label htmlFor='email'>Email</label>
           </div>
-        <DemoUserButton />
+          <div className='form-input'>
+            <input
+              name='email'
+              type='text'
+              placeholder='Email'
+              value={email}
+              onChange={updateEmail}
+            />
+          </div>
+        </div>
+        <div className='form-question'>
+          <div className='form-question-label'>
+            <label htmlFor='password'>Password</label>
+          </div>
+          <div className='form-input'>
+            <input
+              name='password'
+              type='password'
+              placeholder='Password'
+              value={password}
+              onChange={updatePassword}
+            />
+          </div>
+          <button type='submit'>Login</button>
+        </div>
       </div>
+      <div className='form-errors'>
+        {errors.map((error, ind) => (
+          <div key={ind}>{error}</div>
+        ))}
+      </div>
+      <DemoUserButton />
     </form>
   );
 };
