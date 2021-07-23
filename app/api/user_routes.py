@@ -20,6 +20,9 @@ def validation_errors_to_error_messages(validation_errors):
 # @login_required
 def users():
     users = User.query.all()
+    user_answer = user.to_dict()
+    user_answer.update(user.answer.to_dict())
+    users_answers.append(user_answer)
     return {'users': [user.to_dict() for user in users]}
 
 
@@ -159,7 +162,7 @@ def get_user_list(id):
 
     no_show = no_show + dislikes_ids #combine above 2 lists
     no_show.append(id) # add self
-    
+
     unseen_user = User.query.filter(User.id.not_in(no_show))
 
     users_answers = []
@@ -183,7 +186,7 @@ def get_matches_list(id):
                 matches.append(like)
 
     return { 'matches': [match.to_dict() for match in matches]}
-  
+
 
 """
 
@@ -247,8 +250,8 @@ def update_answer():
         db.session.commit()
     return {"errors": form.errors}
 
-  
-  
+
+
 """
 
 
@@ -279,7 +282,7 @@ def filter_user(filter_t, id):
         for user in unseen_users:
             if user.answer.vaccinated == user_vacc_stat:
                 similar_users.append(user)
-    
+
         return { "vacc_stat": [ user.to_dict() for user in similar_users]}
 
     if filter_t == "weight-class":
@@ -289,7 +292,7 @@ def filter_user(filter_t, id):
         for user in unseen_users:
             if user.answer.weight_class == user_wc_stat:
                 similar_users.append(user)
-    
+
         return { "wc_stat": [ user.to_dict() for user in similar_users]}
 
     if filter_t == "professional-level":
@@ -299,14 +302,14 @@ def filter_user(filter_t, id):
         for user in unseen_users:
             if user.answer.professional_level == user_pro_stat:
                 similar_users.append(user)
-    
+
         return { "pro_stat": [ user.to_dict() for user in similar_users]}
-        
+
     if filter_t == "coach":
         similar_users = []
 
         for user in unseen_users:
             if user.coach == True:
                 similar_users.append(user)
-    
+
         return { "coach_stat": [ user.to_dict() for user in similar_users]}

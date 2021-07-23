@@ -1,8 +1,8 @@
 import './DiscoverPage.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { getUsers } from '../../store/users';
+import { getOneUser } from '../../store/users';
 import { ImCancelCircle } from 'react-icons/im';
 import { AiFillHeart } from 'react-icons/ai';
 import { getNewUsers, removeUser } from '../../store/discover';
@@ -18,14 +18,12 @@ import { FiUser, FiMapPin } from 'react-icons/fi';
 
 const DiscoverPage = () => {
   const dispatch = useDispatch();
-  const allUsersNotLiked = useSelector((state) =>
-    Object.values(state.discover)
-  );
+  const { userId } = useParams();
+  const firstUser = useSelector((state) => state.users[userId]);
   const { user } = useSelector((state) => state.session);
   const id = Number(user.id);
-  const firstUser = allUsersNotLiked[0]
-    ? allUsersNotLiked[0]
-    : 'No more users to display!';
+
+  console.log(firstUser);
 
   const [likeButton, setLikeButton] = useState('/like-button-unclicked.png');
   const [dislikeButton, setDislikeButton] = useState(
@@ -34,14 +32,15 @@ const DiscoverPage = () => {
 
   const handleClickDislike = (e) => {
     e.preventDefault();
-    dispatch(removeUser(allUsersNotLiked.shift()));
-    dispatch(createDislike(id, firstUser?.id));
+    dispatch();
+    // dispatch(removeUser(allUsersNotLiked.shift()));
+    // dispatch(createDislike(id, firstUser?.id));
   };
 
   const handleClickLike = (e) => {
     e.preventDefault();
-    dispatch(removeUser(allUsersNotLiked.shift()));
-    dispatch(createLike(id, firstUser?.id));
+    // dispatch(removeUser(allUsersNotLiked.shift()));
+    // dispatch(createLike(id, firstUser?.id));
   };
 
   const changeImageSourceLiked = (e) => {
@@ -63,7 +62,8 @@ const DiscoverPage = () => {
   useEffect(() => {
     dispatch(getNewUsers(id));
     dispatch(getCurrentUserAndAnswers(id));
-  }, [dispatch, id]);
+    dispatch(getOneUser(userId));
+  }, [dispatch, id, userId]);
 
   let available;
   if (Number(firstUser?.availability) === 0) {
@@ -87,10 +87,8 @@ const DiscoverPage = () => {
     weightClass = 'Lightweight';
   } else if (Number(firstUser?.weight_class) === 5) {
     weightClass = 'Middleweight';
-  } else if (Number(firstUser?.weight_class) === 6) {
-    weightClass = 'Heavyweight';
   } else {
-    return 'N/A';
+    weightClass = 'Heavyweight';
   }
 
   let discipline;
@@ -112,10 +110,8 @@ const DiscoverPage = () => {
     discipline = 'Karate';
   } else if (Number(firstUser?.discipline) === 8) {
     discipline = 'Switch';
-  } else if (Number(firstUser?.discipline) === 9) {
-    discipline = 'Brazilian Jiu-Jitsu';
   } else {
-    return;
+    discipline = 'Brazilian Jiu-Jitsu';
   }
 
   let professionalLevel;
@@ -136,46 +132,55 @@ const DiscoverPage = () => {
     gender = 'Other';
   }
 
-  console.log(firstUser.location.split(',')[1]);
-
-  // Gender = 33
-  // Location(state) = 22
-  // Weightclass = 18
-  // Professional level = 10
-  // Availability = 6
-  // Reach = 1
-  // Vaccination = 6
-  // Discipline = 4
-
   const createMatchPercentage = () => {
     let total = 0;
 
-    if (user.gender === firstUser.gender) {
+    if (user?.gender === firstUser?.gender) {
       total += 49;
-    } else if (Number(firstUser.gender) === 2) {
+    } else if (Number(firstUser?.gender) === 2) {
       total += 33;
     } else {
       total += 0;
     }
-    if (user.location.split(',')[1] === firstUser.location.split(',')[1])
+    if (user?.location.split(',')[1] === firstUser?.location.split(',')[1])
       total += 22;
-    if (user.weight_class === firstUser.weight_class) total += 11;
-    if (user.professional_level === firstUser.professional_level) total += 8;
-    if (user.availability === firstUser.availability) total += 4;
-    if (user.reach === firstUser.reach) total += 1;
-    if (user.vaccinated === firstUser.vaccinated) total += 3;
-    if (user.discipline === firstUser.discipline) total += 2;
+    if (user?.weight_class === firstUser?.weight_class) total += 11;
+    if (user?.professional_level === firstUser?.professional_level) total += 8;
+    if (user?.availability === firstUser?.availability) total += 4;
+    if (user?.reach === firstUser?.reach) total += 1;
+    if (user?.vaccinated === firstUser?.vaccinated) total += 3;
+    if (user?.discipline === firstUser?.discipline) total += 2;
 
-    return total;
+    return total + '% Compatability';
   };
 
-  let usersLeftOrNoUsers;
-  if (allUsersNotLiked.length === 0) {
-    usersLeftOrNoUsers = (
-      <div>'Out of users for today, better luck next time!'</div>
+  let currentUserPageOrDifferentUserPage;
+  if (Number(firstUser?.id) !== Number(id)) {
+    currentUserPageOrDifferentUserPage = (
+      <div className='discover-btns'>
+        <div onClick={handleClickDislike} className='pass-btn'>
+          <img
+            className={`discover-button`}
+            src={dislikeButton}
+            onMouseDown={changeImageSourceDisliked}
+            onMouseUp={changeImageSourceDisliked}
+            alt=''
+          />
+        </div>
+        <div onClick={handleClickLike} className='like-btn'>
+          <img
+            className='discover-button'
+            src={likeButton}
+            onMouseDown={changeImageSourceLiked}
+            onMouseUp={changeImageSourceLiked}
+            alt=''
+          />
+        </div>
+      </div>
     );
-  } else {
-    usersLeftOrNoUsers = (
+  }
+  return (
+    <div className='discover-page'>
       <div className='main-area-container'>
         <div className='discover-title'>
           <h1>Recommended Just For You</h1>
@@ -187,33 +192,14 @@ const DiscoverPage = () => {
                 <p className='first-name'>{firstUser?.first_name}</p>
                 <p className='last-name'>{firstUser?.last_name}</p>
               </div>
-              <p>|</p>
-              <p>{createMatchPercentage()}% Compatibility</p>
-              <p>|</p>
-              <Link to={`/users/${firstUser.id}`} className='view-profile-link'>
-                View Profile <MdKeyboardArrowRight className='arrow-link' />
-              </Link>
+              <p>{Number(firstUser?.id) !== Number(id) ? '|' : null}</p>
+              <p>
+                {Number(firstUser?.id) !== Number(id)
+                  ? createMatchPercentage()
+                  : null}
+              </p>
             </div>
-            <div className='discover-btns'>
-              <div onClick={handleClickDislike} className='pass-btn'>
-                <img
-                  className={`discover-button`}
-                  src={dislikeButton}
-                  onMouseDown={changeImageSourceDisliked}
-                  onMouseUp={changeImageSourceDisliked}
-                  alt=''
-                />
-              </div>
-              <div onClick={handleClickLike} className='like-btn'>
-                <img
-                  className='discover-button'
-                  src={likeButton}
-                  onMouseDown={changeImageSourceLiked}
-                  onMouseUp={changeImageSourceLiked}
-                  alt=''
-                />
-              </div>
-            </div>
+            {currentUserPageOrDifferentUserPage}
           </div>
           <div className='user-picture'>
             <img
@@ -316,9 +302,8 @@ const DiscoverPage = () => {
           </div>
         </div>
       </div>
-    );
-  }
-  return <div className='discover-page'>{usersLeftOrNoUsers}</div>;
+    </div>
+  );
 };
 
 export default DiscoverPage;
