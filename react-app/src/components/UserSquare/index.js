@@ -10,7 +10,7 @@ const UserSquare = ({ user }) => {
                         style={{ width: "200px", height: "200px", borderRadius: "50%", objectFit: "cover" }}
                         src={user.img_url ?
                             user.img_url :
-                            "https://smhlancers.org/wp-content/uploads/2016/06/profile-placeholder-300x300.png" }
+                            'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png' }
                         alt="spartner-profile"
                     />
                 </div>
