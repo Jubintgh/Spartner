@@ -6,21 +6,10 @@ import DemoUserButton from './auth/DemoUserButton';
 
 const NavBar = () => {
   const user = useSelector(state => state.session.user);
-  let profImage = null
-  let navContent = null
-
-  if(user) {
-    profImage = user.img_url
-  }
-
+  const profImage = user?.img_url
+  let navContent = null;
   if(!user) {
     navContent = (
-      <nav>
-        <div className="nav-logo">
-          <NavLink id="navbar__brand-home" to='/' exact={true} activeClassName='active'>
-              <img src='https://user-images.githubusercontent.com/35717793/126367109-4954f04b-0cb7-4ca9-a25a-d18e6b7cb74a.png' alt='logo' id='navbar__logo' />
-          </NavLink>
-        </div>
       <ul className='navbar'>
         <li className='navbar__link'>
           <NavLink to='/' exact={true} activeClassName='active'>
@@ -46,16 +35,10 @@ const NavBar = () => {
           <DemoUserButton />
         </li>
       </ul>
-      </nav>
     )
   } else {
+
     navContent = (
-      <nav>
-        <div className="nav-logo">
-          <NavLink id="navbar__brand-home" to='/discover' exact={true} activeClassName='active'>
-              <img src='https://user-images.githubusercontent.com/35717793/126367109-4954f04b-0cb7-4ca9-a25a-d18e6b7cb74a.png' alt='logo' id='navbar__logo' />
-          </NavLink>
-        </div>
         <ul className="navbar">
           <li className="navbar__link">
             <NavLink to='/discover' exact={true}  activeClassName='active'>
@@ -84,17 +67,20 @@ const NavBar = () => {
             <LogoutButton />
           </li>
         </ul>
-      </nav>
     )
   }
   return (
     // ask Tony about this tomorrow
     <nav>
-      <div className="nav-logo">
-        <NavLink id="navbar__brand-home" to='/' exact={true} activeClassName='active'>
-            <img src='https://user-images.githubusercontent.com/35717793/126367109-4954f04b-0cb7-4ca9-a25a-d18e6b7cb74a.png' alt='logo' id='navbar__logo' />
-        </NavLink>
-      </div>
+      { user? <div className="nav-logo">
+          <NavLink id="navbar__brand-home" to='/discover' exact={true} activeClassName='active'>
+              <img src='https://user-images.githubusercontent.com/35717793/126367109-4954f04b-0cb7-4ca9-a25a-d18e6b7cb74a.png' alt='logo' id='navbar__logo' />
+          </NavLink>
+        </div> : <div className="nav-logo">
+          <NavLink id="navbar__brand-home" to='/' exact={true} activeClassName='active'>
+              <img src='https://user-images.githubusercontent.com/35717793/126367109-4954f04b-0cb7-4ca9-a25a-d18e6b7cb74a.png' alt='logo' id='navbar__logo' />
+          </NavLink>
+        </div>}
       {navContent}
     </nav>
   );
