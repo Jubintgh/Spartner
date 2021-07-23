@@ -146,6 +146,7 @@ def delete_like(id):
 
 
 """
+
 #DicoverPage
 @user_routes.route('<int:id>/discover')
 def get_user_list(id):
@@ -182,6 +183,7 @@ def get_matches_list(id):
                 matches.append(like)
 
     return { 'matches': [match.to_dict() for match in matches]}
+  
 
 """
 
@@ -238,12 +240,15 @@ def update_answer():
     """
 
     form = AnswerForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         edit_answer=Answer.query.filter(Answer.user_id == id)
         form.populate_obj(edit_answer)
         db.session.commit()
     return {"errors": form.errors}
 
+  
+  
 """
 
 

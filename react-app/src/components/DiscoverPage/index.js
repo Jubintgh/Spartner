@@ -1,11 +1,15 @@
 import './DiscoverPage.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { getUsers } from '../../store/users';
+import { ImCancelCircle } from 'react-icons/im';
+import { AiFillHeart } from 'react-icons/ai';
 import { getNewUsers, removeUser } from '../../store/discover';
 import { createLike } from '../../store/likes';
 import { getCurrentUserAndAnswers } from '../../store/session';
 import { createDislike } from '../../store/dislikes';
+
 import { MdKeyboardArrowRight } from 'react-icons/md';
 import { GiWeight, GiCage, GiBoxingGlove } from 'react-icons/gi';
 import { BiRuler, BiMedal } from 'react-icons/bi';
@@ -314,7 +318,6 @@ const DiscoverPage = () => {
       </div>
     );
   }
-
   return <div className='discover-page'>{usersLeftOrNoUsers}</div>;
 };
 
