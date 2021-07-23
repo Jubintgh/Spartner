@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify
 from flask import request
 from flask_login import login_required
-from app.forms import AnswerForm, SignUpForm, UpdateForm
+from app.forms import AnswerForm, SignUpForm, UpdateUserInfoForm
 from app.models import Answer, User, db
 
 user_routes = Blueprint('users', __name__)
@@ -32,33 +32,39 @@ def user(id):
     return user_answer
 
 
+"""
 
-# !!!!!!! still fixing this put route for user information!!!!!!!!!!!!!!!!!!!!!!!
-@user_routes.route('/<int:id>', methods=['PUT'])
+
+----------------------------------- USER PROFILE PUT APIs -----------------------------------
+
+
+"""
+
+@user_routes.route('<int:id>/profile/update', methods=['PUT'])
+# @login_required
 def edit_info(id):
     """
     Updates Info
     """
-    form = UpdateForm()
+    form = UpdateUserInfoForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        editted_user = User.query.get(id)
-        # form.populate_obj(editted_user)
-        editted_user = User(
-            username=form.data['username'],
-            email=form.data['email'],
-            first_name=form.data['first_name'],
-            last_name=form.data['last_name'],
-            age=form.data['age'],
-            location=form.data['location'],
-            gender=form.data['gender'],
-            coach=form.data['coach'],
-            discipline=form.data['discipline'],
-            img_url=form.data['img_url']
-        )
-        db.session.add(editted_user)
+        ex_user_info = User.query.get(id)
+        form.populate_obj(ex_user_info)
+        ex_user_info.email = form.data["email"]
+        ex_user_info.username = form.data["username"]
+        ex_user_info.password = form.data["password"]
+        ex_user_info.first_name = form.data["first_name"]
+        ex_user_info.last_name = form.data["last_name"]
+        ex_user_info.age = form.data["age"]
+        ex_user_info.discipline = form.data["discipline"]
+        ex_user_info.location = form.data["location"]
+        ex_user_info.gender = form.data["gender"]
+        ex_user_info.coach = form.data["coach"]
+        ex_user_info.img_url = form.data["img_url"]
+    
         db.session.commit()
-        return user.to_dict()
+        return ex_user_info.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 """
@@ -72,6 +78,7 @@ def edit_info(id):
 
 #getAllUserLikes
 @user_routes.route('/<int:id>/likes')
+# @login_required
 def get_likes(id):
 
     user = User.query.get(id)
@@ -81,6 +88,7 @@ def get_likes(id):
 
 #getAllLikedBy
 @user_routes.route('/<int:id>/liked')
+# @login_required
 def get_liked_by(id):
 
     user = User.query.get(id)
@@ -90,6 +98,7 @@ def get_liked_by(id):
 
 #createLike
 @user_routes.route('/<int:id>/like', methods=['POST'])
+# @login_required
 def new_like(id):
     liked_instance = request.json
     liked_user_id = liked_instance['liked_id']
@@ -106,6 +115,7 @@ def new_like(id):
 
 #createDisLike
 @user_routes.route('/<int:id>/dislike', methods=['POST'])
+# @login_required
 def new_dislike(id):
     disliked_instance = request.json
     disliked_user_id = disliked_instance['disliked_id']
@@ -123,6 +133,7 @@ def new_dislike(id):
 
 #removeLike
 @user_routes.route('/<int:id>/like', methods=['DELETE'])
+# @login_required
 def delete_like(id):
     liked_instance = request.json
     liked_user_id = liked_instance['liked_id']
@@ -145,6 +156,7 @@ def delete_like(id):
 
 
 """
+
 #DicoverPage
 @user_routes.route('<int:id>/discover')
 def get_user_list(id):
@@ -183,6 +195,7 @@ def get_matches_list(id):
                 matches.append(like)
 
     return { 'matches': [match.to_dict() for match in matches]}
+  
 
 """
 
@@ -193,11 +206,13 @@ def get_matches_list(id):
 """
 
 @user_routes.route('/<int:id>/answers')
+# @login_required
 def get_answers(id):
     answer = Answer.query.filter_by(Answer.user_id == id)
     return {'answers': answer}
 
 @user_routes.route('/<int:id>/answers', methods=['POST'])
+# @login_required
 def post_answers(id):
     """
     Creates a new answer and adds them in database
@@ -216,13 +231,13 @@ def post_answers(id):
             fav_rocky_fighter = form.data["fav_rocky_fighter"],
             walkout_song = form.data["walkout_song"],
             vaccinated = form.data["vaccinated"],
+            has_kids = form.data["has_kids"],
+            in_person = form.data["in_person"],
             nickname = form.data["nickname"],
             religion = form.data["religion"],
-            has_kids = form.data["has_kids"],
             pets = form.data["pets"],
             availability = form.data["availability"],
             rate = request.json["rate"],
-            in_person = form.data["in_person"],
             weight_class = form.data["weight_class"]
         )
 
@@ -233,18 +248,21 @@ def post_answers(id):
     return {"errors": form.errors}
 
 @user_routes.route('/<int:id>/answers', methods=['PUT'])
+# @login_required
 def update_answer():
     """
     Edits a existing answer and in our database based on the user's id
     """
 
     form = AnswerForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        edit_answer=Answer.query.filter(Answer.user_id == id)
-        form.populate_obj(edit_answer)
+        ex_answer=Answer.query.filter(Answer.user_id == id)
+        # form.populate_obj(ex_answer)
         db.session.commit()
     return {"errors": form.errors}
 
+  
 """
 
 
