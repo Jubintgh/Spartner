@@ -1,0 +1,31 @@
+.users-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 20px;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    font-size: 48px;
+    color: oldlace;
+    text-decoration: underline;
+    margin: 0;
+}
+
+.user-square a {
+    color: white;
+}
+
+.user-square {
+    z-index: 0;
+    transition: 0.2s all;
+}
+
+.user-square:hover {
+    z-index: 1;
+    box-shadow: 0 8px 50px rgba(0,0,0,0.2);
+    transform: scale(1.05);
+    background-color: lightgray;
+}
