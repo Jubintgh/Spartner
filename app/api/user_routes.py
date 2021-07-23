@@ -4,6 +4,14 @@ from flask_login import login_required
 from app.forms import AnswerForm, SignUpForm, UpdateUserInfoForm
 from app.models import Answer, User, db
 
+"""
+
+
+----------------------------------- USER PROFILE APIs -----------------------------------
+
+
+"""
+
 user_routes = Blueprint('users', __name__)
 
 def validation_errors_to_error_messages(validation_errors):
@@ -32,13 +40,6 @@ def user(id):
     return user_answer
 
 
-"""
-
-
------------------------------------ USER PROFILE PUT APIs -----------------------------------
-
-
-"""
 
 @user_routes.route('<int:id>/profile/update', methods=['PUT'])
 # @login_required
@@ -247,9 +248,9 @@ def post_answers(id):
 
     return {"errors": form.errors}
 
-@user_routes.route('/<int:id>/answers', methods=['PUT'])
+@user_routes.route('/<int:id>/answers/update', methods=['PUT'])
 # @login_required
-def update_answer():
+def update_answer(id):
     """
     Edits a existing answer and in our database based on the user's id
     """
@@ -257,12 +258,29 @@ def update_answer():
     form = AnswerForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        ex_answer=Answer.query.filter(Answer.user_id == id)
-        # form.populate_obj(ex_answer)
-        db.session.commit()
-    return {"errors": form.errors}
+        ex_user_answer=Answer.query.filter(Answer.user_id == id).first()
+        form.populate_obj(ex_user_answer)
+        ex_user_answer.about = form.data["about"]
+        ex_user_answer.reach = form.data["reach"]
+        ex_user_answer.professional_level = form.data["professional_level"]
+        ex_user_answer.current_record = form.data["current_record"]
+        ex_user_answer.previous_titles = form.data["previous_titles"]
+        ex_user_answer.fav_rocky_fighter = form.data["fav_rocky_fighter"]
+        ex_user_answer.walkout_song = form.data["walkout_song"]
+        ex_user_answer.vaccinated = form.data["vaccinated"]
+        ex_user_answer.nickname = form.data["nickname"]
+        ex_user_answer.religion = form.data["religion"]
+        ex_user_answer.has_kids = form.data["has_kids"]
+        ex_user_answer.pets = form.data["pets"]
+        ex_user_answer.availability = form.data["availability"]
+        ex_user_answer.rate = request.json["rate"]
+        ex_user_answer.in_person = form.data["in_person"]
+        ex_user_answer.weight_class = form.data["weight_class"]
 
-  
+        db.session.commit()
+        return ex_user_answer.to_dict()
+    return {"errors": validation_errors_to_error_messages(form.errors)}, 401
+
 """
 
 
