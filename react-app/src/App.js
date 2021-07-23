@@ -14,6 +14,8 @@ import DiscoverPage from './components/DiscoverPage';
 import EditAnswersForm from './components/EditAnswersForm/index'
 import EditUserForm from './components/EditUserInfo/index'
 import LandingPage from './components/LandingPage';
+import MatchesContainer from './components/MatchesContainer';
+import LikesContainer from './components/LikesContainer';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -43,8 +45,8 @@ function App() {
                 <LoginForm />
               </Route>
               <ProtectedRoute path='/discover' exact={true}>
-              <DiscoverPage />
-            </ProtectedRoute>
+                <DiscoverPage />
+              </ProtectedRoute>
               <Route path='/sign-up' exact={true}>
                 <SignUpForm />
               </Route>
@@ -62,6 +64,12 @@ function App() {
               </Route>
               <Route path='/users/:userId/edit-info' exact={true}>
                 <EditUserForm />
+              </Route>
+              <Route path='/users/:userId/matches' exact={true}>
+                <MatchesContainer />
+              </Route>
+              <Route path='/users/:userId/likes' exact={true}>
+                <LikesContainer />
               </Route>
               <ProtectedRoute path='/discover' exact={true}>
                 <DiscoverPage />

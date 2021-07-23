@@ -7,9 +7,11 @@ import './MatchesContainer.css'
 
 const MatchesContainer = () => {
     const dispatch = useDispatch();
-    const usersArray = useSelector((state) => {
+    const matchesArray = useSelector((state) => {
         return Object.values(state.users)
-    }) // change to Ma
+    })
+
+    // change dispatch to getMatches
 
     useEffect(() => {
         dispatch(getUsers())
@@ -17,9 +19,9 @@ const MatchesContainer = () => {
 
     return (
         <div>
-        <h1> Liked Users </h1>
+        <h1> Matches </h1>
             <div className='users-container'>
-                {usersArray.map((user) => (
+                {matchesArray.map((user) => (
                     <div className='user-square'>
                         <UserSquare user={user} key={user.id}/>
                     </div>

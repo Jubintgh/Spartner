@@ -7,9 +7,12 @@ import './LikesContainer.css'
 
 const LikesContainer = () => {
     const dispatch = useDispatch();
-    const usersArray = useSelector((state) => {
+    const likesArray = useSelector((state) => {
         return Object.values(state.users)
-    }) // change to Ma
+    }) // change to Likes
+
+
+    // change dispatch to getLikes
 
     useEffect(() => {
         dispatch(getUsers())
@@ -19,7 +22,7 @@ const LikesContainer = () => {
         <div>
         <h1> Liked Users </h1>
             <div className='users-container'>
-                {usersArray.map((user) => (
+                {likesArray.map((user) => (
                     <div className='user-square'>
                         <UserSquare user={user} key={user.id}/>
                     </div>
