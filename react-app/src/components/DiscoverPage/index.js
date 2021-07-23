@@ -2,18 +2,12 @@ import './DiscoverPage.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { getUsers } from '../../store/users';
-import { ImCancelCircle } from 'react-icons/im';
-import { AiFillHeart } from 'react-icons/ai';
 import { getNewUsers, removeUser } from '../../store/discover';
 import { createLike } from '../../store/likes';
 import { getCurrentUserAndAnswers } from '../../store/session';
 import { createDislike } from '../../store/dislikes';
-
 import { MdKeyboardArrowRight } from 'react-icons/md';
-import { GiWeight, GiCage, GiBoxingGlove } from 'react-icons/gi';
-import { BiRuler, BiMedal } from 'react-icons/bi';
-import { VscGraph } from 'react-icons/vsc';
+import { GiWeight } from 'react-icons/gi';
 import { FiUser, FiMapPin } from 'react-icons/fi';
 
 const DiscoverPage = () => {
@@ -21,6 +15,7 @@ const DiscoverPage = () => {
   const allUsersNotLiked = useSelector((state) =>
     Object.values(state.discover)
   );
+  const allUsersNotLikedObj = useSelector((state) => state.discover);
   const { user } = useSelector((state) => state.session);
   const id = Number(user.id);
   const firstUser = allUsersNotLiked[0]
@@ -32,16 +27,14 @@ const DiscoverPage = () => {
     '/dislike-button-unclicked.png'
   );
 
-  const handleClickDislike = (e) => {
-    e.preventDefault();
-    dispatch(removeUser(allUsersNotLiked.shift()));
+  const handleClickDislike = () => {
     dispatch(createDislike(id, firstUser?.id));
+    dispatch(removeUser(allUsersNotLikedObj[firstUser?.id]));
   };
 
-  const handleClickLike = (e) => {
-    e.preventDefault();
-    dispatch(removeUser(allUsersNotLiked.shift()));
+  const handleClickLike = () => {
     dispatch(createLike(id, firstUser?.id));
+    dispatch(removeUser(allUsersNotLikedObj[firstUser?.id]));
   };
 
   const changeImageSourceLiked = (e) => {
@@ -65,67 +58,18 @@ const DiscoverPage = () => {
     dispatch(getCurrentUserAndAnswers(id));
   }, [dispatch, id]);
 
-  let available;
-  if (Number(firstUser?.availability) === 0) {
-    available = 'All Week';
-  } else if (Number(firstUser?.availability) === 1) {
-    available = 'Week Days';
-  } else {
-    available = 'Weekends';
-  }
-
   let weightClass;
-  if (Number(firstUser?.weight_class) === 0) {
+  if (Number(firstUser?.weight_class) === 0)
     weightClass = "Women's Strawweight";
-  } else if (Number(firstUser?.weight_class) === 1) {
+  if (Number(firstUser?.weight_class) === 1)
     weightClass = "Women's Bantamweight";
-  } else if (Number(firstUser?.weight_class) === 2) {
+  if (Number(firstUser?.weight_class) === 2)
     weightClass = "Women's Featherweight";
-  } else if (Number(firstUser?.weight_class) === 3) {
+  if (Number(firstUser?.weight_class) === 3)
     weightClass = "Women's Lightweight";
-  } else if (Number(firstUser?.weight_class) === 4) {
-    weightClass = 'Lightweight';
-  } else if (Number(firstUser?.weight_class) === 5) {
-    weightClass = 'Middleweight';
-  } else if (Number(firstUser?.weight_class) === 6) {
-    weightClass = 'Heavyweight';
-  } else {
-    return 'N/A';
-  }
-
-  let discipline;
-  if (Number(firstUser?.discipline) === 0) {
-    discipline = 'Southpaw';
-  } else if (Number(firstUser?.discipline) === 1) {
-    discipline = 'Kickboxing';
-  } else if (Number(firstUser?.discipline) === 2) {
-    discipline = 'Orthodox';
-  } else if (Number(firstUser?.discipline) === 3) {
-    discipline = 'Judo';
-  } else if (Number(firstUser?.discipline) === 4) {
-    discipline = 'Muay Thai';
-  } else if (Number(firstUser?.discipline) === 5) {
-    discipline = 'Grappling';
-  } else if (Number(firstUser?.discipline) === 6) {
-    discipline = 'Counter Striker';
-  } else if (Number(firstUser?.discipline) === 7) {
-    discipline = 'Karate';
-  } else if (Number(firstUser?.discipline) === 8) {
-    discipline = 'Switch';
-  } else if (Number(firstUser?.discipline) === 9) {
-    discipline = 'Brazilian Jiu-Jitsu';
-  } else {
-    return;
-  }
-
-  let professionalLevel;
-  if (Number(firstUser?.professional_level) === 0) {
-    professionalLevel = 'Beginner';
-  } else if (Number(firstUser?.professional_level) === 1) {
-    professionalLevel = 'Amateur';
-  } else {
-    professionalLevel = 'Professional';
-  }
+  if (Number(firstUser?.weight_class) === 4) weightClass = 'Lightweight';
+  if (Number(firstUser?.weight_class) === 5) weightClass = 'Middleweight';
+  if (Number(firstUser?.weight_class) === 6) weightClass = 'Heavyweight';
 
   let gender;
   if (Number(firstUser?.gender) === 0) {
@@ -167,7 +111,7 @@ const DiscoverPage = () => {
     usersLeftOrNoUsers = (
       <div className='main-area-container'>
         <div className='discover-title'>
-          <h1>Recommended Just For You</h1>
+          <h2>Recommended Just For You</h2>
         </div>
         <div className='user-info-container'>
           <div className='top-row'>

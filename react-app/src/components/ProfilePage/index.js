@@ -1,16 +1,11 @@
 import './ProfilePage.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams, useHistory, Link } from 'react-router-dom';
+import { useParams, useHistory, Link, Redirect } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getOneUser } from '../../store/users';
-import { ImCancelCircle } from 'react-icons/im';
-import { AiFillHeart } from 'react-icons/ai';
 import { getNewUsers, removeUser } from '../../store/discover';
 import { createLike } from '../../store/likes';
-import { getCurrentUserAndAnswers } from '../../store/session';
 import { createDislike } from '../../store/dislikes';
-
-import { MdKeyboardArrowRight } from 'react-icons/md';
 import { GiWeight, GiCage, GiBoxingGlove } from 'react-icons/gi';
 import { BiRuler, BiMedal } from 'react-icons/bi';
 import { VscGraph } from 'react-icons/vsc';
@@ -23,26 +18,29 @@ const DiscoverPage = () => {
   const firstUser = useSelector((state) => state.users[userId]);
   const { user } = useSelector((state) => state.session);
   const id = Number(user.id);
+  const allUsersNotLiked = useSelector((state) => state.discover);
+  const allUsersNotLikedObj = useSelector((state) => state.discover);
 
-  console.log(firstUser);
+  console.log(allUsersNotLikedObj);
+
+  console.log(firstUser?.id);
 
   const [likeButton, setLikeButton] = useState('/like-button-unclicked.png');
   const [dislikeButton, setDislikeButton] = useState(
     '/dislike-button-unclicked.png'
   );
 
-  const handleClickDislike = (e) => {
-    e.preventDefault();
-    dispatch();
-    // dispatch(removeUser(allUsersNotLiked.shift()));
+  console.log(allUsersNotLikedObj[firstUser?.id]);
+
+  const handleClickDislike = () => {
     dispatch(createDislike(id, firstUser?.id));
+    dispatch(removeUser(allUsersNotLikedObj[firstUser?.id]));
     history.push('/discover');
   };
 
-  const handleClickLike = (e) => {
-    e.preventDefault();
-    // dispatch(removeUser(allUsersNotLiked.shift()));
+  const handleClickLike = () => {
     dispatch(createLike(id, firstUser?.id));
+    dispatch(removeUser(allUsersNotLikedObj[firstUser?.id]));
     history.push('/discover');
   };
 
@@ -64,7 +62,7 @@ const DiscoverPage = () => {
 
   useEffect(() => {
     dispatch(getNewUsers(id));
-    dispatch(getCurrentUserAndAnswers(id));
+    // dispatch(getCurrentUserAndAnswers(id));
     dispatch(getOneUser(userId));
   }, [dispatch, id, userId]);
 
@@ -95,27 +93,16 @@ const DiscoverPage = () => {
   }
 
   let discipline;
-  if (Number(firstUser?.discipline) === 0) {
-    discipline = 'Southpaw';
-  } else if (Number(firstUser?.discipline) === 1) {
-    discipline = 'Kickboxing';
-  } else if (Number(firstUser?.discipline) === 2) {
-    discipline = 'Orthodox';
-  } else if (Number(firstUser?.discipline) === 3) {
-    discipline = 'Judo';
-  } else if (Number(firstUser?.discipline) === 4) {
-    discipline = 'Muay Thai';
-  } else if (Number(firstUser?.discipline) === 5) {
-    discipline = 'Grappling';
-  } else if (Number(firstUser?.discipline) === 6) {
-    discipline = 'Counter Striker';
-  } else if (Number(firstUser?.discipline) === 7) {
-    discipline = 'Karate';
-  } else if (Number(firstUser?.discipline) === 8) {
-    discipline = 'Switch';
-  } else {
-    discipline = 'Brazilian Jiu-Jitsu';
-  }
+  if (Number(firstUser?.discipline) === 0) discipline = 'Southpaw';
+  if (Number(firstUser?.discipline) === 1) discipline = 'Kickboxing';
+  if (Number(firstUser?.discipline) === 2) discipline = 'Orthodox';
+  if (Number(firstUser?.discipline) === 3) discipline = 'Judo';
+  if (Number(firstUser?.discipline) === 4) discipline = 'Muay Thai';
+  if (Number(firstUser?.discipline) === 5) discipline = 'Grappling';
+  if (Number(firstUser?.discipline) === 6) discipline = 'Counter Striker';
+  if (Number(firstUser?.discipline) === 7) discipline = 'Karate';
+  if (Number(firstUser?.discipline) === 8) discipline = 'Switch';
+  if (Number(firstUser?.discipline) === 9) discipline = 'Brazilian Jiu-Jitsu';
 
   let professionalLevel;
   if (Number(firstUser?.professional_level) === 0) {
@@ -156,6 +143,23 @@ const DiscoverPage = () => {
 
     return total + '% Compatability';
   };
+
+  let loggedInUserHeaderOrOtherUserHeader;
+  if (Number(firstUser?.id) !== Number(id)) {
+    loggedInUserHeaderOrOtherUserHeader = (
+      <div className='discover-title'>
+        <h2>
+          {firstUser?.first_name} {firstUser?.last_name}'s Profile
+        </h2>
+      </div>
+    );
+  } else {
+    loggedInUserHeaderOrOtherUserHeader = (
+      <div className='discover-title'>
+        <h2>Your Profile</h2>
+      </div>
+    );
+  }
 
   let currentUserPageOrDifferentUserPage;
   if (Number(firstUser?.id) !== Number(id)) {
@@ -199,9 +203,7 @@ const DiscoverPage = () => {
   return (
     <div className='discover-page'>
       <div className='main-area-container'>
-        <div className='discover-title'>
-          <h1>Recommended Just For You</h1>
-        </div>
+        {loggedInUserHeaderOrOtherUserHeader}
         <div className='user-info-container'>
           <div className='top-row'>
             <div className='user-info'>
@@ -254,7 +256,8 @@ const DiscoverPage = () => {
                 <p>{available}</p>
               </div>
             )}
-            {firstUser?.has_kids === false ? null : (
+            {firstUser?.has_kids === false ||
+            firstUser?.has_kids === null ? null : (
               <div>
                 <h3>Has Kids</h3>
                 <p>{firstUser?.has_kids}</p>
