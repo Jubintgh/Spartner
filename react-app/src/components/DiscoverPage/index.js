@@ -1,9 +1,10 @@
 import './DiscoverPage.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { getNewUsers, removeUser } from '../../store/discover';
 import { createLike } from '../../store/likes';
+import { getCurrentUserAndAnswers } from '../../store/session';
 import { createDislike } from '../../store/dislikes';
 import { ImCancelCircle } from 'react-icons/im';
 import { AiFillHeart } from 'react-icons/ai';
@@ -11,8 +12,6 @@ import { MdKeyboardArrowRight } from 'react-icons/md';
 import { GiWeight, GiCage } from 'react-icons/gi';
 import { BiRuler, BiMedal } from 'react-icons/bi';
 import { VscGraph } from 'react-icons/vsc';
-import dislikeClicked from '../../../public';
-import likeClicked from '../../../public';
 
 const DiscoverPage = () => {
   const dispatch = useDispatch();
@@ -24,6 +23,11 @@ const DiscoverPage = () => {
   const firstUser = allUsersNotLiked[0]
     ? allUsersNotLiked[0]
     : 'No more users to display!';
+
+  const [likeButton, setLikeButton] = useState('/like-button-unclicked.png');
+  const [dislikeButton, setDislikeButton] = useState(
+    '/dislike-button-unclicked.png'
+  );
 
   const handleClickDislike = (e) => {
     e.preventDefault();
@@ -37,8 +41,33 @@ const DiscoverPage = () => {
     dispatch(createLike(id, firstUser?.id));
   };
 
+  const changeImageSourceLiked = (e) => {
+    if (likeButton === '/like-button-clicked.png') {
+      setLikeButton('/like-button-unclicked.png');
+    } else {
+      setLikeButton('/like-button-clicked.png');
+    }
+  };
+
+  const changeImageSourceDisliked = (e) => {
+    if (dislikeButton === '/dislike-button-clicked.png') {
+      setDislikeButton('/dislike-button-unclicked.png');
+    } else {
+      setDislikeButton('/dislike-button-clicked.png');
+    }
+  };
+
+  console.log(user);
+
+  const createMatchPercentage = () => {
+    let total = 1;
+
+    // if (user)
+  };
+
   useEffect(() => {
     dispatch(getNewUsers(id));
+    dispatch(getCurrentUserAndAnswers(id));
   }, [dispatch, id]);
 
   let usersLeftOrNoUsers;
@@ -67,11 +96,23 @@ const DiscoverPage = () => {
               </Link>
             </div>
             <div className='discover-btns'>
-              <div onClick={(e) => handleClickDislike(e)} className='pass-btn'>
-                <ImCancelCircle />
+              <div onClick={handleClickDislike} className='pass-btn'>
+                <img
+                  className={`discover-button`}
+                  src={dislikeButton}
+                  onMouseDown={changeImageSourceDisliked}
+                  onMouseUp={changeImageSourceDisliked}
+                  alt=''
+                />
               </div>
               <div onClick={handleClickLike} className='like-btn'>
-                <AiFillHeart />
+                <img
+                  className='discover-button'
+                  src={likeButton}
+                  onMouseDown={changeImageSourceLiked}
+                  onMouseUp={changeImageSourceLiked}
+                  alt=''
+                />
               </div>
             </div>
           </div>
@@ -109,12 +150,10 @@ const DiscoverPage = () => {
                 <p>{firstUser?.nickname}</p>
               </div>
             )}
-            {firstUser?.nickname === null ? null : (
+            {firstUser?.religion === null ? null : (
               <div>
                 <h3>Religion</h3>
-                <p>
-                  {firstUser?.religion === null ? 'None' : firstUser?.religion}
-                </p>
+                <p>{firstUser?.religion}</p>
               </div>
             )}
             {firstUser?.pets === null ? null : (

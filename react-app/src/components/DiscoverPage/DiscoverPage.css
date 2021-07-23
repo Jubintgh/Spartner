@@ -14,7 +14,7 @@
   height: 440px;
   display: flex;
   flex-direction: column;
-  /* border-radius: 7px; */
+  padding-bottom: 1em;
 }
 
 .top-row,
@@ -80,6 +80,8 @@
   justify-content: space-around;
   align-items: center;
   height: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .user-img {
@@ -98,4 +100,12 @@
 
 .first-name {
   margin-right: 0.5rem;
+}
+
+.discover-button {
+  height: 80px;
+  width: 80px;
+}
+
+.discover-button:active {
 }
