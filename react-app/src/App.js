@@ -10,15 +10,17 @@ import User from './components/User';
 import { authenticate } from './store/session';
 import AnswersForm from './components/auth/AnswersForm';
 import Footer from './components/Footer';
+import DiscoverPage from './components/DiscoverPage';
 import EditAnswersForm from './components/EditAnswersForm/index'
-
+import EditUserForm from './components/EditUserInfo/index'
+import LandingPage from './components/LandingPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    (async() => {
+    (async () => {
       await dispatch(authenticate());
       setLoaded(true);
     })();
@@ -29,14 +31,20 @@ function App() {
   }
 
   return (
-    <div className="page-container">
-      <div className="content-wrap">
+    <div className='page-container'>
+      <div className='content-wrap'>
         <BrowserRouter>
           <NavBar />
             <Switch>
+              <Route path='/' exact={true}>
+                <LandingPage />
+              </Route>
               <Route path='/login' exact={true}>
                 <LoginForm />
               </Route>
+              <ProtectedRoute path='/discover' exact={true}>
+              <DiscoverPage />
+            </ProtectedRoute>
               <Route path='/sign-up' exact={true}>
                 <SignUpForm />
               </Route>
@@ -46,23 +54,27 @@ function App() {
               <ProtectedRoute path='/users/:userId' exact={true} >
                 <User />
               </ProtectedRoute>
-              <ProtectedRoute path='/discover' exact={true} >
-                <h1>My Home Page</h1>
-                <h2> what austin and jay are currently on</h2>
-              </ProtectedRoute>
               <Route path='/users/:userId/init-answers' exact={true}>
                 <AnswersForm />
               </Route>
               <Route path='/users/:userId/edit-answers' exact={true}>
                 <EditAnswersForm />
               </Route>
+              <Route path='/users/:userId/edit-info' exact={true}>
+                <EditUserForm />
+              </Route>
+              <ProtectedRoute path='/discover' exact={true}>
+                <DiscoverPage />
+              </ProtectedRoute>
             </Switch>
         </BrowserRouter>
-        </div>
-        <Footer />
+      </div>
+      <Footer />
     </div>
-
   );
 }
+{/* <ProtectedRoute path='/' exact={true}>
+  <LandingPage />
+</ProtectedRoute> */}
 
 export default App;

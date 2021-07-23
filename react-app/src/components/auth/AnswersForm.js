@@ -15,7 +15,7 @@ const AnswersForm = () => {
   const [walkoutSong, setWalkoutSong] = useState('');
   const [vaccinated, setVaccinated] = useState('');
   const [hasKids, setHasKids] = useState('');
-  const [inPerson, setInPerson] = useState(True);
+  const [inPerson, setInPerson] = useState(true);
   const [nickname, setNickname] = useState('');
   const [religion, setReligion] = useState('');
   const [pets, setPets] = useState('');
@@ -24,9 +24,9 @@ const AnswersForm = () => {
   const user = useSelector(state => state.session.user);
   const history = useHistory();
   const dispatch = useDispatch();
-  const isCoach = user.coach;
-  const gender = user.gender;
-  const user_id = user.id
+  const isCoach = user?.coach;
+  const gender = user?.gender;
+  const user_id = user?.id;
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -50,9 +50,7 @@ const AnswersForm = () => {
       rate ));
     if (data) {
       setErrors(data)
-      if (!setErrors(data)) {
-        history.push(`/discover`)
-      }
+      history.push(`/discover`)
     }
   };
 

@@ -52,29 +52,29 @@ export const createAnswer = (
     pets,
     availability,
     rate ) => async (dispatch) => {
-    const res = await fetch(`/api/users/${user_id}}/answers`, {
+    const res = await fetch(`/api/users/${user_id}/answers`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            user_id,
-            about,
-            weightClass,
-            reach,
-            professionalLevel,
-            currentRecord,
-            previousTitles,
-            favRockyFighter,
-            walkoutSong,
-            vaccinated,
-            hasKids,
-            inPerson,
-            nickname,
-            religion,
-            pets,
-            availability,
-            rate
+            "user_id": user_id,
+            "about": about,
+            "weight_class": weightClass,
+            "reach": reach,
+            "professional_level": professionalLevel,
+            "current_record": currentRecord,
+            "previous_titles": previousTitles,
+            "fav_rocky_fighter": favRockyFighter,
+            "walkout_song": walkoutSong,
+            "vaccinated": vaccinated,
+            "has_kids": hasKids,
+            "in_person": inPerson,
+            "nickname": nickname,
+            "religion": religion,
+            "pets": pets,
+            "availability": availability,
+            "rate": rate
         })
     });
 

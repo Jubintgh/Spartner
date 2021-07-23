@@ -1,11 +1,10 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, IntegerField, BooleanField
+from wtforms.fields import StringField, IntegerField, BooleanField
 from wtforms.validators import DataRequired
 
 
 class AnswerForm(FlaskForm):
     about = StringField('about', validators=[DataRequired()])
-    weight_class = IntegerField('weight class', validators=[DataRequired()])
     reach = IntegerField('reach', validators=[DataRequired()])
     professional_level = IntegerField('professional level', validators=[DataRequired()])
     current_record = StringField('current record', validators=[DataRequired()])
@@ -20,3 +19,4 @@ class AnswerForm(FlaskForm):
     availability = IntegerField('availability', validators=[DataRequired()])
     rate = IntegerField('rate', validators=[DataRequired()]),
     in_person = BooleanField('in person', validators=[DataRequired()])
+    weight_class = IntegerField('weight class', validators=[DataRequired()])

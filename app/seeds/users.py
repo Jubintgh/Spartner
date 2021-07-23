@@ -225,6 +225,58 @@ def seed_users():
             discipline=8, img_url="https://cdn.theatlantic.com/thumbor/kRAzxqy5K2BR8LVPxXv0VZvZqXk=/0x0:675x380/655x369/media/img/posts/2013/10/Walter_White/original.png"
         )
 
+
+    user31 = User(first_name='Trinity', last_name='Betts', email='donato.smith@gmail.com', username='pampersgymnasium', password='Password1!', gender=1, coach=True, discipline=6, location='Fairwood, WA', age=26, img_url='inTheWorks.jpg')
+    user32 = User(first_name='Amayah', last_name='Searle', email='aryanna_berge8@gmail.com', username='budweiserwrestling', password='Password1!', gender=2, coach=True, discipline=6, location='Levittown,PA',age=38, img_url='inTheWorks.jpg')
+    user33 = User(first_name='Ellie-May', last_name='Hulme', email='renee57@yahoo.com', username='allianzequipment', password='Password1!', gender=2, coach=False, discipline=0, location='Dix Hills,NY', age=29, img_url='inTheWorks.jpg')
+    user34 = User(first_name='Sufyaan', last_name='Roach', email='waino67@yahoo.com', username='mcdonaldsathlete', password='Password1!', gender=1, coach=True, discipline=6, location='San Juan,TX', age=50, img_url='inTheWorks.jpg')
+    user35 = User(first_name='Kaeden', last_name='Strong', email='arjun.okon96@gmail.com', username='ebayclub', password='Password1!', gender=1, coach=False, discipline=6, location='Lafayette,IN', age=64, img_url='inTheWorks.jpg')
+    user36 = User(first_name='Mayson', last_name='Nelson', email='brown.heaney75@hotmail.com', username='delltarget', password='Password1!', gender=2, coach=True, discipline=7, location='China, ME', age=45, img_url='inTheWorks.jpg')
+    user37 = User(first_name='Onur', last_name='Gonzalez', email='waylon.block@yahoo.com', username='chevroletmat', password='Password1!', gender=1, coach=False, discipline=7, location='Galena, IN', age=48, img_url='inTheWorks.jpg')
+    user38 = User(first_name='Siena', last_name='Tate', email='cordia_klein@hotmail.com', username='ikeawrestler', password='Password1!', gender=2, coach=True, discipline=7, location='Saticoy, CA', age=43, img_url='inTheWorks.jpg')
+    user39 = User(first_name='Alfie-Jay', last_name='Singh', email='nakia_prohaska46@hotmail.com', username='audiswimmer', password='Password1!', gender=0, coach=False, discipline=0, location='New Franklin, MO', age=19, img_url='inTheWorks.jpg')
+    user40 = User(first_name='Ayden', last_name='Leon', email='oma_wolff97@gmail.com', username='exxonracer', password='Password1!', gender=1, coach=True, discipline=9, location='LaFollette, TN', age=66, img_url='inTheWorks.jpg')
+    user41 = User(first_name='Kevin', last_name='Cordova', email='kevinsux@measdsad.com', username='facebookslalom', password='Password1!', gender=1, coach=True, discipline=8, location='Malad City, ID', age=44, img_url='inTheWorks.jpg')
+    user42 = User(first_name='Amalia', last_name='Stewart', email='keara_hirthe98@hotmail.com', username='heinzsailing', password='Password1!', gender=2, coach=True, discipline=7, location='Glen Rose, TX', age=65, img_url='inTheWorks.jpg')
+    user43 = User(first_name='Ajwa', last_name='Ferguson', email='emilia.friesen@hotmail.com',username='nikewaterski', password='Password1!', gender=2, coach=True, discipline=6, location='Malta, MT', age=59, img_url='inTheWorks.jpg')
+    user44 = User(first_name='Chelsey', last_name='Weeks',email='cathy96@gmail.com', username='pradastrike', password='Password1!', gender=2, coach=False, discipline=5, location='North York, PA', age=33, img_url='inTheWorks.jpg')
+    user45 = User(first_name='Zahrah', last_name='Fry', email='ona_medhurst@gmail.com',username='visatriathlete', password='Password1!', gender=1, coach=True, discipline=4, location='Newton, NJ', age=42, img_url='inTheWorks.jpg')
+    user46 = User(first_name='Kabir', last_name='East', email='pattie70@hotmail.com',username='colapingpong', password='Password1!', gender=1, coach=False, discipline=3, location='Puhi, HI', age=20, img_url='inTheWorks.jpg')
+    user47 = User(first_name='Ruby-Leigh', last_name='Drew', email='bettie.reynolds@hotmail.com',username='kraftdiver', password='Password1!', gender=1, coach=True, discipline=2, location='Cedar Hill, MO', age=52, img_url='inTheWorks.jpg')
+    user48 = User(first_name='Connie', last_name='Norman', email='enoch_becker@gmail.com',username='fordarcher', password='Password1!', gender=0, coach=False, discipline=1, location='West Fairview, PA', age=69, img_url='inTheWorks.jpg')
+    user49 = User(first_name='Osman', last_name='Ballard', email='rylan63@gmail.com',username='cartierfootball', password='Password1!', gender=1, coach=False, discipline=1, location='Dulles Town Center, VA', age=25, img_url='inTheWorks.jpg')
+    user50 = User(first_name='Mohammad', last_name='Pearce', email='audrey_witting@yahoo.com',username='spritehandball', password='Password1!', gender=0, coach=True, discipline=1, location='Orange, MA', age=56, img_url='inTheWorks.jpg')
+    user51 = User(first_name='Talia', last_name='Lang', email='watermelon@gmail.com',username='oraclepuck', password='Password1!', gender=1, coach=True, discipline=1, location='McGuire, NJ', age=37, img_url='inTheWorks.jpg')
+    user52 = User(first_name='Alanna', last_name='Bowes', email='antonina.mayer50@gmail.com',username='kellogsiceskates', password='Password1!', gender=1, coach=True, discipline=1, location='Kenhorst, PA', age=34, img_url='inTheWorks.jpg')
+    user53 = User(first_name='Usman', last_name='Cantrell', email='andreanne.morissette@hotmail.com',username='siemenscleats', password='Password1!', gender=1, coach=True, discipline=2, location='Waynesboro, VA', age=45, img_url='inTheWorks.jpg')
+    user54 = User(first_name='Matas', last_name='Washington', email='camylle.abernathy55@yahoo.com',username='ferrarirugby', password='Password1!', gender=1, coach=True, discipline=2, location='Long Beach, CA', age=61, img_url='inTheWorks.jpg')
+    user55 = User(first_name='Kylo', last_name='Kirk', email='janet76@gmail.com',username='pepsiparkour', password='Password1!', gender=2, coach=True, discipline=2, location='Fort Meade, MD', age=55, img_url='inTheWorks.jpg')
+    user56 = User(first_name='Faisal', last_name='Cohen', email='jedidiah82@yahoo.com',username='rolexplayoffs', password='Password1!', gender=1, coach=False, discipline=2, location='Pocomoke City, MD', age=29, img_url='inTheWorks.jpg')
+    user57 = User(first_name='Layla-Rose', last_name='Gibson',email='price87@yahoo.com', username='shellsport', password='Password1!', gender=1, coach=True, discipline=3,  location='Hamburg, PA', age=35, img_url='inTheWorks.jpg')
+    user58 = User(first_name='Tevin', last_name='Schaefer', email='osborne.durgan58@gmail.com',username='burberrydiamond', password='Password1!', gender=1, coach=True, discipline=3, location='Lakewood Shores, IL', age=18, img_url='inTheWorks.jpg')
+    user59 = User(first_name='Nicky', last_name='Chandler', email='verdie_walter37@yahoo.com',username='adidasluge', password='Password1!', gender=2, coach=True, discipline=3, location='Kansas City, MO', age=44, img_url='inTheWorks.jpg')
+    user60 = User(first_name='Kayne', last_name='Holman', email='dewayne95@yahoo.com', username='ciscosled', password='Password1!', gender=1, coach=True, discipline=4, location='Oak Grove, LA', age=57, img_url='inTheWorks.jpg')
+    user61 = User(first_name='Pixie', last_name='Lake', email='jovanny.bode56@gmail.com', username='malboropolevault', password='Password1!', gender=1, coach=True, discipline=4, location='Hudson Oaks, TX', age=25, img_url='inTheWorks.jpg')
+    user62 = User(first_name='Bert', last_name='Barber', email='nelson_schowalter@hotmail.com',username='porschejumprope', password='Password1!', gender=1, coach=True, discipline=7, location='Kennesaw, GA', age=19, img_url='inTheWorks.jpg')
+    user63 = User(first_name='Glen', last_name='Berry', email='scarlett_medhurst19@yahoo.com',username='ericssondugout', password='Password1!', gender=1, coach=True, discipline=9, location='Fobes Hill, WA', age=48, img_url='inTheWorks.jpg')
+    user64 = User(first_name='Ira', last_name='Rowe', email='uriah_mcclure93@gmail.com',username='nescaferow', password='Password1!', gender=0, coach=False, discipline=9, location='Jacinto City, TX', age=46, img_url='inTheWorks.jpg')
+    user65 = User(first_name='Leland', last_name='Alvarez', email='tiana_dooley@gmail.com', username='hondakickball', password='Password1!', gender=1, coach=True, discipline=9, location='Warminster Heights, PA', age=33, img_url='inTheWorks.jpg')
+    user66 = User(first_name='Jonathan', last_name='Garner', email='helmer45@gmail.com',username='mercedespaddleball', password='Password1!', gender=1, coach=False, discipline=9, location='Riverside, PA', age=46, img_url='inTheWorks.jpg')
+    user67 = User(first_name='Kristopher', last_name='Lucas', email='cyril_hills@gmail.com',username='subwayhometeam', password='Password1!', gender=1, coach=True, discipline=9, location='Germantown, TN', age=50, img_url='inTheWorks.jpg')
+    user68 = User(first_name='Fredrick', last_name='Swanson', email='lane_mitchell97@gmail.com',username='nissancurling', password='Password1!', gender=0, coach=False, discipline=8, location='Avonmore, PA', age=24, img_url='inTheWorks.jpg')
+    user69 = User(first_name='Joshua', last_name='Sims', email='orville_dare@yahoo.com',username='lexushighjump', password='Password1!', gender=1, coach=True, discipline=8, location='Granville, IL', age=23, img_url='inTheWorks.jpg')
+    user70 = User(first_name='Carolyn', last_name='Wright', email='greta72@yahoo.com',username='nestleshortstop', password='Password1!', gender=0, coach=False, discipline=8, location='Hayneville, AL', age=29, img_url='inTheWorks.jpg')
+    user71 = User(first_name='Alberto', last_name='Terry', email='yasmine43@gmail.com',username='heinekenbaseball', password='Password1!', gender=1, coach=True, discipline=8, location='Francis, UT', age=61, img_url='inTheWorks.jpg')
+    user72 = User(first_name='Sarah', last_name='Kemp', email='leilani5@hotmail.com',username='microsofticehockey', password='Password1!', gender=1, coach=False, discipline=4, location='Narberth, PA', age=44, img_url='inTheWorks.jpg')
+    user73 = User(first_name='Enid', last_name='Swan', email='roslyn78@yahoo.com', username='colgatecompetitor', password='Password1!', gender=2, coach=True, discipline=4, location='Brooklyn, WI', age=46, img_url='inTheWorks.jpg')
+    user74 = User(first_name='Curtis', last_name='Bostock', email='andre.roob@gmail.com', username='starbucksicerink', password='Password1!', gender=1, coach=True, discipline=4, location='Vidalia, LA', age=32, img_url='inTheWorks.jpg')
+    user75 = User(first_name='Raphael', last_name='Healy', email='norris38@yahoo.com', username='samsungscoreboard', password='Password1!', gender=1, coach=True, discipline=5, location='Sand Lake, MI', age=35, img_url='inTheWorks.jpg')
+    user76 = User(first_name='Alyssia', last_name='Hansen', email='ettie64@gmail.com', username='gucciarena', password='Password1!', gender=2, coach=True, discipline=5, location='East Port Orchard, WA', age=54, img_url='inTheWorks.jpg')
+    user77 = User(first_name='Fallon', last_name='Byrd', email='rachel99@yahoo.com', username='ibmhalftime', password='Password1!', gender=1, coach=True, discipline=5, location='Wheeler, TX', age=28, img_url='inTheWorks.jpg')
+    user78 = User(first_name='Giles', last_name='Fowler', email='alexander.will0@hotmail.com', username='disneyboxer', password='Password1!', gender=2, coach=False, discipline=0, location='DeWitt, MI', age=49, img_url='inTheWorks.jpg')
+    user79 = User(first_name='Ayomide', last_name='Horne', email='allene.mraz@yahoo.com', username='boeingplay', password='Password1!', gender=1, coach=True, discipline=5, location='Spring City, PA', age=43, img_url='inTheWorks.jpg')
+    user80 = User(first_name='Bluebell', last_name='Mooney', email='ruth.smith@hotmail.com', username='santanderdiving', password='Password1!', gender=1, coach=True, discipline=6, location='Westville, IN', age=61, img_url='inTheWorks.jpg')
+
     user2.liked_by.append(user1)
     user3.liked_by.append(user22)
     user4.liked_by.append(user21)
@@ -255,6 +307,8 @@ def seed_users():
     user29.liked_by.append(user1)
     user30.liked_by.append(user11)
 
+    user1.disliked_by.append(user30)
+
     db.session.add_all([
             user1,
             user2,
@@ -271,6 +325,7 @@ def seed_users():
             user13,
             user14,
             user15,
+            user16,
             user17,
             user18,
             user19,
@@ -284,7 +339,57 @@ def seed_users():
             user27,
             user28,
             user29,
-            user30
+            user30,
+            user31,
+            user32,
+            user33,
+            user34,
+            user35,
+            user36,
+            user37,
+            user38,
+            user39,
+            user40,
+            user41,
+            user42,
+            user43,
+            user44,
+            user45,
+            user46,
+            user47,
+            user48,
+            user49,
+            user50,
+            user51,
+            user52,
+            user53,
+            user54,
+            user55,
+            user56,
+            user57,
+            user58,
+            user59,
+            user60,
+            user61,
+            user62,
+            user63,
+            user64,
+            user65,
+            user66,
+            user67,
+            user68,
+            user69,
+            user70,
+            user71,
+            user72,
+            user73,
+            user74,
+            user75,
+            user76,
+            user77,
+            user78,
+            user79,
+            user80
             ])
 
     db.session.commit()
