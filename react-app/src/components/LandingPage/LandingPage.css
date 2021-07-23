@@ -1,0 +1,93 @@
+.splash-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    /* padding-top: 4.5em; */
+    -webkit-animation:fade-in 2s 5s;
+    animation: fade-in 2s 1s;
+}
+
+.splash-banner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #020202;
+    text-shadow: -1px -1px 0 #ED254E, 1px -1px 0 #ED254E, -1px 1px 0 #ED254E, 1px 1px 0 #ED254E;
+}
+
+.splash-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    text-decoration: none;
+}
+
+.splash-buttons a {
+    text-decoration: none;
+}
+
+.splash-buttons button {
+    outline: none;
+    display: block;
+    background-color: #ED254E;
+    color: #020202;
+    border: solid 1px #ED254E;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s linear;
+    margin: 5px;
+    -webkit-animation:fade-in 2s 5s;
+    animation: fade-in 2s 1s;
+}
+
+.splash-buttons button:focus {
+    background-color: #020202;
+    color: #ED254E;
+}
+
+.splash-buttons button:active {
+    background-color: #020202;
+    color: #ED254E;
+    border: solid 1px #ED254E;
+}
+
+.splash-buttons button:hover {
+    background-color: #020202;
+    color: #ED254E;
+}
+
+.splash-background {
+    background-image: url("https://user-images.githubusercontent.com/35717793/126691081-d55ff18a-4036-44ed-add5-07eb660bfa0d.png");
+    background-size: cover;
+    height: 100vh;
+}
+
+.splash-header {
+    padding: 2em;
+    width: 500px;
+    height: 100%;
+    -webkit-animation:fade-in 2s 5s;
+    animation: fade-in 2s 1s;
+}
+
+.splash-subheader {
+    background-color: #79182b4b;
+    border-radius: 10px;
+}
+
+
+@keyframes fade-in{
+	from { opacity:0;}
+	to {opacity:1;}
+}
+
+@-webkit-keyframes fade-in{
+	from {opacity:0;}
+	to {opacity:1;}
+}

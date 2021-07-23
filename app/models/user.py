@@ -18,6 +18,21 @@ user_likes = db.Table(
     )
 )
 
+user_dislikes = db.Table(
+    "user_dislikes",
+    db.Column(
+        "disliker_id",
+        db.Integer,
+        db.ForeignKey("users.id"),
+    ),
+
+    db.Column(
+        "disliked_id",
+        db.Integer,
+        db.ForeignKey("users.id"),
+    )
+)
+
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
@@ -49,6 +64,19 @@ class User(db.Model, UserMixin):
         backref=db.backref('liked_by', lazy='dynamic'),
 
         lazy='dynamic' 
+    )
+
+    dislikes =db.relationship(
+        "User",
+
+        secondary=user_dislikes,
+        
+        primaryjoin=(user_dislikes.c.disliker_id == id),
+
+        secondaryjoin=(user_dislikes.c.disliked_id == id),
+        backref=db.backref('disliked_by', lazy='dynamic'),
+
+        lazy='dynamic'
     )
 
     @property

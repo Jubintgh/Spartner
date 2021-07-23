@@ -23,7 +23,10 @@ class Answer(db.Model):
     availability = db.Column(db.Integer)
     rate = db.Column(db.Integer)
 
-    user = db.relationship("User", back_populates="answer")
+    user = db.relationship(
+        "User",
+        back_populates="answer"
+    )
 
     def to_dict(self):
         return {

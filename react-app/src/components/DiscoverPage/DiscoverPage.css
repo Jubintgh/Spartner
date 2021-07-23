@@ -1,0 +1,111 @@
+.main-area-container {
+  margin: auto;
+  background-color: #1a1a19;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+}
+
+.user-info-container {
+  background-color: #ed254d89;
+  width: 900px;
+  height: 440px;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 1em;
+}
+
+.top-row,
+.user-info,
+.bio-container,
+.discover-btns,
+.view-profile-container,
+.full-name {
+  display: flex;
+}
+
+.bio-right > div {
+  display: flex;
+  align-items: center;
+}
+
+.bio-right > div > p {
+  margin-left: 1rem;
+}
+
+.user-info {
+  width: 50%;
+  justify-content: space-around;
+}
+
+.bio-container {
+  background-color: #54545470;
+  /* border-radius: 7px; */
+  width: 900px;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.top-row {
+  align-items: center;
+  justify-content: space-between;
+}
+
+.discover-btns {
+  cursor: pointer;
+  width: 15%;
+  justify-content: space-around;
+}
+
+.view-profile-link {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #736ced;
+}
+
+.view-profile-link:visited {
+  color: #736ced;
+}
+
+.bio-right-icon {
+  font-size: 2rem;
+}
+
+.user-picture {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.user-img {
+  width: 350px;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 2em;
+}
+
+.bio-left,
+.bio-right {
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.first-name {
+  margin-right: 0.5rem;
+}
+
+.discover-button {
+  height: 80px;
+  width: 80px;
+}
+
+.discover-button:active {
+}

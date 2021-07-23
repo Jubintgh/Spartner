@@ -13,13 +13,15 @@ import Footer from './components/Footer';
 import EditAnswersForm from './components/EditAnswersForm/index'
 import EditUserForm from './components/EditUserInfo/index'
 
+import DiscoverPage from './components/DiscoverPage';
+import LandingPage from './components/LandingPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    (async() => {
+    (async () => {
       await dispatch(authenticate());
       setLoaded(true);
     })();
@@ -30,8 +32,8 @@ function App() {
   }
 
   return (
-    <div className="page-container">
-      <div className="content-wrap">
+    <div className='page-container'>
+      <div className='content-wrap'>
         <BrowserRouter>
           <NavBar />
             <Switch>
@@ -60,13 +62,18 @@ function App() {
               <Route path='/users/:userId/edit-info' exact={true}>
                 <EditUserForm />
               </Route>
+              <ProtectedRoute path='/discover' exact={true}>
+                <DiscoverPage />
+              </ProtectedRoute>
             </Switch>
         </BrowserRouter>
-        </div>
-        <Footer />
+      </div>
+      <Footer />
     </div>
-
   );
 }
+{/* <ProtectedRoute path='/' exact={true}>
+  <LandingPage />
+</ProtectedRoute> */}
 
 export default App;
