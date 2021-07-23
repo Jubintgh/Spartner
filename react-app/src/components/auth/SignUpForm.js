@@ -14,10 +14,10 @@ const SignUpForm = () => {
   const [last_name, setLastName] = useState('');
   const [age, setAge] = useState('');
   const [location, setLocation] = useState('');
-  const [gender, setGender] = useState(0);
+  const [gender, setGender] = useState('');
   const [coach, setCoach] = useState(0);
   const [img_url, setImageUrl] = useState('');
-  const [discipline, setDiscipline] = useState(0);
+  const [discipline, setDiscipline] = useState('');
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
   // const history = useHistory();
@@ -97,107 +97,149 @@ const SignUpForm = () => {
 
   return (
     <form onSubmit={onSignUp}>
-      <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
-      </div>
-      <div>
+      <div className="form-container">
+        <div className="form-actualForm">
+        <div className="form-half">
+
+      <div classname="form-question">
+        <div className="form-question-label">
         <label>User Name</label>
+        </div>
+        <div className="form-input">
         <input
           type='text'
           name='username'
           onChange={updateUsername}
           value={username}
-        ></input>
+          ></input>
+        </div>
       </div>
-      <div>
+      <div classname="form-question">
+      <div className="form-question-label">
         <label>First Name</label>
+      </div>
+      <div className="form-input">
         <input
           type='text'
           name='firstName'
           onChange={updateFirstName}
           value={first_name}
-        ></input>
+          ></input>
       </div>
-      <div>
+      </div>
+      <div classname="form-question">
+      <div className="form-question-label">
         <label>Last Name</label>
+      </div>
+      <div className="form-input">
         <input
           type='text'
           name='lastName'
           onChange={updateLastName}
           value={last_name}
-        ></input>
+          ></input>
       </div>
-      <div>
+      </div>
+      <div classname="form-question">
+      <div className="form-question-label">
         <label>Age</label>
+      </div>
+      <div className="form-input">
         <input
           type='number'
           name='age'
           onChange={updateAge}
           value={age}
-        ></input>
+          ></input>
       </div>
-        <div>
+      </div>
+        <div classname="form-question">
+        <div className="form-question-label">
         <label>Location</label>
+        </div>
+        <div className="form-input">
         <input
           type='text'
           name='location'
           onChange={updateLocation}
           value={location}
-        ></input>
+          ></input>
+        </div>
       </div>
-      <div>
+      <div classname="form-question">
+      <div className="form-question-label">
         <label>Gender</label>
+      </div>
+      <div className="form-input">
         <select
           type='integer'
           name='gender'
           onChange={updateGender}
           value={gender}
-        >
+          >
+          <option value="">Select</option>
           <option value="0">Female</option>
           <option value="1">Male</option>
           <option value="2">Other</option>
         </select>
       </div>
-      <div>
+      </div>
+      </div>
+      <div className="form-half">
+      <div classname="form-question">
+      <div className="form-question-label">
         <label>Coach</label>
+      </div>
+      <div className="form-input">
         <select
           type='integer'
           name='coach'
           onChange={updateCoach}
           value={coach}
-        >
+          >
           <option value="False">No, I am not a coach</option>
           <option value="True">Yes, I am a coach</option>
         </select>
       </div>
-      <div>
+      </div>
+      <div classname="form-question">
+      <div className="form-question-label">
         <label>Image URL</label>
+      </div>
+      <div className="form-input">
         <input
           type='text'
           name='imageurl'
           onChange={updateImageUrl}
           value={img_url}
-        ></input>
+          ></input>
       </div>
-      <div>
+      </div>
+      <div classname="form-question">
+      <div className="form-question-label">
         <label>Email</label>
+      </div>
+      <div className="form-input">
         <input
           type='text'
           name='email'
           onChange={updateEmail}
           value={email}
-        ></input>
+          ></input>
       </div>
-      <div>
+      </div>
+      <div classname="form-question">
+      <div className="form-question-label">
         <label>Discipline</label>
+      </div>
+      <div className="form-input">
         <select
           name='discipline'
           type='integer'
           onChange={updateDiscipline}
           value={discipline}
-        >
+          >
+          <option value="">Select</option>
           <option value="0">Southpaw</option>
           <option value="1">Kickboxing</option>
           <option value="2">Orthodox</option>
@@ -209,27 +251,44 @@ const SignUpForm = () => {
           <option value="8">Switch</option>
           <option value="9">Brazilian Jiu-Jitsu</option>
         </select>
+      </div> 
       </div>
-      <div>
+      <div classname="form-question">
+      <div className="form-question-label">
         <label>Password</label>
+      </div>
+      <div className="form-input">
         <input
           type='password'
           name='password'
           onChange={updatePassword}
           value={password}
-        ></input>
+          ></input>
       </div>
-      <div>
+      </div>
+      <div classname="form-question">
+      <div className="form-question-label">
         <label>Repeat Password</label>
+      </div>
+      <div className="form-input">
         <input
           type='password'
           name='repeat_password'
           onChange={updateRepeatPassword}
           value={repeatPassword}
           required={true}
-        ></input>
+          ></input>
+      </div>
+      </div>
+        </div>
+        </div>
+      <div className="form-errors">
+        {errors.map((error, ind) => (
+          <div key={ind}>{error}</div>
+        ))}
       </div>
       <button type='submit'>Sign Up</button>
+      </div>
       <DemoUserButton />
     </form>
   );
