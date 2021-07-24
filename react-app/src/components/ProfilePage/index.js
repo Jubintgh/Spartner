@@ -33,14 +33,25 @@ const ProfilePage = () => {
   const handleClickDislike = () => {
     dispatch(createDislike(id, firstUser?.id));
     dispatch(removeUser(allUsersNotLikedObj[firstUser?.id]));
-    // setSwipeDirection('left');
-    history.push('/discover');
+    setSwipeDirection('left');
+    setTimeout(function () {
+      setSwipeDirection('');
+    }, 1000);
+    setTimeout(function () {
+      history.push('/discover');
+    }, 1000);
   };
 
   const handleClickLike = () => {
     dispatch(createLike(id, firstUser?.id));
     dispatch(removeUser(allUsersNotLikedObj[firstUser?.id]));
-    history.push('/discover');
+    setSwipeDirection('right');
+    setTimeout(function () {
+      setSwipeDirection('');
+    }, 1000);
+    setTimeout(function () {
+      history.push('/discover');
+    }, 1000);
   };
 
   const changeImageSourceLiked = (e) => {
@@ -204,7 +215,7 @@ const ProfilePage = () => {
     <div className='discover-page'>
       <div className='main-area-container'>
         {loggedInUserHeaderOrOtherUserHeader}
-        <div className='user-info-container'>
+        <div className={`user-info-container ${swipeDirection}`}>
           <div className='top-row'>
             <div className='user-info'>
               <div className='full-name'>
@@ -232,7 +243,7 @@ const ProfilePage = () => {
             ></img>
           </div>
         </div>
-        <div className='bio-container'>
+        <div className={`bio-container ${swipeDirection} full-profile`}>
           <div className='bio-left'>
             <div className='about-me'>
               <h3>About Me</h3>

@@ -13,3 +13,7 @@
   text-decoration: none;
   color: #736ced;
 }
+
+.bio-container.full-profile {
+  padding-bottom: 0px;
+}

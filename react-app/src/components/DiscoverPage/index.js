@@ -34,9 +34,7 @@ const DiscoverPage = () => {
     setTimeout(function () {
       setSwipeDirection('');
     }, 1000);
-    setTimeout(function () {
-      dispatch(removeUser(allUsersNotLikedObj[firstUser?.id]));
-    }, 1000);
+    dispatch(removeUser(allUsersNotLikedObj[firstUser?.id]));
   };
 
   const handleClickLike = () => {
@@ -45,9 +43,7 @@ const DiscoverPage = () => {
     setTimeout(function () {
       setSwipeDirection('');
     }, 1000);
-    setTimeout(function () {
-      dispatch(removeUser(allUsersNotLikedObj[firstUser?.id]));
-    }, 1000);
+    dispatch(removeUser(allUsersNotLikedObj[firstUser?.id]));
   };
 
   const changeImageSourceLiked = (e) => {
