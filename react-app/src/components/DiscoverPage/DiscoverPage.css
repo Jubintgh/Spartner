@@ -1,4 +1,4 @@
--area-container {
+.main-area-container {
   margin: auto;
   background-color: #1a1a19;
   width: 100%;
@@ -15,7 +15,7 @@
   display: flex;
   flex-direction: column;
   padding-bottom: 1em;
-  margin: auto;
+  transition-duration: 0s;
 }
 
 .top-row,
@@ -47,8 +47,7 @@
   width: 900px;
   justify-content: space-between;
   margin-bottom: 40px;
-  margin-left: auto;
-  margin-right: auto;
+  padding-bottom: 200px;
 }
 
 .bio-left > div > h3 {
@@ -117,4 +116,26 @@
 
 .discover-button:hover {
   opacity: 0.8;
+}
+
+.user-info-container.right,
+.bio-container.right {
+  transform: translate(500%);
+  transition-duration: 2s;
+  /* animation: fade-out 2s; */
+}
+
+.user-info-container.left,
+.bio-container.left {
+  transform: translate(-500%);
+  transition-duration: 2s;
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }

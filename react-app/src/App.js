@@ -11,9 +11,10 @@ import { authenticate } from './store/session';
 import AnswersForm from './components/auth/AnswersForm';
 import Footer from './components/Footer';
 import DiscoverPage from './components/DiscoverPage';
-import EditAnswersForm from './components/EditAnswersForm/index'
-import EditUserForm from './components/EditUserInfo/index'
+import EditAnswersForm from './components/EditAnswersForm/index';
+import EditUserForm from './components/EditUserInfo/index';
 import LandingPage from './components/LandingPage';
+import ProfilePage from './components/ProfilePage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -35,46 +36,48 @@ function App() {
       <div className='content-wrap'>
         <BrowserRouter>
           <NavBar />
-            <Switch>
-              <Route path='/' exact={true}>
-                <LandingPage />
-              </Route>
-              <Route path='/login' exact={true}>
-                <LoginForm />
-              </Route>
-              <ProtectedRoute path='/discover' exact={true}>
+          <Switch>
+            <Route path='/' exact={true}>
+              <LandingPage />
+            </Route>
+            <Route path='/login' exact={true}>
+              <LoginForm />
+            </Route>
+            <ProtectedRoute path='/discover' exact={true}>
               <DiscoverPage />
             </ProtectedRoute>
-              <Route path='/sign-up' exact={true}>
-                <SignUpForm />
-              </Route>
-              <ProtectedRoute path='/users' exact={true} >
-                <UsersList/>
-              </ProtectedRoute>
-              <ProtectedRoute path='/users/:userId' exact={true} >
-                <User />
-              </ProtectedRoute>
-              <Route path='/users/:userId/init-answers' exact={true}>
-                <AnswersForm />
-              </Route>
-              <Route path='/users/:userId/edit-answers' exact={true}>
-                <EditAnswersForm />
-              </Route>
-              <Route path='/users/:userId/edit-info' exact={true}>
-                <EditUserForm />
-              </Route>
-              <ProtectedRoute path='/discover' exact={true}>
-                <DiscoverPage />
-              </ProtectedRoute>
-            </Switch>
+            <Route path='/sign-up' exact={true}>
+              <SignUpForm />
+            </Route>
+            <ProtectedRoute path='/users' exact={true}>
+              <UsersList />
+            </ProtectedRoute>
+            <ProtectedRoute path='/users/:userId' exact={true}>
+              <ProfilePage />
+            </ProtectedRoute>
+            <Route path='/users/:userId/init-answers' exact={true}>
+              <AnswersForm />
+            </Route>
+            <Route path='/users/:userId/edit-answers' exact={true}>
+              <EditAnswersForm />
+            </Route>
+            <Route path='/users/:userId/edit-info' exact={true}>
+              <EditUserForm />
+            </Route>
+            <ProtectedRoute path='/discover' exact={true}>
+              <DiscoverPage />
+            </ProtectedRoute>
+          </Switch>
         </BrowserRouter>
       </div>
       <Footer />
     </div>
   );
 }
-{/* <ProtectedRoute path='/' exact={true}>
+{
+  /* <ProtectedRoute path='/' exact={true}>
   <LandingPage />
-</ProtectedRoute> */}
+</ProtectedRoute> */
+}
 
 export default App;

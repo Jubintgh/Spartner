@@ -52,6 +52,7 @@ const discoverReducer = (state = initialState, action) => {
         ...unseenUsers,
       };
     case REMOVE_USER:
+      console.log(action.user.id);
       newState = { ...state };
       delete newState[action.user.id];
       return newState;
