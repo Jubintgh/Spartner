@@ -1,4 +1,5 @@
 import './DiscoverPage.css';
+import { React, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
@@ -9,19 +10,16 @@ import { createDislike } from '../../store/dislikes';
 import { MdKeyboardArrowRight } from 'react-icons/md';
 import { GiWeight } from 'react-icons/gi';
 import { FiUser, FiMapPin } from 'react-icons/fi';
+const _ = require('lodash');
 
 const DiscoverPage = () => {
   const dispatch = useDispatch();
   const allUsersNotLiked = useSelector((state) =>
     Object.values(state.discover)
   );
-  const allUsersNotLikedObj = useSelector((state) => state.discover);
   const { user } = useSelector((state) => state.session);
   const id = Number(user.id);
-  const firstUser = allUsersNotLiked[0]
-    ? allUsersNotLiked[0]
-    : 'No more users to display!';
-
+  const firstUser = allUsersNotLiked[0];
   const [likeButton, setLikeButton] = useState('/like-button-unclicked.png');
   const [dislikeButton, setDislikeButton] = useState(
     '/dislike-button-unclicked.png'
@@ -32,18 +30,22 @@ const DiscoverPage = () => {
     dispatch(createDislike(id, firstUser?.id));
     setSwipeDirection('left');
     setTimeout(function () {
+      dispatch(removeUser(firstUser));
+    }, 800);
+    setTimeout(function () {
       setSwipeDirection('');
     }, 1000);
-    dispatch(removeUser(allUsersNotLikedObj[firstUser?.id]));
   };
 
   const handleClickLike = () => {
     dispatch(createLike(id, firstUser?.id));
     setSwipeDirection('right');
     setTimeout(function () {
+      dispatch(removeUser(firstUser));
+    }, 1000);
+    setTimeout(function () {
       setSwipeDirection('');
     }, 1000);
-    dispatch(removeUser(allUsersNotLikedObj[firstUser?.id]));
   };
 
   const changeImageSourceLiked = (e) => {
@@ -92,21 +94,21 @@ const DiscoverPage = () => {
   const createMatchPercentage = () => {
     let total = 0;
 
-    if (user.gender === firstUser.gender) {
+    if (user.gender === firstUser?.gender) {
       total += 49;
-    } else if (Number(firstUser.gender) === 2) {
+    } else if (Number(firstUser?.gender) === 2) {
       total += 33;
     } else {
       total += 0;
     }
-    if (user.location.split(',')[1] === firstUser.location.split(',')[1])
+    if (user.location.split(',')[1] === firstUser?.location.split(',')[1])
       total += 22;
-    if (user.weight_class === firstUser.weight_class) total += 11;
-    if (user.professional_level === firstUser.professional_level) total += 8;
-    if (user.availability === firstUser.availability) total += 4;
-    if (user.reach === firstUser.reach) total += 1;
-    if (user.vaccinated === firstUser.vaccinated) total += 3;
-    if (user.discipline === firstUser.discipline) total += 2;
+    if (user.weight_class === firstUser?.weight_class) total += 11;
+    if (user.professional_level === firstUser?.professional_level) total += 8;
+    if (user.availability === firstUser?.availability) total += 4;
+    if (user.reach === firstUser?.reach) total += 1;
+    if (user.vaccinated === firstUser?.vaccinated) total += 3;
+    if (user.discipline === firstUser?.discipline) total += 2;
 
     return total;
   };
@@ -132,7 +134,10 @@ const DiscoverPage = () => {
               <p>|</p>
               <p>{createMatchPercentage()}% Compatibility</p>
               <p>|</p>
-              <Link to={`/users/${firstUser.id}`} className='view-profile-link'>
+              <Link
+                to={`/users/${firstUser?.id}`}
+                className='view-profile-link'
+              >
                 View Profile <MdKeyboardArrowRight className='arrow-link' />
               </Link>
             </div>

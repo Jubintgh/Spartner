@@ -18,7 +18,6 @@ const ProfilePage = () => {
   const firstUser = useSelector((state) => state.users[userId]);
   const { user } = useSelector((state) => state.session);
   const id = Number(user.id);
-  const allUsersNotLikedObj = useSelector((state) => state.discover);
   const userLikesObj = useSelector((state) => state.likes.likes);
   const userLikes = userLikesObj?.user_likes;
 
@@ -28,28 +27,26 @@ const ProfilePage = () => {
   );
   const [swipeDirection, setSwipeDirection] = useState('');
 
-  console.log(allUsersNotLikedObj[firstUser?.id]);
-
   const handleClickDislike = () => {
     dispatch(createDislike(id, firstUser?.id));
-    dispatch(removeUser(allUsersNotLikedObj[firstUser?.id]));
     setSwipeDirection('left');
     setTimeout(function () {
-      setSwipeDirection('');
-    }, 1000);
+      dispatch(removeUser(firstUser));
+    }, 800);
     setTimeout(function () {
+      setSwipeDirection('');
       history.push('/discover');
     }, 1000);
   };
 
   const handleClickLike = () => {
     dispatch(createLike(id, firstUser?.id));
-    dispatch(removeUser(allUsersNotLikedObj[firstUser?.id]));
     setSwipeDirection('right');
     setTimeout(function () {
-      setSwipeDirection('');
-    }, 1000);
+      dispatch(removeUser(firstUser));
+    }, 800);
     setTimeout(function () {
+      setSwipeDirection('');
       history.push('/discover');
     }, 1000);
   };
@@ -72,8 +69,6 @@ const ProfilePage = () => {
 
   useEffect(() => {
     dispatch(getNewUsers(id));
-    // dispatch(getCurrentUserAndAnswers(id));
-    // dispatch(getAllUserLikes(id));
     dispatch(getOneUser(userId));
   }, [dispatch, id, userId]);
 
