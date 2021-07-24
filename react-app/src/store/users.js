@@ -1,7 +1,5 @@
 const SET_USERS = 'users/SET_USERS';
 const GET_USER = 'users/GET_USER';
-const GET_FILTERED_USERS = 'users/GET_FILTERED_USERS';
-
 
 const setUsers = (users) => ({
     type:SET_USERS,
@@ -12,11 +10,6 @@ const setOneUser = (user) => ({
     type: GET_USER,
     user,
 });
-
-const setFilteredUsers = (users) => ({
-    type: GET_FILTERED_USERS,
-    users
-})
 
 export const getUsers = () => async(dispatch) => {
     const res = await fetch('/api/users');
@@ -78,19 +71,19 @@ export const editOneUser = (
 };
 
 export const getFilteredUsers = (id, filter) => async (dispatch) => {
-    const res = await fetch(`/${id}/filter/${filter}`);
-
+    const res = await fetch(`api/users/${id}/filter/${filter}`);
     if (res.ok) {
         const users = await res.json();
-        dispatch(setFilteredUsers(users));
+        console.log(users)
+        dispatch(setUsers(users));
     }
 }
 
 const initialState = {}
 const usersReducer = (state = initialState, action) => {
-let allUsers = {};
     switch (action.type) {
         case SET_USERS:
+            let allUsers = {};
             action.users.forEach((user) => {
                 allUsers[user.id] = user;
             }
@@ -103,14 +96,6 @@ let allUsers = {};
             return {
                 ...state,
                 [action.user.id] : action.user
-            };
-        case GET_FILTERED_USERS:
-            action.users.forEach((user) => {
-                allUsers[user.id] = user;
-            });
-            return {
-                ...state,
-                ...allUsers
             };
         default:
             return state

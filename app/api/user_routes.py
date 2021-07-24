@@ -307,12 +307,11 @@ def filter_user(filter_t, id):
     if filter_t == "vaccination":
         user_vacc_stat = curr_user.answer.vaccinated
         similar_users = []
-
         for user in unseen_users:
             if user.answer.vaccinated == user_vacc_stat:
                 similar_users.append(user)
-    
-        return { "vacc_stat": [ user.to_dict() for user in similar_users]}
+                
+        # return { "vacc_stat": [ user.to_dict() for user in similar_users]}
 
     if filter_t == "weight-class":
         user_wc_stat = curr_user.answer.weight_class
@@ -322,7 +321,7 @@ def filter_user(filter_t, id):
             if user.answer.weight_class == user_wc_stat:
                 similar_users.append(user)
     
-        return { "wc_stat": [ user.to_dict() for user in similar_users]}
+        # return { "wc_stat": [ user.to_dict() for user in similar_users]}
 
     if filter_t == "professional-level":
         user_pro_stat = curr_user.answer.professional_level
@@ -332,7 +331,7 @@ def filter_user(filter_t, id):
             if user.answer.professional_level == user_pro_stat:
                 similar_users.append(user)
     
-        return { "pro_stat": [ user.to_dict() for user in similar_users]}
+        # return { "pro_stat": [ user.to_dict() for user in similar_users]}
         
     if filter_t == "coach":
         similar_users = []
@@ -341,4 +340,4 @@ def filter_user(filter_t, id):
             if user.coach == True:
                 similar_users.append(user)
     
-        return { "coach_stat": [ user.to_dict() for user in similar_users]}
+    return { "users": [ user.to_dict() for user in similar_users]}
