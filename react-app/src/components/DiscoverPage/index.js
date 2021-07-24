@@ -42,13 +42,13 @@ const DiscoverPage = () => {
     setSwipeDirection('right');
     setTimeout(function () {
       dispatch(removeUser(firstUser));
-    }, 1000);
+    }, 800);
     setTimeout(function () {
       setSwipeDirection('');
     }, 1000);
   };
 
-  const changeImageSourceLiked = (e) => {
+  const changeImageSourceLiked = () => {
     if (likeButton === '/like-button-clicked.png') {
       setLikeButton('/like-button-unclicked.png');
     } else {
@@ -56,7 +56,7 @@ const DiscoverPage = () => {
     }
   };
 
-  const changeImageSourceDisliked = (e) => {
+  const changeImageSourceDisliked = () => {
     if (dislikeButton === '/dislike-button-clicked.png') {
       setDislikeButton('/dislike-button-unclicked.png');
     } else {

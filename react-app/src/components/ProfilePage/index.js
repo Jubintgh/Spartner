@@ -51,7 +51,7 @@ const ProfilePage = () => {
     }, 1000);
   };
 
-  const changeImageSourceLiked = (e) => {
+  const changeImageSourceLiked = () => {
     if (likeButton === '/like-button-clicked.png') {
       setLikeButton('/like-button-unclicked.png');
     } else {
@@ -59,7 +59,7 @@ const ProfilePage = () => {
     }
   };
 
-  const changeImageSourceDisliked = (e) => {
+  const changeImageSourceDisliked = () => {
     if (dislikeButton === '/dislike-button-clicked.png') {
       setDislikeButton('/dislike-button-unclicked.png');
     } else {
