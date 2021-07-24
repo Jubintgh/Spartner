@@ -15,6 +15,7 @@
   display: flex;
   flex-direction: column;
   padding-bottom: 1em;
+  transition-duration: 0s;
 }
 
 .top-row,
@@ -46,6 +47,7 @@
   width: 900px;
   justify-content: space-between;
   margin-bottom: 40px;
+  padding-bottom: 200px;
 }
 
 .bio-left > div > h3 {
@@ -114,4 +116,26 @@
 
 .discover-button:hover {
   opacity: 0.8;
+}
+
+.user-info-container.right,
+.bio-container.right {
+  transform: translate(500%);
+  transition-duration: 2s;
+  /* animation: fade-out 2s; */
+}
+
+.user-info-container.left,
+.bio-container.left {
+  transform: translate(-500%);
+  transition-duration: 2s;
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }

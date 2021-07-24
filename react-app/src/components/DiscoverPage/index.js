@@ -26,15 +26,28 @@ const DiscoverPage = () => {
   const [dislikeButton, setDislikeButton] = useState(
     '/dislike-button-unclicked.png'
   );
+  const [swipeDirection, setSwipeDirection] = useState('');
 
   const handleClickDislike = () => {
     dispatch(createDislike(id, firstUser?.id));
-    dispatch(removeUser(allUsersNotLikedObj[firstUser?.id]));
+    setSwipeDirection('left');
+    setTimeout(function () {
+      setSwipeDirection('');
+    }, 1000);
+    setTimeout(function () {
+      dispatch(removeUser(allUsersNotLikedObj[firstUser?.id]));
+    }, 1000);
   };
 
   const handleClickLike = () => {
     dispatch(createLike(id, firstUser?.id));
-    dispatch(removeUser(allUsersNotLikedObj[firstUser?.id]));
+    setSwipeDirection('right');
+    setTimeout(function () {
+      setSwipeDirection('');
+    }, 1000);
+    setTimeout(function () {
+      dispatch(removeUser(allUsersNotLikedObj[firstUser?.id]));
+    }, 1000);
   };
 
   const changeImageSourceLiked = (e) => {
@@ -113,7 +126,7 @@ const DiscoverPage = () => {
         <div className='discover-title'>
           <h2>Recommended Just For You</h2>
         </div>
-        <div className='user-info-container'>
+        <div className={`user-info-container ${swipeDirection}`}>
           <div className='top-row'>
             <div className='user-info'>
               <div className='full-name'>
@@ -160,7 +173,7 @@ const DiscoverPage = () => {
             ></img>
           </div>
         </div>
-        <div className='bio-container'>
+        <div className={`bio-container ${swipeDirection}`}>
           <div className='bio-left'>
             <div className='about-me'>
               <h3>About Me</h3>

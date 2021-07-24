@@ -26,12 +26,14 @@ const ProfilePage = () => {
   const [dislikeButton, setDislikeButton] = useState(
     '/dislike-button-unclicked.png'
   );
+  const [swipeDirection, setSwipeDirection] = useState('');
 
   console.log(allUsersNotLikedObj[firstUser?.id]);
 
   const handleClickDislike = () => {
     dispatch(createDislike(id, firstUser?.id));
     dispatch(removeUser(allUsersNotLikedObj[firstUser?.id]));
+    // setSwipeDirection('left');
     history.push('/discover');
   };
 
@@ -60,7 +62,7 @@ const ProfilePage = () => {
   useEffect(() => {
     dispatch(getNewUsers(id));
     // dispatch(getCurrentUserAndAnswers(id));
-    dispatch(getAllUserLikes(id));
+    // dispatch(getAllUserLikes(id));
     dispatch(getOneUser(userId));
   }, [dispatch, id, userId]);
 
