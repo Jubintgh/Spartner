@@ -217,7 +217,7 @@ const ProfilePage = () => {
         {loggedInUserHeaderOrOtherUserHeader}
         <div className={`user-info-container ${swipeDirection}`}>
           <div className='top-row'>
-            <div className='user-info'>
+            <div className='user-info full-profile'>
               <div className='full-name'>
                 <p className='first-name'>{firstUser?.first_name}</p>
                 <p className='last-name'>{firstUser?.last_name}</p>

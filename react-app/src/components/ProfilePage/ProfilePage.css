@@ -17,3 +17,7 @@
 .bio-container.full-profile {
   margin-bottom: 40px;
 }
+
+.user-info.full-profile {
+  width: 45%;
+}
