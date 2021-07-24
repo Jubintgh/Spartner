@@ -1,20 +1,28 @@
 import { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux';
+import { getFilteredUsers } from '../../store/users';
 
 const PreferencesBar = () => {
+const dispatch = useDispatch();
 const user = useSelector(state => state.session.user);
+const userId  = user.id;
 const isCoach = user?.coach;
 
-// const searchingFor = useParams();
-// console.log(searchingFor);
+
+
+
+// button stuff here
 
 const [vaxIcon, setVaxIcon] = useState('/vax-static.png');
 const [vaxIconStatus, setVaxIconStaus] = useState('');
 // const [dislikeButton, setDislikeButton] = useState('/dislike-button-unclicked.png');
 
 
+
 const changeVaxIcon = (e) => {
+    // reducer connectivity here
+    dispatch(getFilteredUsers(userId, "vaccination"));
     if (vaxIcon === '/vax-hover.png') {
         setVaxIcon('/vax-active.png');
         setVaxIconStaus('/vax-active.png');
@@ -43,16 +51,6 @@ const changeVaxIcon = (e) => {
 //   };
 
 
-/* { user? <div className="nav-logo">
-    <Link id="navbar__brand-home" to='/discover' exact={true} activeClassName='active'>
-        <img src='https://user-images.githubusercontent.com/35717793/126367109-4954f04b-0cb7-4ca9-a25a-d18e6b7cb74a.png' alt='logo' id='navbar__logo' />
-    </Link>
-  </div> : <div className="nav-logo">
-    <Link id="navbar__brand-home" to='/' exact={true} activeClassName='active'>
-        <img src='https://user-images.githubusercontent.com/35717793/126367109-4954f04b-0cb7-4ca9-a25a-d18e6b7cb74a.png' alt='logo' id='navbar__logo' />
-    </Link>
-  </div>}
-{navContent} */;
 
 let renderCoachContent = null;
 
@@ -68,7 +66,11 @@ let renderCoachContent = null;
         </div>
         )
   }
-  
+
+useEffect(() => {
+
+}, []);
+
 return (
         <div className="block">
             <div className="element">
