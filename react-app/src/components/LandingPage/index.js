@@ -11,6 +11,7 @@ const LandingPage = () => {
           <img
             src='https://user-images.githubusercontent.com/35717793/126702199-828042e7-7543-47e1-b3d3-67539211241e.png'
             className='splash-header'
+            alt=''
           />
           <h3 className='splash-subheader'>Have the match of a lifetime</h3>
         </div>
