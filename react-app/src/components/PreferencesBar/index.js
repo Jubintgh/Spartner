@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { getFilteredUsers, removeFilteredUsers } from '../../store/users';
+import { getFilteredUsers} from '../../store/discover';
 
 const PreferencesBar = () => {
 const dispatch = useDispatch();

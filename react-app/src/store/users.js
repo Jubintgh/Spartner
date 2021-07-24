@@ -70,15 +70,6 @@ export const editOneUser = (
     }
 };
 
-export const getFilteredUsers = (id, filter) => async (dispatch) => {
-    const res = await fetch(`api/users/${id}/filter/${filter}`);
-    if (res.ok) {
-        const users = await res.json();
-        console.log(users)
-        dispatch(setUsers(users));
-    }
-}
-
 const initialState = {}
 const usersReducer = (state = initialState, action) => {
     switch (action.type) {

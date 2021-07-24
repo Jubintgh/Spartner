@@ -37,6 +37,14 @@ export const getMatchedUsers = (id) => async (dispatch) => {
   }
 };
 
+export const getFilteredUsers = (id, filter) => async (dispatch) => {
+  const res = await fetch(`api/users/${id}/filter/${filter}`);
+  if (res.ok) {
+      const users = await res.json();
+      dispatch(setUsers(users));
+  }
+}
+
 const initialState = {};
 const discoverReducer = (state = initialState, action) => {
   let newState;
