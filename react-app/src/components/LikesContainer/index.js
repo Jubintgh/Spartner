@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
 import { getAllUserLikes } from '../../store/likes';
 import UserSquare from '../UserSquare'
 import './LikesContainer.css'

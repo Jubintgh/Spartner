@@ -64,6 +64,7 @@ const LoginForm = () => {
           <button type='submit'>Login</button>
         </div>
       </div>
+
         <div className="form-input">
         <input
           name='password'
