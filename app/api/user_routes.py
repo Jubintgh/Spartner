@@ -340,4 +340,4 @@ def filter_user(filter_t, id):
             if user.coach == True:
                 similar_users.append(user)
     
-    return { "users": [ user.to_dict() for user in similar_users]}
+    return { "users_answers": [ user.to_dict() for user in similar_users]}
