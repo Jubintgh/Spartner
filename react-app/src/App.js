@@ -11,9 +11,12 @@ import { authenticate } from './store/session';
 import AnswersForm from './components/auth/AnswersForm';
 import Footer from './components/Footer';
 import DiscoverPage from './components/DiscoverPage';
-import EditAnswersForm from './components/EditAnswersForm/index'
-import EditUserForm from './components/EditUserInfo/index'
+import EditAnswersForm from './components/EditAnswersForm/index';
+import EditUserForm from './components/EditUserInfo/index';
 import LandingPage from './components/LandingPage';
+import MatchesContainer from './components/MatchesContainer';
+import LikesContainer from './components/LikesContainer';
+import ProfilePage from './components/ProfilePage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -43,8 +46,8 @@ function App() {
                 <LoginForm />
               </Route>
               <ProtectedRoute path='/discover' exact={true}>
-              <DiscoverPage />
-            </ProtectedRoute>
+                <DiscoverPage />
+              </ProtectedRoute>
               <Route path='/sign-up' exact={true}>
                 <SignUpForm />
               </Route>
@@ -60,8 +63,17 @@ function App() {
               <Route path='/users/:userId/edit-answers' exact={true}>
                 <EditAnswersForm />
               </Route>
+              <ProtectedRoute path='/users/:userId' exact={true}>
+                <ProfilePage />
+              </ProtectedRoute>
               <Route path='/users/:userId/edit-info' exact={true}>
                 <EditUserForm />
+              </Route>
+              <Route path='/users/:userId/matches' exact={true}>
+                <MatchesContainer />
+              </Route>
+              <Route path='/users/:userId/likes' exact={true}>
+                <LikesContainer />
               </Route>
               <ProtectedRoute path='/discover' exact={true}>
                 <DiscoverPage />
@@ -73,8 +85,10 @@ function App() {
     </div>
   );
 }
-{/* <ProtectedRoute path='/' exact={true}>
+{
+  /* <ProtectedRoute path='/' exact={true}>
   <LandingPage />
-</ProtectedRoute> */}
+</ProtectedRoute> */
+}
 
 export default App;
