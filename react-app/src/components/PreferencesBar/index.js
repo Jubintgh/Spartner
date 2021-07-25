@@ -57,7 +57,9 @@ if (!isCoach) {
                     href="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"
                     value="coach"
                     onClick={(e) => setFilter(e.target.value)}
-                    >THIS BUTTON</button>
+                    >
+                        <img className="coachIcon" src="/coachIcon-static.png"/>
+                    </button>
         </div>
         <div className="prefBar-icon-label">
             <h5>Coaches</h5>
@@ -91,7 +93,9 @@ return (
                     href="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"
                     value="/"
                     onClick={(e) => setFilter(e.target.value)}
-                    >THIS BUTTON</button>
+                    >
+                        <img className="redommendedIcon" src="/fight-static.png"/>
+                    </button>
                 </div>
                 <div className="prefBar-icon-label">
                     <h5>Recommended</h5>
@@ -103,7 +107,9 @@ return (
                     href="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"
                     value="weight-class"
                     onClick={(e) => setFilter(e.target.value)}
-                    >THIS BUTTON</button>
+                    >
+                        <img className="weightClassIcon" src="/weightclassIcon-static.png"/>
+                    </button>
                 </div>
                 <div className="prefBar-icon-label">
                     <h5>Weight Class</h5>
@@ -116,7 +122,9 @@ return (
                     href="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"
                     value="vaccination"
                     onClick={(e) => setFilter(e.target.value)}
-                    >THIS BUTTON</button>
+                    >
+                        <img className="vaxIcon" src="/vax-static.png"/>
+                    </button>
                 </div>
                 <div className="prefBar-icon-label">
                     <h5>Vaccinated</h5>
@@ -128,7 +136,9 @@ return (
                     href="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"
                     value="professional-level"
                     onClick={(e) => setFilter(e.target.value)}
-                    >THIS BUTTON</button>
+                    >
+                        <img className="proLevelIcon" src="/proIcon-static.png"/>
+                    </button>
                 </div>
                 <div className="prefBar-icon-label">
                     <h5>Professional Level</h5>
