@@ -70,6 +70,8 @@ if (!isCoach) {
 
 let filterAppliedLabel = null;
 
+// this is where depending on what filter you select, instead of having the icon stay active , the text will hang above the card displaying what filter is active
+
 /*
 useParams()
 if vaccination => fileterAppliedLabel = 'Vaccination';
