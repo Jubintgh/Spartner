@@ -335,7 +335,7 @@ def filter_user(filter_t, id):
                 similar_users.append(user)
     
         # return { "pro_stat": [ user.to_dict() for user in similar_users]}
-        
+
     if filter_t == "coach":
         similar_users = []
 
