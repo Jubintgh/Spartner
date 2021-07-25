@@ -122,11 +122,8 @@ const DiscoverPage = () => {
     usersLeftOrNoUsers = (
       <div className='main-area-container'>
         <div className='discover-title'>
-<<<<<<< HEAD
           <PreferencesBar/>
-=======
           <h2>Recommended Just For You</h2>
->>>>>>> 709b0fd88d69f6d00d2967eeb7347125c0edd73c
         </div>
         <div className={`user-info-container ${swipeDirection}`}>
           <div className='top-row'>
