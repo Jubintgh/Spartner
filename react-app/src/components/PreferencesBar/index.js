@@ -57,11 +57,11 @@ let renderCoachContent = null;
 
 if (!isCoach) {
 renderCoachContent = (
-    <div className="element">
-        <div className="icon">
+    <div className="prefBar-element">
+        <div className="prefBar-icon">
             <img/>
         </div>
-        <div className="icon-label">
+        <div className="prefBar-icon-label">
             <h5>Coaches</h5>
         </div>
     </div>
@@ -74,25 +74,26 @@ useEffect(() => {
 }, [filter]);
 
 return (
-        <div className="block">
-            <div className="element">
-                <div className="icon">
+    <div className="prefBar-container">
+        <div className="prefBar-block">
+            <div className="prefBar-element">
+                <div className="prefBar-icon">
                     <img/>
                 </div>
-                <div className="icon-label">
+                <div className="prefBar-icon-label">
                     <h5>Recommended</h5>
                 </div>
             </div>
-            <div className="element">
-                <div className="icon">
+            <div className="prefBar-element">
+                <div className="prefBar-icon">
                     <img/>
                 </div>
-                <div className="icon-label">
+                <div className="prefBar-icon-label">
                     <h5>Weight Class</h5>
                 </div>
             </div>
-            <ul className="element">
-                <div className="icon" 
+            <ul className="prefBar-element">
+                <div className="prefBar-icon" 
                 >
                     <button
                     // alt='filter-icon'
@@ -105,19 +106,20 @@ return (
                     // onMouseEnter={changeVaxIconHover}
                     >THIS BUTTON</button>
                 </div>
-                <div className="icon-label">
+                <div className="prefBar-icon-label">
                     <h5>Vaccinated</h5>
                 </div>
             </ul>
-            <div className="element">
-                <div className="icon">
+            <div className="prefBar-element">
+                <div className="prefBar-icon">
                     <img/>
                 </div>
-                <div className="icon-label">
+                <div className="prefBar-icon-label">
                     <h5>Professional Level</h5>
                 </div>
             </div>
         {renderCoachContent}
+    </div>
     </div>
   );
 };
