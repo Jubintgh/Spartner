@@ -41,7 +41,15 @@ button {
     border: none;
 }
 
-.prefBar-icon img{
+.prefBar-icon div, .prefBar-icon img{
     height: 50px;
     width: 50px;
+}
+
+.vaxIcon {
+    background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/How_to_use_icon.svg/1200px-How_to_use_icon.svg.png");
+}
+
+.vaxIcon:hover {
+    background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/How_to_use_icon.svg/1200px-How_to_use_icon.svg.png");
 }
