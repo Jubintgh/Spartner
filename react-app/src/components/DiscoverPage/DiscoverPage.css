@@ -1,7 +1,8 @@
--area-container {
+.main-area-container {
   margin: auto;
   background-color: #1a1a19;
   width: 100%;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-items: center;
@@ -14,8 +15,8 @@
   height: 480px;
   display: flex;
   flex-direction: column;
-  padding-bottom: 1em;
-  margin: auto;
+  padding-bottom: 3em;
+  transition-duration: 0s;
 }
 
 .top-row,
@@ -37,18 +38,16 @@
 }
 
 .user-info {
-  width: 50%;
+  width: 70%;
   justify-content: space-around;
+  font-size: 18px;
 }
 
 .bio-container {
   background-color: #54545470;
-  /* border-radius: 7px; */
   width: 900px;
   justify-content: space-between;
-  margin-bottom: 40px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-bottom: 220px;
 }
 
 .bio-left > div > h3 {
@@ -65,6 +64,13 @@
   cursor: pointer;
   width: 15%;
   justify-content: space-around;
+  width: 190px;
+  margin-top: 20px;
+  padding-top: 5px;
+  margin-right: 20px;
+  background-color: #1a1a198c;
+  border-radius: 50px;
+  opacity: 1;
 }
 
 .view-profile-link {
@@ -89,7 +95,6 @@
   align-items: center;
   height: 100%;
   margin-top: 10px;
-  margin-bottom: 10px;
 }
 
 .user-img {
@@ -118,4 +123,26 @@
 
 .discover-button:hover {
   opacity: 0.8;
+}
+
+.user-info-container.right,
+.bio-container.right {
+  transform: translate(500%);
+  transition-duration: 2s;
+  /* animation: fade-out 2s; */
+}
+
+.user-info-container.left,
+.bio-container.left {
+  transform: translate(-500%);
+  transition-duration: 2s;
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
