@@ -1,29 +1,33 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { getUsers } from '../../store/users';
+import { getAllUserLikes } from '../../store/likes';
 import UserSquare from '../UserSquare'
 import './LikesContainer.css'
 
 const LikesContainer = () => {
     const dispatch = useDispatch();
-    const usersArray = useSelector((state) => {
-        return Object.values(state.users)
-    }) // change to Ma
+    const loggedUser = useSelector((state) => state.session.user)
+    const likesArray = useSelector((state) => {
+        return Object.values(state.likes)
+    })
+    const userLikes = likesArray[0]?.user_likes
 
     useEffect(() => {
-        dispatch(getUsers())
-    }, [dispatch])
+        dispatch(getAllUserLikes(loggedUser.id))
+    }, [dispatch, loggedUser.id])
 
     return (
         <div>
-        <h1> Liked Users </h1>
-            <div className='users-container'>
-                {usersArray.map((user) => (
-                    <div className='user-square'>
-                        <UserSquare user={user} key={user.id}/>
-                    </div>
-                ))}
+            <div className='outer-container'>
+            <h1> Liked Users </h1>
+                <div className='users-container'>
+                    {userLikes?.map((user) => (
+                        <div className='user-square-container'>
+                            <UserSquare user={user} key={user.id}/>
+                        </div>
+                    ))}
+                </div>
             </div>
         </div>
     )
