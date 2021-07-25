@@ -5,9 +5,9 @@ import { getFilteredUsers} from '../../store/discover';
 import "./PreferenceBar.css"
 
 const PreferencesBar = () => {
-const dispatch = useDispatch();
-const user = useSelector(state => state.session.user);
-const users = useSelector(state => Object.values(state.users))
+    const dispatch = useDispatch();
+    const user = useSelector(state => state.session.user);
+    const users = useSelector(state => Object.values(state.users))
 const userId  = user.id;
 const isCoach = user?.coach;
 
@@ -20,30 +20,13 @@ const [vaxIcon, setVaxIcon] = useState('/vax-static.png');
 const [vaxIconStatus, setVaxIconStaus] = useState('');
 const [filter, setFilter] = useState();
 
-// const [dislikeButton, setDislikeButton] = useState('/dislike-button-unclicked.png');
+let filterAppliedLabel = null;
 
-
-const changeVaxIcon = (e) => {
-    // reducer connectivity here
-    if (vaxIcon === '/vax-hover.png') {
-        setVaxIcon('/vax-active.png');
-        setVaxIconStaus('/vax-active.png');
-
-    } else if ( vaxIconStatus === '/vax-active.png') {
-        setVaxIcon('/vax-static.png');
-        setVaxIconStaus('/vax-static.png');
-    }
-};
-
-const changeVaxIconHover = (e) => {
-    setVaxIcon('/vax-hover.png');
-
-};
-
-const handleOnMouseLeaveVax = (e) => {
-    setVaxIcon(vaxIconStatus);
-}
-
+// const handleOnClick = (e) => {
+//     console.log(e.target.value);
+//     setFilter(e.target.value)
+//     filterAppliedLabel = filter;
+// }
 
 
 
@@ -68,21 +51,9 @@ if (!isCoach) {
     )
 }
 
-let filterAppliedLabel = null;
-
-// this is where depending on what filter you select, instead of having the icon stay active , the text will hang above the card displaying what filter is active
-
-/*
-useParams()
-if vaccination => fileterAppliedLabel = 'Vaccination';
-if weight class => fileterAppliedLabel = 'weight class';
-if professional level => fileterAppliedLabel = 'professional level';
-if coaches  => fileterAppliedLabel = ' coaches';
-if null => fileterAppliedLabel = 'general';
-*/
-
-
 useEffect(() => {
+    console.log("Store is changed")
+    console.log(filter)
     dispatch(getFilteredUsers(userId, filter));
 }, [filter]);
 
