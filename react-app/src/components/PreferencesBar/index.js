@@ -53,9 +53,9 @@ if (!isCoach) {
     renderCoachContent = (
         <div className="prefBar-element">
         <div className="prefBar-icon">
-        <button
+            <button
                     href="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"
-                    value="vaccination"
+                    value="coach"
                     onClick={(e) => setFilter(e.target.value)}
                     >THIS BUTTON</button>
         </div>
@@ -89,7 +89,7 @@ return (
                 <div className="prefBar-icon">
                      <button
                     href="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"
-                    value="vaccination"
+                    value="/"
                     onClick={(e) => setFilter(e.target.value)}
                     >THIS BUTTON</button>
                 </div>
@@ -101,7 +101,7 @@ return (
                 <div className="prefBar-icon">
                      <button
                     href="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"
-                    value="vaccination"
+                    value="weight-class"
                     onClick={(e) => setFilter(e.target.value)}
                     >THIS BUTTON</button>
                 </div>
@@ -126,7 +126,7 @@ return (
                 <div className="prefBar-icon">
                      <button
                     href="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"
-                    value="vaccination"
+                    value="professional-level"
                     onClick={(e) => setFilter(e.target.value)}
                     >THIS BUTTON</button>
                 </div>
