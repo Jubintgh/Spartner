@@ -28,6 +28,9 @@ def validation_errors_to_error_messages(validation_errors):
 # @login_required
 def users():
     users = User.query.all()
+    user_answer = user.to_dict()
+    user_answer.update(user.answer.to_dict())
+    users_answers.append(user_answer)
     return {'users': [user.to_dict() for user in users]}
 
 
@@ -170,7 +173,7 @@ def get_user_list(id):
 
     no_show = no_show + dislikes_ids #combine above 2 lists
     no_show.append(id) # add self
-    
+
     unseen_user = User.query.filter(User.id.not_in(no_show))
 
     users_answers = []
@@ -196,7 +199,7 @@ def get_matches_list(id):
                 matches.append(like)
 
     return { 'matches': [match.to_dict() for match in matches]}
-  
+
 
 """
 

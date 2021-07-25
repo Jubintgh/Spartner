@@ -2,13 +2,13 @@ const SET_USERS = 'users/SET_USERS';
 const GET_USER = 'users/GET_USER';
 
 const setUsers = (users) => ({
-    type:SET_USERS,
-    users
-})
+  type: SET_USERS,
+  users,
+});
 
 const setOneUser = (user) => ({
-    type: GET_USER,
-    user,
+  type: GET_USER,
+  user,
 });
 
 export const getUsers = () => async(dispatch) => {
@@ -21,15 +21,16 @@ export const getUsers = () => async(dispatch) => {
 }
 
 export const getOneUser = (id) => async (dispatch) => {
-    const res = await fetch(`/api/users/${id}`);
+  const res = await fetch(`/api/users/${id}`);
 
-    if (res.ok) {
-      const user = await res.json();
-      dispatch(setOneUser(user));
-    }
+  if (res.ok) {
+    const user = await res.json();
+    dispatch(setOneUser(user));
+  }
 };
 
-export const editOneUser = (
+export const editOneUser =
+  (
     userId,
     username,
     email,
@@ -41,34 +42,35 @@ export const editOneUser = (
     gender,
     coach,
     discipline,
-    img_url) => async (dispatch) => {
+    img_url
+  ) =>
+  async (dispatch) => {
     const res = await fetch(`/api/users/${userId}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            username,
-            email,
-            password,
-            first_name,
-            last_name,
-            age,
-            location,
-            gender,
-            coach,
-            discipline,
-            img_url
-        })
-        }
-    )
-        
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username,
+        email,
+        password,
+        first_name,
+        last_name,
+        age,
+        location,
+        gender,
+        coach,
+        discipline,
+        img_url,
+      }),
+    });
+
     if (res.ok) {
       const user = await res.json();
       dispatch(setOneUser(user));
-      return user
+      return user;
     }
-};
+  };
 
 const initialState = {}
 const usersReducer = (state = initialState, action) => {

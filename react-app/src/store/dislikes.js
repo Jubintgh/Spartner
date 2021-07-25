@@ -1,4 +1,4 @@
-const CREATE_DISLIKE = 'user/CREATE_LIKE';
+const CREATE_DISLIKE = 'user/CREATE_DISLIKE';
 
 const setOneDislike = (like) => ({
   type: CREATE_DISLIKE,
