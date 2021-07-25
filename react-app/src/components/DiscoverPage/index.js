@@ -12,6 +12,8 @@ import { GiWeight } from 'react-icons/gi';
 import { FiUser, FiMapPin } from 'react-icons/fi';
 const _ = require('lodash');
 
+import PreferencesBar from '../../components/PreferencesBar';
+
 const DiscoverPage = () => {
   const dispatch = useDispatch();
   const allUsersNotLiked = useSelector((state) =>
@@ -122,6 +124,7 @@ const DiscoverPage = () => {
     usersLeftOrNoUsers = (
       <div className='main-area-container'>
         <div className='discover-title'>
+          <PreferencesBar/>
           <h2>Recommended Just For You</h2>
         </div>
         <div className={`user-info-container ${swipeDirection}`}>

@@ -26,7 +26,7 @@ const setShuffledUsers = (users) => ({
 });
 
 export const getNewUsers = (id) => async (dispatch) => {
-  const res = await fetch(`api/users/${id}/discover`);
+  const res = await fetch(`/api/users/${id}/discover`);
 
   if (res.ok) {
     const users_answers = await res.json();
@@ -37,7 +37,7 @@ export const getNewUsers = (id) => async (dispatch) => {
 };
 
 export const getMatchedUsers = (id) => async (dispatch) => {
-  const res = fetch(`api/users/${id}/matches`);
+  const res = fetch(`/api/users/${id}/matches`);
 
   if (res.ok) {
     const matched_users = await res.json();
@@ -45,6 +45,14 @@ export const getMatchedUsers = (id) => async (dispatch) => {
     return matched_users;
   }
 };
+
+export const getFilteredUsers = (id, filter) => async (dispatch) => {
+  const res = await fetch(`api/users/${id}/filter/${filter}`);
+  if (res.ok) {
+      const users = await res.json();
+      dispatch(setUsers(users));
+  }
+}
 
 const initialState = {};
 const discoverReducer = (state = initialState, action) => {
