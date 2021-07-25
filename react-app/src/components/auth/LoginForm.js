@@ -64,12 +64,24 @@ const LoginForm = () => {
           <button type='submit'>Login</button>
         </div>
       </div>
-      <div className='form-errors'>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
-      </div>
-      <DemoUserButton />
+        <div className="form-input">
+        <input
+          name='password'
+          type='password'
+          placeholder='Password'
+          value={password}
+          onChange={updatePassword}
+          />
+        <div>
+          <button type='submit'>Login</button>
+        </div>
+        </div>
+          <div className="form-errors">
+            {errors.map((error, ind) => (
+              <div key={ind}>{error}</div>
+            ))}
+          </div>
+        <DemoUserButton />
     </form>
   );
 };

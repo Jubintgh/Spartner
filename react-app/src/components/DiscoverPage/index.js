@@ -2,25 +2,22 @@ import './DiscoverPage.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { getUsers } from '../../store/users';
-import { ImCancelCircle } from 'react-icons/im';
-import { AiFillHeart } from 'react-icons/ai';
 import { getNewUsers, removeUser } from '../../store/discover';
 import { createLike } from '../../store/likes';
 import { getCurrentUserAndAnswers } from '../../store/session';
 import { createDislike } from '../../store/dislikes';
-
 import { MdKeyboardArrowRight } from 'react-icons/md';
-import { GiWeight, GiCage, GiBoxingGlove } from 'react-icons/gi';
-import { BiRuler, BiMedal } from 'react-icons/bi';
-import { VscGraph } from 'react-icons/vsc';
+import { GiWeight } from 'react-icons/gi';
 import { FiUser, FiMapPin } from 'react-icons/fi';
+
+import PreferencesBar from '../../components/PreferencesBar';
 
 const DiscoverPage = () => {
   const dispatch = useDispatch();
   const allUsersNotLiked = useSelector((state) =>
     Object.values(state.discover)
   );
+  const allUsersNotLikedObj = useSelector((state) => state.discover);
   const { user } = useSelector((state) => state.session);
   const id = Number(user.id);
   const firstUser = allUsersNotLiked[0]
@@ -31,17 +28,24 @@ const DiscoverPage = () => {
   const [dislikeButton, setDislikeButton] = useState(
     '/dislike-button-unclicked.png'
   );
+  const [swipeDirection, setSwipeDirection] = useState('');
 
-  const handleClickDislike = (e) => {
-    e.preventDefault();
-    dispatch(removeUser(allUsersNotLiked.shift()));
+  const handleClickDislike = () => {
     dispatch(createDislike(id, firstUser?.id));
+    setSwipeDirection('left');
+    setTimeout(function () {
+      setSwipeDirection('');
+    }, 1000);
+    dispatch(removeUser(allUsersNotLikedObj[firstUser?.id]));
   };
 
-  const handleClickLike = (e) => {
-    e.preventDefault();
-    dispatch(removeUser(allUsersNotLiked.shift()));
+  const handleClickLike = () => {
     dispatch(createLike(id, firstUser?.id));
+    setSwipeDirection('right');
+    setTimeout(function () {
+      setSwipeDirection('');
+    }, 1000);
+    dispatch(removeUser(allUsersNotLikedObj[firstUser?.id]));
   };
 
   const changeImageSourceLiked = (e) => {
@@ -65,67 +69,18 @@ const DiscoverPage = () => {
     dispatch(getCurrentUserAndAnswers(id));
   }, [dispatch, id]);
 
-  let available;
-  if (Number(firstUser?.availability) === 0) {
-    available = 'All Week';
-  } else if (Number(firstUser?.availability) === 1) {
-    available = 'Week Days';
-  } else {
-    available = 'Weekends';
-  }
-
   let weightClass;
-  if (Number(firstUser?.weight_class) === 0) {
+  if (Number(firstUser?.weight_class) === 0)
     weightClass = "Women's Strawweight";
-  } else if (Number(firstUser?.weight_class) === 1) {
+  if (Number(firstUser?.weight_class) === 1)
     weightClass = "Women's Bantamweight";
-  } else if (Number(firstUser?.weight_class) === 2) {
+  if (Number(firstUser?.weight_class) === 2)
     weightClass = "Women's Featherweight";
-  } else if (Number(firstUser?.weight_class) === 3) {
+  if (Number(firstUser?.weight_class) === 3)
     weightClass = "Women's Lightweight";
-  } else if (Number(firstUser?.weight_class) === 4) {
-    weightClass = 'Lightweight';
-  } else if (Number(firstUser?.weight_class) === 5) {
-    weightClass = 'Middleweight';
-  } else if (Number(firstUser?.weight_class) === 6) {
-    weightClass = 'Heavyweight';
-  } else {
-    return 'N/A';
-  }
-
-  let discipline;
-  if (Number(firstUser?.discipline) === 0) {
-    discipline = 'Southpaw';
-  } else if (Number(firstUser?.discipline) === 1) {
-    discipline = 'Kickboxing';
-  } else if (Number(firstUser?.discipline) === 2) {
-    discipline = 'Orthodox';
-  } else if (Number(firstUser?.discipline) === 3) {
-    discipline = 'Judo';
-  } else if (Number(firstUser?.discipline) === 4) {
-    discipline = 'Muay Thai';
-  } else if (Number(firstUser?.discipline) === 5) {
-    discipline = 'Grappling';
-  } else if (Number(firstUser?.discipline) === 6) {
-    discipline = 'Counter Striker';
-  } else if (Number(firstUser?.discipline) === 7) {
-    discipline = 'Karate';
-  } else if (Number(firstUser?.discipline) === 8) {
-    discipline = 'Switch';
-  } else if (Number(firstUser?.discipline) === 9) {
-    discipline = 'Brazilian Jiu-Jitsu';
-  } else {
-    return;
-  }
-
-  let professionalLevel;
-  if (Number(firstUser?.professional_level) === 0) {
-    professionalLevel = 'Beginner';
-  } else if (Number(firstUser?.professional_level) === 1) {
-    professionalLevel = 'Amateur';
-  } else {
-    professionalLevel = 'Professional';
-  }
+  if (Number(firstUser?.weight_class) === 4) weightClass = 'Lightweight';
+  if (Number(firstUser?.weight_class) === 5) weightClass = 'Middleweight';
+  if (Number(firstUser?.weight_class) === 6) weightClass = 'Heavyweight';
 
   let gender;
   if (Number(firstUser?.gender) === 0) {
@@ -135,17 +90,6 @@ const DiscoverPage = () => {
   } else {
     gender = 'Other';
   }
-
-  console.log(firstUser.location.split(',')[1]);
-
-  // Gender = 33
-  // Location(state) = 22
-  // Weightclass = 18
-  // Professional level = 10
-  // Availability = 6
-  // Reach = 1
-  // Vaccination = 6
-  // Discipline = 4
 
   const createMatchPercentage = () => {
     let total = 0;
@@ -178,9 +122,10 @@ const DiscoverPage = () => {
     usersLeftOrNoUsers = (
       <div className='main-area-container'>
         <div className='discover-title'>
-          <h1>Recommended Just For You</h1>
+          <PreferencesBar/>
+          <h2>Recommended Just For You</h2>
         </div>
-        <div className='user-info-container'>
+        <div className={`user-info-container ${swipeDirection}`}>
           <div className='top-row'>
             <div className='user-info'>
               <div className='full-name'>
@@ -190,7 +135,7 @@ const DiscoverPage = () => {
               <p>|</p>
               <p>{createMatchPercentage()}% Compatibility</p>
               <p>|</p>
-              <Link to={`/users/${id}`} className='view-profile-link'>
+              <Link to={`/users/${firstUser.id}`} className='view-profile-link'>
                 View Profile <MdKeyboardArrowRight className='arrow-link' />
               </Link>
             </div>
@@ -227,54 +172,12 @@ const DiscoverPage = () => {
             ></img>
           </div>
         </div>
-        <div className='bio-container'>
+        <div className={`bio-container ${swipeDirection}`}>
           <div className='bio-left'>
             <div className='about-me'>
               <h3>About Me</h3>
               <p>{firstUser?.about}</p>
             </div>
-            {firstUser?.fav_rocky_fighter === null ? null : (
-              <div className='fav-rocky-fighter'>
-                <h3>Favorite Rocky Fighter</h3>
-                <p>{firstUser?.fav_rocky_fighter}</p>
-              </div>
-            )}
-            {firstUser?.walkout_song === null ? null : (
-              <div className='walkout-song'>
-                <h3>Walkout Song</h3>
-                <p>{firstUser?.walkout_song}</p>
-              </div>
-            )}
-            {firstUser?.availability === null ? null : (
-              <div className='availability'>
-                <h3>Availability</h3>
-                <p>{available}</p>
-              </div>
-            )}
-            {firstUser?.has_kids === false ? null : (
-              <div>
-                <h3>Has Kids</h3>
-                <p>{firstUser?.has_kids}</p>
-              </div>
-            )}
-            {firstUser?.nickname === null ? null : (
-              <div>
-                <h3>Nickname</h3>
-                <p>{firstUser?.nickname}</p>
-              </div>
-            )}
-            {firstUser?.religion === null ? null : (
-              <div>
-                <h3>Religion</h3>
-                <p>{firstUser?.religion}</p>
-              </div>
-            )}
-            {firstUser?.pets === null ? null : (
-              <div>
-                <h3>Pets</h3>
-                <p>{firstUser?.pets}</p>
-              </div>
-            )}
           </div>
           <div className='bio-right'>
             <div className='gender'>
@@ -288,30 +191,6 @@ const DiscoverPage = () => {
             <div className='weightclass'>
               <GiWeight className='bio-right-icon' />
               <p>{weightClass}</p>
-            </div>
-            <div className='discipline'>
-              <GiBoxingGlove className='bio-right-icon' />
-              <p>{discipline}</p>
-            </div>
-            <div className='reach'>
-              <BiRuler className='bio-right-icon' />
-              <p>{firstUser?.reach} in.</p>
-            </div>
-            <div className='profession-level'>
-              <GiCage className='bio-right-icon' />
-              <p>{professionalLevel}</p>
-            </div>
-            <div className='current-record'>
-              <VscGraph className='bio-right-icon' />
-              <p>{firstUser?.current_record}</p>
-            </div>
-            <div className='prev-titles'>
-              <BiMedal className='bio-right-icon' />
-              <p>
-                {firstUser?.previous_titles === null
-                  ? 'No Previous Titles'
-                  : firstUser?.previous_titles}
-              </p>
             </div>
           </div>
         </div>

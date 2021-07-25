@@ -82,13 +82,15 @@ export const createAnswer = (
         const answer = await res.json()
         dispatch(setOneAnswer(answer))
         return answer
-    } else if (res.status < 500) {
-    const data = await res.json();
-    if (data.errors) {
-        return data.errors;
-    }
     } else {
-    return ['An error occurred. Please try again.']
+        
+        const data = await res.json();
+
+        if(res.status > 499 || !data) return ['An error occurred. Please try again.']
+
+        if(data.errors) {
+            return data.errors;
+        }
     }
 }
 
