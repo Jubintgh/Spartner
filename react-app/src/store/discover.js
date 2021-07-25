@@ -22,6 +22,7 @@ export const getNewUsers = (id) => async (dispatch) => {
 
   if (res.ok) {
     const users_answers = await res.json();
+    console.log(users_answers, 'THIS WAS HIT FIRST')
     dispatch(setUsers(users_answers));
     return users_answers;
   }
@@ -40,7 +41,8 @@ export const getMatchedUsers = (id) => async (dispatch) => {
 export const getFilteredUsers = (id, filter) => async (dispatch) => {
   const res = await fetch(`api/users/${id}/filter/${filter}`);
   if (res.ok) {
-      const users = await res.json();
+    const users = await res.json();
+    console.log(users, 'THIS WAS HIT')
       dispatch(setUsers(users));
   }
 }
