@@ -1,0 +1,35 @@
+.prefBar-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.prefBar-block {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border-radius: 70px;
+    background-color: rgb(20, 20, 20);
+    
+}
+
+.prefBar-element {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    
+}
+
+.prefBar-icon {
+    display: flex;
+    justify-content: center;
+    
+}
+
+.prefBar-icon-label {
+    display: flex;
+    justify-content: center;
+    
+}

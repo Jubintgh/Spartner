@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getFilteredUsers} from '../../store/discover';
+import "./PreferenceBar.css"
 
 const PreferencesBar = () => {
 const dispatch = useDispatch();
@@ -43,23 +44,20 @@ const handleOnMouseLeaveVax = (e) => {
     setVaxIcon(vaxIconStatus);
 }
 
-//   const changeVaxStatic = (e) => {
-//     if (dislikeButton === '/dislike-button-clicked.png') {
-//       setDislikeButton('/dislike-button-unclicked.png');
-//     } else {
-//       setDislikeButton('/dislike-button-clicked.png');
-//     }
-//   };
 
 
 
 let renderCoachContent = null;
 
 if (!isCoach) {
-renderCoachContent = (
-    <div className="prefBar-element">
+    renderCoachContent = (
+        <div className="prefBar-element">
         <div className="prefBar-icon">
-            <img/>
+        <button
+                    href="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"
+                    value="vaccination"
+                    onClick={(e) => setFilter(e.target.value)}
+                    >THIS BUTTON</button>
         </div>
         <div className="prefBar-icon-label">
             <h5>Coaches</h5>
@@ -67,6 +65,17 @@ renderCoachContent = (
     </div>
     )
 }
+
+let filterAppliedLabel = null;
+
+/*
+useParams()
+if vaccination => fileterAppliedLabel = 'Vaccination';
+if weight class => fileterAppliedLabel = 'weight class';
+if professional level => fileterAppliedLabel = 'professional level';
+if coaches  => fileterAppliedLabel = ' coaches';
+if null => fileterAppliedLabel = 'general';
+*/
 
 
 useEffect(() => {
@@ -78,7 +87,11 @@ return (
         <div className="prefBar-block">
             <div className="prefBar-element">
                 <div className="prefBar-icon">
-                    <img/>
+                     <button
+                    href="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"
+                    value="vaccination"
+                    onClick={(e) => setFilter(e.target.value)}
+                    >THIS BUTTON</button>
                 </div>
                 <div className="prefBar-icon-label">
                     <h5>Recommended</h5>
@@ -86,7 +99,11 @@ return (
             </div>
             <div className="prefBar-element">
                 <div className="prefBar-icon">
-                    <img/>
+                     <button
+                    href="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"
+                    value="vaccination"
+                    onClick={(e) => setFilter(e.target.value)}
+                    >THIS BUTTON</button>
                 </div>
                 <div className="prefBar-icon-label">
                     <h5>Weight Class</h5>
@@ -96,14 +113,9 @@ return (
                 <div className="prefBar-icon" 
                 >
                     <button
-                    // alt='filter-icon'
-                    // src= {vaxIcon}
                     href="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"
                     value="vaccination"
                     onClick={(e) => setFilter(e.target.value)}
-                    // onClick={changeVaxIcon}
-                    // onMouseLeave={handleOnMouseLeaveVax}
-                    // onMouseEnter={changeVaxIconHover}
                     >THIS BUTTON</button>
                 </div>
                 <div className="prefBar-icon-label">
@@ -112,7 +124,11 @@ return (
             </ul>
             <div className="prefBar-element">
                 <div className="prefBar-icon">
-                    <img/>
+                     <button
+                    href="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"
+                    value="vaccination"
+                    onClick={(e) => setFilter(e.target.value)}
+                    >THIS BUTTON</button>
                 </div>
                 <div className="prefBar-icon-label">
                     <h5>Professional Level</h5>
@@ -120,6 +136,7 @@ return (
             </div>
         {renderCoachContent}
     </div>
+    {filterAppliedLabel}
     </div>
   );
 };
