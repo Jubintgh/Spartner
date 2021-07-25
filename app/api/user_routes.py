@@ -3,6 +3,7 @@ from flask import request
 from flask_login import login_required
 from app.forms import AnswerForm, SignUpForm, UpdateUserInfoForm
 from app.models import Answer, User, db
+import random
 
 """
 
@@ -182,8 +183,10 @@ def get_user_list(id):
         user_answer.update(user.answer.to_dict())
         users_answers.append(user_answer)
 
-    print(user_answer)
-    return {'users_answers': [ans for ans in users_answers]}
+    # users_answers = random.shuffle(users_answers)
+    list = [ans for ans in users_answers]
+    return {'users_answers': random.sample(list, len(list))}
+
 
 #Matches render
 @user_routes.route('<int:id>/matches')
