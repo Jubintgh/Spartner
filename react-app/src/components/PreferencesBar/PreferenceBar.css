@@ -1,6 +1,7 @@
 .prefBar-container {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .prefBar-block {
@@ -12,12 +13,14 @@
     margin-bottom: 10px;
     border-radius: 70px;
     background-color: rgb(34, 34, 34);
+    width: 1000px;
     
 }
 
 .prefBar-element {
     display: flex;
     flex-direction: column;
+    align-items: center;
     margin: 20px;
     padding: 0;
     
@@ -26,13 +29,35 @@
 .prefBar-icon {
     display: flex;
     justify-content: center;
-    
+    align-items: center;
+    background-color: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+
+.prefBar-icon:hover {
+    transition: 400ms;
+    animation: ease-in-out;
+    background-color: rgba(128, 128, 128, 0.212);
+
+}
+
+
+.prefBar-icon:active {
+    background-color: #ed254e;
 }
 
 .prefBar-icon-label {
     display: flex;
     justify-content: center;
     
+}
+
+.prefBar-icon:hover ~ .prefBar-icon-label {
+    transition: 400ms;
+    animation: ease-in-out;
+    color: #ed254e;
 }
 
 button {
@@ -44,12 +69,4 @@ button {
 .prefBar-icon div, .prefBar-icon img{
     height: 50px;
     width: 50px;
-}
-
-.vaxIcon {
-    background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/How_to_use_icon.svg/1200px-How_to_use_icon.svg.png");
-}
-
-.vaxIcon:hover {
-    background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/How_to_use_icon.svg/1200px-How_to_use_icon.svg.png");
 }
