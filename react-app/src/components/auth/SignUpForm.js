@@ -21,6 +21,24 @@ const SignUpForm = () => {
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
   // const history = useHistory();
+  // useEffect(() => {
+  
+  // }, [
+  //   errors,
+  //   username,
+  //   email,
+  //   password,
+  //   repeatPassword,
+  //   first_name,
+  //   last_name,
+  //   age,
+  //   location,
+  //   gender,
+  //   coach,
+  //   img_url,
+  //   discipline,
+  //   user,
+  // ]) 
 
   const onSignUp = async (e) => {
     e.preventDefault();

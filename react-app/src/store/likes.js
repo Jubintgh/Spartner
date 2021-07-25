@@ -37,9 +37,9 @@ export const getAllLikedBy = (id) => async (dispatch) => {
   const res = await fetch(`/api/users/${id}/liked`);
 
   if (res.ok) {
-    const likes = await res.json();
-    dispatch(getLikers(likes));
-    return likes;
+    const liked = await res.json();
+    dispatch(getLikers(liked));
+    return liked;
   }
 };
 

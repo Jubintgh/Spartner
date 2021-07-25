@@ -6,9 +6,9 @@ import { createAnswer } from '../../store/answers';
 const AnswersForm = () => {
   const [errors, setErrors] = useState([]);
   const [about, setAbout] = useState('');
-  const [weightClass, setWeightClass] = useState(0);
+  const [weightClass, setWeightClass] = useState(1);
   const [reach, setReach] = useState(50);
-  const [professionalLevel, setProfessionalLevel] = useState(0);
+  const [professionalLevel, setProfessionalLevel] = useState(1);
   const [currentRecord, setCurrentRecord] = useState('0-0-0');
   const [previousTitles, setPreviousTitles] = useState('');
   const [favRockyFighter, setFavRockyFighter] = useState('');
@@ -19,8 +19,8 @@ const AnswersForm = () => {
   const [nickname, setNickname] = useState('');
   const [religion, setReligion] = useState('');
   const [pets, setPets] = useState('');
-  const [availability, setAvailability] = useState(0);
-  const [rate, setRate] = useState('');
+  const [availability, setAvailability] = useState(1);
+  const [rate, setRate] = useState(1);
   const user = useSelector(state => state.session.user);
   const history = useHistory();
   const dispatch = useDispatch();
@@ -29,6 +29,10 @@ const AnswersForm = () => {
   const user_id = user?.id;
 
   const onSubmit = async (e) => {
+
+
+
+
     e.preventDefault();
     const data = await dispatch(createAnswer(
       user_id,
@@ -49,8 +53,13 @@ const AnswersForm = () => {
       availability,
       rate ));
     if (data) {
-      setErrors(data)
-      history.push(`/discover`)
+      if(data.errors){
+        let errs = Object.keys(data.errors)
+        setErrors(errs)
+      }
+      else{
+        history.push(`/discover`)
+      }
     }
   };
 
@@ -443,11 +452,12 @@ const AnswersForm = () => {
         </div>
       <button type='submit'>Submit Answers</button>
       </div>
-      <div className="form-errors">
-            {errors.map((error, ind) => (
-              <div key={ind}>{error}</div>
-            ))}
-          </div>
+        <div className="form-errors">
+          {errors && errors.map(error => (
+            <li key={error}>{error + " field is required"}</li>
+          ))}
+
+        </div>
     </form>
   );
 };
