@@ -204,6 +204,7 @@ label {
     background-color: #25ed50;
     color: #1b1b1b;
   }
+  
 
   .form-errors {
       display: flex;
@@ -229,4 +230,35 @@ label {
       font-size: 0.75rem;
       font-style: italic;
       font-weight: 100;
+  }
+
+  .form-container .updateButton {
+    outline: none;
+    display: block;
+    border: solid 1px #feb584;
+    color: #feb584;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1;
+    border-radius: 30px;
+    background: #1b1b1b;
+    cursor: pointer;
+    transition: all 0.3s linear;
+    margin: 5px;
+  }
+  
+  .form-container .updateButton:focus {
+    background-color: #feb584;
+    color: #1b1b1b;
+  }
+  
+  .form-container .updateButton:active {
+    background: #020202;
+    color: #feb584;
+    border: solid 1px #feb584;
+  }
+  
+  .form-container .updateButton:hover {
+    background-color: #feb584;
+    color: #1b1b1b;
   }
