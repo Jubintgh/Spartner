@@ -52,7 +52,7 @@ export const getFilteredUsers = (id, filter) => async (dispatch) => {
   if (res.ok) {
     const users = await res.json();
     console.log(users, 'THIS WAS HIT')
-      dispatch(setUsers(users));
+    dispatch(setUsers(users));
   }
 }
 
