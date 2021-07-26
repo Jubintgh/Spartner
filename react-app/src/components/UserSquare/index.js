@@ -4,7 +4,7 @@ import './UserSquare.css';
 const UserSquare = ({ user }) => {
     return (
         <div className='user-square'>
-            <div className='user-info'>
+            <div className='user-info-matches-likes'>
                 <div>
                     <img
                         style={{ width: "150px", height: "150px", borderRadius: "50%", objectFit: "cover", margin:'10px'}}

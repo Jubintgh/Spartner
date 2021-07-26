@@ -10,9 +10,8 @@ import { createDislike } from '../../store/dislikes';
 import { MdKeyboardArrowRight } from 'react-icons/md';
 import { GiWeight } from 'react-icons/gi';
 import { FiUser, FiMapPin } from 'react-icons/fi';
-const _ = require('lodash');
-
 import PreferencesBar from '../../components/PreferencesBar';
+const _ = require('lodash');
 
 const DiscoverPage = () => {
   const dispatch = useDispatch();
@@ -124,7 +123,7 @@ const DiscoverPage = () => {
     usersLeftOrNoUsers = (
       <div className='main-area-container'>
         <div className='discover-title'>
-          <PreferencesBar/>
+          <PreferencesBar />
           <h2>Recommended Just For You</h2>
         </div>
         <div className={`user-info-container ${swipeDirection}`}>
