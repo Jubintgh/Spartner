@@ -4,13 +4,15 @@ import './UserSquare.css';
 const UserSquare = ({ user }) => {
     return (
         <div className='user-square'>
-            <div className='user-info'>
+            <div className='user-info-matches-likes'>
                 <div>
                     <img
-                        style={{ width: "200px", height: "200px", borderRadius: "50%", objectFit: "cover" }}
-                        src={user.img_url ?
-                            user.img_url :
-                            "https://smhlancers.org/wp-content/uploads/2016/06/profile-placeholder-300x300.png" }
+                        style={{ width: "150px", height: "150px", borderRadius: "50%", objectFit: "cover", margin:'10px'}}
+                        src={
+                            user?.img_url === 'inTheWorks.jpg'
+                              ? 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'
+                              : user?.img_url
+                          }
                         alt="spartner-profile"
                     />
                 </div>
@@ -18,6 +20,9 @@ const UserSquare = ({ user }) => {
                     <NavLink to={`/users/${user.id}`}>
                         {user.first_name} {user.last_name}
                     </NavLink>
+                </div>
+                <div>
+                    {user.location}
                 </div>
             </div>
         </div>
