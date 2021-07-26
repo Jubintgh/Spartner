@@ -51,7 +51,10 @@
 .prefBar-icon-label {
     display: flex;
     justify-content: center;
-    
+}
+
+.prefBar-icon-label {
+    margin: 0;
 }
 
 .prefBar-icon:hover ~ .prefBar-icon-label {

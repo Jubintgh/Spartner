@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getFilteredUsers} from '../../store/discover';
 import "./PreferenceBar.css"
@@ -8,8 +7,8 @@ const PreferencesBar = () => {
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user);
     const users = useSelector(state => Object.values(state.users))
-const userId  = user.id;
-const isCoach = user?.coach;
+    const userId  = user?.id;
+    const isCoach = user?.coach;
 
 
 
@@ -17,15 +16,6 @@ const isCoach = user?.coach;
 // button stuff here
 
 const [filter, setFilter] = useState();
-
-let filterAppliedLabel = null;
-
-// const handleOnClick = (e) => {
-//     console.log(e.target.value);
-//     setFilter(e.target.value)
-//     filterAppliedLabel = filter;
-// }
-
 
 
 let renderCoachContent = null;
@@ -43,9 +33,26 @@ if (!isCoach) {
     )
 }
 
+let filterAppliedLabel = null;
+
+
+if (filter === "coach") {
+    filterAppliedLabel = (<h2>Coaches</h2>)
+}
+else if (filter === "weight-class") {
+    filterAppliedLabel = (<h2>Weight Class</h2>)
+}
+else if (filter === "vaccination") {
+    filterAppliedLabel = (<h2>Vaccinated</h2>)
+}
+else if (filter === "professional-level") {
+    filterAppliedLabel = (<h2>Professional Level</h2>)
+}
+else {
+    filterAppliedLabel = (<h2>Recommended</h2>)
+}
+
 useEffect(() => {
-    console.log("Store is changed")
-    console.log(filter)
     dispatch(getFilteredUsers(userId, filter));
 }, [filter]);
 

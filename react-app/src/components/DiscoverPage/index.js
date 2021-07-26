@@ -123,7 +123,6 @@ const DiscoverPage = () => {
       <div className='main-area-container'>
         <div className='discover-title'>
           <PreferencesBar/>
-          <h2>Recommended Just For You</h2>
         </div>
         <div className={`user-info-container ${swipeDirection}`}>
           <div className='top-row'>
