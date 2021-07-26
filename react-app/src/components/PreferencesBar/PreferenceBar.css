@@ -12,7 +12,7 @@
     margin-top: 20px;
     margin-bottom: 10px;
     border-radius: 70px;
-    background-color: rgb(34, 34, 34);
+    background-color: rgba(113, 107, 236, 0.651) ;
     width: 1000px;
     
 }
@@ -39,13 +39,13 @@
 .prefBar-icon:hover {
     transition: 400ms;
     animation: ease-in-out;
-    background-color: rgba(128, 128, 128, 0.212);
+    background-color: rgb(255, 255, 255);
 
 }
 
 
 .prefBar-icon:active {
-    background-color: #ed254e;
+    background-color: #feb548;
 }
 
 .prefBar-icon-label {
@@ -60,7 +60,7 @@
 .prefBar-icon:hover ~ .prefBar-icon-label {
     transition: 400ms;
     animation: ease-in-out;
-    color: #ed254e;
+    color: #000;
 }
 
 button {

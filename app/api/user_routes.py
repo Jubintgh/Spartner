@@ -1,6 +1,5 @@
 from flask import Blueprint, jsonify
 from flask import request
-from flask_login import login_required
 from app.forms import AnswerForm, SignUpForm, UpdateUserInfoForm
 from app.models import Answer, User, db
 import random
@@ -315,7 +314,9 @@ def filter_user(filter_t, id):
         similar_users = []
         for user in unseen_users:
             if user.answer.vaccinated == user_vacc_stat:
-                similar_users.append(user)
+                user_answer = user.to_dict()
+                user_answer.update(user.answer.to_dict())
+                similar_users.append(user_answer)
                 
         # return { "vacc_stat": [ user.to_dict() for user in similar_users]}
 
@@ -325,7 +326,9 @@ def filter_user(filter_t, id):
 
         for user in unseen_users:
             if user.answer.weight_class == user_wc_stat:
-                similar_users.append(user)
+                user_answer = user.to_dict()
+                user_answer.update(user.answer.to_dict())
+                similar_users.append(user_answer)
     
         # return { "wc_stat": [ user.to_dict() for user in similar_users]}
 
@@ -335,7 +338,9 @@ def filter_user(filter_t, id):
 
         for user in unseen_users:
             if user.answer.professional_level == user_pro_stat:
-                similar_users.append(user)
+                user_answer = user.to_dict()
+                user_answer.update(user.answer.to_dict())
+                similar_users.append(user_answer)
     
         # return { "pro_stat": [ user.to_dict() for user in similar_users]}
 
@@ -344,9 +349,14 @@ def filter_user(filter_t, id):
 
         for user in unseen_users:
             if user.coach == True:
-                similar_users.append(user)
+                user_answer = user.to_dict()
+                user_answer.update(user.answer.to_dict())
+                similar_users.append(user_answer)
     
     if filter_t == "recommended":
-        similar_users = unseen_users
+        for user in unseen_users:
+            user_answer = user.to_dict()
+            user_answer.update(user.answer.to_dict())
+            similar_users.append(user_answer)
 
-    return { "users_answers": [ user.to_dict() for user in similar_users]}
+    return { "users_answers": [ user for user in similar_users]}
