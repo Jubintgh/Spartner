@@ -12,7 +12,7 @@
 .user-info-container {
   background-color: #ed254d89;
   width: 900px;
-  height: 440px;
+  height: 480px;
   display: flex;
   flex-direction: column;
   padding-bottom: 3em;
@@ -116,8 +116,9 @@
 }
 
 .discover-button {
-  height: 60px;
-  width: 60px;
+  height: 80px;
+  width: 80px;
+  margin: 10px;
 }
 
 .discover-button:hover {
