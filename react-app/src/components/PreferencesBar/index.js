@@ -16,8 +16,6 @@ const isCoach = user?.coach;
 
 // button stuff here
 
-const [vaxIcon, setVaxIcon] = useState('/vax-static.png');
-const [vaxIconStatus, setVaxIconStaus] = useState('');
 const [filter, setFilter] = useState();
 
 let filterAppliedLabel = null;
@@ -35,14 +33,8 @@ let renderCoachContent = null;
 if (!isCoach) {
     renderCoachContent = (
         <div className="prefBar-element">
-        <div className="prefBar-icon">
-            <button
-                    href="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"
-                    value="coach"
-                    onClick={(e) => setFilter(e.target.value)}
-                    >
+        <div className="prefBar-icon" onClick={(e) => setFilter("coach")}>
                         <img className="coachIcon" src="/coachIcon-static.png"/>
-                    </button>
         </div>
         <div className="prefBar-icon-label">
             <h5>Coaches</h5>
@@ -61,57 +53,34 @@ return (
     <div className="prefBar-container">
         <div className="prefBar-block">
             <div className="prefBar-element">
-                <div className="prefBar-icon">
-                     <button
-                    href="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"
-                    value="/"
-                    onClick={(e) => setFilter(e.target.value)}
-                    >
+                <div className="prefBar-icon"
+                    onClick={(e) => setFilter("recommended")}>
                         <img className="redommendedIcon" src="/fight-static.png"/>
-                    </button>
                 </div>
                 <div className="prefBar-icon-label">
                     <h5>Recommended</h5>
                 </div>
             </div>
             <div className="prefBar-element">
-                <div className="prefBar-icon">
-                     <button
-                    href="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"
-                    value="weight-class"
-                    onClick={(e) => setFilter(e.target.value)}
-                    >
+                <div className="prefBar-icon" onClick={(e) => setFilter("weight-class")}>
                         <img className="weightClassIcon" src="/weightclassIcon-static.png"/>
-                    </button>
                 </div>
                 <div className="prefBar-icon-label">
                     <h5>Weight Class</h5>
                 </div>
             </div>
-            <ul className="prefBar-element">
-                <div className="prefBar-icon" 
-                >
-                    <button
-                    href="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"
-                    value="vaccination"
-                    onClick={(e) => setFilter(e.target.value)}
-                    >
-                        <img className="vaxIcon" src="/vax-static.png"/>
-                    </button>
+            <div className="prefBar-element">
+                <div className="prefBar-icon"
+                    onClick={(e) => setFilter("vaccination")} >
+                        <img className="vaxIcon" src="/vax-static.png" />
                 </div>
                 <div className="prefBar-icon-label">
                     <h5>Vaccinated</h5>
                 </div>
-            </ul>
+            </div>
             <div className="prefBar-element">
-                <div className="prefBar-icon">
-                     <button
-                    href="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"
-                    value="professional-level"
-                    onClick={(e) => setFilter(e.target.value)}
-                    >
+                <div className="prefBar-icon" onClick={(e) => setFilter("professional-level")}>
                         <img className="proLevelIcon" src="/proIcon-static.png"/>
-                    </button>
                 </div>
                 <div className="prefBar-icon-label">
                     <h5>Professional Level</h5>

@@ -343,4 +343,7 @@ def filter_user(filter_t, id):
             if user.coach == True:
                 similar_users.append(user)
     
+    if filter_t == "recommended":
+        similar_users = unseen_users
+
     return { "users_answers": [ user.to_dict() for user in similar_users]}
