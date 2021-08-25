@@ -68,7 +68,7 @@ const ProfilePage = () => {
   useEffect(() => {
     dispatch(getNewUsers(id));
     dispatch(getOneUser(userId));
-    dispatch(getAllUserLikes(id))
+    dispatch(getAllUserLikes(id));
   }, [dispatch, id, userId]);
 
   let available;
@@ -149,7 +149,6 @@ const ProfilePage = () => {
     return total + '% Compatability';
   };
 
-  console.log((Number(firstUser?.id) !== Number(id)) && (Number(userId) in userLikesObj))
   let loggedInUserHeaderOrOtherUserHeader;
   if (Number(firstUser?.id) !== Number(id)) {
     loggedInUserHeaderOrOtherUserHeader = (
@@ -168,8 +167,7 @@ const ProfilePage = () => {
   }
   // DAY 1 SPRINT WEEK HERE  ---------------------------------------------------------------------------------------------
   let currentUserPageOrDifferentUserPage;
-  if ((Number(firstUser?.id) !== Number(id)) && (Number(userId) in userLikesObj)) {
-    console.log('hittttted')
+  if (Number(firstUser?.id) !== Number(id) && Number(userId) in userLikesObj) {
     currentUserPageOrDifferentUserPage = (
       <div className='discover-btns'>
         <div onClick={handleClickDislike} className='pass-btn'>
@@ -182,7 +180,7 @@ const ProfilePage = () => {
           />
         </div>
       </div>
-    )
+    );
   } else if (Number(firstUser?.id) !== Number(id)) {
     currentUserPageOrDifferentUserPage = (
       <div className='discover-btns'>

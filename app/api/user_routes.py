@@ -66,7 +66,7 @@ def edit_info(id):
         ex_user_info.gender = form.data["gender"]
         ex_user_info.coach = form.data["coach"]
         ex_user_info.img_url = form.data["img_url"]
-    
+
         db.session.commit()
         return ex_user_info.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
@@ -223,7 +223,7 @@ def post_answers(id):
     """
     Creates a new answer and adds them in database
     """
-    
+
     form = AnswerForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
@@ -317,7 +317,7 @@ def filter_user(filter_t, id):
                 user_answer = user.to_dict()
                 user_answer.update(user.answer.to_dict())
                 similar_users.append(user_answer)
-                
+
         # return { "vacc_stat": [ user.to_dict() for user in similar_users]}
 
     if filter_t == "weight-class":
@@ -329,7 +329,7 @@ def filter_user(filter_t, id):
                 user_answer = user.to_dict()
                 user_answer.update(user.answer.to_dict())
                 similar_users.append(user_answer)
-    
+
         # return { "wc_stat": [ user.to_dict() for user in similar_users]}
 
     if filter_t == "professional-level":
@@ -341,7 +341,7 @@ def filter_user(filter_t, id):
                 user_answer = user.to_dict()
                 user_answer.update(user.answer.to_dict())
                 similar_users.append(user_answer)
-    
+
         # return { "pro_stat": [ user.to_dict() for user in similar_users]}
 
     if filter_t == "coach":
@@ -352,7 +352,7 @@ def filter_user(filter_t, id):
                 user_answer = user.to_dict()
                 user_answer.update(user.answer.to_dict())
                 similar_users.append(user_answer)
-    
+
     if filter_t == "recommended":
         for user in unseen_users:
             user_answer = user.to_dict()

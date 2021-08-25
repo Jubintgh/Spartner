@@ -1,48 +1,50 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllUserLikes, getAllLikedBy } from '../../store/likes';
-import UserSquare from '../UserSquare'
-import './MatchesContainer.css'
+import UserSquare from '../UserSquare';
+import './MatchesContainer.css';
 
 const MatchesContainer = () => {
-    const dispatch = useDispatch();
-    const loggedUser = useSelector((state) => state.session.user)
-    const likesArray = useSelector((state) => {
-        return Object.values(state.likes)
-    })
-    console.log(likesArray)
-    const userLikes = likesArray[0]?.user_likes
-    const userLikers = likesArray[1]?.likes_user
+  const dispatch = useDispatch();
+  const loggedUser = useSelector((state) => state.session.user);
+  const likesArray = useSelector((state) => {
+    return state.likes?.likes && Object.values(state.likes?.likes);
+  });
+  const likedArray = useSelector((state) => {
+    return state.likes?.likers && Object.values(state.likes?.likers);
+  });
 
-    let matchesArray = []
-    for (let i = 0; i < userLikes?.length; i++) {
-        for (let j = 0; j < userLikers?.length; j++) {
-            if (userLikes[i]?.id === userLikers[j]?.id) {
-                matchesArray.push(userLikes[i])
-            }
-        }
+  const userLikes = likesArray;
+  const userLikers = likedArray;
+
+  let matchesArray = [];
+  for (let i = 0; i < userLikes?.length; i++) {
+    for (let j = 0; j < userLikers?.length; j++) {
+      if (userLikes[i]?.id === userLikers[j]?.id) {
+        matchesArray.push(userLikes[i]);
+      }
     }
+  }
 
-    useEffect(() => {
-        dispatch(getAllUserLikes(loggedUser.id))
-        dispatch(getAllLikedBy(loggedUser.id))
-    }, [dispatch, loggedUser.id])
+  useEffect(() => {
+    dispatch(getAllUserLikes(loggedUser.id));
+    dispatch(getAllLikedBy(Number(loggedUser.id)));
+  }, [dispatch, loggedUser.id]);
 
-    return (
-        <div>
-            <h1> Matches </h1>
-            <div className='outer-container'>
-
-                <div className='users-container'>
-                    {matchesArray?.map((user) => (
-                        <div className='user-square'>
-                            <UserSquare user={user} key={user.id}/>
-                        </div>
-                    ))}
-                </div>
+  return (
+    <div>
+      <h1> Matches </h1>
+      <div className='outer-container'>
+        <div className='users-container'>
+          {matchesArray?.map((user) => (
+            <div className='user-square'>
+              <UserSquare user={user} key={user.id} />
             </div>
+          ))}
         </div>
-    )
-}
+      </div>
+    </div>
+  );
+};
 
 export default MatchesContainer;
