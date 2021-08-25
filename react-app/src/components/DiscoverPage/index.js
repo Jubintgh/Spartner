@@ -10,14 +10,22 @@ import { createDislike } from '../../store/dislikes';
 import { MdKeyboardArrowRight } from 'react-icons/md';
 import { GiWeight } from 'react-icons/gi';
 import { FiUser, FiMapPin } from 'react-icons/fi';
+import { getAllLikedBy } from '../../store/likes';
+import MatchNotification from '../MatchNotification';
 import PreferencesBar from '../../components/PreferencesBar';
+import { first } from 'lodash';
 const _ = require('lodash');
 
 const DiscoverPage = () => {
   const dispatch = useDispatch();
+  const [notification, setNotification] = useState(false)
+  const [clicked, setClicked] = useState(false)
   const allUsersNotLiked = useSelector((state) =>
     Object.values(state.discover)
   );
+  const likedArray = useSelector((state) => {
+    return state.likes?.likers;
+  });
   const { user } = useSelector((state) => state.session);
   const id = Number(user.id);
   const firstUser = allUsersNotLiked[0];
@@ -26,7 +34,6 @@ const DiscoverPage = () => {
     '/dislike-button-unclicked.png'
   );
   const [swipeDirection, setSwipeDirection] = useState('');
-
   const handleClickDislike = () => {
     dispatch(createDislike(id, firstUser?.id));
     setSwipeDirection('left');
@@ -39,6 +46,11 @@ const DiscoverPage = () => {
   };
 
   const handleClickLike = () => {
+    setClicked(true)
+    if ((Number(firstUser.id) in likedArray)) {
+      console.log('match')
+     }
+
     dispatch(createLike(id, firstUser?.id));
     setSwipeDirection('right');
     setTimeout(function () {
@@ -48,6 +60,19 @@ const DiscoverPage = () => {
       setSwipeDirection('');
     }, 1000);
   };
+
+  useEffect(() => {
+    if(firstUser) {
+      if ((Number(firstUser.id) in likedArray) && clicked) {
+        setNotification(true)
+        setTimeout(function () {
+          setClicked(false);
+          setNotification(false);
+        }, 5000);
+      }
+    }
+
+}, [notification, firstUser?.id, clicked])
 
   const changeImageSourceLiked = () => {
     if (likeButton === '/like-button-clicked.png') {
@@ -68,6 +93,7 @@ const DiscoverPage = () => {
   useEffect(() => {
     dispatch(getNewUsers(id));
     dispatch(getCurrentUserAndAnswers(id));
+    dispatch(getAllLikedBy(id))
   }, [dispatch, id]);
 
   let weightClass;
@@ -124,6 +150,9 @@ const DiscoverPage = () => {
       <div className='main-area-container'>
         <div className='discover-title'>
           <PreferencesBar/>
+        </div>
+        <div className='notification-text'>
+          {notification === true? (<MatchNotification />) : null}
         </div>
         <div className={`user-info-container ${swipeDirection}`}>
           <div className='top-row'>
