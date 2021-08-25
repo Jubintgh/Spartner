@@ -10,11 +10,10 @@ const MatchesContainer = () => {
     const likesArray = useSelector((state) => {
         return Object.values(state.likes)
     })
-
+    console.log(likesArray)
     const userLikes = likesArray[0]?.user_likes
     const userLikers = likesArray[1]?.likes_user
 
-    // const matchesArray = userLikes?.filter(user => userLikers?.includes(user.id))
     let matchesArray = []
     for (let i = 0; i < userLikes?.length; i++) {
         for (let j = 0; j < userLikers?.length; j++) {

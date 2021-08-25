@@ -84,15 +84,26 @@ const likesReducer = (state = initialState, action) => {
   let newState;
   switch (action.type) {
     case GET_LIKES:
+      const allLikes = {};
+            action.likes.user_likes.forEach((like) => {
+              allLikes[like.id] = like;
+            }
+            );
+
       return {
         ...state,
-        likes: action.likes,
+        ...allLikes,
       };
 
     case GET_LIKERS:
+      const allLikers = {};
+      action.likes.likes_user.forEach((liker) => {
+        allLikers[liker.id] = liker;
+      }
+      );
       return {
         ...state,
-        likers: action.likes,
+        ...allLikers,
       };
 
     case CREATE_LIKE:

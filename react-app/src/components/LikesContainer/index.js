@@ -10,7 +10,6 @@ const LikesContainer = () => {
     const likesArray = useSelector((state) => {
         return Object.values(state.likes)
     })
-    const userLikes = likesArray[0]?.user_likes
 
     useEffect(() => {
         dispatch(getAllUserLikes(loggedUser.id))
@@ -21,7 +20,7 @@ const LikesContainer = () => {
             <div className='outer-container'>
             <h1> Liked Users </h1>
                 <div className='users-container'>
-                    {userLikes?.map((user) => (
+                    {likesArray?.map((user) => (
                         <div className='user-square-container'>
                             <UserSquare user={user} key={user.id}/>
                         </div>
