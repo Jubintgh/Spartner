@@ -56,8 +56,7 @@ const AnswersForm = () => {
       if(data.errors){
         let errs = Object.keys(data.errors)
         setErrors(errs)
-      }
-      else{
+      } else{
         history.push(`/discover`)
       }
     }
@@ -175,7 +174,7 @@ const AnswersForm = () => {
         <div className="form-question-label">
         <label>Weight Class</label>
           </div>
-          <div className="form-input">    
+          <div className="form-input">
         <select
           type='number'
           name='weightClass'
@@ -249,10 +248,10 @@ const AnswersForm = () => {
       <div className="form-container">
         <div className="form-text-block">
           <div>
-          <h1 className="questionnaire-title">Personality Questionnaire</h1>  
+          <h1 className="questionnaire-title">Personality Questionnaire</h1>
           </div>
           <div>
-          <h2 className="questionnaire-subheader">Tell us a bit more about yourself</h2>  
+          <h2 className="questionnaire-subheader">Tell us a bit more about yourself</h2>
           </div>
         </div>
         <div className="questionnaire-section-label">
