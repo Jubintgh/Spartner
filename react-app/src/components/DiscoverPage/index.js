@@ -18,8 +18,8 @@ const _ = require('lodash');
 
 const DiscoverPage = () => {
   const dispatch = useDispatch();
-  const [notification, setNotification] = useState(false)
-  const [clicked, setClicked] = useState(false)
+  const [notification, setNotification] = useState(false);
+  const [clicked, setClicked] = useState(false);
   const allUsersNotLiked = useSelector((state) =>
     Object.values(state.discover)
   );
@@ -46,10 +46,10 @@ const DiscoverPage = () => {
   };
 
   const handleClickLike = () => {
-    setClicked(true)
-    if ((Number(firstUser.id) in likedArray)) {
-      console.log('match')
-     }
+    setClicked(true);
+    if (Number(firstUser.id) in likedArray) {
+      console.log('match');
+    }
 
     dispatch(createLike(id, firstUser?.id));
     setSwipeDirection('right');
@@ -62,17 +62,16 @@ const DiscoverPage = () => {
   };
 
   useEffect(() => {
-    if(firstUser) {
-      if ((Number(firstUser.id) in likedArray) && clicked) {
-        setNotification(true)
+    if (firstUser) {
+      if (Number(firstUser.id) in likedArray && clicked) {
+        setNotification(true);
         setTimeout(function () {
           setClicked(false);
           setNotification(false);
         }, 5000);
       }
     }
-
-}, [notification, firstUser?.id, clicked])
+  }, [notification, firstUser?.id, clicked]);
 
   const changeImageSourceLiked = () => {
     if (likeButton === '/like-button-clicked.png') {
@@ -93,7 +92,7 @@ const DiscoverPage = () => {
   useEffect(() => {
     dispatch(getNewUsers(id));
     dispatch(getCurrentUserAndAnswers(id));
-    dispatch(getAllLikedBy(id))
+    dispatch(getAllLikedBy(id));
   }, [dispatch, id]);
 
   let weightClass;
@@ -149,11 +148,13 @@ const DiscoverPage = () => {
     usersLeftOrNoUsers = (
       <div className='main-area-container'>
         <div className='discover-title'>
-          <PreferencesBar/>
+          <PreferencesBar notification={notification} />
         </div>
-        <div className='notification-text'>
-          {notification === true? (<MatchNotification />) : null}
-        </div>
+        {notification ? (
+          <div className='notification-wrapper'>
+            <MatchNotification />
+          </div>
+        ) : null}
         <div className={`user-info-container ${swipeDirection}`}>
           <div className='top-row'>
             <div className='user-info'>

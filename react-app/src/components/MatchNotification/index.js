@@ -1,9 +1,7 @@
-import { GiPositionMarker } from "react-icons/gi";
+import { GiPositionMarker } from 'react-icons/gi';
 
 const MatchNotification = () => {
-    return (
-        <h1> NEW SPARTNER FOUND!</h1>
-    )
-}
+  return <p className='match-notification__text'>NEW SPARTNER FOUND!</p>;
+};
 
 export default MatchNotification;
