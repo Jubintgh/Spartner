@@ -92,7 +92,7 @@ const likesReducer = (state = initialState, action) => {
 
       return {
         ...state,
-        ...allLikes,
+        allLikes,
       };
 
     case GET_LIKERS:
@@ -103,7 +103,7 @@ const likesReducer = (state = initialState, action) => {
       );
       return {
         ...state,
-        ...allLikers,
+        allLikers,
       };
 
     case CREATE_LIKE:
