@@ -18,7 +18,9 @@ const ProfilePage = () => {
   const firstUser = useSelector((state) => state.users[userId]);
   const { user } = useSelector((state) => state.session);
   const id = Number(user.id);
-  const userLikesObj = useSelector((state) => state.likes);
+  const userLikesObj = useSelector((state) => {
+    return state.likes?.likes && state.likes?.likes;
+  });
   const [likeButton, setLikeButton] = useState('/like-button-unclicked.png');
   const [dislikeButton, setDislikeButton] = useState(
     '/dislike-button-unclicked.png'
@@ -167,7 +169,11 @@ const ProfilePage = () => {
   }
   // DAY 1 SPRINT WEEK HERE  ---------------------------------------------------------------------------------------------
   let currentUserPageOrDifferentUserPage;
-  if (Number(firstUser?.id) !== Number(id) && Number(userId) in userLikesObj) {
+  if (
+    Number(firstUser?.id) !== Number(id) &&
+    userLikesObj &&
+    Number(userId) in userLikesObj
+  ) {
     currentUserPageOrDifferentUserPage = (
       <div className='discover-btns'>
         <div onClick={handleClickDislike} className='pass-btn'>
