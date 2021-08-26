@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useEffect, useSelector, useDispatch } from 'react-redux'
-import { Redirect, useHistory } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom';
 import { editOneUser } from '../../store/users';
 
 const EditUserForm = () => {
@@ -244,7 +244,7 @@ const EditUserForm = () => {
           <option value="8">Switch</option>
           <option value="9">Brazilian Jiu-Jitsu</option>
         </select>
-      </div> 
+      </div>
       </div>
         </div>
         </div>
@@ -254,6 +254,7 @@ const EditUserForm = () => {
         ))}
       </div>
       <button className='updateButton' type='submit'>Update</button>
+      <button type="button" onClick={handleCancelClick}>Cancel</button>
       </div>
         {/* <div>
         {errors?.map((error, ind) => (

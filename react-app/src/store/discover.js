@@ -1,5 +1,3 @@
-const _ = require('lodash');
-
 const GET_UNSEEN_USERS = 'users/GET_UNSEEN_USERS';
 const GET_MATCHES = 'users/GET_MATCHES';
 const REMOVE_USER = 'users/REMOVE_USER';

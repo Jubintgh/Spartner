@@ -1,5 +1,5 @@
 import './DiscoverPage.css';
-import { React, useMemo } from 'react';
+import { React} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
@@ -13,8 +13,6 @@ import { FiUser, FiMapPin } from 'react-icons/fi';
 import { getAllLikedBy } from '../../store/likes';
 import MatchNotification from '../MatchNotification';
 import PreferencesBar from '../../components/PreferencesBar';
-import { first } from 'lodash';
-const _ = require('lodash');
 
 const DiscoverPage = () => {
   const dispatch = useDispatch();
@@ -67,7 +65,7 @@ const DiscoverPage = () => {
         }, 5000);
       }
     }
-  }, [notification, firstUser?.id, clicked]);
+  }, [notification, firstUser, clicked, likedArray]);
 
   const changeImageSourceLiked = () => {
     if (likeButton === '/like-button-clicked.png') {

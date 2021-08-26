@@ -12,7 +12,7 @@ const DemoUserButton = () => {
 
   const onDemoSignIn = async (e) => {
     e.preventDefault();
-    const data = await dispatch(login(email, password));
+    await dispatch(login(email, password));
     history.push('/discover');
   };
 
