@@ -47,10 +47,6 @@ const DiscoverPage = () => {
 
   const handleClickLike = () => {
     setClicked(true);
-    if (Number(firstUser.id) in likedArray) {
-      console.log('match');
-    }
-
     dispatch(createLike(id, firstUser?.id));
     setSwipeDirection('right');
     setTimeout(function () {
