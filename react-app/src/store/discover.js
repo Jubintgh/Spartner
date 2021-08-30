@@ -1,5 +1,3 @@
-const _ = require('lodash');
-
 const GET_UNSEEN_USERS = 'users/GET_UNSEEN_USERS';
 const GET_MATCHES = 'users/GET_MATCHES';
 const REMOVE_USER = 'users/REMOVE_USER';
@@ -30,7 +28,6 @@ export const getNewUsers = (id) => async (dispatch) => {
 
   if (res.ok) {
     const users_answers = await res.json();
-    console.log(users_answers, 'THIS WAS HIT FIRST')
     dispatch(setUsers(users_answers));
     dispatch(setShuffledUsers(users_answers));
     return users_answers;
@@ -51,10 +48,9 @@ export const getFilteredUsers = (id, filter) => async (dispatch) => {
   const res = await fetch(`api/users/${id}/filter/${filter}`);
   if (res.ok) {
     const users = await res.json();
-    console.log(users, 'THIS WAS HIT')
     dispatch(setUsers(users));
   }
-}
+};
 
 const initialState = {};
 const discoverReducer = (state = initialState, action) => {

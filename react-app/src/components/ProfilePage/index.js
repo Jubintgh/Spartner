@@ -18,9 +18,9 @@ const ProfilePage = () => {
   const firstUser = useSelector((state) => state.users[userId]);
   const { user } = useSelector((state) => state.session);
   const id = Number(user.id);
-  const userLikesObj = useSelector((state) => state.likes.likes);
-  const userLikes = userLikesObj?.user_likes;
-
+  const userLikesObj = useSelector((state) => {
+    return state.likes?.likes && state.likes?.likes;
+  });
   const [likeButton, setLikeButton] = useState('/like-button-unclicked.png');
   const [dislikeButton, setDislikeButton] = useState(
     '/dislike-button-unclicked.png'
@@ -70,6 +70,7 @@ const ProfilePage = () => {
   useEffect(() => {
     dispatch(getNewUsers(id));
     dispatch(getOneUser(userId));
+    dispatch(getAllUserLikes(id));
   }, [dispatch, id, userId]);
 
   let available;
@@ -166,9 +167,27 @@ const ProfilePage = () => {
       </div>
     );
   }
-
+  // DAY 1 SPRINT WEEK HERE  ---------------------------------------------------------------------------------------------
   let currentUserPageOrDifferentUserPage;
-  if (Number(firstUser?.id) !== Number(id)) {
+  if (
+    Number(firstUser?.id) !== Number(id) &&
+    userLikesObj &&
+    Number(userId) in userLikesObj
+  ) {
+    currentUserPageOrDifferentUserPage = (
+      <div className='discover-btns'>
+        <div onClick={handleClickDislike} className='pass-btn'>
+          <img
+            className={`discover-button`}
+            src={dislikeButton}
+            onMouseDown={changeImageSourceDisliked}
+            onMouseUp={changeImageSourceDisliked}
+            alt=''
+          />
+        </div>
+      </div>
+    );
+  } else if (Number(firstUser?.id) !== Number(id)) {
     currentUserPageOrDifferentUserPage = (
       <div className='discover-btns'>
         <div onClick={handleClickDislike} className='pass-btn'>
@@ -192,7 +211,6 @@ const ProfilePage = () => {
       </div>
     );
   } else {
-    console.log('Hello');
     currentUserPageOrDifferentUserPage = (
       <div className='profile-edit-links'>
         <div>
