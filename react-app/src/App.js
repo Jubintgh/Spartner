@@ -36,42 +36,52 @@ function App() {
     <div className='page-container'>
       <div className='content-wrap'>
         <BrowserRouter>
-          <NavBar />
             <Switch>
               <Route path='/' exact={true}>
                 <LandingPage />
               </Route>
               <Route path='/login' exact={true}>
+                <NavBar/>
                 <LoginForm />
               </Route>
               <ProtectedRoute path='/discover' exact={true}>
+                <NavBar/>
                 <DiscoverPage />
               </ProtectedRoute>
               <Route path='/sign-up' exact={true}>
+                <NavBar/>
                 <SignUpForm />
               </Route>
-              <ProtectedRoute path='/users' exact={true} >
+              <ProtectedRoute path='/users' exact={true}>
+                <NavBar/>
                 <UsersList/>
               </ProtectedRoute>
               <Route path='/users/:userId/init-answers' exact={true}>
+                <NavBar/>
                 <AnswersForm />
               </Route>
               <Route path='/users/:userId/edit-answers' exact={true}>
+                <NavBar/>
                 <EditAnswersForm />
               </Route>
               <ProtectedRoute path='/users/:userId' exact={true}>
+                <NavBar/>
                 <ProfilePage />
               </ProtectedRoute>
               <Route path='/users/:userId/edit-info' exact={true}>
+                <NavBar/>
                 <EditUserForm />
               </Route>
               <Route path='/users/:userId/matches' exact={true}>
+                <NavBar/>
                 <MatchesContainer />
               </Route>
               <Route path='/users/:userId/likes' exact={true}>
+                <NavBar/>
                 <LikesContainer />
               </Route>
               <ProtectedRoute path='/discover' exact={true}>
+                <NavBar/>
                 <DiscoverPage />
               </ProtectedRoute>
             </Switch>
