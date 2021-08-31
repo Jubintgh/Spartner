@@ -68,10 +68,10 @@ const DiscoverPage = () => {
   }, [notification, firstUser, clicked, likedArray]);
 
   const changeImageSourceLiked = () => {
-    if (likeButton === '/like-button-clicked.png') {
-      setLikeButton('/like-button-unclicked.png');
+    if (likeButton === 'https://user-images.githubusercontent.com/35717793/131561660-54793b25-6e24-4ceb-89d6-b13b97625361.png') {
+      setLikeButton('https://user-images.githubusercontent.com/35717793/131561660-54793b25-6e24-4ceb-89d6-b13b97625361.png');
     } else {
-      setLikeButton('/like-button-clicked.png');
+      setLikeButton('https://user-images.githubusercontent.com/35717793/131560710-8ab4eac9-9a09-4c21-98f7-5d09dd545ad3.png');
     }
   };
 
