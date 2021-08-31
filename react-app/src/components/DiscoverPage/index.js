@@ -68,7 +68,7 @@ const DiscoverPage = () => {
   }, [notification, firstUser, clicked, likedArray]);
 
   const changeImageSourceLiked = () => {
-    if (likeButton === 'https://user-images.githubusercontent.com/35717793/131561660-54793b25-6e24-4ceb-89d6-b13b97625361.png') {
+    if (likeButton === 'https://user-images.githubusercontent.com/35717793/131560710-8ab4eac9-9a09-4c21-98f7-5d09dd545ad3.png') {
       setLikeButton('https://user-images.githubusercontent.com/35717793/131561660-54793b25-6e24-4ceb-89d6-b13b97625361.png');
     } else {
       setLikeButton('https://user-images.githubusercontent.com/35717793/131560710-8ab4eac9-9a09-4c21-98f7-5d09dd545ad3.png');
@@ -76,10 +76,10 @@ const DiscoverPage = () => {
   };
 
   const changeImageSourceDisliked = () => {
-    if (dislikeButton === '/dislike-button-clicked.png') {
-      setDislikeButton('/dislike-button-unclicked.png');
+    if (dislikeButton === 'https://user-images.githubusercontent.com/35717793/131560719-0d1acee6-a0c9-4182-aab5-555b80e4771c.png') {
+      setDislikeButton('https://user-images.githubusercontent.com/35717793/131561652-ca11d430-33b1-47c2-ac49-1ca3efe93ec6.png');
     } else {
-      setDislikeButton('/dislike-button-clicked.png');
+      setDislikeButton('https://user-images.githubusercontent.com/35717793/131560719-0d1acee6-a0c9-4182-aab5-555b80e4771c.png');
     }
   };
 
