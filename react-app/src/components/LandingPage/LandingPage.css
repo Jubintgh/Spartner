@@ -3,9 +3,9 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  /* padding-top: 4.5em; */
   -webkit-animation: fade-in 2s;
   animation: fade-in 2s;
+  padding-top: 25vh;
 }
 
 .splash-banner {
