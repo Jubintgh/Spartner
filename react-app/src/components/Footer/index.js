@@ -141,7 +141,7 @@ const Footer = () => {
               <img
                 alt='TonyPic'
                 className='footer-profilePic'
-                src='https://avatars.githubusercontent.com/u/35717793?v=4'
+                src='https://user-images.githubusercontent.com/35717793/131560553-2665bbc0-51ae-4e72-b522-64576b9495cf.jpg'
               />
               <h3>Tony Costanza</h3>
               <div className='footer-row-row2'>
