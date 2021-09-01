@@ -59,6 +59,9 @@ const SignUpForm = () => {
         setErrors(data)
       }
     }
+    else if(password !== repeatPassword) {
+      setErrors(["Passwords do not match, try again"])
+    }
   };
 
   const updateFirstName = (e) => {
