@@ -38,6 +38,8 @@
 }
 
 .user-info {
+  position: relative;
+  top: 0;
   width: 70%;
   justify-content: space-around;
   font-size: 18px;
@@ -138,15 +140,6 @@
   transition-duration: 2s;
 }
 
-@keyframes fade-out {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
-
 .notification-wrapper {
   position: absolute;
   width: 500px;
@@ -161,4 +154,76 @@
 
 .notification-wrapper > * {
   font-size: 2rem;
+}
+
+.user-info {
+  align-items: center;
+}
+
+.tooltip-icon {
+  margin-top: 1.5rem;
+  user-select: none;
+  opacity: 0.6;
+}
+
+.tooltip-icon.active {
+  opacity: 1;
+}
+
+.tooltip-outer-container {
+  position: absolute;
+  right: -70px;
+  display: flex;
+  align-items: center;
+}
+
+.tooltip-container {
+  width: 250px;
+  height: 100px;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  animation: fade-in 1s;
+  padding: 10px 0;
+}
+
+.left-arrow {
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 10px solid white;
+  animation: fade-in 1s;
+}
+
+.tooltip-container.hidden,
+.left-arrow.hidden {
+  display: none;
+}
+
+.tooltip-text {
+  margin: 0.5rem;
+  font-size: 0.85rem;
+  color: black;
+  text-align: center;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-icon {
+  from {
+    opacity: 0.6;
+  }
+  to {
+    opacity: 1;
+  }
 }

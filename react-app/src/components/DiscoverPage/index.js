@@ -1,5 +1,5 @@
 import './DiscoverPage.css';
-import { React} from 'react';
+import { React } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
@@ -10,6 +10,7 @@ import { createDislike } from '../../store/dislikes';
 import { MdKeyboardArrowRight } from 'react-icons/md';
 import { GiWeight } from 'react-icons/gi';
 import { FiUser, FiMapPin } from 'react-icons/fi';
+import { FaQuestionCircle } from 'react-icons/fa';
 import { getAllLikedBy } from '../../store/likes';
 import MatchNotification from '../MatchNotification';
 import PreferencesBar from '../../components/PreferencesBar';
@@ -32,6 +33,8 @@ const DiscoverPage = () => {
     '/dislike-button-unclicked.png'
   );
   const [swipeDirection, setSwipeDirection] = useState('');
+  const [show, setShow] = useState(false);
+
   const handleClickDislike = () => {
     dispatch(createDislike(id, firstUser?.id));
     setSwipeDirection('left');
@@ -82,6 +85,8 @@ const DiscoverPage = () => {
       setDislikeButton('/dislike-button-clicked.png');
     }
   };
+
+  useEffect(() => {}, [show]);
 
   useEffect(() => {
     dispatch(getNewUsers(id));
@@ -157,7 +162,30 @@ const DiscoverPage = () => {
                 <p className='last-name'>{firstUser?.last_name}</p>
               </div>
               <p>|</p>
-              <p>{createMatchPercentage()}% Compatibility</p>
+              <p>{createMatchPercentage()}% Compatibility </p>
+              <p
+                onMouseEnter={() => setShow(true)}
+                onMouseLeave={() => setShow(false)}
+                className={show ? 'tooltip-icon active' : 'tooltip-icon'}
+              >
+                <FaQuestionCircle />
+              </p>
+              <div className='tooltip-outer-container'>
+                <div
+                  className={show ? 'left-arrow' : 'left-arrow hidden'}
+                ></div>
+                <div
+                  className={
+                    show ? 'tooltip-container' : 'tooltip-container hidden'
+                  }
+                >
+                  <p className='tooltip-text'>
+                    This percentage is calculated based upon how many answers
+                    you and the other use have in common from the personality
+                    questionnaire.
+                  </p>
+                </div>
+              </div>
               <p>|</p>
               <Link
                 to={`/users/${firstUser?.id}`}
