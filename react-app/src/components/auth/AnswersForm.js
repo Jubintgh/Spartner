@@ -245,7 +245,7 @@ const AnswersForm = () => {
 
   return (
     <form onSubmit={onSubmit}>
-      <div className="form-container">
+      <div className="answerForm-container">
         <div className="form-text-block">
           <div>
           <h1 className="questionnaire-title">Personality Questionnaire</h1>

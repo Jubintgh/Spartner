@@ -153,8 +153,18 @@ label {
 .form-container {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
     background-color: #1b1b1b;
+    height: 100vh;
+    background-image: url("https://images.unsplash.com/photo-1509255929945-586a420363cf?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=901&q=80");
+    background-size: cover;
+}
+
+.answerForm-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #1b1b1b;
 }
 
 .form-question {
@@ -169,9 +179,16 @@ label {
 
 .questionnaire-section
 
-.form-input {
+.form-input{
     display: flex;
     justify-content: center;
+    align-items: center;
+}
+
+.form-input{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .form-container button {
