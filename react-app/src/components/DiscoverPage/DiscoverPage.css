@@ -200,7 +200,8 @@
 
 .tooltip-container.hidden,
 .left-arrow.hidden {
-  display: none;
+  opacity: 0;
+  animation: fade-out 0.3s;
 }
 
 .tooltip-text {
@@ -210,18 +211,18 @@
   text-align: center;
 }
 
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
+@keyframes fade-out {
+  0% {
     opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }
 
-@keyframes fade-in-icon {
+@keyframes fade-in {
   from {
-    opacity: 0.6;
+    opacity: 0;
   }
   to {
     opacity: 1;
