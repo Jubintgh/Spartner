@@ -33,7 +33,7 @@ const LoginForm = () => {
 
   return (
     <form onSubmit={onLogin}>
-      <div className='form-container'>
+      <div className='form-container loginForm-container'>
         <div className='form-question'>
           <div className='form-question-label'>
             <label htmlFor='email'>Email</label>
