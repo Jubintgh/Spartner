@@ -20,7 +20,7 @@ const PreferencesBar = ({ notification }) => {
     renderCoachContent = (
       <div className='prefBar-element'>
         <div className='prefBar-icon' onClick={(e) => setFilter('coach')}>
-          <img className='coachIcon' src='/coachIcon-static.png' />
+          <img className='coachIcon' src='/coachIcon-static.png' alt='' />
         </div>
         <div className='prefBar-icon-label'>
           <h5>Coaches</h5>
@@ -54,7 +54,7 @@ const PreferencesBar = ({ notification }) => {
             className='prefBar-icon'
             onClick={(e) => setFilter('recommended')}
           >
-            <img className='redommendedIcon' src='/fight-static.png' />
+            <img className='redommendedIcon' src='/fight-static.png' alt='' />
           </div>
           <div className='prefBar-icon-label'>
             <h5>Recommended</h5>
@@ -68,6 +68,7 @@ const PreferencesBar = ({ notification }) => {
             <img
               className='weightClassIcon'
               src='/weightclassIcon-static.png'
+              alt=''
             />
           </div>
           <div className='prefBar-icon-label'>
@@ -79,7 +80,7 @@ const PreferencesBar = ({ notification }) => {
             className='prefBar-icon'
             onClick={(e) => setFilter('vaccination')}
           >
-            <img className='vaxIcon' src='/vax-static.png' />
+            <img className='vaxIcon' src='/vax-static.png' alt='' />
           </div>
           <div className='prefBar-icon-label'>
             <h5>Vaccinated</h5>
@@ -90,7 +91,7 @@ const PreferencesBar = ({ notification }) => {
             className='prefBar-icon'
             onClick={(e) => setFilter('professional-level')}
           >
-            <img className='proLevelIcon' src='/proIcon-static.png' />
+            <img className='proLevelIcon' src='/proIcon-static.png' alt='' />
           </div>
           <div className='prefBar-icon-label'>
             <h5>Professional Level</h5>
