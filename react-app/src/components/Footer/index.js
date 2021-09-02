@@ -138,11 +138,17 @@ const Footer = () => {
             </div>
             {/* Tony */}
             <div className='footer-col-row1'>
+            <a
+                  rel='noreferrer'
+                  href='https://anthonycost.github.io/portfolio/'
+                  target='_blank'
+                >    
               <img
                 alt='TonyPic'
                 className='footer-profilePic'
                 src='https://user-images.githubusercontent.com/35717793/131560553-2665bbc0-51ae-4e72-b522-64576b9495cf.jpg'
               />
+                </a>
               <h3>Tony Costanza</h3>
               <div className='footer-row-row2'>
                 <a
