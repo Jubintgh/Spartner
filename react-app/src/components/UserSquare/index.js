@@ -4,6 +4,7 @@ import './UserSquare.css';
 const UserSquare = ({ user }) => {
     return (
         <div className='user-square'>
+            <NavLink to={`/users/${user.id}`}>
             <div className='user-info-matches-likes'>
                 <div>
                     <img
@@ -17,14 +18,15 @@ const UserSquare = ({ user }) => {
                     />
                 </div>
                 <div className='profileLink'>
-                    <NavLink to={`/users/${user.id}`}>
+                    {/* <NavLink to={`/users/${user.id}`}> */}
                         {user.first_name} {user.last_name}
-                    </NavLink>
+                    {/* </NavLink> */}
                 </div>
                 <div>
                     {user.location}
                 </div>
             </div>
+            </NavLink>
         </div>
     )
 }
