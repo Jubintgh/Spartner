@@ -8,7 +8,7 @@ import './Footer.css';
 const Footer = () => {
   return (
     <div className='main-footer'>
-      <IconContext.Provider value={{ className: 'react-icons' }}>
+      <IconContext.Provider value={{ className: 'react-icons', size: '1.5em'}}>
         <div className='footer-container'>
           <div className='footer-title-container'>
             <img
