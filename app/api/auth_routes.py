@@ -3,7 +3,6 @@ from app.models import User, db
 from app.forms import LoginForm
 from app.forms import SignUpForm
 from flask_login import current_user, login_user, logout_user, login_required
-
 auth_routes = Blueprint('auth', __name__)
 
 
@@ -78,6 +77,8 @@ def sign_up():
         db.session.add(user)
         db.session.commit()
         login_user(user)
+        id = user.id
+        likesUponSignUp(id)
         return user.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
@@ -88,3 +89,21 @@ def unauthorized():
     Returns unauthorized JSON when flask-login authentication fails
     """
     return {'errors': ['Unauthorized']}, 401
+
+
+def likesUponSignUp(new_user_id):
+    liker = User.query.get(new_user_id)
+
+    liked1 = User.query.get(1)
+    liked2 = User.query.get(2)
+    liked3 = User.query.get(3)
+
+    liked1.liked_by.append(liker)
+    liked2.liked_by.append(liker)
+    liked3.liked_by.append(liker)
+
+    liker.liked_by.append(liked1)
+    liker.liked_by.append(liked2)
+    liker.liked_by.append(liked3)
+
+    db.session.commit()

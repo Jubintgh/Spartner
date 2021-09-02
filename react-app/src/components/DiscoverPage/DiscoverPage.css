@@ -175,6 +175,7 @@
   right: -70px;
   display: flex;
   align-items: center;
+  z-index: 5;
 }
 
 .tooltip-container {
@@ -198,10 +199,13 @@
   animation: fade-in 1s;
 }
 
+.tooltip-outer-container.hidden,
+.tooltip-text.hidden,
 .tooltip-container.hidden,
 .left-arrow.hidden {
   opacity: 0;
   animation: fade-out 0.3s;
+  z-index: -10;
 }
 
 .tooltip-text {
