@@ -118,17 +118,6 @@
   margin: 5px;
 }
 
-.splash-buttons button:focus {
-  background-color: #ED254E;
-  color: #020202;
-}
-
-.splash-buttons button:active {
-  background: #020202;
-  color: #ED254E;
-  border: solid 1px #ED254E;
-}
-
 .splash-buttons button:hover {
   border: none;
   color: #020202;
