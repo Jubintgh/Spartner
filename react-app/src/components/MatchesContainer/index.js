@@ -27,9 +27,11 @@ const MatchesContainer = () => {
   }
 
   useEffect(() => {
-    dispatch(getAllUserLikes(loggedUser.id));
-    dispatch(getAllLikedBy(Number(loggedUser.id)));
-  }, [dispatch, loggedUser.id]);
+    if (loggedUser) {
+      dispatch(getAllUserLikes(loggedUser.id));
+      dispatch(getAllLikedBy(Number(loggedUser.id)));
+    }
+  }, [dispatch, loggedUser]);
 
   return (
     <div>
