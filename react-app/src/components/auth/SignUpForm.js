@@ -120,6 +120,7 @@ const SignUpForm = () => {
     setRepeatPassword(e.target.value);
   };
 
+  // If the user does not provide an image url upon signup, a default img url is provided.  Needed two instances of use state so that the default image url would not show on the form if it was an empty input
   useEffect(() => {
     if (!shownImgUrl) {
       setImageUrl(
