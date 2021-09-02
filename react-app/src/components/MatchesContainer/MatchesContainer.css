@@ -22,16 +22,17 @@ h1 {
     margin: 0;
 }
 
-.user-square a {
+.user-square-container a {
     color: white;
+    text-decoration: none;
 }
 
-.user-square {
+.user-square-container {
     z-index: 0;
     transition: 0.2s all;
 }
 
-.user-square:hover {
+.user-square-container:hover {
     z-index: 1;
     box-shadow: 0 8px 50px rgba(0,0,0,0.2);
     transform: scale(1.05);

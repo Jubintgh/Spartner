@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllUserLikes } from '../../store/likes';
+import { NavLink } from 'react-router-dom';
 import UserSquare from '../UserSquare';
 import './LikesContainer.css';
 
@@ -22,7 +23,9 @@ const LikesContainer = () => {
         <div className='users-container'>
           {likesArray?.map((user) => (
             <div className='user-square-container'>
-              <UserSquare user={user} key={user.id} />
+              <NavLink to={`/users/${user.id}`}>
+                <UserSquare user={user} key={user.id} />
+              </NavLink>
             </div>
           ))}
         </div>
