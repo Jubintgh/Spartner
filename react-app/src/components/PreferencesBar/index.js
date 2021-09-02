@@ -20,7 +20,7 @@ const PreferencesBar = ({ notification }) => {
     renderCoachContent = (
       <div className='prefBar-element'>
         <div className='prefBar-icon' onClick={(e) => setFilter('coach')}>
-          <img className='coachIcon' src='/coachIcon-static.png' />
+          <img className='coachIcon' src='/coachIcon-static.png' alt='' />
         </div>
         <div className='prefBar-icon-label'>
           <h5>Coaches</h5>
