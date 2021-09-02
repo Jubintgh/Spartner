@@ -170,7 +170,13 @@ const DiscoverPage = () => {
               >
                 <FaQuestionCircle />
               </p>
-              <div className='tooltip-outer-container'>
+              <div
+                className={
+                  show
+                    ? 'tooltip-outer-container'
+                    : 'tooltip-outer-container hidden'
+                }
+              >
                 <div
                   className={show ? 'left-arrow' : 'left-arrow hidden'}
                 ></div>
@@ -179,7 +185,7 @@ const DiscoverPage = () => {
                     show ? 'tooltip-container' : 'tooltip-container hidden'
                   }
                 >
-                  <p className='tooltip-text'>
+                  <p className={show ? 'tooltip-text' : 'tooltip-text hidden'}>
                     This percentage is calculated based upon how many answers
                     you and the other use have in common from the personality
                     questionnaire.
