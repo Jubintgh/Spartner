@@ -65,7 +65,7 @@ const DiscoverPage = () => {
         setTimeout(function () {
           setClicked(false);
           setNotification(false);
-        }, 5000);
+        }, 2000);
       }
     }
   }, [notification, firstUser, clicked, likedArray]);
