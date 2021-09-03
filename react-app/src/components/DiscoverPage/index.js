@@ -1,5 +1,5 @@
 import './DiscoverPage.css';
-import { React} from 'react';
+import { React } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
@@ -10,6 +10,7 @@ import { createDislike } from '../../store/dislikes';
 import { MdKeyboardArrowRight } from 'react-icons/md';
 import { GiWeight } from 'react-icons/gi';
 import { FiUser, FiMapPin } from 'react-icons/fi';
+import { FaQuestionCircle } from 'react-icons/fa';
 import { getAllLikedBy } from '../../store/likes';
 import MatchNotification from '../MatchNotification';
 import PreferencesBar from '../../components/PreferencesBar';
@@ -32,6 +33,8 @@ const DiscoverPage = () => {
     '/dislike-button-unclicked.png'
   );
   const [swipeDirection, setSwipeDirection] = useState('');
+  const [show, setShow] = useState(false);
+
   const handleClickDislike = () => {
     dispatch(createDislike(id, firstUser?.id));
     setSwipeDirection('left');
@@ -62,7 +65,7 @@ const DiscoverPage = () => {
         setTimeout(function () {
           setClicked(false);
           setNotification(false);
-        }, 5000);
+        }, 2000);
       }
     }
   }, [notification, firstUser, clicked, likedArray]);
@@ -82,6 +85,8 @@ const DiscoverPage = () => {
       setDislikeButton('https://user-images.githubusercontent.com/35717793/131560719-0d1acee6-a0c9-4182-aab5-555b80e4771c.png');
     }
   };
+
+  useEffect(() => {}, [show]);
 
   useEffect(() => {
     dispatch(getNewUsers(id));
@@ -157,7 +162,36 @@ const DiscoverPage = () => {
                 <p className='last-name'>{firstUser?.last_name}</p>
               </div>
               <p>|</p>
-              <p>{createMatchPercentage()}% Compatibility</p>
+              <p>{createMatchPercentage()}% Compatibility </p>
+              <p
+                onMouseEnter={() => setShow(true)}
+                onMouseLeave={() => setShow(false)}
+                className={show ? 'tooltip-icon active' : 'tooltip-icon'}
+              >
+                <FaQuestionCircle />
+              </p>
+              <div
+                className={
+                  show
+                    ? 'tooltip-outer-container'
+                    : 'tooltip-outer-container hidden'
+                }
+              >
+                <div
+                  className={show ? 'left-arrow' : 'left-arrow hidden'}
+                ></div>
+                <div
+                  className={
+                    show ? 'tooltip-container' : 'tooltip-container hidden'
+                  }
+                >
+                  <p className={show ? 'tooltip-text' : 'tooltip-text hidden'}>
+                    This percentage is calculated based upon how many answers
+                    you and the other use have in common from the personality
+                    questionnaire.
+                  </p>
+                </div>
+              </div>
               <p>|</p>
               <Link
                 to={`/users/${firstUser?.id}`}

@@ -308,6 +308,7 @@ def filter_user(filter_t, id):
     no_show.append(id) #list of users not to show
 
     unseen_users = User.query.filter(User.id.not_in(no_show))
+    similar_users = []
 
     if filter_t == "vaccination":
         user_vacc_stat = curr_user.answer.vaccinated
@@ -345,7 +346,6 @@ def filter_user(filter_t, id):
         # return { "pro_stat": [ user.to_dict() for user in similar_users]}
 
     if filter_t == "coach":
-        similar_users = []
 
         for user in unseen_users:
             if user.coach == True:

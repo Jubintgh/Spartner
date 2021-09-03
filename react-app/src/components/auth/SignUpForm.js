@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { useEffect, useSelector, useDispatch } from 'react-redux'
-import { Redirect, useHistory } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
 import DemoUserButton from './DemoUserButton';
 
@@ -16,13 +16,16 @@ const SignUpForm = () => {
   const [location, setLocation] = useState('');
   const [gender, setGender] = useState('');
   const [coach, setCoach] = useState(0);
-  const [img_url, setImageUrl] = useState('');
+  const [img_url, setImageUrl] = useState(
+    'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'
+  );
+  const [shownImgUrl, setShownImageUrl] = useState();
   const [discipline, setDiscipline] = useState('');
-  const user = useSelector(state => state.session.user);
+  const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
   // const history = useHistory();
   // useEffect(() => {
-  
+
   // }, [
   //   errors,
   //   username,
@@ -38,25 +41,33 @@ const SignUpForm = () => {
   //   img_url,
   //   discipline,
   //   user,
-  // ]) 
+  // ])
 
   const onSignUp = async (e) => {
     e.preventDefault();
+    setImageUrl(
+      !img_url
+        ? 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'
+        : img_url
+    );
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(
-        username,
-        email,
-        password,
-        first_name,
-        last_name,
-        age,
-        location,
-        gender,
-        coach,
-        discipline,
-        img_url));
+      const data = await dispatch(
+        signUp(
+          username,
+          email,
+          password,
+          first_name,
+          last_name,
+          age,
+          location,
+          gender,
+          coach,
+          discipline,
+          img_url
+        )
+      );
       if (data) {
-        setErrors(data)
+        setErrors(data);
       }
     }
     else if(password !== repeatPassword) {
@@ -89,7 +100,7 @@ const SignUpForm = () => {
   };
 
   const updateImageUrl = (e) => {
-    setImageUrl(e.target.value);
+    setShownImageUrl(e.target.value);
   };
 
   const updateUsername = (e) => {
@@ -111,6 +122,17 @@ const SignUpForm = () => {
   const updateRepeatPassword = (e) => {
     setRepeatPassword(e.target.value);
   };
+
+  // If the user does not provide an image url upon signup, a default img url is provided.  Needed two instances of use state so that the default image url would not show on the form if it was an empty input
+  useEffect(() => {
+    if (!shownImgUrl) {
+      setImageUrl(
+        'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'
+      );
+    } else {
+      setImageUrl(shownImgUrl);
+    }
+  }, [shownImgUrl, img_url]);
 
   if (user) {
     return <Redirect to={`/users/${user.id}/init-answers`} />;
@@ -232,7 +254,7 @@ const SignUpForm = () => {
           type='text'
           name='imageurl'
           onChange={updateImageUrl}
-          value={img_url}
+          value={shownImgUrl}
           ></input>
       </div>
       </div>
@@ -302,6 +324,10 @@ const SignUpForm = () => {
       </div>
       </div>
         </div>
+        <div className='form-errors'>
+          {errors.map((error, ind) => (
+            <div key={ind}>{error}</div>
+          ))}
         </div>
       <div className="form-errors">
         {errors.map((error, ind) => (

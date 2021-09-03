@@ -246,7 +246,7 @@ def seed_users():
     user48 = User(first_name='Connie', last_name='Norman', email='enoch_becker@gmail.com',username='fordarcher', password='Password1!', gender=0, coach=False, discipline=1, location='West Fairview, PA', age=69, img_url='inTheWorks.jpg')
     user49 = User(first_name='Osman', last_name='Ballard', email='rylan63@gmail.com',username='cartierfootball', password='Password1!', gender=1, coach=False, discipline=1, location='Dulles Town Center, VA', age=25, img_url='inTheWorks.jpg')
     user50 = User(first_name='Mohammad', last_name='Pearce', email='audrey_witting@yahoo.com',username='spritehandball', password='Password1!', gender=0, coach=True, discipline=1, location='Orange, MA', age=56, img_url='inTheWorks.jpg')
-    user51 = User(first_name='Talia', last_name='Lang', email='watermelon@gmail.com',username='oraclepuck', password='Password1!', gender=1, coach=True, discipline=1, location='McGuire, NJ', age=37, img_url='inTheWorks.jpg')
+    user51 = User(first_name='Talia', last_name='Lang', email='watermelon@gmail.com',username='oraclepuck', password='Password1!', gender=0, coach=True, discipline=1, location='McGuire, NJ', age=37, img_url='inTheWorks.jpg')
     user52 = User(first_name='Alanna', last_name='Bowes', email='antonina.mayer50@gmail.com',username='kellogsiceskates', password='Password1!', gender=1, coach=True, discipline=1, location='Kenhorst, PA', age=34, img_url='inTheWorks.jpg')
     user53 = User(first_name='Usman', last_name='Cantrell', email='andreanne.morissette@hotmail.com',username='siemenscleats', password='Password1!', gender=1, coach=True, discipline=2, location='Waynesboro, VA', age=45, img_url='inTheWorks.jpg')
     user54 = User(first_name='Matas', last_name='Washington', email='camylle.abernathy55@yahoo.com',username='ferrarirugby', password='Password1!', gender=1, coach=True, discipline=2, location='Long Beach, CA', age=61, img_url='inTheWorks.jpg')
@@ -276,6 +276,91 @@ def seed_users():
     user78 = User(first_name='Giles', last_name='Fowler', email='alexander.will0@hotmail.com', username='disneyboxer', password='Password1!', gender=2, coach=False, discipline=0, location='DeWitt, MI', age=49, img_url='inTheWorks.jpg')
     user79 = User(first_name='Ayomide', last_name='Horne', email='allene.mraz@yahoo.com', username='boeingplay', password='Password1!', gender=1, coach=True, discipline=5, location='Spring City, PA', age=43, img_url='inTheWorks.jpg')
     user80 = User(first_name='Bluebell', last_name='Mooney', email='ruth.smith@hotmail.com', username='santanderdiving', password='Password1!', gender=1, coach=True, discipline=6, location='Westville, IN', age=61, img_url='inTheWorks.jpg')
+
+    db.session.add_all([
+            user1,
+            user2,
+            user3,
+            user4,
+            user5,
+            user6,
+            user7,
+            user8,
+            user9,
+            user10,
+            user11,
+            user12,
+            user13,
+            user14,
+            user15,
+            user16,
+            user17,
+            user18,
+            user19,
+            user20,
+            user21,
+            user22,
+            user23,
+            user24,
+            user25,
+            user26,
+            user27,
+            user28,
+            user29,
+            user30,
+            user31,
+            user32,
+            user33,
+            user34,
+            user35,
+            user36,
+            user37,
+            user38,
+            user39,
+            user40,
+            user41,
+            user42,
+            user43,
+            user44,
+            user45,
+            user46,
+            user47,
+            user48,
+            user49,
+            user50,
+            user51,
+            user52,
+            user53,
+            user54,
+            user55,
+            user56,
+            user57,
+            user58,
+            user59,
+            user60,
+            user61,
+            user62,
+            user63,
+            user64,
+            user65,
+            user66,
+            user67,
+            user68,
+            user69,
+            user70,
+            user71,
+            user72,
+            user73,
+            user74,
+            user75,
+            user76,
+            user77,
+            user78,
+            user79,
+            user80
+            ])
+
+    db.session.commit()
 
     user2.liked_by.append(user1)
     user3.liked_by.append(user22)
