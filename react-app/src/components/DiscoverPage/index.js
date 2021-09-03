@@ -141,7 +141,9 @@ const DiscoverPage = () => {
   let usersLeftOrNoUsers;
   if (allUsersNotLiked.length === 0) {
     usersLeftOrNoUsers = (
-      <div>'Out of users for today, better luck next time!'</div>
+      <div className="outOfUsers">
+        <h2>No more users to swipe!</h2>
+      </div>
     );
   } else {
     usersLeftOrNoUsers = (
