@@ -245,13 +245,13 @@ const AnswersForm = () => {
 
   return (
     <form onSubmit={onSubmit}>
-      <div className="form-container">
+      <div className="answerForm-container">
         <div className="form-text-block">
           <div>
           <h1 className="questionnaire-title">Personality Questionnaire</h1>
           </div>
           <div>
-          <h2 className="questionnaire-subheader">Tell us a bit more about yourself</h2>
+          <h2 className="questionnaire-subheader">The answers to these questions will create a percentage that will appear on users' profiles that will show you how compatible you two are based on how many answers you both have in common!</h2>
           </div>
         </div>
         <div className="questionnaire-section-label">

@@ -17,9 +17,9 @@ const UserSquare = ({ user }) => {
                     />
                 </div>
                 <div className='profileLink'>
-                    <NavLink to={`/users/${user.id}`}>
+                    {/* <NavLink to={`/users/${user.id}`}> */}
                         {user.first_name} {user.last_name}
-                    </NavLink>
+                    {/* </NavLink> */}
                 </div>
                 <div>
                     {user.location}

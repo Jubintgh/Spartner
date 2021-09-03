@@ -3,9 +3,9 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  /* padding-top: 4.5em; */
   -webkit-animation: fade-in 2s;
   animation: fade-in 2s;
+  padding-top: 25vh;
 }
 
 .splash-banner {
@@ -20,7 +20,7 @@
 
 .splash-buttons {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
   text-decoration: none;
@@ -28,39 +28,6 @@
 
 .splash-buttons a {
   text-decoration: none;
-}
-
-.splash-buttons button {
-  outline: none;
-  display: block;
-  background-color: #ed254e;
-  color: #020202;
-  border: solid 1px #ed254e;
-  font-size: 1rem;
-  font-weight: 500;
-  line-height: 1;
-  border-radius: 30px;
-  cursor: pointer;
-  transition: all 0.3s linear;
-  margin: 5px;
-  -webkit-animation: fade-in 2s;
-  animation: fade-in 2s;
-}
-
-.splash-buttons button:focus {
-  background-color: #020202;
-  color: #ed254e;
-}
-
-.splash-buttons button:active {
-  background-color: #020202;
-  color: #ed254e;
-  border: solid 1px #ed254e;
-}
-
-.splash-buttons button:hover {
-  background-color: #020202;
-  color: #ed254e;
 }
 
 .splash-background {
@@ -98,4 +65,60 @@
   to {
     opacity: 1;
   }
+}
+
+
+/* splash buttons */
+
+.splash-buttons button { 
+  position: relative;
+  transition: 900ms;
+  animation: ease-in-out;   
+  color: #fff;
+  text-decoration: none;
+  border-radius: 3px;
+  margin: 0 5px;
+  cursor: pointer;
+  line-height: 80px;
+}
+
+.splash-buttons button:hover,button:active { 
+  color: #fff;
+  background-color: #79182b4b
+}
+
+.splash-buttons button::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #ED254E;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.splash-buttons button:hover::before {
+  transform: scaleX(1);
+}
+
+.splash-buttons button {
+  outline: none;
+  display: block;
+  border: none;
+  color: #ED254E;
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1;
+  background: none;
+  cursor: pointer;
+  transition: all 0.3s linear;
+  margin: 5px;
+}
+
+.splash-buttons button:hover {
+  border: none;
+  color: #020202;
 }

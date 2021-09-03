@@ -150,11 +150,31 @@ label {
     background-color: rgba(237, 37, 77, 0.151);
 }
 
-.form-container {
+.loginForm-container {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
     background-color: #1b1b1b;
+    height: 100vh;
+    background-image: url("https://images.unsplash.com/photo-1561532325-7d5231a2dede?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1951&q=80");
+    background-size: cover;
+}
+
+.signUpForm-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #1b1b1b;
+  height: 100vh;
+  background-image: url("https://images.unsplash.com/photo-1591173627030-6fc3077b8d23?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80");
+  background-size: cover;
+}
+
+.answerForm-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #1b1b1b;
 }
 
 .form-question {
@@ -169,9 +189,16 @@ label {
 
 .questionnaire-section
 
-.form-input {
+.form-input{
     display: flex;
     justify-content: center;
+    align-items: center;
+}
+
+.form-input{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .form-container button {
@@ -187,6 +214,8 @@ label {
     cursor: pointer;
     transition: all 0.3s linear;
     margin: 5px;
+    width: 20%;
+    margin-left: 40vw;
   }
   
   .form-container button:focus {

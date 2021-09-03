@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import { getAllUserLikes, getAllLikedBy } from '../../store/likes';
 import UserSquare from '../UserSquare';
 import './MatchesContainer.css';
@@ -39,8 +40,10 @@ const MatchesContainer = () => {
       <div className='outer-container'>
         <div className='users-container'>
           {matchesArray?.map((user) => (
-            <div className='user-square'>
-              <UserSquare user={user} key={user.id} />
+            <div className='user-square-container'>
+              <NavLink to={`/users/${user.id}`}>
+                <UserSquare user={user} key={user.id} />
+              </NavLink>
             </div>
           ))}
         </div>

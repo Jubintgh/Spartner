@@ -20,7 +20,7 @@ const PreferencesBar = ({ notification }) => {
     renderCoachContent = (
       <div className='prefBar-element'>
         <div className='prefBar-icon' onClick={(e) => setFilter('coach')}>
-          <img className='coachIcon' src='/coachIcon-static.png' alt='' />
+          <img className='coachIcon' src='https://user-images.githubusercontent.com/35717793/131560451-2c296a54-a8b1-4a83-8a3a-29d56e37dda0.png' />
         </div>
         <div className='prefBar-icon-label'>
           <h5>Coaches</h5>
@@ -54,7 +54,7 @@ const PreferencesBar = ({ notification }) => {
             className='prefBar-icon'
             onClick={(e) => setFilter('recommended')}
           >
-            <img className='redommendedIcon' src='/fight-static.png' alt='' />
+            <img className='redommendedIcon' src='https://user-images.githubusercontent.com/35717793/131560454-cc0aa895-6dee-43d9-bbf1-6e1386cc3e2f.png' />
           </div>
           <div className='prefBar-icon-label'>
             <h5>Recommended</h5>
@@ -67,8 +67,7 @@ const PreferencesBar = ({ notification }) => {
           >
             <img
               className='weightClassIcon'
-              src='/weightclassIcon-static.png'
-              alt=''
+              src='https://user-images.githubusercontent.com/35717793/131560503-eb17a1a6-7752-43ea-9530-fc4f580f0c04.png'
             />
           </div>
           <div className='prefBar-icon-label'>
@@ -80,7 +79,7 @@ const PreferencesBar = ({ notification }) => {
             className='prefBar-icon'
             onClick={(e) => setFilter('vaccination')}
           >
-            <img className='vaxIcon' src='/vax-static.png' alt='' />
+            <img className='vaxIcon' src='https://user-images.githubusercontent.com/35717793/131560483-baff9f92-757d-47e4-8e6b-ce0c26a46901.png' />
           </div>
           <div className='prefBar-icon-label'>
             <h5>Vaccinated</h5>
@@ -91,7 +90,7 @@ const PreferencesBar = ({ notification }) => {
             className='prefBar-icon'
             onClick={(e) => setFilter('professional-level')}
           >
-            <img className='proLevelIcon' src='/proIcon-static.png' alt='' />
+            <img className='proLevelIcon' src='https://user-images.githubusercontent.com/35717793/131560470-a1bcbc70-1bf0-4a8b-b7b7-c79bbedddd43.png' />
           </div>
           <div className='prefBar-icon-label'>
             <h5>Professional Level</h5>

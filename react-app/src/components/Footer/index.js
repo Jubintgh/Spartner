@@ -8,7 +8,7 @@ import './Footer.css';
 const Footer = () => {
   return (
     <div className='main-footer'>
-      <IconContext.Provider value={{ className: 'react-icons' }}>
+      <IconContext.Provider value={{ className: 'react-icons', size: '1.5em'}}>
         <div className='footer-container'>
           <div className='footer-title-container'>
             <img
@@ -21,11 +21,17 @@ const Footer = () => {
           <div className='footer-content-row-1'>
             {/* Austin */}
             <div className='footer-col-row1'>
+                <a
+                  rel='noreferrer'
+                  href='https://www.austinkuemper.dev/'
+                  target='_blank'
+                >
               <img
                 alt='AKphoto'
                 className='footer-profilePic'
                 src='https://avatars.githubusercontent.com/u/78562233?v=4'
               />
+                </a>
               <h3>Austin Kuemper</h3>
               <div className='footer-row-row2'>
                 <a
@@ -44,13 +50,6 @@ const Footer = () => {
                 </a>
                 <a
                   rel='noreferrer'
-                  href='https://www.austinkuemper.dev/'
-                  target='_blank'
-                >
-                  <MdWeb />
-                </a>
-                <a
-                  rel='noreferrer'
                   href='https://www.linkedin.com/in/austinkuemper/'
                   target='_blank'
                 >
@@ -60,11 +59,17 @@ const Footer = () => {
             </div>
             {/* Jubin */}
             <div className='footer-col-row1'>
+                <a
+                  rel='noreferrer'
+                  href='https://github.com/Jubintgh'
+                  target='_blank'
+                >
               <img
                 alt='jubinPic'
                 className='footer-profilePic'
                 src='https://avatars.githubusercontent.com/u/73211975?v=4'
               />
+                </a>
               <h3>Jubin Taghdir</h3>
               <div className='footer-row-row2'>
                 <a
@@ -83,13 +88,6 @@ const Footer = () => {
                 </a>
                 <a
                   rel='noreferrer'
-                  href='https://github.com/Jubintghr'
-                  target='_blank'
-                >
-                  <MdWeb />
-                </a>
-                <a
-                  rel='noreferrer'
                   href='https://www.linkedin.com/in/jubintaghdir/'
                   target='_blank'
                 >
@@ -99,11 +97,17 @@ const Footer = () => {
             </div>
             {/* Matt */}
             <div className='footer-col-row1'>
+                <a
+                  rel='noreferrer'
+                  href='https://melendezmatt.github.io'
+                  target='_blank'
+                >
               <img
                 alt='MattPhoto'
                 className='footer-profilePic'
                 src='https://avatars.githubusercontent.com/u/79602970?v=4'
               />
+                </a>
               <h3>Matthew Melendez</h3>
               <div className='footer-row-row2'>
                 <a
@@ -122,13 +126,6 @@ const Footer = () => {
                 </a>
                 <a
                   rel='noreferrer'
-                  href='https://melendezmatt.github.io'
-                  target='_blank'
-                >
-                  <MdWeb />
-                </a>
-                <a
-                  rel='noreferrer'
                   href='https://www.linkedin.com/in/matthew-melendez/'
                   target='_blank'
                 >
@@ -138,11 +135,17 @@ const Footer = () => {
             </div>
             {/* Tony */}
             <div className='footer-col-row1'>
+            <a
+                  rel='noreferrer'
+                  href='https://anthonycost.github.io/portfolio/'
+                  target='_blank'
+                >    
               <img
                 alt='TonyPic'
                 className='footer-profilePic'
-                src='https://avatars.githubusercontent.com/u/35717793?v=4'
+                src='https://user-images.githubusercontent.com/35717793/131560553-2665bbc0-51ae-4e72-b522-64576b9495cf.jpg'
               />
+                </a>
               <h3>Tony Costanza</h3>
               <div className='footer-row-row2'>
                 <a
@@ -158,13 +161,6 @@ const Footer = () => {
                   target='_blank'
                 >
                   <FaAngellist />
-                </a>
-                <a
-                  rel='noreferrer'
-                  href='https://anthonycost.github.io/portfolio/'
-                  target='_blank'
-                >
-                  <MdWeb />
                 </a>
                 <a
                   rel='noreferrer'
