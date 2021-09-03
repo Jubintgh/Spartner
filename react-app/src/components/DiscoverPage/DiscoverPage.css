@@ -28,6 +28,10 @@
   display: flex;
 }
 
+.discover-btns {
+  user-select: none;
+}
+
 .bio-right > div {
   display: flex;
   align-items: center;
@@ -121,6 +125,7 @@
   height: 80px;
   width: 80px;
   margin: 10px;
+  user-select: none;
 }
 
 .discover-button:hover {
