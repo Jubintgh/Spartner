@@ -8,7 +8,7 @@ import { createLike } from '../../store/likes';
 import { getCurrentUserAndAnswers } from '../../store/session';
 import { createDislike } from '../../store/dislikes';
 import { MdKeyboardArrowRight } from 'react-icons/md';
-import { GiWeight } from 'react-icons/gi';
+import { GiConsoleController, GiWeight } from 'react-icons/gi';
 import { FiUser, FiMapPin } from 'react-icons/fi';
 import { FaQuestionCircle } from 'react-icons/fa';
 import { getAllLikedBy } from '../../store/likes';
@@ -28,7 +28,9 @@ const DiscoverPage = () => {
   const { user } = useSelector((state) => state.session);
   const id = Number(user.id);
   const firstUser = allUsersNotLiked[0];
-  const [likeButton, setLikeButton] = useState('https://user-images.githubusercontent.com/35717793/131560710-8ab4eac9-9a09-4c21-98f7-5d09dd545ad3.png');
+  const [likeButton, setLikeButton] = useState(
+    'https://user-images.githubusercontent.com/35717793/131560710-8ab4eac9-9a09-4c21-98f7-5d09dd545ad3.png'
+  );
   const [dislikeButton, setDislikeButton] = useState(
     'https://user-images.githubusercontent.com/35717793/131560719-0d1acee6-a0c9-4182-aab5-555b80e4771c.png'
   );
@@ -59,7 +61,7 @@ const DiscoverPage = () => {
   };
 
   useEffect(() => {
-    if (firstUser) {
+    if (firstUser && likedArray) {
       if (Number(firstUser.id) in likedArray && clicked) {
         setNotification(true);
         setTimeout(function () {
@@ -71,18 +73,32 @@ const DiscoverPage = () => {
   }, [notification, firstUser, clicked, likedArray]);
 
   const changeImageSourceLiked = () => {
-    if (likeButton === 'https://user-images.githubusercontent.com/35717793/131560710-8ab4eac9-9a09-4c21-98f7-5d09dd545ad3.png') {
-      setLikeButton('https://user-images.githubusercontent.com/35717793/131561660-54793b25-6e24-4ceb-89d6-b13b97625361.png');
+    if (
+      likeButton ===
+      'https://user-images.githubusercontent.com/35717793/131560710-8ab4eac9-9a09-4c21-98f7-5d09dd545ad3.png'
+    ) {
+      setLikeButton(
+        'https://user-images.githubusercontent.com/35717793/131561660-54793b25-6e24-4ceb-89d6-b13b97625361.png'
+      );
     } else {
-      setLikeButton('https://user-images.githubusercontent.com/35717793/131560710-8ab4eac9-9a09-4c21-98f7-5d09dd545ad3.png');
+      setLikeButton(
+        'https://user-images.githubusercontent.com/35717793/131560710-8ab4eac9-9a09-4c21-98f7-5d09dd545ad3.png'
+      );
     }
   };
 
   const changeImageSourceDisliked = () => {
-    if (dislikeButton === 'https://user-images.githubusercontent.com/35717793/131560719-0d1acee6-a0c9-4182-aab5-555b80e4771c.png') {
-      setDislikeButton('https://user-images.githubusercontent.com/35717793/131561652-ca11d430-33b1-47c2-ac49-1ca3efe93ec6.png');
+    if (
+      dislikeButton ===
+      'https://user-images.githubusercontent.com/35717793/131560719-0d1acee6-a0c9-4182-aab5-555b80e4771c.png'
+    ) {
+      setDislikeButton(
+        'https://user-images.githubusercontent.com/35717793/131561652-ca11d430-33b1-47c2-ac49-1ca3efe93ec6.png'
+      );
     } else {
-      setDislikeButton('https://user-images.githubusercontent.com/35717793/131560719-0d1acee6-a0c9-4182-aab5-555b80e4771c.png');
+      setDislikeButton(
+        'https://user-images.githubusercontent.com/35717793/131560719-0d1acee6-a0c9-4182-aab5-555b80e4771c.png'
+      );
     }
   };
 
@@ -141,7 +157,7 @@ const DiscoverPage = () => {
   let usersLeftOrNoUsers;
   if (allUsersNotLiked.length === 0) {
     usersLeftOrNoUsers = (
-      <div className="outOfUsers">
+      <div className='outOfUsers'>
         <h2>No more users to swipe!</h2>
       </div>
     );
