@@ -28,9 +28,9 @@ const DiscoverPage = () => {
   const { user } = useSelector((state) => state.session);
   const id = Number(user.id);
   const firstUser = allUsersNotLiked[0];
-  const [likeButton, setLikeButton] = useState('/like-button-unclicked.png');
+  const [likeButton, setLikeButton] = useState('https://user-images.githubusercontent.com/35717793/131560710-8ab4eac9-9a09-4c21-98f7-5d09dd545ad3.png');
   const [dislikeButton, setDislikeButton] = useState(
-    '/dislike-button-unclicked.png'
+    'https://user-images.githubusercontent.com/35717793/131560719-0d1acee6-a0c9-4182-aab5-555b80e4771c.png'
   );
   const [swipeDirection, setSwipeDirection] = useState('');
   const [show, setShow] = useState(false);
