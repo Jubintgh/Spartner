@@ -32,7 +32,7 @@ const MatchesContainer = () => {
       dispatch(getAllUserLikes(loggedUser.id));
       dispatch(getAllLikedBy(Number(loggedUser.id)));
     }
-  }, [dispatch, loggedUser]);
+  }, [dispatch, loggedUser, matchesArray]);
 
   return (
     <div>

@@ -354,9 +354,24 @@ def filter_user(filter_t, id):
                 similar_users.append(user_answer)
 
     if filter_t == "recommended":
+        self_asnwer = curr_user.answer.to_dict()
+        self_match_rate = self_asnwer['match_rate']
+
+        ##
+        # sorted_transactions = sorted(transactions_all, 
+        # key=lambda x: datetime.strptime(str(x.created_at), "%Y-%m-%d %H:%M:%S.%f"))
+        ##
+
+
         for user in unseen_users:
             user_answer = user.to_dict()
             user_answer.update(user.answer.to_dict())
             similar_users.append(user_answer)
 
+        sorted_recommendations = sorted(unseen_users,
+        key=lambda user: user['match_rate']
+        )
+        print(sorted_recommendations, 'THIS RIGHT HERE')
+
+    return { "users_answers": [ user for user in similar_users]}
     return { "users_answers": [ user for user in similar_users]}

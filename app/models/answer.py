@@ -46,5 +46,8 @@ class Answer(db.Model):
             'has_kids': self.has_kids,
             'pets': self.pets,
             'availability': self.availability,
-            'rate': self.rate
+            'rate': self.rate,
+
+            #compute match
+            'match_rate': self.weight_class * 0.7 + self.reach *0.8 + self.professional_level * 0.6 + self.vaccinated * 0.3 + self.rate * 0.5
         }

@@ -48,6 +48,7 @@ export const getFilteredUsers = (id, filter) => async (dispatch) => {
   const res = await fetch(`/api/users/${id}/filter/${filter}`);
   if (res.ok) {
     const users = await res.json();
+    console.log(users, "NEW ARRAYYSYS")
     dispatch(setUsers(users));
   }
 };
