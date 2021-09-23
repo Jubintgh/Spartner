@@ -1,7 +1,7 @@
 # Spartner
 -Summary
 
-    *Spartner is inspired by OkCupid based on the idea of finding gym friends who you can train with! The main purpose of the app is to help gym goers find friends for their sports activities based on a match algorithm. Upon sign-up users are directed to fillout a questionare that will be used by the matching algorithm to assign a score for each user that is used by the algorithm
+Spartner is inspired by OkCupid based on the idea of finding gym friends who you can train with! The main purpose of the app is to help gym goers find friends for their sports activities based on a match algorithm. Upon sign-up users are directed to fillout a questionare that will be used by the matching algorithm to assign a score for each user that is used by the algorithm
 
 ## Application Architecture
 - Coin-pal is built using a Flask back-end and a React front-end with postgreSQL as its database. additionally redux architecture was implemented for better management of the state
