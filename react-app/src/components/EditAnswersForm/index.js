@@ -5,7 +5,7 @@ import { getUserAnswers, editAnswer } from '../../store/answers';
 
 const EditAnswersForm = () => {
   const user = useSelector(state => state.session.user);
-  const answers = useSelector(state => state.answers.answer);
+  const answers = useSelector(state => state.answers.answer ? state.answers.answer : {});
 
 
   const [errors, setErrors] = useState([]);
@@ -33,7 +33,7 @@ const EditAnswersForm = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    const data = await dispatch(editAnswer(
+    const data = await dispatch(editAnswer({
       user_id,
       about,
       weightClass,
@@ -50,7 +50,7 @@ const EditAnswersForm = () => {
       religion,
       pets,
       availability,
-      rate ));
+      rate }));
     if (data) {
       setErrors(data)
       history.push(`/discover`)
@@ -239,7 +239,7 @@ const EditAnswersForm = () => {
           type='text'
           name='walkoutSong'
           onChange={updateWalkoutSong}
-          value={answers.walkoutSong}
+          value={answers.walkout_song}
         ></input>
       </div>
       {weightContent}
@@ -249,7 +249,7 @@ const EditAnswersForm = () => {
           type='number'
           name='reach'
           onChange={updateReach}
-          value={reach}
+          value={answers.reach}
           required={true}
         ></input>
       </div>
@@ -259,7 +259,7 @@ const EditAnswersForm = () => {
           type='integer'
           name='professionalLevel'
           onChange={updateProfessionalLevel}
-          value={professionalLevel}
+          value={answers.professional_level}
           required={true}
         >
           <option value="0">Beginner</option>
@@ -273,7 +273,7 @@ const EditAnswersForm = () => {
           type='integer'
           name='currentRecord'
           onChange={updateCurrentRecord}
-          value={currentRecord}
+          value={answers.current_record}
         ></input>
       </div>
       <div>
@@ -282,7 +282,7 @@ const EditAnswersForm = () => {
           type='boolean'
           name='previousTitles'
           onChange={updatePreviousTitles}
-          value={previousTitles}
+          value={answers.previous_titles}
         ></input>
       </div>
       <div>
@@ -291,7 +291,7 @@ const EditAnswersForm = () => {
           type='string'
           name='favRockyFighter'
           onChange={updateFavRockyFighter}
-          value={favRockyFighter}
+          value={answers.fav_rocky_fighter}
         ></input>
       </div>
       <div>
@@ -300,7 +300,7 @@ const EditAnswersForm = () => {
           type='text'
           name='vaccinated'
           onChange={updateVaccinated}
-          value={vaccinated}
+          value={answers.vaccinated}
         >
           <option value="False">Not vaccinated</option>
           <option value="True">Vaccinated</option>
@@ -312,7 +312,7 @@ const EditAnswersForm = () => {
           type='boolean'
           name='hasKids'
           onChange={updateHasKids}
-          value={hasKids}
+          value={answers.has_kids}
         ></input>
       </div>
       <div>
@@ -321,7 +321,7 @@ const EditAnswersForm = () => {
           type='text'
           name='pets'
           onChange={updatePets}
-          value={pets}
+          value={answers.pets}
         ></input>
       </div>
       <div>
@@ -330,7 +330,7 @@ const EditAnswersForm = () => {
           type='text'
           name='nickname'
           onChange={updateNickname}
-          value={nickname}
+          value={answers.nickname}
         ></input>
       </div>
       <div>
@@ -339,7 +339,7 @@ const EditAnswersForm = () => {
           type='text'
           name='religion'
           onChange={updateReligion}
-          value={religion}
+          value={answers.religion}
         ></input>
       </div>
       <div>
@@ -348,7 +348,7 @@ const EditAnswersForm = () => {
             type='text'
             name='availability'
             onChange={updateAvailability}
-            value={availability}
+            value={answers.availability}
           >
             <option value="0">Weekends</option>
             <option value="1">Weekdays</option>

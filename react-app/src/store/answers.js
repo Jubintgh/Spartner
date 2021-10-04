@@ -14,7 +14,7 @@ const setOneAnswer= (answer) => ({
     answer,
 });
 
-const editOneAnswer= (answer) => ({
+const editOneAnswer= (id, answer) => ({
     type: FIX_ANSWER,
     answer,
 });
@@ -97,9 +97,31 @@ export const createAnswer = (
     }
 }
 
-export const editAnswer = (id) => async (dispatch) => {
-    const res = await fetch(`/api/users/${id}/answers`, {
-        method: 'PUT'
+export const editAnswer = (id, answer) => async (dispatch) => {
+    const res = await fetch(`/api/${id}/answers/update`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            "user_id": answer.user_id,
+            "about": answer.about,
+            "weight_class": answer.weightClass,
+            "reach": answer.reach,
+            "professional_level": answer.professionalLevel,
+            "current_record": answer.currentRecord,
+            "previous_titles": answer.previousTitles,
+            "fav_rocky_fighter": answer.favRockyFighter,
+            "walkout_song": answer.walkoutSong,
+            "vaccinated": answer.vaccinated,
+            "has_kids": answer.hasKids,
+            "in_person": answer.inPerson,
+            "nickname": answer.nickname,
+            "religion": answer.religion,
+            "pets": answer.pets,
+            "availability": answer.availability,
+            "rate": answer.rate
+          })
     });
 
     if (res.ok) {
