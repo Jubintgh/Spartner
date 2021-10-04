@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom';
-import { editAnswer } from '../../store/answers';
+import { getUserAnswers, editAnswer } from '../../store/answers';
 
 const EditAnswersForm = () => {
   const user = useSelector(state => state.session.user);
@@ -209,6 +209,10 @@ const EditAnswersForm = () => {
     )
   }
 
+  useEffect(() => {
+    const answs = dispatch(getUserAnswers(user.id))
+  }, [dispatch, user])
+
 
   return (
     <form onSubmit={onSubmit}>
@@ -349,7 +353,7 @@ const EditAnswersForm = () => {
           </select>
         </div>
       { coachContent }
-      <button type='submit'>Submit Answers</button>
+      <button className='update_form-btn' type='submit'>Submit Answers</button>
     </form>
   );
 };

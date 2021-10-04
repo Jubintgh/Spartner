@@ -1,0 +1,16 @@
+.update_form-btn{
+    outline: none;
+    display: block;
+    border: solid 1px #25ed50;
+    color: #25ed50;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1;
+    border-radius: 30px;
+    background: #1b1b1b;
+    cursor: pointer;
+    transition: all 0.3s linear;
+    margin: 5px;
+    width: 20%;
+    margin-left: 40vw;
+}

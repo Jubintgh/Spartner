@@ -214,7 +214,9 @@ def get_matches_list(id):
 @user_routes.route('/<int:id>/answers')
 # @login_required
 def get_answers(id):
-    answer = Answer.query.filter_by(Answer.user_id == id)
+    answer = Answer.query.filter(Answer.user_id == id).first()
+
+    answer = answer.to_dict()
     return {'answers': answer}
 
 @user_routes.route('/<int:id>/answers', methods=['POST'])

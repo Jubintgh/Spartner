@@ -26,11 +26,14 @@ const deleteOneAnswer = (answer) => ({
 
 export const getUserAnswers = (id) => async (dispatch) => {
     const res = await fetch(`/api/users/${id}/answers`);
-
+    console.log('THIS HIT')
     if (res.ok) {
       const answers = await res.json();
-      dispatch(setAnswers(answers));
+      console.log(answers, 'WAS HIT')
       return answers
+    } else {
+        const errs = res.json()
+        return errs
     }
 };
 
