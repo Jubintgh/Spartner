@@ -5,6 +5,7 @@ import users from './users';
 import likes from './likes';
 import discover from './discover';
 import dislikes from './dislikes';
+import answers from './answers'
 
 const rootReducer = combineReducers({
   session,
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   likes,
   discover,
   dislikes,
+  answers
 });
 
 let enhancer;

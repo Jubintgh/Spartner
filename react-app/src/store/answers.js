@@ -26,10 +26,10 @@ const deleteOneAnswer = (answer) => ({
 
 export const getUserAnswers = (id) => async (dispatch) => {
     const res = await fetch(`/api/users/${id}/answers`);
-    console.log('THIS HIT')
     if (res.ok) {
       const answers = await res.json();
       console.log(answers, 'WAS HIT')
+      dispatch(setOneAnswer(answers.answers))
       return answers
     } else {
         const errs = res.json()
@@ -132,6 +132,10 @@ const answerReducer = (state = initialState, action) => {
                 answers: action.answers
             }
         case GET_ANSWER:
+            return {
+                ...state,
+                answer: action.answer
+            }
         case FIX_ANSWER:
             return {
                 ...state,

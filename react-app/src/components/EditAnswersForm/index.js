@@ -210,7 +210,7 @@ const EditAnswersForm = () => {
   }
 
   useEffect(() => {
-    const answs = dispatch(getUserAnswers(user.id))
+    dispatch(getUserAnswers(user.id))
   }, [dispatch, user])
 
 
