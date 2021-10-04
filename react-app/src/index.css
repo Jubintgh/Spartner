@@ -270,7 +270,6 @@ label {
   background: #1b1b1b;
   cursor: pointer;
   transition: all 0.3s linear;
-  margin: 5px;
 }
 
 .form-container .updateButton:focus {
