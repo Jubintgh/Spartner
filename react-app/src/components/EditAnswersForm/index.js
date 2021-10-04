@@ -5,6 +5,9 @@ import { getUserAnswers, editAnswer } from '../../store/answers';
 
 const EditAnswersForm = () => {
   const user = useSelector(state => state.session.user);
+  const answers = useSelector(state => state.answers.answer);
+
+
   const [errors, setErrors] = useState([]);
   const [about, setAbout] = useState(user.about);
   const [weightClass, setWeightClass] = useState(user.weightClass);
@@ -227,7 +230,7 @@ const EditAnswersForm = () => {
           type='text'
           name='about'
           onChange={updateAbout}
-          value={about}
+          value={answers.about}
         ></input>
       </div>
       <div>
@@ -236,7 +239,7 @@ const EditAnswersForm = () => {
           type='text'
           name='walkoutSong'
           onChange={updateWalkoutSong}
-          value={walkoutSong}
+          value={answers.walkoutSong}
         ></input>
       </div>
       {weightContent}
