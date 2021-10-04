@@ -50,11 +50,13 @@ def edit_info(id):
     """
     Updates Info
     """
+    print('ThIS HITTITITIT')
     form = UpdateUserInfoForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         ex_user_info = User.query.get(id)
         form.populate_obj(ex_user_info)
+        print(form.data["email"])
         ex_user_info.email = form.data["email"]
         ex_user_info.username = form.data["username"]
         ex_user_info.password = form.data["password"]

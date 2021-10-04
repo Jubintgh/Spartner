@@ -6,38 +6,39 @@ import { getUserAnswers, editAnswer } from '../../store/answers';
 const EditAnswersForm = () => {
   const user = useSelector(state => state.session.user);
   const answers = useSelector(state => state.answers.answer ? state.answers.answer : {});
-
-
-  const [errors, setErrors] = useState([]);
-  const [about, setAbout] = useState(user.about);
-  const [weightClass, setWeightClass] = useState(user.weightClass);
-  const [reach, setReach] = useState(user.reach);
-  const [professionalLevel, setProfessionalLevel] = useState(user.professionalLevel);
-  const [currentRecord, setCurrentRecord] = useState(user.currentRecord);
-  const [previousTitles, setPreviousTitles] = useState(user.previousTitles);
-  const [favRockyFighter, setFavRockyFighter] = useState(user.favRockyFighter);
-  const [walkoutSong, setWalkoutSong] = useState(user.walkoutSong);
-  const [vaccinated, setVaccinated] = useState(user.vaccinated);
-  const [hasKids, setHasKids] = useState(user.hasKids);
-  const [inPerson, setInPerson] = useState(user.inPerson);
-  const [nickname, setNickname] = useState(user.nickname);
-  const [religion, setReligion] = useState(user.religion);
-  const [pets, setPets] = useState(user.pets);
-  const [availability, setAvailability] = useState(user.availability);
-  const [rate, setRate] = useState(user.rate);
-  const history = useHistory();
   const dispatch = useDispatch();
+  
+  const [errors, setErrors] = useState([]);
+  const [about, setAbout] = useState(answers?.about);
+  const [availability, setAvailability] = useState(answers?.availability);
+  const [currentRecord, setCurrentRecord] = useState(answers?.currentRecord);
+  const [favRockyFighter, setFavRockyFighter] = useState(answers?.favRockyFighter);
+  const [hasKids, setHasKids] = useState(answers?.hasKids);
+  const [nickname, setNickname] = useState(answers?.nickname);
+  const [pets, setPets] = useState(answers?.pets);
+  const [previousTitles, setPreviousTitles] = useState(answers?.previousTitles);
+  const [professionalLevel, setProfessionalLevel] = useState(answers?.professionalLevel);
+  const [rate, setRate] = useState(answers?.rate);
+  const [reach, setReach] = useState(answers?.reach);
+  const [religion, setReligion] = useState(answers?.religion);
+  const [vaccinated, setVaccinated] = useState(answers?.vaccinated);
+  const [walkoutSong, setWalkoutSong] = useState(answers?.walkoutSong);
+  const [weightClass, setWeightClass] = useState(answers?.weightClass);
+  const [inPerson, setInPerson] = useState(answers?.inPerson);
+  
+  const history = useHistory();
   const isCoach = user.coach;
   const gender = user.gender;
   const user_id = user.id
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    const data = await dispatch(editAnswer({
+
+    const data = await dispatch(editAnswer(user.id, {
       user_id,
       about,
-      weightClass,
-      reach,
+      weightClass : answers.weight_class,
+      reach : answers.reach,
       professionalLevel,
       currentRecord,
       previousTitles,
@@ -51,71 +52,11 @@ const EditAnswersForm = () => {
       pets,
       availability,
       rate }));
-    if (data) {
+    console.log(data, 'DATAAASDDSAD')
+    if (data.errors) {
       setErrors(data)
-      history.push(`/discover`)
+      // history.push(`/discover`)
     }
-  };
-
-  const updateAbout = (e) => {
-    setAbout(e.target.value);
-  };
-
-  const updateWeightClass = (e) => {
-    setWeightClass(e.target.value);;
-  };
-
-  const updateReach = (e) => {
-    setReach(e.target.value);
-  };
-
-  const updateProfessionalLevel = (e) => {
-    setProfessionalLevel(e.target.value);
-  };
-
-  const updateCurrentRecord = (e) => {
-    setCurrentRecord(e.target.value);
-  };
-
-  const updatePreviousTitles = (e) => {
-    setPreviousTitles(e.target.value);
-  };
-
-  const updateFavRockyFighter = (e) => {
-    setFavRockyFighter(e.target.value);
-  };
-
-  const updateWalkoutSong = (e) => {
-    setWalkoutSong(e.target.value);
-  };
-
-  const updateVaccinated = (e) => {
-    setVaccinated(e.target.value);
-  };
-
-  const updateHasKids = (e) => {
-    setHasKids(e.target.value);
-  };
-
-  const updateInPerson = (e) => {
-    setInPerson(e.target.value);
-  };
-
-  const updateNickname = (e) => {
-    setNickname(e.target.value);
-  };
-  const updateReligion = (e) => {
-    setReligion(e.target.value);
-  };
-  const updatePets = (e) => {
-    setPets(e.target.value);
-  };
-  const updateAvailability = (e) => {
-    setAvailability(e.target.value);
-  };
-
-  const updateRate = (e) => {
-    setRate(e.target.value);
   };
 
   let coachContent = null;
@@ -128,7 +69,7 @@ const EditAnswersForm = () => {
           <input
             type='number'
             name='rate'
-            onChange={updateRate}
+            onChange={setRate(e => e.target.value)}
             value={rate}
           ></input>
         </div>
@@ -137,7 +78,7 @@ const EditAnswersForm = () => {
         <select
           type='boolean'
           name='inPerson'
-          onChange={updateInPerson}
+          onChange={setInPerson(e => e.target.value)}
           value={inPerson}
         >
           <option value="False">Online</option>
@@ -157,7 +98,7 @@ const EditAnswersForm = () => {
         <select
           type='number'
           name='weightClass'
-          onChange={updateWeightClass}
+          onChange={e => setWeightClass(e.target.value)}
           value={weightClass}
           required={true}
         >
@@ -176,7 +117,7 @@ const EditAnswersForm = () => {
         <select
           type='number'
           name='weightClass'
-          onChange={updateWeightClass}
+          onChange={setWeightClass(e => e.target.value)}
           value={weightClass}
           required={true}
         >
@@ -196,7 +137,7 @@ const EditAnswersForm = () => {
         <select
           type='number'
           name='weightClass'
-          onChange={updateWeightClass}
+          onChange={setWeightClass(e => e.target.value)}
           value={weightClass}
           required={true}
         >
@@ -213,24 +154,29 @@ const EditAnswersForm = () => {
   }
 
   useEffect(() => {
-    dispatch(getUserAnswers(user.id))
-  }, [dispatch, user])
-
-
+    if(!answers.about){
+      dispatch(getUserAnswers(user.id))
+    }
+    // console.log(answers)
+  },[dispatch, answers, user])
+  
   return (
     <form onSubmit={onSubmit}>
       <div>
-        {errors?.map((error, ind) => (
+        {/* {errors?.map((error, ind) => (
           <div key={ind}>{error}</div>
-        ))}
+        ))} */}
+        {
+          errors && console.log(errors)
+        }
       </div>
       <div>
         <label>About</label>
         <input
           type='text'
           name='about'
-          onChange={updateAbout}
-          value={answers.about}
+          onChange={e => setAbout(e.target.value)}
+          //defaultValue={answers.about}
         ></input>
       </div>
       <div>
@@ -238,8 +184,8 @@ const EditAnswersForm = () => {
         <input
           type='text'
           name='walkoutSong'
-          onChange={updateWalkoutSong}
-          value={answers.walkout_song}
+          onChange={e => setWalkoutSong(e.target.value)}
+          //defaultValue={answers.walkout_song}
         ></input>
       </div>
       {weightContent}
@@ -248,8 +194,8 @@ const EditAnswersForm = () => {
         <input
           type='number'
           name='reach'
-          onChange={updateReach}
-          value={answers.reach}
+          onChange={e => setReach(e.target.value)}
+          //defaultValue={answers.reach}
           required={true}
         ></input>
       </div>
@@ -258,8 +204,8 @@ const EditAnswersForm = () => {
         <select
           type='integer'
           name='professionalLevel'
-          onChange={updateProfessionalLevel}
-          value={answers.professional_level}
+          onChange={e => setProfessionalLevel(e.target.value)}
+          //defaultValue={answers.professional_level}
           required={true}
         >
           <option value="0">Beginner</option>
@@ -272,8 +218,8 @@ const EditAnswersForm = () => {
         <input
           type='integer'
           name='currentRecord'
-          onChange={updateCurrentRecord}
-          value={answers.current_record}
+          onChange={e => setCurrentRecord(e.target.value)}
+          ////defaultValue={answers.current_record}
         ></input>
       </div>
       <div>
@@ -281,8 +227,8 @@ const EditAnswersForm = () => {
         <input
           type='boolean'
           name='previousTitles'
-          onChange={updatePreviousTitles}
-          value={answers.previous_titles}
+          onChange={e => setPreviousTitles(e.target.value)}
+          //defaultValue={answers.previous_titles}
         ></input>
       </div>
       <div>
@@ -290,8 +236,8 @@ const EditAnswersForm = () => {
         <input
           type='string'
           name='favRockyFighter'
-          onChange={updateFavRockyFighter}
-          value={answers.fav_rocky_fighter}
+          onChange={e => setFavRockyFighter(e.target.value)}
+          //defaultValue={answers.fav_rocky_fighter}
         ></input>
       </div>
       <div>
@@ -299,8 +245,8 @@ const EditAnswersForm = () => {
         <select
           type='text'
           name='vaccinated'
-          onChange={updateVaccinated}
-          value={answers.vaccinated}
+          onChange={e => setVaccinated(e.target.value)}
+          //defaultValue={answers.vaccinated}
         >
           <option value="False">Not vaccinated</option>
           <option value="True">Vaccinated</option>
@@ -311,8 +257,8 @@ const EditAnswersForm = () => {
         <input
           type='boolean'
           name='hasKids'
-          onChange={updateHasKids}
-          value={answers.has_kids}
+          onChange={e => setHasKids(e.target.value)}
+          //defaultValue={answers.has_kids}
         ></input>
       </div>
       <div>
@@ -320,8 +266,8 @@ const EditAnswersForm = () => {
         <input
           type='text'
           name='pets'
-          onChange={updatePets}
-          value={answers.pets}
+          onChange={e => setPets(e.target.value)}
+          //defaultValue={answers.pets}
         ></input>
       </div>
       <div>
@@ -329,8 +275,8 @@ const EditAnswersForm = () => {
         <input
           type='text'
           name='nickname'
-          onChange={updateNickname}
-          value={answers.nickname}
+          onChange={ e => setNickname(e.target.value)}
+          //defaultValue={answers.nickname}
         ></input>
       </div>
       <div>
@@ -338,8 +284,8 @@ const EditAnswersForm = () => {
         <input
           type='text'
           name='religion'
-          onChange={updateReligion}
-          value={answers.religion}
+          onChange={e => setReligion(e.target.value)}
+          //defaultValue={answers.religion}
         ></input>
       </div>
       <div>
@@ -347,8 +293,8 @@ const EditAnswersForm = () => {
           <select
             type='text'
             name='availability'
-            onChange={updateAvailability}
-            value={answers.availability}
+            onChange={e => setAvailability(e.target.value)}
+            //defaultValue={answers.availability}
           >
             <option value="0">Weekends</option>
             <option value="1">Weekdays</option>
@@ -362,25 +308,3 @@ const EditAnswersForm = () => {
 };
 
 export default EditAnswersForm;
-
-
-
-
-// const user = useSelector(state => state.session.user);
-//   const [errors, setErrors] = useState([]);
-//   const [about, setAbout] = useState(user.answers.about);
-//   const [weightClass, setWeightClass] = useState(user.answers.weightClass);
-//   const [reach, setReach] = useState(user.answers.reach);
-//   const [professionalLevel, setProfessionalLevel] = useState(user.answers.professionalLevel);
-//   const [currentRecord, setCurrentRecord] = useState(user.answers.currentRecord);
-//   const [previousTitles, setPreviousTitles] = useState(user.answers.previousTitles);
-//   const [favRockyFighter, setFavRockyFighter] = useState(user.answers.favRockyFighter);
-//   const [walkoutSong, setWalkoutSong] = useState(user.answers.walkoutSong);
-//   const [vaccinated, setVaccinated] = useState(user.answers.vaccinated);
-//   const [hasKids, setHasKids] = useState(user.answers.hasKids);
-//   const [inPerson, setInPerson] = useState(user.answers.inPerson);
-//   const [nickname, setNickname] = useState(user.answers.nickname);
-//   const [religion, setReligion] = useState(user.answers.religion);
-//   const [pets, setPets] = useState(user.answers.pets);
-//   const [availability, setAvailability] = useState(user.answers.availability);
-//   const [rate, setRate] = useState(user.answers.rate);

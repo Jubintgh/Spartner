@@ -98,35 +98,58 @@ export const createAnswer = (
 }
 
 export const editAnswer = (id, answer) => async (dispatch) => {
-    const res = await fetch(`/api/${id}/answers/update`, {
+    const res = await fetch(`/api/users/${id}/answers/update`, {
         method: 'PUT',
         headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            "user_id": answer.user_id,
-            "about": answer.about,
-            "weight_class": answer.weightClass,
-            "reach": answer.reach,
-            "professional_level": answer.professionalLevel,
-            "current_record": answer.currentRecord,
-            "previous_titles": answer.previousTitles,
-            "fav_rocky_fighter": answer.favRockyFighter,
-            "walkout_song": answer.walkoutSong,
-            "vaccinated": answer.vaccinated,
-            "has_kids": answer.hasKids,
-            "in_person": answer.inPerson,
-            "nickname": answer.nickname,
-            "religion": answer.religion,
-            "pets": answer.pets,
-            "availability": answer.availability,
-            "rate": answer.rate
-          })
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+        "about": id,
+        "availability": answer.about,
+        "current_record": answer.weightClass,
+        "fav_rocky_fighter": answer.reach,
+        "has_kids": answer.professionalLevel,
+        "match_rate": answer.currentRecord,
+        "nickname": answer.previousTitles,
+        "pets": answer.favRockyFighter,
+        "previous_titles": answer.walkoutSong,
+        "professional_level": answer.professional_level,
+        "rate": answer.hasKids,
+        "reach": answer.reach,
+        "religion": answer.nickname,
+        "user_id": answer.religion,
+        "vaccinated": answer.pets,
+        "walkout_song": answer.availability,
+        "weight_class": answer.rate
+        })
+        // body: JSON.stringify({
+        //     "about": "Hey I'm demo user and you can explore the app with me",
+        //     "availability": 2,
+        //     "current_record": "0-0-0",
+        //     "fav_rocky_fighter": "Rocky Balboa",
+        //     "has_kids": false,
+        //     "match_rate": 57.0,
+        //     "nickname": "Demo-lition",
+        //     "pets": "None",
+        //     "previous_titles": "None",
+        //     "professional_level": 0,
+        //     "rate": 0,
+        //     "reach": 70,
+        //     "religion": "None",
+        //     "user_id": 1,
+        //     "vaccinated": true,
+        //     "walkout_song": "'Eye of the Tiger' by Survivor",
+        //     "weight_class": 1
+        // })
     });
 
     if (res.ok) {
         const answer = await res.json()
         dispatch(editOneAnswer(answer))
+        return answer
+    } else {
+        const err = res.json()
+        console.log(err)
         return answer
     }
 }
@@ -144,15 +167,10 @@ export const removeAnswer = (id) => async (dispatch) => {
 }
 
 
-const initialState = {}
+const initialState = { answer: {}}
 const answerReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
-        case GET_ANSWERS:
-            return {
-                ...state,
-                answers: action.answers
-            }
         case GET_ANSWER:
             return {
                 ...state,
